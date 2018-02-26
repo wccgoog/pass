@@ -39,7 +39,7 @@ def report(results):
         print('{:2} {:5} averaging {:.2f}{}'.format(result.count,group,result.average,unit))
 
 data={'girls;kg':[40,41,42,43,44,45],
-'boys;kg':[50,51,52,53,54,55,56]}
+'boys;kg':[50,51,52,53,54,55,56],}
 
 if __name__=='__main__':
     main(data)
