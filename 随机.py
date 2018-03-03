@@ -12,16 +12,16 @@ class Application(Frame):
         self.pack()
         self.createWidgets()
     def createWidgets(self):
-        self.label=Label(self,text='请输入你的尊姓大名!!!!!')
+        self.label=Label(self,text='you name!!!!!')
         self.label.pack()
         self.nameInput=Entry(self)
         self.nameInput.pack()
-        self.alterButton=Button(self,text='抽奖!!!',command=self.hello)
+        self.alterButton=Button(self,text='do it!!!',command=self.hello)
         self.alterButton.pack()
     def hello(self):
         name=self.nameInput.get() 
-        messagebox.showinfo('抽奖结果','恭喜,%s获得一等奖'%name)
+        messagebox.showinfo('result','%s is the best'%name)
         
 app=Application()
-app.master.title('试试看')
+app.master.title('try')
 app.mainloop()
