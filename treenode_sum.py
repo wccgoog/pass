@@ -27,7 +27,7 @@ class Solution(object):
         return k
         
     def get_list(self,root):
-        if root.val==None:
+        if root==None:
             return []
         if root.left==None:
             if root.right==None:
@@ -40,7 +40,6 @@ class Solution(object):
             return [root.val+self.findFrequentTreeSum(root.right)[0]+self.findFrequentTreeSum(root.left)[0]]+self.findFrequentTreeSum(root.right)+self.findFrequentTreeSum(root.left)
      
 tree11=TreeNode(1)
-tree12=TreeNode(None)
 tree21=TreeNode(14,tree11,None)
 root=TreeNode(5,tree21)
 s=Solution()
