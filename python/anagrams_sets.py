@@ -1,3 +1,4 @@
+import os
 def all_anagrams(wordlist):
 	fin=open(wordlist)
 	d={}
@@ -31,5 +32,6 @@ def word_print(d):
 	for i,j in t:
 		if len(j)>1:
 			print(j)
+print(os.getcwd())
 d=all_anagrams('words.txt')
 word_print(d)
