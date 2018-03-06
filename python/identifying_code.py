@@ -7,8 +7,12 @@ Created on Sun Jan 28 11:59:03 2018
 
 from PIL import Image,ImageFilter,ImageDraw,ImageFont
 import random
+letters=''
 def rndChar():
-    return chr(random.randint(65,90))
+    letter=chr(random.randint(65,90))
+    global letters
+    letters+=letter
+    return letter
 def rndColor():
     return (random.randint(64,255),random.randint(64,255),random.randint(64,255))
 def rndColor2():
@@ -25,3 +29,4 @@ for t in range(4):
     draw.text((60*t+10,10),rndChar(),font=font,fill=rndColor2())
 image=image.filter(ImageFilter.BLUR)
 image.save('code.jpg','jpeg')
+print(letters)#输出验证码
