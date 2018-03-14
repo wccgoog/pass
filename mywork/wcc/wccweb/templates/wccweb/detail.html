@@ -1,0 +1,18 @@
+{% extends 'wccweb/index.html' %}
+{% block title %}detail{% endblock title %}
+{% block detail %}
+<style type="text/css">
+.red_back{background-color: beige;text-align: center;}
+</style>
+<h1 class="red_back">{{article.title}}</h1>
+{%if error_message %}<p><strong>{{error_message}}</strong></p>{%endif%}
+
+<form class="red_back" action="{%url 'wccweb:vote' article.id%}" method="POST">
+{%csrf_token%}
+{%for choice in article.choice_set.all%}
+    <input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}" />
+    <label for="choice{{forloop.counter}}">{{choice.choice_text}}</label><br/>
+{%endfor%}
+<input type="submit" value="Vote"/>
+</form>
+{% endblock detail %}

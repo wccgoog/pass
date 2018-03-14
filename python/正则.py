@@ -14,8 +14,9 @@ import re
 #print (pattern1.findall(key))
 
 
-key = r"chux123.343.212.1iuhong@hit.edu.cn"
+key = r"chu x123.343.212.1@hit.edu.cn"
 #p1 = r"\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}"
 p1=r'(?<=u).+?(?=u)'
-pattern1 = re.compile(p1)
+p2=r'\w*'
+pattern1 = re.compile(p2)
 print (pattern1.findall(key))

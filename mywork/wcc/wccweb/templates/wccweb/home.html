@@ -1,0 +1,295 @@
+{% extends 'wccweb/index.html' %}
+{% load static %}
+{% block title %}home{% endblock title %}
+{% block home %}
+{% if article_list%}
+<style type="text/css">
+.big_font {font-size: 40px;color: red;}
+</style>
+<ul>
+    {%for article in article_list%}
+    <li><a class="big_font" href="{% url 'wccweb:detail' article.id %}">{{article.title}}</a></li>
+    {%endfor%}
+</ul>
+{%else%}
+<p>No article</p>
+{%endif%}
+{% endblock home %}
+<body>
+	<!--/start-stories-->
+	<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+	<div class="Stories-section">
+	 	<div class="container">
+	 		<div class="ad728x90" style="text-align:center">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- w3layouts_demo_728x90 -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:728px;height:90px"
+				     data-ad-client="ca-pub-9153409599391170"
+				     data-ad-slot="8639520288"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+		   </div>
+
+	 			<h3>TRUE STRORIES A HEAD</h3>
+	 			<div class="story-grids">
+	 				<div class="story-grid one">
+	 					<div class="col-md-9 story-grid-text">
+		 					<p><img src="{% static 'images/u-qt.png' %}" title="" />It was popularised in the 1960s with the release of Letraset sheets containing Lorem 
+							Ipsum passages, and more recently with desktop publishing software like Aldus PageMakerincluding versions of Lorem Ipsum. <img src="images/d-qt.png" title="" /></p>
+							 <a class="story-btn" href="#">Read More</a>
+						</div>
+						<div class="col-md-3 story-grid-img">
+							<img src="{% static 'images/c1.png' %}" title="" />
+						</div>
+	 					<div class="clearfix"> </div>
+	 				</div>
+	 				<div class="story-grid two">
+	 					<div class="col-md-9 story-grid-text">
+		 					<p><img src="{% static 'images/u-qt.png' %}" title="" />It was popularised in the 1960s with the release of Letraset sheets containing Lorem 
+							Ipsum passages, and more recently with desktop publishing software like Aldus PageMakerincluding versions of Lorem Ipsum. <img src="images/d-qt.png" title="" /></p>
+							 <a class="story-btn" href="#">Read More</a>
+						</div>
+						<div class="col-md-3 story-grid-img">
+							<img src="{% static 'images/c2.jpg' %}" title="" />
+						</div>
+	 					<div class="clearfix"> </div>
+	 				</div>
+	 				<div class="story-grid three">
+	 					<div class="col-md-9 story-grid-text">
+		 					<p><img src="{% static 'images/u-qt.png' %}" title="" /> It was popularised in the 1960s with the release of Letraset sheets containing Lorem 
+							Ipsum passages, and more recently with desktop publishing software like Aldus PageMakerincluding versions of Lorem Ipsum. <img src="images/d-qt.png" title="" /></p>
+							 <a class="story-btn" href="#">Read More</a>
+						</div>
+						<div class="col-md-3 story-grid-img">
+							<img src="{% static 'images/c3.png' %}" title="" />
+						</div>
+	 					<div class="clearfix"> </div>
+	 				</div>
+	 		</div>
+	 	</div>
+	 </div>
+	<!--start-parts-->
+	 <div class="parts-section">
+	 			<div class="container">
+	 				<div class="ad728x90" style="text-align:center">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- w3layouts_demo_728x90 -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:728px;height:90px"
+				     data-ad-client="ca-pub-9153409599391170"
+				     data-ad-slot="8639520288"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+		   </div>
+
+		 			<div class="part-grids">
+			 				<div class="col-md-4 part-grid">
+			 					<i class="icon1"> </i>
+			 					<h3>VOLUPTATEM</h3>
+			 					<p>It is a long established fact that a reader will be distracted by the readable  </p>
+			 					<a class="view-btn" href="#">view</a>
+			 				</div>
+			 					<div class="col-md-4 part-grid">
+			 					<i class="icon2"> </i>
+			 					<h3>DOLOREMQUE</h3>
+			 					<p>It is a long established fact that a reader will be distracted by the readable  </p>
+			 					<a class="view-btn" href="#">view</a>
+			 				</div>
+			 				<div class="col-md-4 part-grid">
+			 					<i class="icon3"> </i>
+			 					<h3>LAUDANTIUM</h3>
+			 					<p>It is a long established fact that a reader will be distracted by the readable  </p>
+			 					<a class="view-btn" href="#">view</a>
+			 				</div>
+		 				<div class="clearfix"> </div>
+		 			</div>
+		 			<div class="part-grids">
+			 				<div class="col-md-4 part-grid">
+			 					<i class="icon4"> </i>
+			 					<h3>VOLUPTATEM</h3>
+			 					<p>It is a long established fact that a reader will be distracted by the readable  </p>
+			 					<a class="view-btn" href="#">view</a>
+			 				</div>
+			 					<div class="col-md-4 part-grid">
+			 					<i class="icon5"> </i>
+			 					<h3>DOLOREMQUE</h3>
+			 					<p>It is a long established fact that a reader will be distracted by the readable  </p>
+			 					<a class="view-btn" href="#">view</a>
+			 				</div>
+			 				<div class="col-md-4 part-grid">
+			 					<i class="icon6"> </i>
+			 					<h3>LAUDANTIUM</h3>
+			 					<p>It is a long established fact that a reader will be distracted by the readable  </p>
+			 					<a class="view-btn" href="#">view</a>
+			 				</div>
+		 				<div class="clearfix"> </div>
+		 			</div>
+	 			</div>
+			 </div>
+			  <div id="gallery" class="Gallery">
+					<div class="container">
+						<div class="ad728x90" style="text-align:center">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- w3layouts_demo_728x90 -->
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:728px;height:90px"
+				     data-ad-client="ca-pub-9153409599391170"
+				     data-ad-slot="8639520288"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+		   </div>
+
+						<div class="gallery-head">
+							<h3>We Care For</h3>
+						</div>
+						      <div class="section group">
+								<div class="col-md-4 gallery-box">
+										<div id="nivo-lightbox-demo"> <p> <a href="{% static 'images/pop1.png' %}"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span></a> </p></div>     
+									  	<img src="{% static 'images/g1.png' %}" alt="">
+									  	<div class="para_s">
+									  		<h4>Richard july</h4>
+									  		<p>Lorem Ipsy Dolor Site Dummy</p>
+									  	</div>
+							    </div>
+								<div class="col-md-4 gallery-box">
+								  	    <div id="nivo-lightbox-demo"> <p> <a href="images/pop2.png" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span></a> </p></div>     
+									  	<img src="{% static 'images/g2.png' %}" alt="">
+									  	 <div class="para_s">
+									  	 	<h4>Richard july</h4>
+									  		<p>Lorem Ipsy Dolor Site Dummy</p>
+									  	</div>
+							     </div>
+								 <div class="col-md-4 gallery-box">
+								  		<div id="nivo-lightbox-demo"> <p> <a href="images/pop3.png" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+									  	<img src="{% static 'images/g3.png' %}" alt="">
+									  	<div class="para_s">
+									  		<h4>Richard july</h4>
+									  		<p>Lorem Ipsy Dolor Site Dummy</p>
+									  	</div>
+								</div>
+							<div class="clearfix"> </div>
+						</div>
+						<div class="section group">
+								<div class="col-md-4 gallery-box">
+										<div id="nivo-lightbox-demo"> <p> <a href="images/pop4.png"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span></a> </p></div>     
+									  	<img src="{% static 'images/g4.png' %}" alt="">
+									  	<div class="para_s">
+									  		<h4>Richard july</h4>
+									  		<p>Lorem Ipsy Dolor Site Dummy</p>
+									  	</div>
+							    </div>
+								<div class="col-md-4 gallery-box">
+								  	    <div id="nivo-lightbox-demo"> <p> <a href="images/pop5.png" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span></a> </p></div>     
+									  	<img src="{% static 'images/g5.png' %}" alt="">
+									  	 <div class="para_s">
+									  	 	<h4>Richard july</h4>
+									  		<p>Lorem Ipsy Dolor Site Dummy</p>
+									  	</div>
+							     </div>
+								 <div class="col-md-4 gallery-box">
+								  		<div id="nivo-lightbox-demo"> <p> <a href="{% static 'images/pop6.png' %}" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">  <span class="rollover1"> </span></a> </p></div>     
+									  	<img src="{% static 'images/g6.png' %}" alt="">
+									  	<div class="para_s">
+									  		<h4>Richard july</h4>
+									  		<p>Lorem Ipsy Dolor Site Dummy</p>
+									  	</div>
+								</div>
+							<div class="clearfix"> </div>
+						</div>
+				   <script type="text/javascript" src="{% static 'js/nivo-lightbox.min.js' %}"></script>
+				<script type="text/javascript">
+				$(document).ready(function(){
+				    $('#nivo-lightbox-demo a').nivoLightbox({ effect: 'fade' });
+				});
+				</script>
+		</div>
+	</div>
+    <!--//End-Gallery-->
+    <!--strat-image-cursuals-->
+    <div class="scroll-slider">
+            <div class="container"> 											 
+                  <div class="nbs-flexisel-container"><div class="nbs-flexisel-inner"><ul class="flexiselDemo3 nbs-flexisel-ul" style="left: -253.6px; display: block;">					    					    					       
+                  <li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/s1.png"></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/s4.png"></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/s2.png"></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/s3.png"></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/s4.png"></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/s1.png"></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/s2.png"></li><li onclick="location.href='#';" class="nbs-flexisel-item" style="width: 253.6px;"><img src="images/s2.png"></li></ul><div class="nbs-flexisel-nav-left" style="top: 21.5px;"></div><div class="nbs-flexisel-nav-right" style="top: 21.5px;"></div></div></div> 
+                  <div class="clear"> </div>      
+                <!--strat-image-cursuals-->
+                      <script type="text/javascript" src="{% static 'js/jquery.flexisel.js' %}"></script>
+                      <!--End-image-cursuals-->
+                      <script type="text/javascript">
+                      $(window).load(function() {
+                          $(".flexiselDemo3").flexisel({
+                              visibleItems: 5,
+                              animationSpeed: 1000,
+                              autoPlay: true,
+                              autoPlaySpeed: 3000,            
+                              pauseOnHover: true,
+                              enableResponsiveBreakpoints: true,
+                              responsiveBreakpoints: { 
+                                  portrait: { 
+                                      changePoint:480,
+                                      visibleItems: 1
+                                  }, 
+                                  landscape: { 
+                                      changePoint:640,
+                                      visibleItems: 2
+                                  },
+                                  tablet: { 
+                                      changePoint:768,
+                                      visibleItems: 3
+                                  }
+                              }
+                          });
+                      });
+                      </script>
+                    </div>				
+              </div>
+
+<!--/start-footer-->
+      <div class="footer">
+              <div class="container">
+
+              <div class="footer-grids">
+                  <div class="col-md-4 footer-grid-icons">
+                      <h3>Follow Us:</h3>
+                              <ul>
+                                  <li><a class="twitter" href="#"><span> </span></a></li>
+                                  <li><a class="fb" href="#"><span> </span></a></li>
+                                  <li><a class="you" href="#"><span> </span></a></li>
+                                  <li><a class="in" href="#"><span> </span></a></li>
+                                  <div class="clearfix"> </div>
+                              </ul>
+                  </div>
+                  <div class="col-md-4 footer-grid-text">
+                      <h3>Join our news letter</h3>
+                      <p>Lorem Ipsum is simply dummy text of theprinting and typesetting industry.</p>
+                      form method="post" action="contact-post.html">
+                       <a class="sign-btn" href="signup.html">Sign up</a>
+                  </div>
+                  <div class="col-md-4 copy-right">
+                      <p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+                  </div>
+                  <div class="clearfix"> </div>	
+              </div>							
+          </div>
+      </div>
+          <!--//End-foote-->
+          <script type="text/javascript">
+            $(document).ready(function() {
+                /*
+                var defaults = {
+                      containerID: 'toTop', // fading element id
+                    containerHoverID: 'toTopHover', // fading element hover id
+                    scrollSpeed: 1200,
+                    easingType: 'linear' 
+                 };
+                */
+                
+                $().UItoTop({ easingType: 'easeOutQuart' });
+                
+            });
+        </script>
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+</body>

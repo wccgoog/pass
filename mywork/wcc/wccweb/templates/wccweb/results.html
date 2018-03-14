@@ -1,0 +1,17 @@
+{% extends 'wccweb/index.html' %}
+{% block detail %}
+<style type="text/css">
+    .red_back{background-color: beige;text-align: center;}
+</style>
+<div class="red_back">
+    <h1>{{article.content}}</h1>
+
+    <ul>
+        {%for choice in article.choice_set.all%}
+        <li>{{choice.choice_text}} -- {{choice.votes}}vote{{choice.votes|pluralize}}</li>
+        {%endfor%}
+    </ul>
+
+    <a href="{% url 'wccweb:detail' article.id%}">Vote again?</a>
+</div>
+{% endblock detail %}

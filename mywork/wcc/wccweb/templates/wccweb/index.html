@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>{% block title %}{% endblock title %}</title>
+<link href="{% static 'css/bootstrap.css' %}" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+ <!-- Custom Theme files -->
+<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}">
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</script>
+ <!--start-smoth-scrolling-->
+<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+		
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+<!--start-smoth-scrolling-->
+<!-- webfonts -->
+	<link href='https://fonts.googleapis.com/ css?family=Arimo:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/ css?family=Oswald:400,300,700|Open+Sans:400italic,600italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+<!-- webfonts-->
+</head>
+<body>
+<!-- header -->
+	<div class="main">
+		<div class="header">
+			<div class="container">
+			<!-- logo -->
+					<div class="logo">
+						<a href="index.html"><img src="{% static 'images/logo.png' %}" title="Help hand" />
+							<h1>Help Hand</h1><span>Help-Line: +01 000 000 0</span></a>
+					</div>
+			<!-- /logo -->
+				<!-- top-nav -->
+				<div class="top-nav">
+					<span class="menu"> </span>
+						<ul>
+							<li class="active"><a href="index.html">About us</a></li>
+							<li><a href="what.html"> What we do</a></li>
+							<li><a href="donate.html">  Donate </a></li>
+							<li><a href="blog.html"> Blog</a></li>
+							<li><a href="contact.html">Contact us</a></li>
+								<div class="clearfix"> </div>
+						</ul>
+				</div>
+		<!-- start search-->
+				    <div class="search-box">
+					    <div id="sb-search" class="sb-search">
+							<form>
+								<input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
+								<input class="sb-search-submit" type="submit" value="">
+								<span class="sb-icon-search"> </span>
+							</form>
+						</div>
+				    </div>
+					<!-- search-scripts -->
+					<script src="{% static 'js/classie.js' %}"></script>
+					<script src="{% static 'js/uisearch.js' %}"></script>
+						<script>
+							new UISearch( document.getElementById( 'sb-search' ) );
+						</script>
+					<!-- //search-scripts -->
+				<div class="clearfix"></div>
+			</div>
+
+		<!-- script-for-nav -->
+				<script>
+					$(document).ready(function(){
+						$("span.menu").click(function(){
+							$(".top-nav ul").slideToggle(300);
+						});
+					});
+				</script>
+		<!-- script-for-nav -->
+		<!-- /top-nav -->
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+		<div class="banner">
+			<div class="slider-caption">
+				<div class="col-sm-4">
+				{% block home %}
+				{% endblock home %}
+				{% block detail %}
+				{% endblock detail %}
+				</div>
+				<div class="clo-sm-8">
+					<div class="learn-button">
+			          <a class="slide-btn" href="#">SIGN UP NOW!!!</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /header -->
+	<!-- slider -->
+	<!--/start-services-->
+			 <div class="Service-section">
+	 			<div class="container">
+		 			<div class="service-grids">
+			 				<div class="col-md-4 service-grid">
+			 					<h3>Our Mission</h3>
+			 					<p>The leap into electronic typesetting, remaining essentiallyunchanged.into electronic typesetting essentiallyunchanged.  unchanged. </p>
+			 				</div>
+			 					<div class="col-md-4 service-grid">
+			 					<h3>Work done</h3>
+			 					<p>The leap into electronic typesetting, remaining essentiallyunchanged.into electronic typesetting essentiallyunchanged.  unchanged. </p>
+			 				</div>
+			 				<div class="col-md-4 service-grid">
+			 					<h3>How to help</h3>
+			 					<p>The leap into electronic typesetting, remaining essentiallyunchanged.into electronic typesetting,  essentiallyunchanged.  unchanged. </p>
+			 				</div>
+		 				<div class="clearfix"> </div>
+		 			</div>
+	 			</div>
+			 </div>
+
+
+						
+	</body>
+</html>
