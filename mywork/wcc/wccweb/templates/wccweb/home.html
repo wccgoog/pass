@@ -15,9 +15,8 @@
 <p>No article</p>
 {%endif%}
 {% endblock home %}
-<body>
+{% block home_text %}
 	<!--/start-stories-->
-	<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
 	<div class="Stories-section">
 	 	<div class="container">
 	 		<div class="ad728x90" style="text-align:center">
@@ -26,7 +25,8 @@
 				<ins class="adsbygoogle"
 				     style="display:inline-block;width:728px;height:90px"
 				     data-ad-client="ca-pub-9153409599391170"
-				     data-ad-slot="8639520288"></ins>
+					 data-ad-slot="8639520288">
+				</ins>
 				<script>
 				(adsbygoogle = window.adsbygoogle || []).push({});
 				</script>
@@ -292,4 +292,4 @@
             });
         </script>
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-</body>
+{% endblock home_text %}
