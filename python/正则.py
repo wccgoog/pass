@@ -15,8 +15,11 @@ import re
 
 
 key = r"chu x123.343.212.1@hit.edu.cn"
+k='"GET" ui-bg_glass_80_d7ebf9_1x400."png"'
 #p1 = r"\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}"
 p1=r'(?<=u).+?(?=u)'
-p2=r'\w*'
+p2=r'^c.*'
+p=r'"[GET,POST]+'
 pattern1 = re.compile(p2)
-print (pattern1.findall(key))
+pattern=re.compile(p)
+print (pattern.findall(k))
