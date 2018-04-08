@@ -16,5 +16,5 @@ def read_json(har_path,txt_path,start_word,end_word):
         f2.write(request+'\n')
     f2.close()
 
-read_json('c:/users/administrator/desktop/1.har','c:/users/administrator/desktop/2.txt','"request"','"httpVersion"')
+read_json('c:/users/administrator/desktop/1.har','c:/users/administrator/desktop/2.txt','"request"','"httpVersion"') #正则，起始和结尾参数字符需要单引号加双引号'+"
 
