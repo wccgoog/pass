@@ -15,12 +15,16 @@ def show_diff(txt1_path,txt2_path,diff_path):
     f=open(diff_path,'w')
     diff1_2=t1-t2
     diff2_1=t2-t1
+    comms=t1&t2
     f.write('文件1独有requests\n\n')
     for diff in diff1_2:
         f.write(diff+'\n')
     f.write('\n\n文件2独有requests\n\n')
     for diff in diff2_1:
         f.write(diff+'\n')
+    f.write('\n\n共有requests\n\n')
+    for comm in comms:
+        f.write(comm+'\n')
     f.close()
 
 if __name__=='__main__':
