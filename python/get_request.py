@@ -1,5 +1,3 @@
-import re
-
 def read_txt(txt_path,encoding='utf-8'):
     f=open(txt_path)
     t=[]
@@ -8,18 +6,21 @@ def read_txt(txt_path,encoding='utf-8'):
         t.append(line)
     return set(t)
 
-
-def show_diff(txt1_path,txt2_path,diff_path):
+def show_diff(txt_name_1,txt_name_2):
+    root_path='c:/users/administrator/desktop/'
+    txt1_path=root_path+txt_name_1+'.txt'
+    txt2_path=root_path+txt_name_2+'.txt'
     t1=read_txt(txt1_path)
     t2=read_txt(txt2_path)
+    diff_path=root_path+txt_name_1+'与'+txt_name_2+'的差别'+'.txt'
     f=open(diff_path,'w')
     diff1_2=t1-t2
     diff2_1=t2-t1
     comms=t1&t2
-    f.write('文件1独有requests\n\n')
+    f.write('<<'+txt_name_1+'>>独有requests\n\n')
     for diff in diff1_2:
         f.write(diff+'\n')
-    f.write('\n\n文件2独有requests\n\n')
+    f.write('\n\n<<'+txt_name_2+'>>独有requests\n\n')
     for diff in diff2_1:
         f.write(diff+'\n')
     f.write('\n\n共有requests\n\n')
@@ -28,6 +29,6 @@ def show_diff(txt1_path,txt2_path,diff_path):
     f.close()
 
 if __name__=='__main__':
-    txt_name_1=input('文件1名称')
-    txt_name_2=input('文件2名称')
-    show_diff('c:/users/administrator/desktop/'+txt_name_1+'.txt','c:/users/administrator/desktop/'+txt_name_2+'.txt','c:/users/administrator/desktop/'+txt_name_1+'与'+txt_name_2+'的差别'+'.txt')
+    txt_name_1=input('文件1名称:')
+    txt_name_2=input('文件2名称:')
+    show_diff(txt_name_1,txt_name_2)
