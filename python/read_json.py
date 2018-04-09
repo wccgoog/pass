@@ -18,5 +18,7 @@ def read_json(har_path,txt_path,start_word,end_word):
     f2.close()
 
 if __name__=='__main__':
-    read_json('c:/users/administrator/desktop/2.har','c:/users/administrator/desktop/2.txt','"request": {','"httpVersion"') #正则，起始和结尾参数字符需要单引号加双引号'+"
+    har_name=input('输入.har文件名')
+    txt_name=input('输出.txt文件名')
+    read_json('c:/users/administrator/desktop/'+har_name+'.har','c:/users/administrator/desktop/'+txt_name+'.txt','"request": {','"httpVersion"') #正则，起始和结尾参数字符需要单引号加双引号'+"
 
