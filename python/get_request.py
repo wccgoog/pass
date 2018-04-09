@@ -20,13 +20,13 @@ def show_diff(txt_name_1,txt_name_2):
     print('<<'+txt_name_1+'>>独有requests:',len(diff1_2))
     print('<<'+txt_name_2+'>>独有requests:',len(diff2_1))
     print('共有requests',len(comms))
-    f.write('<<'+txt_name_1+'>>独有requests\n\n')
+    f.write('<<'+txt_name_1+'>>独有requests\n\n',len(diff1_2))
     for diff in diff1_2:
         f.write(diff+'\n')
-    f.write('\n\n<<'+txt_name_2+'>>独有requests\n\n')
+    f.write('\n\n<<'+txt_name_2+'>>独有requests\n\n',len(diff2_1))
     for diff in diff2_1:
         f.write(diff+'\n')
-    f.write('\n\n共有requests\n\n')
+    f.write('\n\n共有requests\n\n',len(comms))
     for comm in comms:
         f.write(comm+'\n')
     f.close()
