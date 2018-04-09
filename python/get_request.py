@@ -17,6 +17,9 @@ def show_diff(txt_name_1,txt_name_2):
     diff1_2=t1-t2
     diff2_1=t2-t1
     comms=t1&t2
+    print('<<'+txt_name_1+'>>独有requests:',len(diff1_2))
+    print('<<'+txt_name_2+'>>独有requests:',len(diff2_1))
+    print('共有requests',len(comms))
     f.write('<<'+txt_name_1+'>>独有requests\n\n')
     for diff in diff1_2:
         f.write(diff+'\n')
@@ -27,6 +30,7 @@ def show_diff(txt_name_1,txt_name_2):
     for comm in comms:
         f.write(comm+'\n')
     f.close()
+    print('输出文件地址：'+diff_path)
 
 if __name__=='__main__':
     txt_name_1=input('文件1名称:')

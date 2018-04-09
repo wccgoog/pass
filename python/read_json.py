@@ -1,8 +1,9 @@
 import re
 
 def read_json(har_name,txt_name,start_word,end_word):
-    har_path='c:/users/administrator/desktop/'+har_name+'.har'
-    txt_path='c:/users/administrator/desktop/'+txt_name+'.txt'
+    root_path='c:/users/administrator/desktop/'
+    har_path=root_path+har_name+'.har'
+    txt_path=root_path+txt_name+'.txt'
     f=open(har_path,encoding='utf-8')
     long_str=''
     for line in f.readlines():
@@ -18,6 +19,7 @@ def read_json(har_name,txt_name,start_word,end_word):
     for request in requests:
         f2.write(request+'\n')
     f2.close()
+    print('输出文件地址：'+txt_path)
 
 if __name__=='__main__':
     har_name=input('输入.har文件名:')
