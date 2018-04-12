@@ -2,8 +2,6 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 
-
-
 driver=webdriver.Chrome()
 driver.get('http://192.168.0.138:8010')
 driver.maximize_window()
@@ -20,5 +18,7 @@ driver.find_element_by_css_selector('div.tab_close').click()
 first_tag=driver.find_element_by_xpath("//ul[@id='jMenu']/li[1]")
 # action.move_to_element(first_tag)
 # action.perform()
-first_tag.click()
-driver.find_element_by_xpath('//ul[@id="jMenu"]/li/ul/li[5]/a/span').click()
+for i in range(1,6):
+    first_tag.click()
+    driver.find_element_by_xpath('//ul[@id="jMenu"]/li/ul/li['+str(i)+']/a/span').click()
+    time.sleep(1)
