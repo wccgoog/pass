@@ -9,7 +9,5 @@ driver.find_element_by_id('password').send_keys('m_admin')
 start=driver.find_element_by_css_selector('div.handler.handler_bg')
 action=ActionChains(driver)
 action.drag_and_drop_by_offset(start,250,0)
-# action.click_and_hold(start)    调试距离用
-# action.move_by_offset(250,0)
 action.perform()
 driver.find_element_by_id('loginbutton').click()
