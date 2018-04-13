@@ -9,4 +9,7 @@ time.sleep(2)
 driver.find_element_by_id('account').send_keys('admin')
 driver.find_element_by_id('password').send_keys('m_admin')
 # driver.maximize_window()
+# driver.switch_to.frame(0)
+# driver.switch_to.default_content()
+# driver.switch_to_alert().accept()
 
