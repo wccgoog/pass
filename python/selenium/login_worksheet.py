@@ -14,10 +14,10 @@ action=ActionChains(driver)
 action.drag_and_drop_by_offset(start,250,0)
 action.perform()
 driver.find_element_by_id('loginbutton').click()
-time.sleep(5)
+time.sleep(9)
 driver.switch_to.frame(0)
 driver.find_element_by_id('btnFilter').click()
-time.sleep(1.5)
+time.sleep(3)
 written_by='//div[@id="FilterPage"]/table/tbody/tr[2]/td/div/div/input'
 driver.find_element_by_xpath(written_by).send_keys('王晨驰')  #填写人
 driver.find_element_by_xpath(written_by).send_keys(Keys.ENTER)
