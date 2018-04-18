@@ -24,5 +24,4 @@ def read_json(har_name,txt_name,start_word,end_word):
 if __name__=='__main__':
     har_name=input('输入.har文件名:')
     txt_name=input('输出.txt文件名:')
-    read_json(har_name,txt_name,'"request": {','"httpVersion"') #正则，起始和结尾参数字符需要单引号加双引号'+"
-
+    read_json(har_name,txt_name,'"request": {','"httpVersion"') #正则

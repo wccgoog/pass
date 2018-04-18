@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import re
-def read_json(log_name,txt_name,start_word,end_word):
+def read_log(log_name,txt_name,start_word,end_word):
     root_path='c:/users/administrator/desktop/'
     log_path=root_path+log_name+'.log'
     txt_path=root_path+txt_name+'.txt'
@@ -23,4 +23,4 @@ def read_json(log_name,txt_name,start_word,end_word):
 if __name__=='__main__':
     log_name=input('输入log文件名:')
     txt_name=input('输出txt文件名:')
-    read_json(log_name,txt_name,'{"DataType"','\\n') #正则，起始和结尾参数字符需要单引号加双引号'+"
+    read_log(log_name,txt_name,'{"DataType"','\\n') #正则
