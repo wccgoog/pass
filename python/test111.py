@@ -13,3 +13,5 @@ for line in f.read().split(';'):
     name,value=line.strip().split('=',1)  
     cookies[name]=value 
 print(cookies)
+
+# res=requests.get("https://cloud.flyme.cn/browser/index.jsp",cookies=cookies) 
