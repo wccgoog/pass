@@ -39,10 +39,12 @@ second_tag_1=driver.find_element_by_xpath("//ul[@id='jMenu']/li[2]/ul/li")
 second_tag.click()
 second_tag_1.click()
 driver.find_element_by_xpath("//ul[@id='jMenu']/li[2]/ul/li/ul/li").click()
-time.sleep(2)
+time.sleep(4)
 if driver.switch_to_alert():
     driver.switch_to_alert().accept()
-second_tag.click()
-
-
+for i in range(6):
+    second_tag.click()
+    driver.find_element_by_xpath("//ul[@id='jMenu']/li[2]/ul/li[1]").click()
+    driver.find_element_by_xpath("//ul[@id='jMenu']/li[2]/ul/li[1]/ul/li["+str(i+2)+"]").click()
+    time.sleep(3)
 
