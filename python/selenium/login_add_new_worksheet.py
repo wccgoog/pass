@@ -18,5 +18,5 @@ action.perform()
 driver.find_element_by_id('loginbutton').click()
 WebDriverWait(driver,10).until(EC.presence_of_all_elements_located((By.XPATH,"//table[@id='tabwindow_0']/tbody/tr/td[3]")))
 driver.switch_to.frame(0)
-WebDriverWait(driver,10).until(EC.presence_of_all_elements_located((By.XPATH,"//div[@id='ListTable']/div[5]/div/div[5]/div[8]")))
+WebDriverWait(driver,10).until(EC.presence_of_all_elements_located((By.XPATH,"//div[@id='ListTable']/div[5]/div/div[5]/div[8]")))#表完全加载完成，随便选了其中一条的xpath
 driver.find_element_by_id('btnAdd').click()
