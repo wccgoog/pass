@@ -1,4 +1,4 @@
-from selenium.webdriver.common.keys import Keys
+import datetime
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
@@ -18,12 +18,8 @@ action.perform()
 driver.find_element_by_id('loginbutton').click()
 WebDriverWait(driver,15).until(EC.presence_of_all_elements_located((By.XPATH,"//table[@id='tabwindow_0']/tbody/tr/td[3]")))
 driver.switch_to.frame(0)
-WebDriverWait(driver,15).until(EC.presence_of_all_elements_located((By.XPATH,"//div[@id='ListTable']/div[5]/div/div[5]/div[8]")))
-driver.find_element_by_id('btnFilter').click()
-# time.sleep(3)
-written_by='//div[@id="FilterPage"]/table/tbody/tr[2]/td/div/div/input'
-WebDriverWait(driver,15).until(EC.presence_of_all_elements_located((By.XPATH,written_by)))
-driver.find_element_by_xpath(written_by).send_keys('王晨驰')  #填写人
-driver.find_element_by_xpath(written_by).send_keys(Keys.ENTER)
-driver.find_element_by_xpath('(//button[@type="button"])[2]').click()
-
+time_start=datetime.datetime.now()#开始时间
+WebDriverWait(driver,15).until(EC.presence_of_all_elements_located((By.XPATH,"//div[@id='ListTable']/div[5]/div/div[5]/div[8]")))#表完全加载完成，随便选了其中一条的xpath
+driver.find_element_by_id('btnAdd').click()
+time_end=datetime.datetime.now()#结束时间
+print(time_end-time_start)
