@@ -2,11 +2,14 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 driver=webdriver.Chrome()
 driver.get('http://192.168.0.138:8010')
 driver.maximize_window()
-time.sleep(1.5)
+WebDriverWait(driver,15).until(EC.presence_of_all_elements_located((By.ID,'account')))
 driver.find_element_by_id('account').send_keys('admin')
 driver.find_element_by_id('password').send_keys('m_admin')
 start=driver.find_element_by_css_selector('div.handler.handler_bg')
