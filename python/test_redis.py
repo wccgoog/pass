@@ -1,5 +1,5 @@
 import redis
-r=redis.Redis(host='127.0.0.1',port=6379)
+r=redis.Redis(host='127.0.0.1',port=6379,db=3)
 f=open('C:/Users/Administrator/Desktop/1.txt')  #提取出来的json
 for line in f.readlines():
     line=line.strip()
