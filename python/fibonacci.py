@@ -6,4 +6,5 @@ def fibonacci(n):
 	known[n]=res
 	return res
 
-print(fibonacci(31))
+print(fibonacci(50))
+print(known)

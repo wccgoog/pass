@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-import requests
-import datetime
-r=requests.get('https://github.com')
-# print(r.text)
-total_time=r.elapsed.seconds*1000000+r.elapsed.microseconds
-print(total_time)
-root_path='c:/users/wcc/desktop/1.txt'
-f=open(root_path,'a')
-f.write(str(total_time)+'\n')
+t=[]
+for i in range(50):
+    t.append(0)
+t[0]=t[1]=1
+x=2
+while(x<50):
+    t[x]=t[x-1]+t[x-2]
+    print(t[x])
+    x+=1
