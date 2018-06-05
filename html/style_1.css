@@ -1,0 +1,14 @@
+span{
+    margin-right:20px;
+}
+p{
+    text-indent: 0em;
+}
+.span_block{
+    display:block;
+    margin-bottom: 20px;
+}
+.span_bold{
+    font-weight: bold;
+    margin-right: 10px;
+}
