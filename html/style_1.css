@@ -9,3 +9,6 @@ span{
     font-weight: bold;
     margin-right: 10px;
 }
+.span_block span{
+    display:block;
+}
