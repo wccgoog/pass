@@ -1,0 +1,23 @@
+span{
+    margin-right:20px;
+}
+.span_block{
+    display:block;
+    margin-bottom: 20px;
+}
+.span_bold{
+    font-weight: bold;
+    margin-right: 10px;
+}
+#left_main{
+    float:left;
+    width:150px;
+    height:750px;
+    background: #1e90ff;
+    text-align: center;
+    color:white;
+}
+#right_main{
+    float:left;
+    margin-left:30px;
+}
