@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <style>
+    body {
+  min-width: 700px;      /* 2x LC width + RC width */
+}
+#container {
+  padding-left: 200px;   /* LC width */
+  padding-right: 150px;  /* RC width */
+}
+#container .column {
+  position: relative;
+  float: left;
+}
+#center {
+  width: 100%;
+  border:rgb(221, 152, 23) solid 1px;
+}
+#left {
+  width: 180px;
+  padding: 0 10px;          
+  right: 202px;        
+  margin-left: -100%;
+  border:aqua solid 1px;
+}
+#right {
+  width: 150px;          /* RC width */
+  margin-right: -152px;  /* RC width */
+  border:rgb(255, 0, 212) solid 1px;
+}
+#footer {
+  clear: both;
+}
+    </style>
+</head>
+<body>
+    <div id="header">header</div>
+    <div id="container">
+        <div id="center" class="column">center</div>
+        <div id="left" class="column">left</div>
+        <div id="right" class="column">right</div>
+    </div>
+    <div id="footer">
+    </div>   
+</body>
+</html>
