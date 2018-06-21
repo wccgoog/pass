@@ -16,11 +16,16 @@ import pymssql
 
 conn=pymssql.connect(host='172.16.133.65',user='sa',password='mds',database='IPMS4S_ZHMQ')
 cursor=conn.cursor()
-cursor.execute("select * from DMSWordingList where WordingDesc01 like '%隱患%'")
+tablename='T_FORM_FormTableReportItem'
+cursor.execute("select * from %s where ItemName like '%%隱患%%'" %tablename)
 words=cursor.fetchall()
+# print(words)
+
+#---------------------------------------------------------------------
 for i in words:
-    x=i[1].replace('隱患','故障')
-    cursor.execute("update DMSWordingList set WordingDesc01='%s' where wordingid='%s'" %(x,i[0]))
+    x=i[2].replace('隱患','故障')
+    cursor.execute("update %s set ItemName='%s' where id='%s'" %(tablename,x,i[0]))
     conn.commit()   #必须有！！！！
+    print(x)
 
     
