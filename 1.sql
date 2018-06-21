@@ -28,7 +28,8 @@ WITH PageData AS
                         select ','+FilePath from T_FORM_FormTableDataFiles tfftf with(nolock) 
                         where tfftf.fid=temp.ID and ISNULL(tfftf.IsDeleted,0)!=1 and isnull(tfftf.FieldID,'')='' 
                         for xml path('')
-                    ),1,1,''
+                    )
+                    ,1,1,''
                 )
         ) 
         FilePath, ModifyDate  FROM T_CUS_401 temp with(nolock) left join 
