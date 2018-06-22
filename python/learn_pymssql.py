@@ -21,11 +21,15 @@ cursor.execute("select * from %s where ItemName like '%%隱患%%'" %tablename)
 words=cursor.fetchall()
 # print(words)
 
+
+col_name=''
+id_name=''
 #---------------------------------------------------------------------
 for i in words:
     x=i[2].replace('隱患','故障')
-    cursor.execute("update %s set ItemName='%s' where id='%s'" %(tablename,x,i[0]))
+    cursor.execute("update %s set %s='%s' where %s='%s'" %(tablename,col_name,x,id_name,i[0]))
     conn.commit()   #必须有！！！！
     print(x)
+
 
     
