@@ -8,6 +8,12 @@ html{
 body{
     height: 100%;
 }
+a:link{
+    text-decoration: none;
+}
+.display_none{
+    display: none;
+}
 .flex_box{
     height: 100%;
     display: flex;
@@ -19,6 +25,7 @@ body{
     height: 100%;
     background: rgb(29,37,49);
     width: 100px;
+    z-index: 1;
 }
 .icons{
     margin: 15px;
@@ -35,10 +42,107 @@ body{
 .a_icons:focus + .highlight{
     display: block;
 }
+.bottom{
+    position: absolute;
+    bottom: 0;
+    height: 16px;
+    margin: 20px;
+}
+.bottom > *{
+    margin-right: 20px;
+}
 .main_2{
+    position: relative;
     height: 100%;
     background: rgb(34,44,60);
     width: 250px;
+}
+.grid_box{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    /* grid-template-rows: 30px; */
+}
+.margin_20{
+    margin:20px 0 20px 20px;
+}
+.row_gap{
+    grid-row-gap: 10px;
+}
+.grey_p{
+    color: rgb(91,103,121);
+}
+.normal_p{
+    color: rgb(183, 192, 205);
+}
+.white_p{
+    color: white;
+}
+.num_p{
+    background: rgb(37,154,242);
+    border-radius: 15px;
+    width: 30px;
+    text-align: center;
+}
+.num_p_new{
+    background: rgb(37,154,242);
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    padding: 0 9px;
+}
+.grid_box > a{
+    position: relative;
+}
+.highlight2{
+    position: absolute;
+    left: -30px;
+    top: 0px;
+    display: none;
+}
+.grid_box > a:focus > .highlight2{
+    display: block;
+}
+.grid_box > a:focus > .normal_p{
+    color: white;
+}
+.main2_hr{
+    margin: 20px;
+    border: none;
+    height: 1px;
+    background: rgb(42, 53, 71);
+}
+.main2_flex{
+    margin: 20px 20px;
+    height: 25px;
+    position: relative;
+}
+.main2_flex > img{
+    height: 16px;
+}
+.main2_icon{
+    margin-right: 10px;
+}
+.flex_space_between{
+    justify-content: space-between;
+}
+.main2_flex > a:focus > .normal_p{
+    color: white;
+}
+.highlight3{
+    position: absolute;
+    left: -28px;
+    display: none;
+}
+.main2_flex > a:focus + .highlight3{
+    display: block;
+}
+#alert_icon{
+    height: 24px;
+}
+.main2_bottom{
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
 }
 .main_3{
     width: calc(100% - 350px);
@@ -50,13 +154,23 @@ body{
     height: 80px;
     width: calc(100% - 350px);
     position: fixed;
+    align-items: center;
     border-bottom: #e6e9ec 2px solid;
-    vertical-align: middle;
+}
+.main_3_head > h1{
+    margin:0 20px;
+}
+.right_top{
+    align-items: center;
+    justify-content: flex-end;
+}
+#right_top > *{
+    margin-right: 20px;
 }
 .circle{
     height: 60px;
     width: 60px;
-    border-radius: 25px;
+    border-radius: 30px;
     background-size:100% 100%;
     
 }
@@ -75,8 +189,74 @@ body{
     text-align: center;
 
 }
+.blue_p{
+    color: rgb(35, 153, 241);
+}
+.black_p{
+    color: black;
+}
+.second_head{
+    top:80px;
+    border:1px solid red;
+}
+.search_col{
+    position: relative;
+    width: 400px;
+    height: 80px;
+    border: 1px solid #e6e9ec;
+    text-align: center;
+}
+.search_input{
+    margin-top: 15px;
+    height: 60%;
+    width: 80%;
+    padding-left: 20px;
+    border: 1px solid #e6e9ec;
+}
+/* .search_input::-moz-placeholder{
+    color: rgb(178, 186, 200);
+} */
+#search_icon{
+    position: absolute;
+    top: 30px;
+    right: 50px;
+}
+.head_3{
+    border:1px solid black;
+    align-items: center;
+    width: calc(100% - 400px);
+    position: relative;
+}
+#head_3_status{
+    height: 10px;
+}
+.head_3_col_1{
+    align-items: center;
+    margin-left: 20px;
+}
+.head_3_col_1 > p{
+    margin-right: 20px;
+}
+.head_3_col_2{
+}
+.head_3_col_2 img{
+    
+}
+.head_3_icon{
+    height: 16px;
+    width: 16px;
+    padding: 9px;
+    border: 1px solid #e6e9ec;
+    text-align: center;
+}
+.arrow_icon{
+    margin-right: 20px;
+}
+#head_num{
+    margin: 10px 20px 0 20px;
+}
 .main_3_body{
-    margin-top: 80px;
+    margin-top: 161px;
 }
 .main_3_1{
     width: 400px;
