@@ -262,3 +262,6 @@ a:link{
     width: 400px;
     border:1px blue solid;
 }
+.main_3 h1{
+    font-weight: normal;
+}
