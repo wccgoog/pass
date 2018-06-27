@@ -14,22 +14,32 @@ import pymssql
 #         count+=1
 # print(count)
 
-conn=pymssql.connect(host='172.16.133.65',user='sa',password='mds',database='IPMS4S_ZHMQ')
-cursor=conn.cursor()
-tablename='T_FORM_FormTableReportItem'
-cursor.execute("select * from %s where ItemName like '%%隱患%%'" %tablename)
-words=cursor.fetchall()
-# print(words)
+
+col_value='故障'
+new_col_value='事件'
+col_name='functiondesc'
+id_name='sysfuncid'
+tablename='SystemFunction'
+
+def change_words(col_name,col_value,new_col_value,id_name,tablename):
+    conn=pymssql.connect(host='172.16.133.65',user='sa',password='mds',database='IPMS4S_ZHMQ')
+    cursor=conn.cursor()
+
+    cursor.execute("select * from %s where %s like '%%%s%%'" %(tablename,col_name,col_value))
+    words=cursor.fetchall()
+    # print(words)
+    #---------------------------------------------------------------------
+    for i in words:
+        x=i[2].replace(col_value,new_col_value)
+        print(x,i[0])
+        cursor.execute("update %s set %s='%s' where %s='%s'" %(tablename,col_name,x,id_name,i[0]))
+        conn.commit()   #必须有！！！！
+        print(x)
+
+if __name__=='__main__':
+    change_words(col_name,col_value,new_col_value,id_name,tablename)
 
 
-col_name=''
-id_name=''
-#---------------------------------------------------------------------
-for i in words:
-    x=i[2].replace('隱患','故障')
-    cursor.execute("update %s set %s='%s' where %s='%s'" %(tablename,col_name,x,id_name,i[0]))
-    conn.commit()   #必须有！！！！
-    print(x)
-
+#表有  T_FORM_FormTableReportItem，  DMSWordingList， SystemFunction
 
     
