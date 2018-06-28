@@ -1,11 +1,12 @@
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="style_2.css" >
+    <link rel="stylesheet" type="text/css" href="style_3.css" >
+
 </head>
 <body>
     <div id="left_main">
         <h1>
-            简历
+            <button id="btn">简历</button>
         </h1>
     </div>
     <div id="right_main">
@@ -27,6 +28,7 @@
                 <span><span class="span_bold">手机</span>12312341234</span>
                 <span><span class="span_bold">Email</span><a href="https://www.baidu.com">jionene@baidu.com</a></span>
                 <span><span class="span_bold">个人主页</span><a href="https://Github.com">Github</a></span>
+                <span id="display_none_h2">There is something after all!!!</span>
             </p>
         </div>
         <div class="overflow_div">
@@ -57,4 +59,10 @@
             </p>
         </div>
     </div>
+    <script>
+        document.getElementById("btn").onclick=function(){
+            alert("There's nothing left.");
+            document.getElementById("display_none_h2").style="display:block;"
+        }
+    </script>
 </body>
