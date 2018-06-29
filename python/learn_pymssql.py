@@ -15,11 +15,11 @@ import pymssql
 # print(count)
 
 
-col_value='故障'
-new_col_value='事件'
-col_name='functiondesc'
-id_name='sysfuncid'
-tablename='SystemFunction'
+col_value='巡檢'
+new_col_value='巡更'
+col_name='wordingdesc01'
+id_name='wordingid'
+tablename='DMSWordingList'
 
 def change_words(col_name,col_value,new_col_value,id_name,tablename):
     conn=pymssql.connect(host='172.16.133.65',user='sa',password='mds',database='IPMS4S_ZHMQ')
@@ -31,7 +31,6 @@ def change_words(col_name,col_value,new_col_value,id_name,tablename):
     #---------------------------------------------------------------------
     for i in words:
         x=i[2].replace(col_value,new_col_value)
-        print(x,i[0])
         cursor.execute("update %s set %s='%s' where %s='%s'" %(tablename,col_name,x,id_name,i[0]))
         conn.commit()   #必须有！！！！
         print(x)
@@ -40,6 +39,9 @@ if __name__=='__main__':
     change_words(col_name,col_value,new_col_value,id_name,tablename)
 
 
-#表有  T_FORM_FormTableReportItem，  DMSWordingList， SystemFunction
+#表有  
+#T_FORM_FormTableReportItem（id，itemname)
+#DMSWordingList(wordingId,繁体wordingdesc01,简体wordingdesc02)
+#SystemFunction(sysfuncid,functiondesc)
 
     
