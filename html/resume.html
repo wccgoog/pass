@@ -8,6 +8,7 @@
         <h1>
             <button id="btn">简历(点我)</button>
         </h1>
+        <h1 id="getHour"></h1>
     </div>
     <div id="right_main">
         <div class="overflow_div">
@@ -63,6 +64,18 @@
         document.getElementById("btn").onclick=function(){
             alert("There's nothing left.");
             document.getElementById("display_none_h2").style="display:block;"
+        }
+        window.onload=function(){
+            var d = new Date();
+            if(d.getHours < 12 && d.getHours > 3){
+                document.getElementById("getHour").innerHTML = "上午好~";
+            }
+            else if(d.getHours >= 12 && d.getHours < 18){
+                document.getElementById("getHour").innerHTML = "下午好~";
+            }
+            else{
+                document.getElementById("getHour").innerHTML = "晚上好~";
+            }
         }
     </script>
 </body>

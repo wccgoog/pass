@@ -15,10 +15,10 @@
     <script>
         document.getElementById("add-btn").onclick=function(){
             try{
-                document.getElementById("result").innerHTML=parseFloat(document.getElementById("first-number").value)
+                document.getElementById("result").innerHTML=parseFloatt(document.getElementById("first-number").value)
                 +parseFloat(document.getElementById("second-number").value);
             }catch(e){
-                document.getElementById("result").innerHTML=e.message;
+                document.getElementById("result").innerHTML=e;
             }
         }
         document.getElementById("minus-btn").onclick=function(){

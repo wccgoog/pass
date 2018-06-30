@@ -19,6 +19,13 @@ h1{
     padding: 1.5em;
     margin:0px;
 }
+#getHour{
+    display: inline;
+    position: absolute;
+    top: 20px;
+    left: 300px;
+    
+}
 h2{
     float:left;
     background: #c0c0c0;

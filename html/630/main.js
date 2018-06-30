@@ -33,3 +33,5 @@ function result() {
   story.textContent = "It was 94 farenheit outside, so "+r(insertX)+" went for a walk. When they got to "+r(insertY)+", they stared in horror for a few moments, then "+r(insertZ)+". "+name+" saw the whole thing, but "+name+" was not surprised — "+r(insertX)+" weighs "+w+", and it was a hot day.";
   story.style.visibility = 'visible';
 }
+
+
