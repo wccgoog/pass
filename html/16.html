@@ -14,8 +14,40 @@
     <p id="result">运算结果</p>
     <script>
         document.getElementById("add-btn").onclick=function(){
-            document.getElementById("result").innerHTML=parseFloat(document.getElementById("first-number").value)
-            +parseFloat(document.getElementById("second-number").value);
+            try{
+                document.getElementById("result").innerHTML=parseFloat(document.getElementById("first-number").value)
+                +parseFloat(document.getElementById("second-number").value);
+            }catch(e){
+                document.getElementById("result").innerHTML=e.message;
+            }
+        }
+        document.getElementById("minus-btn").onclick=function(){
+            try{
+                document.getElementById("result").innerHTML=parseFloat(document.getElementById("first-number").value)
+                -parseFloat(document.getElementById("second-number").value);
+            }catch(e){
+                document.getElementById("result").innerHTML=e.message;
+            }
+        }
+        document.getElementById("times-btn").onclick=function(){
+            try{
+                document.getElementById("result").innerHTML=parseFloat(document.getElementById("first-number").value)
+                *parseFloat(document.getElementById("second-number").value);
+            }catch(e){
+                document.getElementById("result").innerHTML=e.message;
+            }
+        }
+        document.getElementById("divide-btn").onclick=function(){
+            try{
+                if(parseFloat(document.getElementById("second-number").value)){
+                    document.getElementById("result").innerHTML=parseFloat(document.getElementById("first-number").value)
+                    /parseFloat(document.getElementById("second-number").value);
+                }else{
+                    throw "0不能被除";
+                }
+            }catch(e){
+                document.getElementById("result").innerHTML=e;
+            }
         }
     </script>
 </body>
