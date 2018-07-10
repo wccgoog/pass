@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #erik{
+            background-image: url("http://ife.baidu.com/2016/static/img/erik_ce204002.jpg");
+            width: 480px;
+            height: 480px;
+        }
+    </style>
+</head>
+<body>
+    <div id="erik"></div>
+    <div id="posi"></div>
+    <script type="text/javascript">
+        var erik = document.getElementById("erik");
+        var flag = 1, pos = 0;
+        var posi = document.getElementById("posi");
+        var bg = function(){
+            erik.style.backgroundPosition = "0 " + "-" + pos + "px";
+            pos = pos + 480 * flag;
+            posi.innerHTML = erik.style.backgroundPosition;
+            if(pos == 7680){
+                flag = -1;
+            }
+            if(pos == 0){
+                flag = 1;
+            }
+        }
+        setInterval(bg,100);
+    </script>
+</body>
+</html>
