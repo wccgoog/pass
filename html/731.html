@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var week = ['日','一','二','三','四','五','六'];
+        function getTime(){
+            var time = new Date();
+            var year = time.getFullYear();
+            var month = formatTime(time.getMonth() + 1);
+            var date = formatTime(time.getDate());
+            var day = week[time.getDay()];
+            var hour = formatTime(time.getHours());
+            var minute = formatTime(time.getMinutes());
+            var second = formatTime(time.getSeconds());
+            document.getElementById("time1").innerHTML = year + "年" + month + "月" + date +
+            "日" + "星期" + day + ' ' + hour + ":" + minute + ":" + second;
+
+            var week2 = ['Sunday','Monday','Tuesday','Wenseday','Thusday','Friday','Saturday'];
+            var day2 = week2[time.getDay()];
+            var second2 = second, hour2 = hour;
+            if(hour2 > 12){
+                hour2 = formatTime(hour2 -12);
+                second2 = second2 + ' PM';
+            }
+            else{
+                second2 = second2 + ' AM';
+            }
+            document.getElementById("time2").innerHTML = year + "-" + month + "-" + date + " " +
+            day2 + " " + hour2 + ":" + minute + ":" + second2;
+        }
+        function formatTime(n){
+            return n > 10 ? n : '0' + n;
+        }
+        function startTime(){
+            setInterval(getTime,500);
+        }
+    </script>
+</head>
+<body onload="startTime()">
+    <h1 id="time1"></h1>
+    <h1 id="time2"></h1>
+</body>
+</html>

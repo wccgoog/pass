@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body onload="addOption()">
+        <select id="year-select" >
+        </select>
+        <select id="month-select">
+        </select>
+        <select id="day-select">
+        </select>
+        <select id="hour-select">
+            <option value="0">00</option>
+        </select>
+        <select id="minite-select">
+            <option value="0">0</option>
+            <option>59</option>
+        </select>
+        <select id="second-select">
+            <option value="0">0</option>
+            <option>59</option>
+        </select>
+        <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+        <script>
+            function addOption(){
+                for(var i = 2000; i <= 2032; i++){
+                    var option = document.createElement("option");
+                    option.value = i;
+                    option.innerHTML = i;
+                    document.getElementById("year-select").appendChild(option);
+                }
+                for(var i = 1; i <= 12; i++){
+                    var option = document.createElement("option");
+                    option.value = i;
+                    option.innerHTML = i;
+                    document.getElementById("month-select").appendChild(option);
+                }
+            }
+
+            function date(){
+                document.getElementById("day-select").innerHTML = "";
+                var year = document.getElementById("year-select")
+                var y = parseInt(year.options[year.selectedIndex].value);
+                var month = document.getElementById("month-select")
+                var m = parseInt(month.options[month.selectedIndex].value);
+                var d = new Date(y,m,0);
+                var day = d.getDate();
+                for(var i = 1; i <= day; i++){
+                    var option = document.createElement("option");
+                    option.value = i;
+                    option.innerHTML = i;
+                    document.getElementById("day-select").appendChild(option);
+                    }
+            }
+            document.getElementById("year-select").onchange = date;
+            document.getElementById("month-select").onchange = date;
+        </script>
+</body>
+</html>
