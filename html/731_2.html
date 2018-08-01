@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body onload="addOption()">
+<body onload="addOption(),startTime()">
         <select id="year-select" >
         </select>
         <select id="month-select">
@@ -14,15 +14,10 @@
         <select id="day-select">
         </select>
         <select id="hour-select">
-            <option value="0">00</option>
         </select>
-        <select id="minite-select">
-            <option value="0">0</option>
-            <option>59</option>
+        <select id="minute-select">
         </select>
         <select id="second-select">
-            <option value="0">0</option>
-            <option>59</option>
         </select>
         <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
         <script>
@@ -38,6 +33,30 @@
                     option.value = i;
                     option.innerHTML = i;
                     document.getElementById("month-select").appendChild(option);
+                }
+                for(var i = 1; i <= 31; i++){
+                    var option = document.createElement("option");
+                    option.value = i;
+                    option.innerHTML = i;
+                    document.getElementById("day-select").appendChild(option);
+                }
+                for(var i = 1; i <= 23; i++){
+                    var option = document.createElement("option");
+                    option.value = i;
+                    option.innerHTML = i;
+                    document.getElementById("hour-select").appendChild(option);
+                }
+                for(var i = 1; i <= 59; i++){
+                    var option = document.createElement("option");
+                    option.value = i;
+                    option.innerHTML = i;
+                    document.getElementById("minute-select").appendChild(option);
+                }
+                for(var i = 1; i <= 59; i++){
+                    var option = document.createElement("option");
+                    option.value = i;
+                    option.innerHTML = i;
+                    document.getElementById("second-select").appendChild(option);
                 }
             }
 
@@ -58,6 +77,35 @@
             }
             document.getElementById("year-select").onchange = date;
             document.getElementById("month-select").onchange = date;
+
+            var week = ['日','一','二','三','四','五','六'];
+            function showTime(){
+                var time = new Date(document.getElementById("year-select").value,
+                document.getElementById("month-select").value,document.getElementById("day-select").value,
+                document.getElementById("hour-select").value,document.getElementById("minute-select").value,
+                document.getElementById("second-select").value);
+                var year = time.getFullYear();
+                var month = formatTime(time.getMonth() + 1);
+                var date = formatTime(time.getDate());
+                var day = week[time.getDay()];
+                var hour = formatTime(time.getHours());
+                var minute = formatTime(time.getMinutes());
+                var second = formatTime(time.getSeconds());
+                var nowTime = new Date();
+                var deltaTime = time - nowTime;
+                var deltaDay = parseInt(deltaTime/1000/3600/24);
+                var deltaHour = parseInt(deltaTime%(1000*3600*24)/1000/3600);
+                var deltaMinute = parseInt(deltaTime%(1000*3600*24)%(1000*3600)/1000/60);
+                var deltaSecond = parseInt(deltaTime%(1000*3600*24)%(1000*3600)%(1000*60)/1000);
+                document.getElementById("result-wrapper").innerHTML = "现在距离 " + year + "年" + month + "月" + date + "日" + "星期" + day +
+                " " + hour + ":" + minute + ":" + second + " 还有 " + deltaDay + "天" + deltaHour + "小时" + deltaMinute + "分" + deltaSecond + "秒";
+            }
+            function formatTime(n){
+                return n > 10 ? n : '0' + n;
+            }
+            function startTime(){
+                setInterval(showTime,500);
+            }
         </script>
 </body>
 </html>
