@@ -6,12 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        li{
+        li,ul{
             list-style: none;
             width: 200px;
+            padding: 0;
         }
         li:hover{
             background: #999;
+        }
+        li.active{
+            border-bottom: 2px solid blue;
         }
     </style>
 </head>
@@ -23,12 +27,38 @@
     <script>
         var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
         var email = document.getElementById("email-input");
+        email.focus();
         var emailWrapper = document.getElementById("email-sug-wrapper");
-        email.addEventListener("input",function(){
+        var activeNum = 0;  //选中的li的序号
+        email.addEventListener("keyup",function(){
             emailWrapper.innerHTML = "";
             email.value = email.value.replace(/\s/g,"");
-            if(email.value){
-                emailList(email.value);
+            var newValue = email.value.replace(/</g,"&lt;").replace(/>/g,"&gt;");
+            if(newValue){
+                emailList(newValue);
+                switch(event.keyCode){
+                    case 38:
+                        activeNum = activeNum - 1;
+                        if(activeNum < 0){
+                            activeNum = document.getElementsByTagName("li").length - 1;
+                        }
+                        addClass(document.getElementsByTagName("li")[activeNum],"active");
+                        break;
+                    case 40:
+                        activeNum = activeNum + 1;
+                        if(activeNum >= document.getElementsByTagName("li").length){
+                            activeNum = 0;
+                        }
+                        addClass(document.getElementsByTagName("li")[activeNum],"active");
+                        break;
+                    case 27:
+                        emailWrapper.innerHTML = "";
+                        email.select();
+                        break;
+                    default:
+                        addClass(emailWrapper.getElementsByTagName("li")[0],"active");
+                        activeNum = 0;
+                }
             }
         });
         function emailList(emailValue){
@@ -51,7 +81,7 @@
                             flag = 1;  //同位置字符不同
                         }
                     }
-                    if(flag == 1){
+                    if(flag == 1 || last.length > postfixList[i].length){
                         continue;  //不添加li
                     }
                     else{
@@ -62,10 +92,21 @@
                 }
             }
         }
-        emailWrapper.onclick = function(event){
-            console.log(event.target.innerHTML);
-            console.log(email);
-            email.value = event.target.innerHTML;
+        emailWrapper.addEventListener("click",function(){
+            email.value = event.target.innerHTML.replace("&lt;","<").replace("&gt;",">");
+            emailWrapper.innerHTML = "";
+            email.focus();
+        })
+        function addClass(liNode,cla){
+            if(typeof liNode == "object"){
+                liNode.className += cla;
+            }
+    
+        }
+        function removeClass(liNode,cla){
+            if(typeof liNode == "object"){
+                liNode.className = liNode.className.replace(cla,"");
+            }
         }
     </script>
 </body>
