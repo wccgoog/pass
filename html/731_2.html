@@ -85,7 +85,7 @@
                 document.getElementById("hour-select").value,document.getElementById("minute-select").value,
                 document.getElementById("second-select").value);
                 var year = time.getFullYear();
-                var month = formatTime(time.getMonth() + 1);
+                var month = formatTime(time.getMonth());
                 var date = formatTime(time.getDate());
                 var day = week[time.getDay()];
                 var hour = formatTime(time.getHours());

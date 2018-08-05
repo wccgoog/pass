@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{
+            list-style: none;
+            width: 200px;
+        }
+        li:hover{
+            background: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+    <script>
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        var email = document.getElementById("email-input");
+        var emailWrapper = document.getElementById("email-sug-wrapper");
+        email.addEventListener("input",function(){
+            emailWrapper.innerHTML = "";
+            email.value = email.value.replace(/\s/g,"");
+            if(email.value){
+                emailList(email.value);
+            }
+        });
+        function emailList(emailValue){
+            for(var i = 0; i < postfixList.length; i++){
+                if(emailValue.indexOf("@") == -1){
+                    var li = document.createElement("li");
+                    li.innerHTML = emailValue + "@" + postfixList[i];
+                    emailWrapper.appendChild(li);
+                }
+                else{
+                    var n = emailValue.indexOf("@") + 1;
+                    var first = emailValue.slice(0,n);
+                    var last = emailValue.slice(n,emailValue.length);
+                    var flag = 0;
+                    for(var j = 0; j < last.length && j < postfixList[i].length; j++){
+                        if(last[j] == postfixList[i][j]){
+                            continue;
+                        }
+                        else{
+                            flag = 1;  //同位置字符不同
+                        }
+                    }
+                    if(flag == 1){
+                        continue;  //不添加li
+                    }
+                    else{
+                        var li = document.createElement("li");
+                        li.innerHTML = first + postfixList[i];
+                        emailWrapper.appendChild(li);
+                    }
+                }
+            }
+        }
+        emailWrapper.onclick = function(event){
+            console.log(event.target.innerHTML);
+            console.log(email);
+            email.value = event.target.innerHTML;
+        }
+    </script>
+</body>
+</html>
