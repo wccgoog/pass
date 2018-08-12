@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.flex-box{
+    display: flex;
+}
+.left-flex-box{
+    flex: 1;
+    border: 1px solid red;
+}
+.right-flex-box{
+    flex: 3;
+    border: 1px solid red;
+}
+.flex-box-p{
+    flex: 1;
+    border: 1px solid blue;
+}
