@@ -15,5 +15,6 @@ body{
 }
 .flex-box-p{
     flex: 1;
-    border: 1px solid blue;
+    border: 1px solid #666;
+    margin: 0;
 }

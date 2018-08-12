@@ -10,19 +10,11 @@
 </head>
 <body>
     <div class="flex-box">
-        <div class="left-flex-box">
+        <div class="left-flex-box" id="left-flex-box">
             <p>地区</p>
-            <select id="region-select">
-                <option>华东</option>
-                <option>华北</option>
-                <option>华南</option>
-            </select>
         </div>
-        <div class="right-flex-box">
-            <div class="flex-box">
-                <p class="flex-box-p">1</p>
-                <p class="flex-box-p">2</p>
-            </div>
+        <div class="right-flex-box" id="right-flex-box">
+        </div>
 
         </div>
     </div>
@@ -30,12 +22,88 @@
 
 
     <script>
-        document.getElementById("region-select").onchange = function(){
-
+        document.body.onload = function(){
+            document.getElementById("right-flex-box").innerHTML = "";
+            var head = '<p class="flex-box-p">产品</p><p class="flex-box-p">地区</p>';
+            for(var i = 1; i <= 12;i++){
+                head += '<p class="flex-box-p">' + i + "月</p>";
+            }
+            head = '<div class="flex-box">' +
+                head +
+                '</div>';
+            document.getElementById("right-flex-box").innerHTML = head;
+            creatCheckBox(sourceData,"product");
+            creatCheckBox(sourceData,"region")
+        }
+        // document.getElementById("region-select").onchange = function(){
+        //     var selectRegion = document.getElementById("region-select").value;
+        //     var selectProduct = document.getElementById("product-select").value;
+        //     creatForm(selectRegion,selectProduct);
+        // }
+        // document.getElementById("product-select").onchange = function(){
+        //     var selectRegion = document.getElementById("region-select").value;
+        //     var selectProduct = document.getElementById("product-select").value;
+        //     creatForm(selectRegion,selectProduct);
+        // }
+        function creatForm(selectRegion,selectProduct){
+            document.getElementById("right-flex-box").innerHTML = "";
+            var head = '<p class="flex-box-p">产品</p><p class="flex-box-p">地区</p>';
+            for(var i = 1; i <= 12;i++){
+                head += '<p class="flex-box-p">' + i + "月</p>";
+            }
+            head = '<div class="flex-box">' +
+                head +
+                '</div>';
+            document.getElementById("right-flex-box").innerHTML = head;
+            var body = "";
+            for(var i = 0;i < sourceData.length;i++){
+                if(sourceData[i].region == selectRegion || selectRegion == "全部"){
+                    if(sourceData[i].product == selectProduct || selectProduct == "全部"){
+                        body += getData(sourceData[i]);
+                    }
+                }
+            }
+            document.getElementById("right-flex-box").innerHTML += body;
+        }
+        
+        function getData(json){
+            var body = '<p class="flex-box-p">' +
+                    json.product +
+                    '</p>' +
+                    '<p class="flex-box-p">' +
+                    json.region +
+                    '</p>';
+            for(var j = 0; j < json.sale.length; j++){
+                body += '<p class="flex-box-p">' +
+                    json.sale[j] +
+                    '</p>';
+            }
+            body = '<div class="flex-box">' +
+                body +
+                '</div>';
+            return body;
         }
 
-        function creatForm(){
-            
+        function creatCheckBox(json,key){
+            var distinctKey = getDistinct(json,key);
+            var body = '<input type="checkbox" id="all' + key + '"><label for="all' + key +'">' +
+                '全部' + '</label>';
+            for(var i = 0; i < distinctKey.length; i++){
+                body += '<input name="' + key + '" type="checkbox" id="' + distinctKey[i] + 
+                    '"><label for="' + distinctKey[i] +
+                    '">' + distinctKey[i] + '</label>';
+            }
+            body = '<div>' + body + '</div>';
+            document.getElementById("left-flex-box").innerHTML += body;
+        }
+        function getDistinct(json,key){
+            var arr = [];
+            for(var i = 0; i < json.length; i++){
+                if(arr.indexOf(json[i][key]) == -1){
+                    arr.push(json[i][key]);
+                }
+            }
+            return arr;
         }
     </script>
 </body>
