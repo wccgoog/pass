@@ -22,18 +22,51 @@
 
 
     <script>
-        document.body.onload = function(){
-            document.getElementById("right-flex-box").innerHTML = "";
-            var head = '<p class="flex-box-p">产品</p><p class="flex-box-p">地区</p>';
-            for(var i = 1; i <= 12;i++){
-                head += '<p class="flex-box-p">' + i + "月</p>";
+        document.getElementById("right-flex-box").innerHTML = "";
+        var head = '<p class="flex-box-p">产品</p><p class="flex-box-p">地区</p>';
+        for(var i = 1; i <= 12;i++){
+            head += '<p class="flex-box-p">' + i + "月</p>";
+        }
+        head = '<div class="flex-box">' +
+            head +
+            '</div>';
+        document.getElementById("right-flex-box").innerHTML = head;
+        creatCheckBox(sourceData,"product");
+        creatCheckBox(sourceData,"region");
+        document.getElementById("allproduct").onchange = function(){
+            checkAll("product");
+        };
+        document.getElementById("allregion").onchange = function(){
+            checkAll("region");
+        };
+        // addOnchange("product");
+        // addOnchange("region");
+        function checkAll(key){
+            var checkList = document.getElementsByName(key);
+            for(var i = 0; i < checkList.length; i++){
+                checkList[i].checked = document.getElementById("all"+key).checked;
             }
-            head = '<div class="flex-box">' +
-                head +
-                '</div>';
-            document.getElementById("right-flex-box").innerHTML = head;
-            creatCheckBox(sourceData,"product");
-            creatCheckBox(sourceData,"region")
+        }
+
+        function getCheckedItems(key){
+            var checkedList = [];
+            var checkList = document.getElementsByName(key);
+            for(var i = 0; i < checkList.length; i++){
+                if(checkList[i].checked == true){
+                    checkedList.push(checkList[i].id);
+                }
+            }
+            return checkedList;
+        }
+        function addOnchange(key){
+            var checkList = document.getElementsByName(key);
+            for(var i = 0; i < checkList.length; i++){
+                checkList[i].onchange = function(){
+                    var region = getCheckedItems("region");
+                    var product = getCheckedItems("product");
+                    creatCheckBox(region,product);
+                }
+            }
         }
         // document.getElementById("region-select").onchange = function(){
         //     var selectRegion = document.getElementById("region-select").value;
@@ -45,8 +78,8 @@
         //     var selectProduct = document.getElementById("product-select").value;
         //     creatForm(selectRegion,selectProduct);
         // }
-        function creatForm(selectRegion,selectProduct){
-            document.getElementById("right-flex-box").innerHTML = "";
+        function creatForm(selectRegion,selectProduct){     //创建右侧表
+            document.getElementById("right-flex-box").innerHTML = "";   //右侧区域清空
             var head = '<p class="flex-box-p">产品</p><p class="flex-box-p">地区</p>';
             for(var i = 1; i <= 12;i++){
                 head += '<p class="flex-box-p">' + i + "月</p>";
@@ -57,8 +90,8 @@
             document.getElementById("right-flex-box").innerHTML = head;
             var body = "";
             for(var i = 0;i < sourceData.length;i++){
-                if(sourceData[i].region == selectRegion || selectRegion == "全部"){
-                    if(sourceData[i].product == selectProduct || selectProduct == "全部"){
+                if(selectRegion.indexOf(sourceData[i].region) > -1){
+                    if(selectProduct.indexOf(sourceData[i].product > -1)){
                         body += getData(sourceData[i]);
                     }
                 }
@@ -66,7 +99,7 @@
             document.getElementById("right-flex-box").innerHTML += body;
         }
         
-        function getData(json){
+        function getData(json){     //从json获取数据到表中
             var body = '<p class="flex-box-p">' +
                     json.product +
                     '</p>' +
@@ -96,7 +129,7 @@
             body = '<div>' + body + '</div>';
             document.getElementById("left-flex-box").innerHTML += body;
         }
-        function getDistinct(json,key){
+        function getDistinct(json,key){     //从json获取类型
             var arr = [];
             for(var i = 0; i < json.length; i++){
                 if(arr.indexOf(json[i][key]) == -1){
