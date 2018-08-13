@@ -35,12 +35,20 @@
         creatCheckBox(sourceData,"region");
         document.getElementById("allproduct").onchange = function(){
             checkAll("product");
+            var region = getCheckedItems("region");
+            var product = getCheckedItems("product");
+            creatForm(region,product);
         };
         document.getElementById("allregion").onchange = function(){
             checkAll("region");
+            var region = getCheckedItems("region");
+            var product = getCheckedItems("product");
+            creatForm(region,product);
         };
-        // addOnchange("product");
-        // addOnchange("region");
+        addOnchange("product");
+        addOnchange("region");
+        
+
         function checkAll(key){
             var checkList = document.getElementsByName(key);
             for(var i = 0; i < checkList.length; i++){
@@ -58,26 +66,24 @@
             }
             return checkedList;
         }
+
         function addOnchange(key){
             var checkList = document.getElementsByName(key);
             for(var i = 0; i < checkList.length; i++){
                 checkList[i].onchange = function(){
                     var region = getCheckedItems("region");
                     var product = getCheckedItems("product");
-                    creatCheckBox(region,product);
+                    if(getCheckedItems(key).length == checkList.length){
+                        document.getElementById('all'+key).checked = true;
+                    }
+                    else{
+                        document.getElementById('all'+key).checked = false;
+                    }
+                    creatForm(region,product);
                 }
             }
         }
-        // document.getElementById("region-select").onchange = function(){
-        //     var selectRegion = document.getElementById("region-select").value;
-        //     var selectProduct = document.getElementById("product-select").value;
-        //     creatForm(selectRegion,selectProduct);
-        // }
-        // document.getElementById("product-select").onchange = function(){
-        //     var selectRegion = document.getElementById("region-select").value;
-        //     var selectProduct = document.getElementById("product-select").value;
-        //     creatForm(selectRegion,selectProduct);
-        // }
+
         function creatForm(selectRegion,selectProduct){     //创建右侧表
             document.getElementById("right-flex-box").innerHTML = "";   //右侧区域清空
             var head = '<p class="flex-box-p">产品</p><p class="flex-box-p">地区</p>';
@@ -129,6 +135,7 @@
             body = '<div>' + body + '</div>';
             document.getElementById("left-flex-box").innerHTML += body;
         }
+
         function getDistinct(json,key){     //从json获取类型
             var arr = [];
             for(var i = 0; i < json.length; i++){
