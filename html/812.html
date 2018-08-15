@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="css/812.css">
-    <script src="js/812.js"></script>
+
 </head>
 <body>
     <div class="flex-box">
@@ -14,137 +14,17 @@
             <p>地区</p>
         </div>
         <div class="right-flex-box" id="right-flex-box">
+            <table width="100%" border="1" id="right-table">
+
+            </table>
         </div>
 
         </div>
     </div>
 
-
-
-    <script>
-        document.getElementById("right-flex-box").innerHTML = "";
-        var head = '<p class="flex-box-p">产品</p><p class="flex-box-p">地区</p>';
-        for(var i = 1; i <= 12;i++){
-            head += '<p class="flex-box-p">' + i + "月</p>";
-        }
-        head = '<div class="flex-box">' +
-            head +
-            '</div>';
-        document.getElementById("right-flex-box").innerHTML = head;
-        creatCheckBox(sourceData,"product");
-        creatCheckBox(sourceData,"region");
-        document.getElementById("allproduct").onchange = function(){
-            checkAll("product");
-            var region = getCheckedItems("region");
-            var product = getCheckedItems("product");
-            creatForm(region,product);
-        };
-        document.getElementById("allregion").onchange = function(){
-            checkAll("region");
-            var region = getCheckedItems("region");
-            var product = getCheckedItems("product");
-            creatForm(region,product);
-        };
-        addOnchange("product");
-        addOnchange("region");
-        
-
-        function checkAll(key){
-            var checkList = document.getElementsByName(key);
-            for(var i = 0; i < checkList.length; i++){
-                checkList[i].checked = document.getElementById("all"+key).checked;
-            }
-        }
-
-        function getCheckedItems(key){
-            var checkedList = [];
-            var checkList = document.getElementsByName(key);
-            for(var i = 0; i < checkList.length; i++){
-                if(checkList[i].checked == true){
-                    checkedList.push(checkList[i].id);
-                }
-            }
-            return checkedList;
-        }
-
-        function addOnchange(key){
-            var checkList = document.getElementsByName(key);
-            for(var i = 0; i < checkList.length; i++){
-                checkList[i].onchange = function(){
-                    var region = getCheckedItems("region");
-                    var product = getCheckedItems("product");
-                    if(getCheckedItems(key).length == checkList.length){
-                        document.getElementById('all'+key).checked = true;
-                    }
-                    else{
-                        document.getElementById('all'+key).checked = false;
-                    }
-                    creatForm(region,product);
-                }
-            }
-        }
-
-        function creatForm(selectRegion,selectProduct){     //创建右侧表
-            document.getElementById("right-flex-box").innerHTML = "";   //右侧区域清空
-            var head = '<p class="flex-box-p">产品</p><p class="flex-box-p">地区</p>';
-            for(var i = 1; i <= 12;i++){
-                head += '<p class="flex-box-p">' + i + "月</p>";
-            }
-            head = '<div class="flex-box">' +
-                head +
-                '</div>';
-            document.getElementById("right-flex-box").innerHTML = head;
-            var body = "";
-            for(var i = 0;i < sourceData.length;i++){
-                if(selectRegion.indexOf(sourceData[i].region) > -1){
-                    if(selectProduct.indexOf(sourceData[i].product) > -1){
-                        body += getData(sourceData[i]);
-                    }
-                }
-            }
-            document.getElementById("right-flex-box").innerHTML += body;
-        }
-        
-        function getData(json){     //从json获取数据到表中
-            var body = '<p class="flex-box-p">' +
-                    json.product +
-                    '</p>' +
-                    '<p class="flex-box-p">' +
-                    json.region +
-                    '</p>';
-            for(var j = 0; j < json.sale.length; j++){
-                body += '<p class="flex-box-p">' +
-                    json.sale[j] +
-                    '</p>';
-            }
-            body = '<div class="flex-box">' +
-                body +
-                '</div>';
-            return body;
-        }
-
-        function creatCheckBox(json,key){
-            var distinctKey = getDistinct(json,key);
-            var body = '<input type="checkbox" id="all' + key + '"><label for="all' + key +'">' +
-                '全部' + '</label>';
-            for(var i = 0; i < distinctKey.length; i++){
-                body += '<input name="' + key + '" type="checkbox" id="' + distinctKey[i] + 
-                    '"><label for="' + distinctKey[i] +
-                    '">' + distinctKey[i] + '</label>';
-            }
-            body = '<div>' + body + '</div>';
-            document.getElementById("left-flex-box").innerHTML += body;
-        }
-
-        function getDistinct(json,key){     //从json获取类型
-            var arr = [];
-            for(var i = 0; i < json.length; i++){
-                if(arr.indexOf(json[i][key]) == -1){
-                    arr.push(json[i][key]);
-                }
-            }
-            return arr;
-        }
-    </script>
+    <script src="js/812_data.js"></script>
+    <script src="js/812_checkBox.js"></script>
+    <script src="js/812_form.js"></script>
+    <script src="js/812_app.js"></script>
 </body>
 </html>
