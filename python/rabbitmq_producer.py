@@ -7,15 +7,14 @@ channel = connection.channel()
 
 def product(n,qlist):
     for q in qlist:
-        print(q)
         channel.queue_declare(queue=q)
         for i in range(n):
-            channel.basic_publish(exchange='',routing_key=q,body='hello world')
-        print("[producer] send 'hello world' to '%s' %s times" % (q,n))
+            channel.basic_publish(exchange='',routing_key=q,body='the ' + str(i+1) + 'th message from ' + q)
+        print("[producer] send message to '%s' %s times" % (q,n))
 
 
-qlist = input("输入queue的名字,用，隔开")
+qlist = input("输入queue的名字,用'，'隔开")
 qlist = qlist.split(',')
-product(100,qlist)
+product(5000,qlist)
 connection.close()
-input("输入任意键关闭")
+input("按enter关闭")
