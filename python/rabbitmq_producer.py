@@ -2,7 +2,7 @@ import pika,time
 username = 'admin'
 pwd = 'admin'
 user_pwd = pika.PlainCredentials(username,pwd)
-connection = pika.BlockingConnection(pika.ConnectionParameters('192.168.0.137',credentials=user_pwd))
+connection = pika.BlockingConnection(pika.ConnectionParameters('127.0.0.1',credentials=user_pwd))
 channel = connection.channel()
 
 def product(n,qlist):
