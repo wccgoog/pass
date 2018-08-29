@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-s=input('input:')
-x=s.split(',')
-def i(x):
-    print(x)
-i(x)
+import time,datetime
+start_time = datetime.datetime.now()
+end_time = datetime.datetime.now()

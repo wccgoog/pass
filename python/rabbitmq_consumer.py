@@ -1,4 +1,4 @@
-import pika,time
+import pika,time,datetime
 username = 'admin'
 pwd = 'admin'
 user_pwd = pika.PlainCredentials(username,pwd)
@@ -8,13 +8,16 @@ channel.queue_declare(queue='hello')
 
 def callback(ch,method,properties,body):
     print(body)
-    # time.sleep(0.01)
+    print(datetime.datetime.now())
+    ch.basic_ack(delivery_tag = method.delivery_tag)
 
+channel.basic_qos(prefetch_count=1)  #逐条处理
 
 def getmsg(qlist):
     for q in qlist:
-        channel.basic_consume(callback,queue=q,no_ack=True)
+        channel.basic_consume(callback,queue=q)
 qlist = input("输入queue的名字,用'，'隔开")
 qlist = qlist.split(',')
 getmsg(qlist)
+
 channel.start_consuming()
