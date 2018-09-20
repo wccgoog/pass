@@ -24,11 +24,11 @@ driver.find_element_by_id('btnFilter').click()
 # time.sleep(3)
 
 select_li = 'ui-multiselect-QCreater-option-52'   # 填写人选项的id
-# select_li = ui-multiselect-QPROP_CLR-option-56  # 处理人
+# select_li = ui-multiselect-QPROP_CLR-option-56  # 处理人选项的id
 
 WebDriverWait(driver,15).until(EC.presence_of_all_elements_located((By.ID,select_li)))  #填写人加载完成
 
-jq="$('input[title=王晨驰]')[0].click()"    #填写人,jquery查到
+jq="$('input[title=王晨驰]')[0].click()"    #jquery按照title查到，第【0】项是填写人
 driver.execute_script(jq) 
 
 driver.find_element_by_xpath("(//button[@type='button'])[14]").click()  #点击确定
