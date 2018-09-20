@@ -23,7 +23,13 @@ WebDriverWait(driver,15).until(EC.presence_of_all_elements_located((By.XPATH,"//
 driver.find_element_by_id('btnFilter').click()
 # time.sleep(3)
 
-WebDriverWait(driver,15).until(EC.presence_of_all_elements_located((By.ID,"ui-multiselect-QPROP_CLR-option-56")))
-driver.execute_script('document.getElementById("ui-multiselect-QPROP_CLR-option-56").click()')  #处理人
-driver.find_element_by_xpath("(//button[@type='button'])[14]").click()
+select_li = 'ui-multiselect-QCreater-option-52'   # 填写人选项的id
+# select_li = ui-multiselect-QPROP_CLR-option-56  # 处理人
+
+WebDriverWait(driver,15).until(EC.presence_of_all_elements_located((By.ID,select_li)))  #填写人加载完成
+
+jq="$('input[title=王晨驰]')[0].click()"    #填写人,jquery查到
+driver.execute_script(jq) 
+
+driver.find_element_by_xpath("(//button[@type='button'])[14]").click()  #点击确定
 
