@@ -15,7 +15,13 @@ function InitEmpState() {
             if (!IsInsert) {//不存在时增加
                 data.push({ value: 0, name: LegendData[d], itemStyle: { normal: { color: LegendDataColor[d] } } });
             }
-        }
+        //for (var j = 0; j < result.data.length; j++) {                      //可读性高
+        //     if(LegendData.indexOf(result.data[j].State) >= 0){
+        //         ...
+        //     }
+        // if (!IsInsert) {//不存在时增加
+        //     data.push({ value: 0, name: LegendData[d], itemStyle: { normal: { color: LegendDataColor[d] } } });
+        // }
         // 基于准备好的dom，初始化echarts图表
         var myChart = echarts.init(document.getElementById("EmpState"));
         option = {
