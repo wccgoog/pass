@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
-import time,datetime
-start_time = datetime.datetime.now()
-end_time = datetime.datetime.now()
+import re
+long_str='{"totalPage":100,"curPage":1}'
+pattern=re.compile('(?<=Page":).*?(?=,)')
+print(pattern.findall(long_str))

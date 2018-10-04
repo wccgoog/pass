@@ -23,3 +23,8 @@ p=r'"[GET,POST]+'
 pattern1 = re.compile(p2)
 pattern=re.compile(p)
 print (pattern.findall(k))
+
+
+# long_str='{"totalPage":100,"curPage":1}'
+# pattern=re.compile('(?<=Page":).*?(?=,)')
+# print(pattern.findall(long_str))
