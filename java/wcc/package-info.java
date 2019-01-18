@@ -5,5 +5,4 @@
  * @author wccgo
  *
  */
-module GitTest {
-}
+package wcc;
