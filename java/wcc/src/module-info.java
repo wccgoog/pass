@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author wccgo
- *
- */
-module wcc {
-}

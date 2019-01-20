@@ -2,13 +2,23 @@
 <html>  
   <head>  
     <script src="js/jquery-3.3.1.min.js"></script>  
+    <script src="js/birthdayData.js"></script> 
   </head>
     <body>  
       <script type="text/javascript"> 
         function a(){
           alert('x');
         }
-        $(document).ready(a);  
+        // $(document).ready(a);
+        var today = new Date();
+        var thisMonth = today.getMonth() + 1;
+        var thisDate = today.getDate();
+        var userBirthday = birthdayData['admin'];
+        var userBirthdayMonth = parseInt(userBirthday.split('-')[0]);
+        var userBirthdayDate = parseInt(userBirthday.split('-')[1]);
+        if(thisMonth == userBirthdayMonth && thisDate == userBirthdayDate){
+          window.open('birthday.html')
+        }  
       </script>  
     </body>  
 </html>  

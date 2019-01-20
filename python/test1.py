@@ -6,7 +6,7 @@ for i in range(1,data.nrows):
     if data.cell_value(i,7) == '':
         a = data.cell_value(i,1) + ':null'
     else:
-        a = data.cell_value(i,1) + ':' + data.cell_value(i,7)[-6:]
+        a = data.cell_value(i,1) + ':\'' + data.cell_value(i,7)[-6:-1] +'\''
     total = total + a + ','
     i += 1
 total = 'var birthdayData = {' + total + '}'
