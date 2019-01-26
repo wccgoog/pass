@@ -15,8 +15,8 @@ oracle=jdbc.cursor()
 #父事项
 oracle.execute("SELECT * FROM XZSPJBXQ.XJL_XZSP_TRANS WHERE XZSPJBXQ.XJL_XZSP_TRANS.IS_PARENTITEM = 1 AND XZSPJBXQ.XJL_XZSP_TRANS.DEL_FLAG = 0 AND OFFICE_ID='4d3fc7f63e814d5790c4b299bc91c424'")
 a=oracle.fetchall()
-driver=webdriver.Chrome('E:/Google/Chrome/Application/chromedriver.exe')
-driver.get('http://59.83.223.61:18081') 
+driver=webdriver.Chrome()
+driver.get('http://59.83.223.61:18088') 
 #最大化
 driver.maximize_window()
 #等待加载cs
