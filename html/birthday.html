@@ -27,20 +27,24 @@
     <!-- <audio id="audio" src='media/birthday1.mp3' controls autoplay loop>
     </audio> -->
     <script>
-        var num1 = Math.floor(Math.random()*4);
-        var pictures = ['birthday1.gif','birthday2.gif','birthday3.jpg','birthday3.gif'];
-        document.getElementById("img").src = "images/birthday/" + pictures[num1];
-        
-        document.getElementById("p2").innerHTML = '在这个特别的日子里，祝您生日快乐！！！' ;
-        
-        var num2 = Math.floor(Math.random()*4);
-        var colors = ['rgb(255, 231, 231)','#FFE1FF','#FFFACD','#F0FFF0']
-        document.body.style.backgroundColor=colors[num2];
-        var today = new Date();
-        var thisYear = today.getFullYear();
-        var thisMonth = today.getMonth() + 1;
-        var thisDate = today.getDate();
-        document.getElementById("p1").innerHTML = '今天是' + thisYear + '年' + thisMonth + '月' + thisDate + '日';
+        if(localStorage.getItem('name')){
+            var num1 = Math.floor(Math.random()*4);
+            var pictures = ['birthday1.gif','birthday2.gif','birthday3.jpg','birthday3.gif'];
+            document.getElementById("img").src = "images/birthday/" + pictures[num1];
+            
+            document.getElementById("p2").innerHTML = localStorage.getItem('name') + ',在这个特别的日子里，祝您生日快乐！！！' ;
+            
+            var num2 = Math.floor(Math.random()*4);
+            var colors = ['rgb(255, 231, 231)','#FFE1FF','#FFFACD','#F0FFF0']
+            document.body.style.backgroundColor=colors[num2];
+            var today = new Date();
+            var thisYear = today.getFullYear();
+            var thisMonth = today.getMonth() + 1;
+            var thisDate = today.getDate();
+            document.getElementById("p1").innerHTML = '今天是' + thisYear + '年' + thisMonth + '月' + thisDate + '日';
+        }else{
+            $('html').hide();
+        }
     </script>
 </body>
 </html>

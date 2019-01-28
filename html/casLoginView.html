@@ -89,8 +89,9 @@
         var userBirthday = birthdayData[name];
         var userBirthdayMonth = parseInt(userBirthday.split('-')[0]);
         var userBirthdayDate = parseInt(userBirthday.split('-')[1]);
-        if(thisMonth == userBirthdayMonth && thisDate == userBirthdayDate){
-        window.open('../birthday.html')
+        if(thisMonth == userBirthdayMonth && thisDate == userBirthdayDate && localStorage.getItem('name') == null){
+            localStorage.setItem('name',name);
+            window.open('../birthday.html');
         }  
     })
     $(function(){
