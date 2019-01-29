@@ -1,7 +1,8 @@
 public class Demo1 {
 
     public static void main(String[] args) {
-        System.out.println("wcc");
+        byte b = Byte.MAX_VALUE;
+        System.out.println(b);
     }
 
     void demo() {
