@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 driver=webdriver.Chrome()
 driver.get('http://59.83.223.61:18081') 
 driver.maximize_window()
-driver.find_element_by_id('inputUserName').send_keys('fanxiaoyun')
+driver.find_element_by_id('inputUserName').send_keys('yinhang')
 driver.find_element_by_id('inputPassword').send_keys('123')
 driver.find_element_by_id('btnLogin').click()
 
@@ -26,12 +26,12 @@ driver.find_element_by_xpath('//*[@data-name="我的待办"]').click()
 time.sleep(1)
 WebDriverWait(driver,15).until(EC.presence_of_all_elements_located((By.XPATH,"(//*[@id='PORTAL_DIV_MENU_110']/div/div[2]/div/div/div[1]/div/div[3])")))
 WebDriverWait(driver,15).until(EC.element_to_be_clickable((By.XPATH,"(//*[@id='PORTAL_DIV_MENU_110']/div/div[2]/div/div/div[1]/div/div[2])")))
-driver.find_element_by_xpath("(//*[@id='PORTAL_DIV_MENU_110']/div/div[2]/div/div/div[1]/div/div[2])").click()
+driver.find_element_by_xpath("(//*[@id='PORTAL_DIV_MENU_110']/div/div[2]/div/div/div[1]/div/div[3])").click()
 
 count = 0
 while count < 200:
     time.sleep(1)
-    driver.find_element_by_xpath("(//*[@id='PORTAL_DIV_MENU_110']/div/div[2]/div/div/div[1]/div/div[2])").click()
+    driver.find_element_by_xpath("(//*[@id='PORTAL_DIV_MENU_110']/div/div[2]/div/div/div[1]/div/div[3])").click()
     count += 1
     print("循环次数",count)
     #断点切换到办理页面
@@ -44,7 +44,10 @@ while count < 200:
     driver.find_element_by_xpath("(/html/body/div[4]/div[3]/div/button[1])").click()
     time.sleep(1)
     driver.find_element_by_xpath("(//*[@id='taskResult'])").send_keys("通过")
-    driver.find_element_by_xpath('//*[@data-rule="相关法律:required"]').send_keys("通过")
+    try:
+        driver.find_element_by_xpath('//*[@data-rule="相关法律:required"]').send_keys("通过")
+    except:
+        pass
     #确认
     driver.find_element_by_xpath('//button[@class="btn btn_minwidth btn-primary js-submit"]').click()
     time.sleep(1)
