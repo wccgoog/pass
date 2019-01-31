@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 #打开浏览器
 driver=webdriver.Chrome()
-driver.get('http://59.83.223.61:18088') 
+driver.get('http://59.83.223.61:18081') 
 driver.maximize_window()
 driver.find_element_by_id('inputUserName').send_keys('fanxiaoyun')
 driver.find_element_by_id('inputPassword').send_keys('123')
