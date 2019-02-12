@@ -37,8 +37,8 @@ while count < 200:
     #断点切换到办理页面
     #点击办理
     time.sleep(1)
-    WebDriverWait(driver,15).until(EC.element_to_be_clickable((By.XPATH,"(//*[@id='divContent']/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div[1]/div/table/tbody/tr[2]/td[15]/div/button[1])")))
-    driver.find_element_by_xpath("(//*[@id='divContent']/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div[1]/div/table/tbody/tr[2]/td[15]/div/button[1])").click()
+    WebDriverWait(driver,15).until(EC.element_to_be_clickable((By.XPATH,"(//*[@id='divContent']/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div[1]/div/table/tbody/tr[5]/td[15]/div/button[1])")))
+    driver.find_element_by_xpath("(//*[@id='divContent']/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div[2]/div[1]/div/table/tbody/tr[5]/td[15]/div/button[1])").click()
     #审批通过
     time.sleep(1)
     driver.find_element_by_xpath("(/html/body/div[4]/div[3]/div/button[1])").click()
