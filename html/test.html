@@ -1,25 +1,15 @@
-
-<html>  
-  <head>  
-    <script src="js/jquery-3.3.1.min.js"></script>  
-    <script src="js/birthdayData.js"></script> 
-  </head>
-    <body>  
-      <script type="text/javascript"> 
-        function a(){
-          alert('x');
-        }
-        // $(document).ready(a);
-        var today = new Date();
-        var thisMonth = today.getMonth() + 1;
-        var thisDate = today.getDate();
-        var userBirthday = birthdayData['admin'];
-        var userBirthdayMonth = parseInt(userBirthday.split('-')[0]);
-        var userBirthdayDate = parseInt(userBirthday.split('-')[1]);
-        if(thisMonth == userBirthdayMonth && thisDate == userBirthdayDate){
-          window.open('birthday.html')
-        }  
-      </script>  
-    </body>  
-</html>  
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="js/birthdayData.js"></script>
+</head>
+<body>
+  
+</body>
+</html>
     

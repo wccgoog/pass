@@ -15,24 +15,25 @@
             text-shadow: 5px 5px 5px black, 0px 0px 2px black;;
             color: white;
         }
-        audio{
-            display: block;
+        #div1{
+            margin-top: 150px;
         }
     </style>
 </head>
 <body>
-    <p id="p1"></p>
-    <p id="p2"></p>
-    <img id="img">
-    <!-- <audio id="audio" src='media/birthday1.mp3' controls autoplay loop>
-    </audio> -->
+    <div id="div1">
+        <p id="p1"></p>
+        <p id="p2"></p>
+        <img id="img">
+    </div>
+
     <script>
         if(localStorage.getItem('name')){
             var num1 = Math.floor(Math.random()*4);
             var pictures = ['birthday1.gif','birthday2.gif','birthday3.jpg','birthday3.gif'];
             document.getElementById("img").src = "images/birthday/" + pictures[num1];
             
-            document.getElementById("p2").innerHTML = localStorage.getItem('name') + ',在这个特别的日子里，祝您生日快乐！！！' ;
+            document.getElementById("p2").innerHTML = localStorage.getItem('name') + ',在这个特别的日子里，南京市江北新区行政审批局祝您生日快乐！！！' ;
             
             var num2 = Math.floor(Math.random()*4);
             var colors = ['rgb(255, 231, 231)','#FFE1FF','#FFFACD','#F0FFF0']
