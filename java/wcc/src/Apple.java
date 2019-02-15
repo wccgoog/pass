@@ -39,6 +39,7 @@ public class Apple extends Fruit {
 //		System.out.println(list.toString());
 		String[] str = new String[] { "you", "wu" };
 		List list = Arrays.asList(str);
-		System.out.println(list.toString());
+		int[][] a = { { 1, 2 }, { 2 }, { 3, 3 } };
+		System.out.println(a.getClass());
 	}
 }
