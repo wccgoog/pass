@@ -5,6 +5,7 @@
     <title>统一认证平台登录</title>
     <link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/png">
     <script src="../birthdayData.js"></script> 
+    <script src="../holiday.js"></script>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -84,14 +85,27 @@
     var today = new Date();
     var thisMonth = today.getMonth() + 1;
     var thisDate = today.getDate();
+    var thisWeek = today.getDay();
+
     $("#subbtn").click(function(){
         var name = $("#form-username").val();
         var userBirthday = birthdayData[name];
         var userBirthdayMonth = parseInt(userBirthday.split('-')[0]);
         var userBirthdayDate = parseInt(userBirthday.split('-')[1]);
-        if(thisMonth == userBirthdayMonth && thisDate == userBirthdayDate && localStorage.getItem('name') == null || name == 'testtest' && localStorage.getItem('name') == null){
+        var holidayDate = "" + thisMonth + "-" + thisDate;
+        console.log(holidayDate);
+        console.log(holiday[holidayDate]);
+        console.log(userBirthday);
+        console.log(holiday[holidayDate].indexOf(userBirthday));
+        if(thisMonth == userBirthdayMonth && thisDate == userBirthdayDate && localStorage.getItem('name') == null || name == 'testtest1' && localStorage.getItem('name') == null){
             localStorage.setItem('name',birthdayNameData[name]);
+            localStorage.setItem('day',0);
             window.open('../birthday.html');
+        }  
+        else if(holiday[holidayDate] != undefined && holiday[holidayDate].indexOf(userBirthday) > -1 && localStorage.getItem('name') == null){
+            localStorage.setItem('name',birthdayNameData[name]);
+            localStorage.setItem('day',holiday[holidayDate].indexOf(userBirthday) + 1);
+        	window.open('../birthday.html');
         }  
     })
     $(function(){

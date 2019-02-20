@@ -2,47 +2,128 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="images/birthday/icon.jpg" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="js/jquery-3.3.1.min.js"></script>
     <title>生日快乐!!!</title>
     <style>
+        /* html{
+            height: 100%;
+        } */
         body{
-            text-align: center;
+            height: 900px;
+            margin: 0;
+            padding: 0;
+            background: no-repeat;
+            background-size: 100% 100%;
         }
         p{
-            font-size: 40px;
+            font-size: 50px;
+            font-family: STXingkai;
             text-shadow: 5px 5px 5px black, 0px 0px 2px black;;
             color: white;
         }
+        #p3{
+            margin-top: 100px;
+            margin-bottom: 0;
+        }
         #div1{
-            margin-top: 150px;
+            margin: 150px 10% 0px 10%;
+        }
+        #div1-3{
+            text-align: right;
+        }
+        #div2{
+            text-align: center;
+        }
+        img{
+            /* display: block; */
+        }
+        .button {
+            background: #fcc3be;
+            background-image: -webkit-linear-gradient(top, #fcc3be, #f34228);
+            background-image: -moz-linear-gradient(top, #fcc3be, #f34228);
+            background-image: -ms-linear-gradient(top, #fcc3be, #f34228);
+            background-image: -o-linear-gradient(top, #fcc3be, #f34228);
+            background-image: linear-gradient(to bottom, #fcc3be, #f34228);
+            display: inline-block;
+            border-radius: 16px;
+            background-color: #f4511e;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 20px;
+            width: 150px;
+            transition: all 0.5s;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+        .button span:after {
+            content: '»';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        .button:hover span {
+            padding-right: 25px;
+        }
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
         }
     </style>
 </head>
 <body>
     <div id="div1">
-        <p id="p1"></p>
-        <p id="p2"></p>
+        <div id="div1-1">
+            <p id="p1"></p>
+        </div>
+        <div id="div1-2">
+            <p id="p2">&emsp;&emsp;生日快乐，在这个特别的日子里，单位全体同事给您送去真挚的祝福，愿所有的幸福、所有的温馨、所有的好运都永远围绕在您的身边！</p>
+        </div>
+        <div id="div1-3">
+            <p id="p3">江北新区行政审批局</p>
+        </div>
+    </div>
+    <div id="div2">
         <img id="img">
+        <button id="btnClose" class="button" onClick="custom_close()"><span>关闭</span></button>
     </div>
 
+
     <script>
+        function custom_close(){
+            window.close();
+        }
         if(localStorage.getItem('name')){
+            if(localStorage.getItem('day') > 0){
+                document.getElementById('p2').innerHTML = '&emsp;&emsp;还有' + localStorage.getItem('day') + '天，就到您的生日了！在这个特别的日子里，单位全体同事给您送去真挚的祝福，愿所有的幸福、所有的温馨、所有的好运都永远围绕在您的身边！'
+            }
             var num1 = Math.floor(Math.random()*4);
-            var pictures = ['birthday1.gif','birthday2.gif','birthday3.jpg','birthday3.gif'];
+            var pictures = ['birthday1.gif','birthday2.gif','birthday3.gif','birthday4.gif'];
             document.getElementById("img").src = "images/birthday/" + pictures[num1];
             
-            document.getElementById("p2").innerHTML = localStorage.getItem('name') + ',在这个特别的日子里，南京市江北新区行政审批局祝您生日快乐！！！' ;
-            
             var num2 = Math.floor(Math.random()*4);
-            var colors = ['rgb(255, 231, 231)','#FFE1FF','#FFFACD','#F0FFF0']
-            document.body.style.backgroundColor=colors[num2];
+            var colors = ['timg.jpg','timg1.jpg','timg2.jpg','timg3.jpg']
+            document.body.style.backgroundImage="url(images/birthday/" + colors[num2] +")";
+
             var today = new Date();
             var thisYear = today.getFullYear();
             var thisMonth = today.getMonth() + 1;
             var thisDate = today.getDate();
-            document.getElementById("p1").innerHTML = '今天是' + thisYear + '年' + thisMonth + '月' + thisDate + '日';
+            document.getElementById("p1").innerHTML = localStorage.getItem('name') +'：';
         }else{
             $('html').hide();
         }
