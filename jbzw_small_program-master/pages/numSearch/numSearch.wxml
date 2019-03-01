@@ -1,0 +1,12 @@
+<view class="searchWrap">
+<!-- 暂时不用 -->
+  <!-- <view class="searchTip">输入身份证号或者证件号</view>
+  <view class="inputWrap">
+    <input type="number"></input>
+    <image src="../../images/magnifier.png" mode="widthFix" class="magnifier" bindtap="goOfficeList"></image>
+  </view> -->
+  <view class="develop">
+    <image src="../../images/develop.png" mode="widthFix"></image>
+    <view>该功能正在开发中，敬请期待</view>
+  </view>
+</view>

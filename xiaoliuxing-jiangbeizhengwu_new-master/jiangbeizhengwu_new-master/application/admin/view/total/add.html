@@ -1,0 +1,172 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            {include file="template/form_header" /}
+            <form id="dataForm" class="form-horizontal dataForm" action="" method="post" enctype="multipart/form-data">
+                <div class="box-body">
+                    <div class="fields-group">
+                        {if isset($info)}
+                        <input id="id" name="id" value="{$info.id}" hidden placeholder="请勿修改">
+                        {/if}
+
+                        <div class="form-group">
+                            <label for="type" class="col-sm-2 control-label">服务对象</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <select name="type" id="type" class="form-control">
+                                        <option value="0">请选择服务对象</option>
+                                        {foreach name='type_list' item='item'}
+                                        <option value="{$key}" {if isset($info) && $info.type==$key}selected{/if}>{$item}</option>
+                                        {/foreach}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="level" class="col-sm-2 control-label">级别</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <!--<select name="level" id="level" class="form-control">-->
+                                        <!--<option value="0">请选择级别</option>-->
+                                        <!--{foreach name='level_list' item='item'}-->
+                                        <!--<option value="{$key}" {if isset($info) && $info.level==$key}selected{/if}>{$item}</option>-->
+                                        <!--{/foreach}-->
+                                    <!--</select>-->
+                                    <input maxlength="20" id="level" name="level" value="{$info.level|default=''}" class="form-control" placeholder="请输入级别">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">事项名称</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input maxlength="20" id="name" name="name" value="{$info.name|default=''}" class="form-control" placeholder="请输入事项名称">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="category" class="col-sm-2 control-label">类别</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input maxlength="20" id="category" name="category" value="{$info.category|default=''}" class="form-control" placeholder="请输入类别">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="no" class="col-sm-2 control-label">编码</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input maxlength="20" id="no" name="no" value="{$info.no|default=''}" class="form-control" placeholder="请输入编码">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="im_sub" class="col-sm-2 control-label">实施主体</label>
+                            <div class="col-sm-10 col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input maxlength="20" id="im_sub" name="im_sub" value="{$info.im_sub|default=''}" class="form-control" placeholder="请输入实施主体">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="im_bas" class="col-sm-2 control-label">实施依据</label>
+                            <div class="col-sm-10 col-md-4">
+                                <textarea class="form-control" rows="3" placeholder="请输入实施依据" id="im_bas" name="im_bas" >{$info.im_bas|default=''}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="remarks" class="col-sm-2 control-label">备注</label>
+                            <div class="col-sm-10 col-md-4">
+                                <textarea class="form-control" rows="3" placeholder="请输入备注" id="remarks" name="remarks" >{$info.remarks|default=''}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department_id" class="col-sm-2 control-label">所属部门</label>
+                            <div class="col-sm-4">
+                                <select id="department_id" name="department_id" class="form-control select2 department_list_select" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="topic_id" class="col-sm-2 control-label">所属主题</label>
+                            <div class="col-sm-4">
+                                <select id="topic_id" name="topic_id" class="form-control select2 topic_list_select" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                {include file="template/form_footer" /}
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+    $('.department_list_select').select2({
+        placeholder: '请搜索选择部门',
+        ajax: {
+            url: '/admin/department/select',
+            data: function (params) {
+                var query = {
+                    keywords: params.term,
+                }
+
+                return query;
+            },
+            processResults: function (data) {
+                return {
+                    results: data.data
+                };
+            }
+        }
+    });
+    $('.topic_list_select').select2({
+        placeholder: '请搜索选择主题',
+        ajax: {
+            url: '/admin/topic/select',
+            data: function (params) {
+                var query = {
+                    keywords: params.term,
+                }
+
+                return query;
+            },
+            processResults: function (data) {
+                return {
+                    results: data.data
+                };
+            }
+        }
+    });
+
+
+    {if(isset($info.topic_info) && $info.topic_info)}
+    var option = new Option('{$info.topic_info.name}', '{$info.topic_info.id}', true, true);
+    $(".topic_list_select").append(option);
+    $(".topic_list_select").trigger('change')
+    {/if}
+
+    {if(isset($info.department_info) && $info.department_info)}
+    var option = new Option('{$info.department_info.name}', '{$info.department_info.id}', true, true);
+    $(".department_list_select").append(option);
+    $(".department_list_select").trigger('change')
+    {/if}
+</script>

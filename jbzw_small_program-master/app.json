@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/homePage/homePage",
+    "pages/navigation/navigation",
+    "pages/listOfItems/listOfItems",
+    "pages/more/more",
+    "pages/hall/hall",
+    "pages/contentDetail2/contentDetail2",
+    "pages/contentDetail/contentDetail",
+    "pages/scan/scan",
+    "pages/numSearch/numSearch",
+    "pages/office/office",
+    "pages/searchAndList/searchAndList",
+    "pages/addSearch/addSearch",
+    "pages/officeDetail/officeDetail",
+    "pages/officeList/officeList",
+    "pages/guide/guide",
+    "pages/listDetail/listDetail",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3dccb4",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/homePage/homePage",
+        "text": "事项查询",
+        "iconPath": "images/ScanNavigation.png",
+        "selectedIconPath": "images/ScanNavigation-selected.png"
+      },
+      {
+        "pagePath": "pages/scan/scan",
+        "text": "扫码导航",
+        "iconPath": "images/scan.png",
+        "selectedIconPath": "images/scan.png"
+      },
+      {
+        "pagePath": "pages/numSearch/numSearch",
+        "text": "我的办件",
+        "iconPath": "images/office.png",
+        "selectedIconPath": "images/office-selected.png"
+      }
+    ]
+  }
+}
