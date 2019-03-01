@@ -555,6 +555,7 @@ define([
                         this.$("#mainFrame").attr("src", data + "/" + this.customerFormCode);
                     }.bind(this))
                     window.addEventListener("message", function (e) {
+                        //修改开始 by王晨驰 20190225
                         if (e.data.exemethod == "formHeight"){
                             this.$(".mainFrame").attr("height",e.data.height);
                         }
@@ -568,6 +569,7 @@ define([
                             $('button').filter('.js-next-step').click(function(){
                                 $(".mainFrame")[0].contentWindow.postMessage({method:"getFormHeight"}, "*");
                             })
+                            //修改结束 by王晨驰 20190225
                         }
                     }.bind(this))
                     this.$("#mainFrame").show();

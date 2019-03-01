@@ -1,19 +1,32 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class Demo2 {
+	int age;
+	String name;
+
 	void demo() {
 		System.out.println("demo2");
 	}
 
-	public static void main(String[] args) {
-		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		try {
-			System.out.println(in.readLine());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public Demo2(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
 		}
+		if (this == obj) {
+			return true;
+		}
+		if (this.getClass() != obj.getClass()) {
+			return false;
+		}
+		Demo2 demo2 = (Demo2) obj;
+		return this.name.equals(demo2.name) && this.age == demo2.age;
+	}
+
+	public static void main(String[] args) {
+
 	}
 }

@@ -26,6 +26,7 @@ $(function () {
     var result = { height: $("p:last").position().top+$("p:last").height(), dateTime: dateTimes, exemethod: "afterLoad" };
     window.parent.postMessage(result, '*');    
     window.addEventListener("message", function (e) {
+        //新增开始 by王晨驰 20190225
         if (e.data.method == "getFormHeight"){
             var pHeight = 0;
             var tableHeight = 0;
@@ -39,6 +40,7 @@ $(function () {
             result = {height:totalHeight,exemethod:"formHeight"};
             window.parent.postMessage(result, '*');
         }
+    //新增结束 by王晨驰 20190225
         if (e.data.method == "submit") {
             var isValid = [];
             var formData = {};
