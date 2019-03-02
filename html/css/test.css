@@ -1,0 +1,28 @@
+#div1{
+    border: 1px solid black;
+    height: 400px;
+    margin: 100px;
+}
+p::before{
+    content: attr(data-content);
+    position: absolute;
+    z-index: -1;
+    color: #DDD;
+    font-size: 120px;
+    font-family: serif;
+    font-weight: bolder;
+}
+
+a {
+    position: relative;
+    display: inline-block;
+    outline: none;
+    text-decoration: none;
+    color: #000;
+    font-size: 32px;
+    padding: 5px 10px;
+}
+
+a:hover::before, a:hover::after { position: absolute; }
+a:hover::before { content: "\5B"; left: -20px; }
+a:hover::after { content: "\5D"; right:  -20px; }
