@@ -3,8 +3,11 @@
 const app = getApp()
 
 Page({
+  changeMotto(){
+    this.setData({ motto: app.globalData.userInfo.nickName})
+  },
   data: {
-    motto: 'Hello 梁非凡',
+    motto: '吔屎啦! ',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
