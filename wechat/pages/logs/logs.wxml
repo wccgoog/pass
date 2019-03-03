@@ -1,6 +1,11 @@
 <!--logs.wxml-->
 <view class="container log-list">
+  <map longitude="{{userLongitude}}" latitude="{{userLatitude}}" markers="{{markers}}"></map>
   <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
+  <navigator url='../details/details?content={{log}}'>
+    <text class="log-item">{{log}}</text>
+  </navigator>
+    
   </block>
+
 </view>

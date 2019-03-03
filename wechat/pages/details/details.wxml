@@ -1,0 +1,18 @@
+<!--pages/details/details.wxml-->
+<view>
+  <text>{{content}}</text>
+
+
+  <swiper
+    indicator-dots=true
+    autoplay=true
+    interval="9000"
+    duration="500"
+  >
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image mode='aspectFit' src="{{item}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

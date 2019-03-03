@@ -2,9 +2,9 @@
 App({
   onLaunch: function () {
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    var visitTimes = wx.getStorageSync('visitTimes') || 0
+    visitTimes = visitTimes + 1
+    wx.setStorageSync('visitTimes', visitTimes)
 
     // 登录
     wx.login({
@@ -34,6 +34,8 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    person:"刘醒",
+    iconPath: "../../images/liangfeifan.jpg"
   }
 })
