@@ -6,9 +6,9 @@ Page({
    */
   data: {
     content:null,
-    imgUrls: ['../../images/gif.gif',
-      '../../images/gif2.gif',
-      '../../images/gif3.gif']
+    imgUrls: ['https://img.3dmgame.com/uploads/images/news/20181226/1545801285_623690.gif',
+      'https://img.3dmgame.com/uploads/images/news/20181226/1545801286_760779.gif',
+      'https://img.3dmgame.com/uploads/images/news/20181226/1545801288_553023.gif']
   },
 
   /**

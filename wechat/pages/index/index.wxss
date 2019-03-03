@@ -4,7 +4,12 @@
   flex-direction: column;
   align-items: center;
 }
-
+.show{
+  display: flex;
+}
+.hide{
+  display: none;
+}
 .userinfo-avatar {
   width: 300rpx;
   height: 300rpx;
@@ -18,7 +23,6 @@
 
 .usermotto {
   margin-top: 100px;
-  display: flex;
   flex-direction: column;
   align-items: center;
 }

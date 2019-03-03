@@ -14,15 +14,30 @@ p::before{
 }
 
 a {
+    width: 175px;
+    height: 175px;
+    border: 1px solid #1d1a22;
+    margin-bottom: 75px;
     position: relative;
-    display: inline-block;
-    outline: none;
-    text-decoration: none;
-    color: #000;
-    font-size: 32px;
-    padding: 5px 10px;
-}
+    z-index: 10;
+    cursor: pointer;
 
-a:hover::before, a:hover::after { position: absolute; }
-a:hover::before { content: "\5B"; left: -20px; }
-a:hover::after { content: "\5D"; right:  -20px; }
+}
+a::before {
+    content: 'alipay';
+    color: rgba(255,255,255,.9);
+    display: block;
+    text-align: center;
+    background-color: #4285f4;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    font-size: 30px;
+    padding: 10px 0;
+    transition: opacity .5s;
+    opacity: 0;
+}
+a:hover::before {
+    opacity: 1;
+    
+}
