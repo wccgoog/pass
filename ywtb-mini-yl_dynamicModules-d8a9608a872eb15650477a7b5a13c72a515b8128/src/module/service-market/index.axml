@@ -1,0 +1,50 @@
+<view class="service-market-container">
+    <view class="title">服务市场      
+    </view>
+    <view class="service-content">
+      <view class="service-list">
+        <view class="service-item">
+          <image class="service-icon" mode="aspectFit" src="https://gw.alipayobjects.com/zos/rmsportal/OdOBtUlwZxmQGJMdlMEr.png" />
+          <view class="service-name">税务服务                    
+          </view>
+        </view>
+        <view class="service-item">
+          <image class="service-icon" mode="aspectFit" src="https://gw.alipayobjects.com/zos/rmsportal/ocJzfTKOFRGfBDnwmXKV.png" />
+          <view class="service-name">地铁购票                    
+          </view>
+        </view>
+        <view class="service-item">
+          <image class="service-icon" mode="aspectFit" src="https://gw.alipayobjects.com/zos/rmsportal/mcAuSIDEdSwjoIiotMrt.png" />
+          <view class="service-name">预约挂号                    
+          </view>
+        </view>
+        <view class="service-item">
+          <image class="service-icon" mode="aspectFit" src="https://gw.alipayobjects.com/zos/rmsportal/KAcsudEtZqUEXWIdErmN.png" />
+          <view class="service-name">社保查询                    
+          </view>
+        </view>
+      </view>
+      <view class="service-list">
+        <view class="service-item">
+          <image class="service-icon" mode="aspectFit" src="https://gw.alipayobjects.com/zos/rmsportal/OdOBtUlwZxmQGJMdlMEr.png" />
+          <view class="service-name">医保账户共济                    
+          </view>
+        </view>
+        <view class="service-item">
+          <image class="service-icon" mode="aspectFit" src="https://gw.alipayobjects.com/zos/rmsportal/ocJzfTKOFRGfBDnwmXKV.png" />
+          <view class="service-name">公交支付                    
+          </view>
+        </view>
+        <view class="service-item">
+          <image class="service-icon" mode="aspectFit" src="https://gw.alipayobjects.com/zos/rmsportal/mcAuSIDEdSwjoIiotMrt.png" />
+          <view class="service-name">交通违法缴款                    
+          </view>
+        </view>
+        <view class="service-item" onTap="onGoMarket">
+          <image class="service-icon" mode="aspectFit" src="https://gw.alipayobjects.com/zos/rmsportal/KAcsudEtZqUEXWIdErmN.png" />
+          <view class="service-name">更多服务                    
+          </view>
+        </view>
+      </view>
+    </view>
+</view>

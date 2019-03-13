@@ -1,0 +1,61 @@
+<import src="/templates/information/index.axml"/>
+<import src="/templates/credentials/index.axml"/>
+<import src="/templates/service-card/index.axml"/>
+<import src="/templates/my-service/index.axml"/>
+<import src="/templates/none/index.axml"/>
+<import src="/templates/recommend-service/index.axml"/>
+
+
+<view class="page-container">
+  <view class="top">
+    <header />
+    <!-- <user /> -->
+    <!-- <template is="tp-information" data="{{noticeInfo}}" /> -->
+    <!-- <information /> -->
+  </view>
+  <swiper class="head"
+    indicator-dots=true
+    autoplay=true
+    interval="5000"
+  >
+    <block a:for="{{background}}">
+      <swiper-item >
+        <image class="simage" src={{item}} mode="aspectFill"/>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <layout>
+    <view a:if="{{$global.homeBlockList && $global.homeBlockList.length>0}}" a:for="{{$global.homeBlockList}}" slot="{{item.blockKey}}">
+      <template is="{{item.blockKey}}" data="{{item}}" />
+    </view>
+  </layout>
+  <!-- <view class="cr-container">
+    <credentials />
+  </view> -->
+  <!-- <view class="rs-container">
+    <recommend-service />
+  </view>
+  <view class="cr-container">
+    <credentials />
+  </view>
+  <view class="sm-container">
+    <service-market />
+  </view>
+  <view class="sc-container">
+    <service-card 
+      specialServices="{{shebaoService}}"
+    />
+  </view>
+  <view class="sc-container">
+    <service-card 
+      specialServices="{{gjjService}}"
+    />
+  </view>
+  <view class="sc-container">
+    <service-card 
+      specialServices="{{jtcxService}}"
+    />
+  </view>-->
+  <!-- <footer />  -->
+</view>

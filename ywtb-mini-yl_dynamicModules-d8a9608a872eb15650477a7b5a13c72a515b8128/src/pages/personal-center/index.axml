@@ -1,0 +1,7 @@
+<view class="page-container personal-center">
+  <user />
+  <view class="personal-center-list" a:for="{{list}}" a:for-item="item" a:for-index="i">
+    <personal-center-card cardInfo="{{item}}" />
+  </view>
+  <logout />
+</view>

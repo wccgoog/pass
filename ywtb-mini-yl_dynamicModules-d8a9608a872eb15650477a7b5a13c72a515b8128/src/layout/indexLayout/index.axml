@@ -1,0 +1,17 @@
+<view a:if="{{isLogin}}">
+  <slot name="tpl-information">
+  </slot>
+  <slot name="tpl-recommendservice">
+  </slot>
+  <slot name="tpl-credentials">
+  </slot>
+  <slot name="tpl-servicecenter">
+  </slot>
+  <slot name="tpl-servicecard">
+  </slot>
+</view>
+<view a:else onTap="onLoginSetUserInfo">
+  <credentials />
+  <service-market />
+  <service-card />
+</view>

@@ -1,0 +1,8 @@
+{
+  "defaultTitle": "个人中心",
+  "usingComponents":{
+      "personal-center-card": "../../module/personal-center-card/index",
+      "logout": "../../module/logout/index",
+      "user": "../../module/user/index"
+  }
+}

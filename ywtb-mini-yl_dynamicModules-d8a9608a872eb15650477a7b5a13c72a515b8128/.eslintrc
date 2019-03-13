@@ -1,0 +1,28 @@
+{
+  "extends": "standard",
+  "globals": {
+    "my": true,
+    "Page": true,
+    "App": false,
+    "getApp": true,
+    "Component": true,
+    "localStorage": true,
+    "parseInt": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "indent": ["error", 2, {"SwitchCase": 1}], // 缩进 2space
+    "semi": ["error", "always"], // 必须使用分号
+    "comma-dangle": ["error", "always-multiline"], // 多行数组、对象等最后一位需要加逗号
+    "keyword-spacing": ["error", { "before": true }], // 小括号前需加空格
+    "space-before-function-paren": 0,  // function前面的空格没有必要校验
+    "object-curly-spacing": ["error", "always"], // 对象内两侧需要有空格
+    "space-infix-ops": ["error", {"int32Hint": true}], // 逻辑与不需要空格
+    "padded-blocks": ["error", "never"], // 块中首尾不加空行
+    "no-var": 2,
+    "no-undef": 2,
+    "no-unused-vars": 0,
+    "no-tabs": 0,
+    "no-unneeded-ternary": 0
+  }
+}
