@@ -565,7 +565,7 @@ define([
                             }
                             if (this.dateTime != e.data.dateTime)
                                 return;
-                            this.$(".mainFrame").attr("height", (document.body.scrollHeight/2)-200);
+                            this.$(".mainFrame").attr("height", (document.body.scrollHeight/2)-200);  //不会到这一步了 by王晨驰
                             $('button').filter('.js-next-step').click(function(){
                                 $(".mainFrame")[0].contentWindow.postMessage({method:"getFormHeight"}, "*");
                             })
