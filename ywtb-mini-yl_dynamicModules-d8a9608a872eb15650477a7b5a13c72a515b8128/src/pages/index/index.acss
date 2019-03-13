@@ -43,10 +43,18 @@
 }
 
 .credentials-container, .service-card-container, .service-market-container {
-  margin-top: 16rpx;
+  /* margin-top: 16rpx; */
   background: #fff;
 }
 
 .service-list{
-  height: 80rpx;
+  /* height: 70rpx; */
+  /* padding-bottom: 20px; */
+}
+
+.service-item{
+  margin-top: 40rpx !important;
+}
+.service-market-container{
+  padding-bottom: 30rpx !important;
 }
