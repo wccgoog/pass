@@ -43,7 +43,7 @@
 }
 
 .credentials-container, .service-card-container, .service-market-container {
-  /* margin-top: 16rpx; */
+  margin-top: 16rpx;
   background: #fff;
 }
 
