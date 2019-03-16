@@ -17,6 +17,7 @@ body{
 }
 .flex-box{
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .flex-start{
     justify-content: flex-start;
@@ -24,16 +25,15 @@ body{
 .content-div{
     text-align: center;
     flex-grow: 1;
-    width: 49%;
+    width: 50%;
+    box-sizing: border-box;
     padding: 10px;
+    border-bottom: #efeeef 1px solid;
 }
 .content-span{
     color: #666666;
     padding: 10px;
     vertical-align: middle;
-}
-.left-flex{
-    border-right: 1px solid #efeeef;
 }
 .active{
     color: #333333;
@@ -74,6 +74,31 @@ body{
     font-size:16px;
 }
 .icon{
-    height: 40px;
+    height: 30px;
     margin: auto;
+}
+.departmentClassify{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.departmentSingle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 18px;
+    width:25%;
+    color:#666;
+    box-sizing: border-box;
+    border-right:1px solid #eee;
+    border-bottom:1px solid #eee;
+    overflow: hidden;
+    padding: 20px 0;
+}
+.departmentSingle:nth-of-type(4n){
+    border-right:none;
+}
+.flex-box > div:nth-of-type(2n){
+    border-left: 1px solid #efeeef;
 }
