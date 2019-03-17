@@ -5,14 +5,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" media="screen" href="./css/test.css" />
-  <script src="js/birthdayData.js"></script>
+  <meta name="referrer" content="origin">
+  <script src="js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-  <div id="div1">
-    <p data-content="wcccccc">123</p>
-    <a>wcccccccccccccc</a>
-  </div>
+  <div id="d1"></div>
+<script>
+  $.ajax({
+        type: "GET",
+        url:'/mini/api/index/topicList',
+        success: function(data,textStatus) {
+          len=data.data.length
+            for(i=0;i<len;i++){
+              str=data.data[i].name+"</br>"
+              $('#d1').append(str)
+            }
+        }
+    })
+</script>
 </body>
 </html>
     
