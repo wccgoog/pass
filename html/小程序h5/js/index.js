@@ -23,9 +23,9 @@ $(function(){
         })
     }
     getTheme(type);
+    //获取主题和部门
 
-
-
+    //切换个人或企业，个人type1，企业type2
     $("#type1").click(function(){
         if(type==1){
             return;
@@ -49,4 +49,7 @@ $(function(){
         getTheme(type);
     })
 
+    $("#goTheme").click(function(){
+        window.location.href="goMore.html?type="+type;
+    })
 })
