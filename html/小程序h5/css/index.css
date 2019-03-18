@@ -10,7 +10,7 @@ a{
     display: block;
 }
 .top-div{
-    font-size: 22px;
+    font-size: 18px;
     vertical-align: middle;
     border-bottom: #efeeef solid 1px;
     padding: 0 10px;
@@ -70,11 +70,11 @@ a{
 }
 .title{
     text-align: start;
-    font-size: 20px;
+    font-size: 16px;
 }
 .sub-title{
     text-align: start;
-    font-size:16px;
+    font-size:12px;
 }
 .icon{
     height: 30px;
@@ -90,7 +90,7 @@ a{
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    font-size: 18px;
+    font-size: 14px;
     width:25%;
     color:#666;
     box-sizing: border-box;
@@ -104,4 +104,7 @@ a{
 }
 .flex-box > div:nth-of-type(2n){
     border-left: 1px solid #efeeef;
+}
+.more{
+    border:none;
 }

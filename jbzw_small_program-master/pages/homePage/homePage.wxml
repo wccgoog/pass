@@ -1,4 +1,5 @@
 <view class="homepageWrap">
+<!-- <web-view src="https://jbxqalipay.nanjingdata.cn/"></web-view> -->
 <!-- 首页轮播图 -->
     <view class="page-section page-section-spacing swiper">
       <swiper

@@ -1,6 +1,14 @@
+function goListDetail(e){
+    console.log(e.getAttribute("data-id"));
+    window.location.href="listDetail.html?type="+type+"&sid="+e.getAttribute("data-id");
+}
+
+//1为个人服务，2为企业服务
+var type = 1;
+
 $(function(){
-    var type = 1;
-    //1为个人服务，2为企业服务
+    
+
     function getTheme(type){
         var theme = '';
         var department= '';
@@ -52,4 +60,9 @@ $(function(){
     $("#goTheme").click(function(){
         window.location.href="goMore.html?type="+type;
     })
+
+    $("#goDepartment").click(function(){
+        window.location.href="gerenzhongxin.html?type="+type;
+    })
+
 })

@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="container">
+<web-view src="https://jbxqalipay.nanjingdata.cn/"></web-view>
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
@@ -11,3 +12,4 @@
     <text class="user-motto">{{motto}}</text>
   </view>
 </view>
+

@@ -1,0 +1,98 @@
+.img1{
+    position:fixed;
+    height:20px;
+    top:30px;
+    left:5px;
+    z-index: 2;
+}
+.img2{
+    width:100%;
+    display:block;
+    position:fixed;
+    top:0
+}
+*{
+    margin:0
+}
+.title2{
+    font-size:8vw;
+    font-family:cursive;
+    font-weight:600;
+    text-align: center;
+}
+
+.body{
+    display:flex;
+    flex-flow:row;
+    flex-wrap:wrap;
+    border-top:1px solid #ccc;
+    margin-top:5px;
+}
+.slice{
+    margin:35px auto;
+    width:6px;
+    height:10px;
+}
+.single{
+    text-align:center;
+    font-size:8vw;
+    height:8vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:33.33%;
+    color:#666;
+    box-sizing:border-box;
+    border-right:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    overflow:hidden;
+    word-wrap:break-word;
+}
+.single:nth-of-type(3n+0){
+    border-right:none;
+}
+.left{
+    flex:4;
+    font-size:1vw;
+    color:#666;
+}
+.inner{
+
+}
+body{
+    background-color:#eee;
+}
+.themeTitle{
+    color:#666;
+    font-size:32px;
+    padding:20px 0 20px 20px;
+    border-bottom:1px solid #eee;
+    display:flex;
+    position:fixed;
+    top:65px;
+    left:0;
+    width:100%;
+    background-color:#fff;
+    font-family:simsun;
+}
+.themeTitleWords{
+    left:0;
+    border-left:2px solid #079a41;
+    font-size: 15px;
+}
+div{
+    display:block;
+}
+.variousList{
+    margin-top:130px;
+}
+.listSingle{
+    background-color:#fff;
+    padding:10px;
+    font-size:15px;
+    color:#333;
+    margin-bottom:10px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
