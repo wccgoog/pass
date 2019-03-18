@@ -1,0 +1,38 @@
+body{
+    width: 100%;
+    margin: 0;
+    color: #666666;
+}
+.image{
+    width: 100%;
+    display: block;
+    position: fixed;
+}
+.scroll{
+    white-space:nowrap;
+    z-index: 8;
+    top:100px;
+    position: absolute;
+    overflow-x: scroll;
+    display: inline;
+}
+.headSingle{
+    z-index: 4;
+    border: 1px solid red;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 20px;
+}
+.on{ 
+    color: #079a3f;  
+    border-bottom: 2px solid #079a3f;
+}
+.body{
+    width: 100%;
+    border: 1px solid red;
+    padding-top: 150px;
+    position: fixed;
+}
+.other{
+    border: 1px solid blue;
+}

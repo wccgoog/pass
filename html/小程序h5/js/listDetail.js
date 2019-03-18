@@ -1,5 +1,5 @@
 function goListDetail(e){
-    window.location.href = '../guide.html?id=' + e .getAttribute("data_id");
+    window.location.href = '../guide.html?id=' + e .getAttribute("data-id");
 }
 
 function getRequest() {  
@@ -44,7 +44,7 @@ $(function(){
     
     function addList(result) {
         $.each(result,function(index,obj){
-            $(".variousList").append("<div class='listSingle' onclick='goListDetail(this)' data_id="+obj['id']+">"+obj['name']+"</div>");
+            $(".variousList").append("<div class='listSingle' onclick='goListDetail(this)' data-id="+obj['id']+">"+obj['name']+"</div>");
         });
     }
     

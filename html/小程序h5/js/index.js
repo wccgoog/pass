@@ -1,5 +1,5 @@
+//跳转详情页
 function goListDetail(e){
-    console.log(e.getAttribute("data-id"));
     window.location.href="listDetail.html?type="+type+"&sid="+e.getAttribute("data-id");
 }
 

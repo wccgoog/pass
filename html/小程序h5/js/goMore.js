@@ -12,10 +12,15 @@ function getRequest() {
     return theRequest;  
 } 
 
-$(function(){
-    var webData = getRequest();
-    console.log(webData.type);  
+//跳转详情页
+function goListDetail(e){
+    window.location.href="listDetail.html?type="+webData.type+"&sid="+e.getAttribute("data-id");
+}
 
+var webData = new Object();
+
+$(function(){
+    webData = getRequest();
     //获取主题列表
     function getThemeList(type){
         var theme = '';
