@@ -16,7 +16,7 @@ function getRequest() {
  
 function goListDetail(e){
     console.log(e);
-    window.location.href = '../listDetail.html?type='+webData.type+'&sid=' + e.getAttribute("data-id");
+    window.location.href = 'listDetail.html?type='+webData.type+'&sid=' + e.getAttribute("data-id");
 }
 
 var webData = new Object();

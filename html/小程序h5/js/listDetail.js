@@ -1,5 +1,5 @@
 function goListDetail(e){
-    window.location.href = '../guide.html?id=' + e .getAttribute("data-id");
+    window.location.href = 'guide.html?id=' + e .getAttribute("data-id");
 }
 
 function getRequest() {  
@@ -21,7 +21,7 @@ $(function(){
 
     $.ajax({
         type:"get",
-        url:"/mini//api/Index/affList",
+        url:"/mini/api/Index/affList",
         dataType:"json",
         data:{
             'type': webData.type,

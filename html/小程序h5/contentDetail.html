@@ -9,59 +9,17 @@
     <title>Document</title>
 </head>
 <body>
-    <img class="image" src="image/head.png"/>
-    <div class="scrollFather">
-        <div class="scroll">
-            <div class="headSingle on">基本信息</div>
-            <div class="headSingle">办理地点、时间</div>
-            <div class="headSingle">流程图</div>
-            <div class="headSingle">办理材料</div>
-            <div class="headSingle">设定依据</div>
-            <div class="headSingle">办理条件</div>
-            <div class="headSingle">收费标准</div>
-        </div>
+    <div class="scroll">
+        <div class="headSingle on" data-id=0 onclick="changeTab(this)">基本信息</div>
     </div>
     <div class="body">
-        <div class="basicInfo">
+        <div class="basicInfo" id="nav-0">
             <div class="bodyHeader">
                 <img class="headerImg" src="image/基本信息@2x.png"/>
                 <div class="headerText">基本信息</div>
             </div>
-            <div class="bodyList flod">
-                <div class="bodyListSingle">
-                    <div class="bodyListSingleKey">事项名称：</div>
-                    <div class="bodyListSingleValue">企业所得税的征收</div>
-                </div>
-            </div>
-            <div class="bottomButton">
-                <button>展开</button>
-            </div>
-        </div>
-        <div class="flowChart">
-            <div class="bodyHeader">
-                <img class="headerImg" src="image/流程@2x.png"/>
-                <div class="headerText">办理地点、时间</div>
-            </div>
-            <div class="bodyList flod">
-                <div>
-                    工作日 上午9:00-12:00 下午14:00（夏季15：00）-18:00">南京市江北新区药谷大道9号1709室工作日 上午9:00-12:00 下午14:00（夏季15：00）-18:00
-                </div>
-            </div>
-            <div class="bottomButton">
-                <button>展开</button>
-            </div>
-        </div>
-        <div class="flowChart">
-            <div class="bodyHeader">
-                <img class="headerImg" src="image/流程@2x.png"/>
-                <div class="headerText">流程图</div>
-            </div>
-            <div class="bodyList flowTree flod">
-                <div>
-                    工作日 上午9:00-12:00 下午14:00（夏季15：00）-18:00">南京市江北新区药谷大道9号1709室工作日 上午9:00-12:00 下午14:00（夏季15：00）-18:00
-                </div>
-            </div>
-            <div class="bottomButton">
+            <div class="bodyList flod"></div>
+            <div class="bottomButton" onclick="button(this)" data-id="0">
                 <button>展开</button>
             </div>
         </div>

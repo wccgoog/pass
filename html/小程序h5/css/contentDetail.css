@@ -4,25 +4,18 @@ body{
     color: #666666;
     background: #eee;
 }
+button{
+    outline:none;
+}
 .image{
     width: 100%;
     display: block;
-    position: fixed;
-}
-.scrollFather{
-    /* position: fixed; */
 }
 .scroll{
     background: white;
-    white-space:nowrap;
-    z-index: 8;
     top:70px;
-    position: absolute;
-    overflow-x: scroll;
-    display: inline;
 }
 .headSingle{
-    z-index: 4;
     text-align: center;
     display: inline-block;
     padding: 10px 20px;
@@ -33,8 +26,6 @@ body{
 }
 .body{
     width: 100%;
-    padding-top: 120px;
-    position: fixed;
 }
 .basicInfo,.flowChart,.material,.depend,.condition{
     border-radius: 20px;
@@ -98,7 +89,7 @@ body{
     font-size: 35px;
 }
 .flowTreeImg{
-    width:500px;
+    width:350px;
 }
   /* 办理材料 */
 .materialList{
@@ -115,7 +106,7 @@ body{
 }
   /* 控制展开折叠 */
 .flod{
-    height:110px;
+    height:22px;
 }
 .extend{
     height:auto;

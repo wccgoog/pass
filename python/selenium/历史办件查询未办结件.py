@@ -1,7 +1,7 @@
 import pymysql,cx_Oracle
 jdbc=cx_Oracle.connect('XZSPJBXQ/XZJSXZSP@10.196.109.221:1521/ORCL',encoding = "UTF-8",nencoding = "UTF-8")
 oracle=jdbc.cursor()
-conn=pymysql.connect(host='127.0.0.1',user='root',password='ztesoft',database='jbzw',port=13306)
+conn=pymysql.connect(host='127.0.0.1',user='root',password='ztesoft',database='jbzw',port=11111)
 mysql=conn.cursor()
 # 查询旧库未办结件
 oracle.execute("SELECT OFFICE_NUMBER from XJL_XZSP_APPLICATION where STATUS <> 4")
