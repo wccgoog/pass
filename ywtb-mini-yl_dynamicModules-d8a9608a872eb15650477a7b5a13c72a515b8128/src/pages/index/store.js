@@ -212,8 +212,10 @@ export default new Store({
       let cardList = [];
       if (homeBlockList && homeBlockList[0] && homeBlockList.length > 0) {
         homeBlockList.map((item, index) => {
+          console.log("```````````````````````````````````````````````````````````")
+          console.log(item)
           if (item.blockKey === 'tpl-servicecenter') {
-            item.title = '办事指南';
+            // item.title = '部门';
             myServiceList = item.list;
           }
           if (item.blockKey === 'tpl-servicecenter' && myService && myService.length > 0) {
