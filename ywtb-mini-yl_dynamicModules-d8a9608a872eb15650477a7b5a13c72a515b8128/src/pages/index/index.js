@@ -19,6 +19,10 @@ Page(store.register({
     ]
   },
   onShow() {
+    //用户自动登录
+    this.dispatch('onLoginSetUserInfo');
+
+
     // const { shareData } = app;
     // const { city } = shareData;
     // const { changed } = city;

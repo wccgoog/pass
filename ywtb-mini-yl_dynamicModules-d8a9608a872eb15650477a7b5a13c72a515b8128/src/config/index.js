@@ -35,7 +35,7 @@ export const config = {
     // 用户中心
     userService: {
       proxyPrefix: 'proxy-user', // 代理前缀
-      pathRewrite: { '^(/?)proxy-user/': '/api/' },
+      pathRewrite: { '^(/?)proxy-user/': 'api/' },
       target: {
         // 开发版本
         develop: 'http://urcuserdev.alipay-eco.com',
@@ -48,7 +48,7 @@ export const config = {
     // 服务中心
     appService: {
       proxyPrefix: 'proxy-app', // 代理前缀
-      pathRewrite: { '^(/?)proxy-app/': '/api/' },
+      pathRewrite: { '^(/?)proxy-app/': 'api/' },
       target: {
         // 开发版本
         develop: 'http://urcappdev.alipay-eco.com',
@@ -61,7 +61,7 @@ export const config = {
     // 消息中心
     msgService: {
       proxyPrefix: 'proxy-msg', // 代理前缀
-      pathRewrite: { '^(/?)proxy-msg/': '/api/' },
+      pathRewrite: { '^(/?)proxy-msg/': 'api/' },
       target: {
         // 开发版本
         develop: 'http://urcmsgdev.alipay-eco.com',

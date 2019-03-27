@@ -39,7 +39,7 @@ $(function(){
 
     
     function addTitle(result) {
-            $(".themeTitle").append("<div class='themeTitleWords'>"+result+"</div>");
+            $(".themeTitle").append("<div class='themeTitleWords'>"+getCaption(result)+"</div>");
     }
     
     function addList(result) {
@@ -47,7 +47,12 @@ $(function(){
             $(".variousList").append("<div class='listSingle' onclick='goListDetail(this)' data-id="+obj['id']+">"+obj['name']+"</div>");
         });
     }
-    
+
+    function getCaption(obj){
+        var index=obj.lastIndexOf("\>");
+        obj=obj.substring(index+1,obj.length);
+        return obj;
+    }
 
 
 });

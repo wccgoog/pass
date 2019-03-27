@@ -17,5 +17,5 @@
       <template a:if="{{item.title=='我的办件'}}" is="{{item.blockKey}}" data="{{item}}" />
     </view>
   </layout>
-  <logout />
+  <!-- <logout /> -->
 </view>

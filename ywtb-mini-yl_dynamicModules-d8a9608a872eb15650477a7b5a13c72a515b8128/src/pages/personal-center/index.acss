@@ -60,3 +60,11 @@
   background: white;
   margin-top: 10px;
 }
+
+.service-item{
+  margin-top: 40rpx !important;
+}
+
+.service-market-container{
+  padding-bottom: 30rpx !important;
+}
