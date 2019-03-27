@@ -207,13 +207,15 @@ export default new Store({
           content: '该区域暂无服务，请选择其他地区。',
         });
       }
+      console.log("```````````````````````````````````````````````````````````")
+      console.log(homeBlockList)
+      // var x = homeBlockList.splice(3,1)
+      // console.log(x)
       myService = await getMyServiceInfo(myserviceParams);
       let myServiceList = [];
       let cardList = [];
       if (homeBlockList && homeBlockList[0] && homeBlockList.length > 0) {
         homeBlockList.map((item, index) => {
-          console.log("```````````````````````````````````````````````````````````")
-          console.log(item)
           if (item.blockKey === 'tpl-servicecenter') {
             // item.title = '部门';
             myServiceList = item.list;
@@ -249,7 +251,7 @@ export default new Store({
       if (!state.$global.isLogin) {
         return;
       }
-      console.log(state);
+      // console.log(state);
       const requestData = {
         channelType: 'OWNER_MSG',
         readFlag: 'N',

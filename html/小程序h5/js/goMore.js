@@ -14,7 +14,7 @@ function getRequest() {
 
 //跳转详情页
 function goListDetail(e){
-    window.location.href="listDetail.html?type="+webData.type+"&sid="+e.getAttribute("data-id");
+    window.location.href="listDetail.html?type="+webData.type+"&sid="+e.getAttribute("data-id").slice(1);
 }
 
 var webData = new Object();

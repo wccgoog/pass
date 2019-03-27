@@ -47,11 +47,6 @@
   background: #fff;
 }
 
-.service-list{
-  /* height: 70rpx; */
-  /* padding-bottom: 20px; */
-}
-
 .service-item{
   margin-top: 40rpx !important;
 }

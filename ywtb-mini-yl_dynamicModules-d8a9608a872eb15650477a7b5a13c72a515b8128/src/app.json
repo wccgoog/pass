@@ -28,14 +28,14 @@
     "items": [
       {
         "pagePath": "pages/index/index",
-        "icon": "https://gw.alipayobjects.com/zos/rmsportal/IRmNNanjAlkNFrIdGJkL.png",
+        "icon": "https://jbxqalipay.nanjingdata.cn/m/image/index.png",
         "activeIcon": "https://gw.alipayobjects.com/zos/rmsportal/IRmNNanjAlkNFrIdGJkL.png",
         "name": "首页"
       },
       {
         "pagePath": "pages/personal-center/index",
-        "icon": "https://gw.alipayobjects.com/zos/rmsportal/jgvOKRtGNZwRALvXgKok.png",
-        "activeIcon": "https://gw.alipayobjects.com/zos/rmsportal/jgvOKRtGNZwRALvXgKok.png",
+        "icon": "https://jbxqalipay.nanjingdata.cn/m/image/personalCenter.png",
+        "activeIcon": "https://jbxqalipay.nanjingdata.cn/m/image/personalCenterActive.png",
         "name": "我的"
       }
     ]

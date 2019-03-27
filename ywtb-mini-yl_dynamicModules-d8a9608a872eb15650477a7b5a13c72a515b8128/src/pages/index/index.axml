@@ -27,7 +27,7 @@
 
   <layout>
     <view a:if="{{$global.homeBlockList && $global.homeBlockList.length>0}}" a:for="{{$global.homeBlockList}}" slot="{{item.blockKey}}">
-      <template is="{{item.blockKey}}" data="{{item}}" />
+      <template a:if="{{item.title!='我的办件'}}" is="{{item.blockKey}}" data="{{item}}" />
     </view>
   </layout>
   <!-- <view class="cr-container">

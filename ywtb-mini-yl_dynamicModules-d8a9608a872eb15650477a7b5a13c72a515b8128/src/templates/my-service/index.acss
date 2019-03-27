@@ -1,5 +1,5 @@
 .service-market-container {
-  padding: 20rpx 32rpx 80rpx;
+  padding: 20rpx 32rpx 30rpx;
 }
 
 .service-market-container .title {
@@ -14,7 +14,7 @@
 }
 
 .service-market-container .service-list .service-item {
-  margin-top: 82rpx;
+  margin-top: 40rpx;
   width: 25%;
   display: flex;
   flex-direction: column;
