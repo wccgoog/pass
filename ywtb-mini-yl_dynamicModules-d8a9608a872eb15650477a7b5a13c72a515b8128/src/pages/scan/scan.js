@@ -1,6 +1,6 @@
 Page({
   data: {},
-  onShow() {
+  onLoad() {
     my.scan({
       type: 'qr',
       success: (res) => {
@@ -41,9 +41,6 @@ Page({
           let p = str.lastIndexOf("/");
           let id = str.substring(p + 1, str.length);
           console.log(id);
-          // wx.navigateTo({
-          //   url: '../navigation/navigation?in=' + id,
-          // })
         }
       },
     });

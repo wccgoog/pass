@@ -11,8 +11,9 @@ Page({
   scan(){
     wx.scanCode({
       success: (res) => {
+
         console.log('222222')
-        console.log(res.result)
+        console.log(res)
         if (res.result.indexOf("https://jbzw.qimixi.net/static/img/")>=0){
           let str = res.result;
           let p = str.lastIndexOf("/");
