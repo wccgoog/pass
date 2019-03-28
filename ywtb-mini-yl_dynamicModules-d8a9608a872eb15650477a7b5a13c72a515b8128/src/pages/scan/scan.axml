@@ -1,0 +1,3 @@
+<view onTap="scan">
+  New Page
+</view>
