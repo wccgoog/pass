@@ -39,5 +39,19 @@ a::before {
 }
 a:hover::before {
     opacity: 1;
-    
+}
+
+.loadingDiv{
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+}
+.loading{
+    margin-top:50%;
+}
+.loadingSpan{
+    margin-top:52%;
 }

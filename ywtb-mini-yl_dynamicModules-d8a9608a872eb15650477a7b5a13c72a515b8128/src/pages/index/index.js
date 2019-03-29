@@ -19,6 +19,7 @@ Page(store.register({
     ]
   },
   onShow() {
+    // my.hideAddToDesktopMenu();
     //用户自动登录
     this.dispatch('onLoginSetUserInfo');
 

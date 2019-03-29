@@ -7,22 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="origin">
   <script src="js/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" href="css/test.css">
 </head>
 <body>
   <div id="d1"></div>
-<script>
-  $.ajax({
-        type: "GET",
-        url:'/mini/api/index/topicList',
-        success: function(data,textStatus) {
-          len=data.data.length
-            for(i=0;i<len;i++){
-              str=data.data[i].name+"</br>"
-              $('#d1').append(str)
-            }
-        }
-    })
-</script>
+  <div class="loadingDiv">
+    <img src="images/loading.gif" class="loading">
+    <span class="loadingSpan">加载中</span>
+  </div>
+
 </body>
 </html>
     

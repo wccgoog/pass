@@ -1,3 +1,4 @@
-<view onTap="scan">
-  New Page
+<view class="scanWrap" onTap="scan">
+  <image src="https://jbxqalipay.nanjingdata.cn/m/image/scanewm.png" mode="widthFix" class="scanImg"></image>
+  <view>点击扫描二维码</view>
 </view>

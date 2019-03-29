@@ -50,8 +50,9 @@ if(options.q) {
             'content-type': 'application/json' // 默认值
         },
         success:function(data){
+            $(".loadingDiv").hide();
             addSquare(data.data.window_info.name);
-            addIntro(data.data.window_info.intro)
+            addIntro(data.data.window_info.intro);
         }
     })
 }else{
@@ -65,10 +66,11 @@ if(options.q) {
             'content-type': 'application/json' // 默认值
         },
         success:function(data){
+            $(".loadingDiv").hide();
             addSquare(data.data.window_info.name);
             addIntro(data.data.window_info.intro);
             addList(data.data.list);
-            console.log(data.data.list)
+            console.log(data.data.list);
         }
     })
 }

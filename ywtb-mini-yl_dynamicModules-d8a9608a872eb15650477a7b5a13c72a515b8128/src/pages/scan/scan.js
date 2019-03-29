@@ -4,7 +4,6 @@ Page({
     my.scan({
       type: 'qr',
       success: (res) => {
-        my.alert({ title: res.code });
         if (res.code.indexOf("https://jbzw.qimixi.net/static/img/")>=0){
           let str = res.code;
           let p = str.lastIndexOf("/");
@@ -18,6 +17,10 @@ Page({
           let p = str.lastIndexOf("/");
           let id = str.substring(p + 1, str.length);
           console.log(id);
+        } else {
+          my.navigateTo({
+            url: '/pages/web-view/index?requestUrl=' + res.code,
+          });
         }
       },
     });
@@ -27,7 +30,6 @@ Page({
     my.scan({
       type: 'qr',
       success: (res) => {
-        my.alert({ title: res.code });
         if (res.code.indexOf("https://jbzw.qimixi.net/static/img/")>=0){
           let str = res.code;
           let p = str.lastIndexOf("/");
@@ -41,11 +43,12 @@ Page({
           let p = str.lastIndexOf("/");
           let id = str.substring(p + 1, str.length);
           console.log(id);
+        } else {
+          my.navigateTo({
+          url: '/pages/web-view/index?requestUrl=' + res.code,
+          });
         }
       },
     });
-    // my.navigateTo({
-    //   url: '/pages/web-view/index?requestUrl=' + "https://jbxqalipay.nanjingdata.cn/m/index.html",
-    // });
   }
 });
