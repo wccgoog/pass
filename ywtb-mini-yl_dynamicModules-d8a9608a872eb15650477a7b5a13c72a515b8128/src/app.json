@@ -9,7 +9,8 @@
     "pages/core-service/index",
     "pages/city-list/index",
     "pages/my-card/index",
-    "pages/message-list/message-list"
+    "pages/message-list/message-list",
+    "pages/scan/scan"
   ],
   "window": {
     "enableDSL": "YES",
@@ -31,6 +32,12 @@
         "icon": "https://jbxqalipay.nanjingdata.cn/m/image/index.png",
         "activeIcon": "https://gw.alipayobjects.com/zos/rmsportal/IRmNNanjAlkNFrIdGJkL.png",
         "name": "首页"
+      },
+      {
+        "pagePath": "pages/scan/scan",
+        "icon": "https://jbxqalipay.nanjingdata.cn/m/image/scan.png",
+        "activeIcon": "https://jbxqalipay.nanjingdata.cn/m/image/scanActive.png",
+        "name": "扫码导航"
       },
       {
         "pagePath": "pages/personal-center/index",

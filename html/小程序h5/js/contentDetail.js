@@ -31,33 +31,33 @@ $(function(){
 
 //获取tab
 function addTab(data){
-    if(data.data.place_time){
+    if(data.data.place_time && data.data.place_time.length != 0){
         $(".scroll").append('<div class="headSingle" data-id=1 onclick="changeTab(this)">办理地点、时间</div>');
         $(".body").append('<div class="flowChart" id="nav-1"><div class="bodyHeader"><img class="headerImg" src="image/流程@2x.png"/><div class="headerText">办理地点、时间</div></div><div class="bodyList flod"></div><div class="bottomButton" onclick="button(this)" data-id="1"><button>展开</button></div></div>')     
         $("#nav-1 .bodyList").append("<div>"+data.data.place_time+"</div>");
     }
-    if(data.data.tree_img){
+    if(data.data.tree_img && data.data.tree_img.length != 0){
         $(".scroll").append('<div class="headSingle" data-id=2 onclick="changeTab(this)">流程图</div>');
         $(".body").append('<div class="flowChart" id="nav-2"><div class="bodyHeader"><img class="headerImg" src="image/流程@2x.png"/><div class="headerText">流程图</div></div><div class="bodyList flod"></div><div class="bottomButton" onclick="button(this)" data-id="2"><button>展开</button></div></div>')     
         $("#nav-2 .bodyList").append("<img class='flowTreeImg' src='"+data.data.tree_img.file_path+"'/>");
     }
-    if(data.data.affair_material_list){
-        $(".scroll").append('<div class="headSingle" data-id=3 onclick="changeTab(this)">办理材料</div>');
-        $(".body").append('<div class="flowChart" id="nav-3"><div class="bodyHeader"><img class="headerImg" src="image/流程@2x.png"/><div class="headerText">办理材料</div></div><div class="bodyList flod"></div><div class="bottomButton" onclick="button(this)" data-id="3"><button>展开</button></div></div>')     
-        $("#nav-3 .bodyList").append("<div>"+data.data.affair_material_list[0].name+"</div>");
-        console.log(data.data.affair_material_list);
+    if(data.data.affair_material_list && data.data.affair_material_list.length != 0){
+            $(".scroll").append('<div class="headSingle" data-id=3 onclick="changeTab(this)">办理材料</div>');
+            $(".body").append('<div class="flowChart" id="nav-3"><div class="bodyHeader"><img class="headerImg" src="image/流程@2x.png"/><div class="headerText">办理材料</div></div><div class="bodyList flod"></div><div class="bottomButton" onclick="button(this)" data-id="3"><button>展开</button></div></div>')
+            $("#nav-3 .bodyList").append("<div>" + data.data.affair_material_list[0].name + "</div>");
+            console.log(data.data.affair_material_list);
     }
-    if(data.data.setting){
+    if(data.data.setting && data.data.setting.length != 0){
         $(".scroll").append('<div class="headSingle" data-id=4 onclick="changeTab(this)">设定依据</div>');
         $(".body").append('<div class="flowChart" id="nav-4"><div class="bodyHeader"><img class="headerImg" src="image/流程@2x.png"/><div class="headerText">设定依据</div></div><div class="bodyList flod"></div><div class="bottomButton" onclick="button(this)" data-id="4"><button>展开</button></div></div>')     
         $("#nav-4 .bodyList").append("<div>"+data.data.setting+"</div>");
     }
-    if(data.data.condition){
+    if(data.data.condition && data.data.condition.length != 0){
         $(".scroll").append('<div class="headSingle" data-id=5 onclick="changeTab(this)">办理条件</div>');
         $(".body").append('<div class="flowChart" id="nav-5"><div class="bodyHeader"><img class="headerImg" src="image/流程@2x.png"/><div class="headerText">办理条件</div></div><div class="bodyList flod"></div><div class="bottomButton" onclick="button(this)" data-id="5"><button>展开</button></div></div>')     
         $("#nav-5 .bodyList").append("<div>"+data.data.condition+"</div>");
     }
-    if(data.data.outlay_criterion){
+    if(data.data.outlay_criterion && data.data.outlay_criterion.length != 0){
         $(".scroll").append('<div class="headSingle" data-id=6 onclick="changeTab(this)">收费标准</div>');
         $(".body").append('<div class="flowChart" id="nav-6"><div class="bodyHeader"><img class="headerImg" src="image/流程@2x.png"/><div class="headerText">收费标准</div></div><div class="bodyList flod"></div><div class="bottomButton" onclick="button(this)" data-id="6"><button>展开</button></div></div>')     
         $("#nav-6 .bodyList").append("<div>"+data.data.outlay_criterion+"</div>");
