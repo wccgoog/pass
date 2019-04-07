@@ -2,6 +2,7 @@ import getCityTabs from './services/city-service';
 import getPageInstanceBlocks from './services/page-service';
 
 App({
+  qrCode:'',
   async onLaunch(options) {
     const { query = {} } = options;
     if (query.cityId) {
@@ -20,8 +21,9 @@ App({
     // 获取城市列表
     await getCityTabs();
   },
-  onShow() {
-    console.log('app onShow');
+  onShow(options) {
+    this.qrCode = options.query.qrCode;
+    console.log('app onShow option' + JSON.stringify(options));
   },
   onHide() {
     console.log('app onHide');

@@ -10,7 +10,8 @@
     "pages/city-list/index",
     "pages/my-card/index",
     "pages/message-list/message-list",
-    "pages/scan/scan"
+    "pages/scan/scan",
+    "pages/listOfItems/listOfItems"
   ],
   "window": {
     "enableDSL": "YES",

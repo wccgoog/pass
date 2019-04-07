@@ -10,6 +10,6 @@
   <view class="usermotto {{isShow}}">
     <text class="user-motto" bindtap="changeMotto">{{motto}}{{name}}</text>
     <text class="user-motto" bindtap="changeMotto">{{visitTimes}}</text>
-    <web-view src="https://jbxqalipay.nanjingdata.cn/web/wechat/">123</web-view>
+    <!-- <web-view src="https://jbxqalipay.nanjingdata.cn/web/wechat/">123</web-view> -->
   </view>
 </view>
