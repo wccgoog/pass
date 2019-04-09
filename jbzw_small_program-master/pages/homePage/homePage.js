@@ -1,6 +1,7 @@
 // pages/homePage/homePage.js
 import md5 from "../../utils/md5.js"
 import base64 from "../../utils/base64.js"
+import util from "../../utils/util.js"
 //获取应用实例  
 var app = getApp()
 Page({
@@ -36,28 +37,29 @@ Page({
     })
   },
   onShow(){
-    console.log("homepage.md5.hex_md5('123456'):"+md5.hex_md5("123456"));
-    let base = new base64()
-    console.log("homepage.base64.encode('123456'):" +base.encode("123456"));
-    wx.login({
-      success(res) {
-        console.log(res)
-        if (res.code) {
-          // 发起网络请求
-          wx.request({
-            url: 'https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=' + res.code +'&       grant_type=authorization_code',
-            data: {
-              code: res.code
-            },
-            success(res) {
-              console.log(res)
-            }
-          })
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
-      }
-    })
+
+    this.setData({ webViewUrl:"https://www.baidu.com/"})
+    // 获取openid
+    // wx.login({
+    //   success(res) {
+    //     console.log(res)
+    //     if (res.code) {
+    //       // 发起网络请求
+    //       wx.request({
+    //         url: 'https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=' + res.code +'&       grant_type=authorization_code',
+    //         data: {
+    //           code: res.code
+    //         },
+    //         success(res) {
+    //           console.log(res)
+    //           // app.globalData.openId=
+    //         }
+    //       })
+    //     } else {
+    //       console.log('登录失败！' + res.errMsg)
+    //     }
+    //   }
+    // })
   },
   onLoad: function () {
     wx.showLoading({
@@ -187,5 +189,8 @@ Page({
     wx.navigateTo({
       url: '../more/more?currentId=' + this.data.currentTab+'&typeId='+e.currentTarget.dataset.type
     })
+  },
+  showOpenId(){
+    console.log(app.globalData.isLogin)
   }
 })  

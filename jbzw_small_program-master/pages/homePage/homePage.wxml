@@ -1,7 +1,7 @@
 <view class="homepageWrap">
-<!-- <web-view src="https://jbxqalipay.nanjingdata.cn/"></web-view> -->
+<!-- <web-view src="{{webViewUrl}}"></web-view> -->
 <!-- 首页轮播图 -->
-    <view class="page-section page-section-spacing swiper">
+    <view class="page-section page-section-spacing swiper" bindtap='showOpenId'>
       <swiper
         indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"
         interval="{{interval}}" duration="{{duration}}" class="swiperHeight">
