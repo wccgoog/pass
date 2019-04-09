@@ -207,10 +207,7 @@ export default new Store({
           content: '该区域暂无服务，请选择其他地区。',
         });
       }
-      console.log("```````````````````````````````````````````````````````````")
-      console.log(homeBlockList)
-      // var x = homeBlockList.splice(3,1)
-      // console.log(x)
+      console.log("index/store.js homeBlockList:" + homeBlockList)
       myService = await getMyServiceInfo(myserviceParams);
       let myServiceList = [];
       let cardList = [];

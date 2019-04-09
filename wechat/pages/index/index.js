@@ -65,6 +65,7 @@ Page({
     visitTimes = visitTimes + 1
     wx.setStorageSync('visitTimes', visitTimes)
     wx.stopPullDownRefresh()
+    console.log(app.globalData)
   },
   getUserInfo: function(e) {
     console.log(e)

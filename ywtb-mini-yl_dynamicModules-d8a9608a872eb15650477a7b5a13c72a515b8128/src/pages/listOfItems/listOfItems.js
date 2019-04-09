@@ -5,11 +5,11 @@ Page({
   onLoad(options) {
     my.alert({content:app.qrCode});
     console.log(app.qrCode);
-    let urlAttr = this.getRequest();
-    console.log(urlAttr)
+    // let urlAttr = this.getRequest();
+    let urlAttr = this.getUrl();
     this.setData({urlAttr:urlAttr})
-    console.log("this.data.urlAttr.window_id:"+this.data.urlAttr.window_id)
   },
+  //带参数的url获取参数对象
   getRequest() {  
       let url = app.qrCode; 
       let theRequest = new Object();  
@@ -21,5 +21,11 @@ Page({
           }  
       }
     return theRequest;  
+  },
+  //不带参数时获取最后的目录路径
+  getUrl(){
+    let url = app.qrCode;
+    let num = url.substr(url.lastIndexOf('/')+1);
+    return num;
   } 
 });

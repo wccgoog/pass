@@ -42,6 +42,7 @@ Page({
         }
       })
     }
+    console.log("onLaunch");
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -50,5 +51,8 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  onShow(){
+    console.log("onShow");
   }
 })
