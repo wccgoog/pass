@@ -1,4 +1,6 @@
 // pages/homePage/homePage.js
+import md5 from "../../utils/md5.js"
+import base64 from "../../utils/base64.js"
 //获取应用实例  
 var app = getApp()
 Page({
@@ -31,6 +33,30 @@ Page({
   loading: function () {
     wx.showLoading({
       title: 'XXX',
+    })
+  },
+  onShow(){
+    console.log("homepage.md5.hex_md5('123456'):"+md5.hex_md5("123456"));
+    let base = new base64()
+    console.log("homepage.base64.encode('123456'):" +base.encode("123456"));
+    wx.login({
+      success(res) {
+        console.log(res)
+        if (res.code) {
+          // 发起网络请求
+          wx.request({
+            url: 'https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=' + res.code +'&       grant_type=authorization_code',
+            data: {
+              code: res.code
+            },
+            success(res) {
+              console.log(res)
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
     })
   },
   onLoad: function () {
