@@ -28,7 +28,8 @@ Page({
     autoplay: true,
     circular: true,
     interval: 2000,
-    duration: 500
+    duration: 500,
+    webViewUrl: ''
   },
   // loading显示方法
   loading: function () {
@@ -37,8 +38,7 @@ Page({
     })
   },
   onShow(){
-
-    this.setData({ webViewUrl:"https://www.baidu.com/"})
+    // this.setData({ webViewUrl: 'http://queuing.nanjingdata.cn/booking/index-systemid-10000-userid-b0xwYmcweDRSSE5qU2VkZk12TG5od045RnNJZw-myToken-fc9a4ecc74a47504d1b8d1ac3f08ca49.html' });
     // 获取openid
     // wx.login({
     //   success(res) {
@@ -191,6 +191,20 @@ Page({
     })
   },
   showOpenId(){
-    console.log(app.globalData.isLogin)
+    let openid = app.globalData.openid;
+    console.log(openid);
+    let base = new base64();
+    let userid = base.encode(app.globalData.openid);
+    // userid = userid.substring(0, userid.length - 2);
+    // userid = 'MTIzMzMyMQ'
+    console.log("base64:"+userid);
+    // let token = userid + app.globalData.today + "wssmall_jszq";
+    let token = userid + app.globalData.today + "wssmall_jszq";
+    console.log(token);
+    token = md5.hex_md5(token);
+    console.log(token);
+    let url = 'http://queuing.nanjingdata.cn/booking/index-systemid-10002-userid-'+userid+'-myToken-'+token+'.html'
+    console.log(url);
+
   }
 })  

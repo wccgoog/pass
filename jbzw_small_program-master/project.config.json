@@ -8,11 +8,12 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.98",
-	"appid": "wx03a18aa3b29b4228",
+	"appid": "wxf0f0298a0ad564f6",
 	"projectname": "jbzw_small_program-master",
 	"isGameTourist": false,
 	"condition": {

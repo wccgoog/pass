@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+# 读文件获取列表
 log_path='c:/users/wccgo/desktop/b.txt'
 f=open(log_path)
 windowNames=[]
@@ -15,7 +16,7 @@ for line in f.readlines():
 f.close()
 print(windowNames)
 
-#打开浏览器
+#打开浏览器登录
 driver=webdriver.Chrome()
 driver.get('http://59.83.223.61:18088') 
 driver.maximize_window()

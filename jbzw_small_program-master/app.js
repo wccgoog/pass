@@ -12,7 +12,7 @@ App({
 
     console.log("md5.hex_md5('123456'):" + md5.hex_md5("123456"));
     let base = new base64()
-    console.log("base64.encode('123456'):" + base.encode("123456"));
+    console.log("base64.encode('oLpbg0x4RHNjSedfMvLnhwN9FsIg'):" + base.encode("oLpbg0x4RHNjSedfMvLnhwN9FsIg"));
     // 获取日期并放入全局变量
     let today = new Date();
     console.log("util.formatDate(today):" + util.formatDate(today))
@@ -39,19 +39,19 @@ App({
     // 登录
     wx.login({
       success: res => {
-        console.log(res)
+        // console.log(res)
 
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         let code = res.code //返回code
-        console.log(code)
+        // console.log(code)
         wx.request({
-          url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx4793b28441417654&secret=4b0668e0e7bda831b7ac5b209af54b86&js_code=' + code + '&grant_type=authorization_code',
+          url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxf0f0298a0ad564f6&secret=a48f666969ce34f8990d2b39c3ecb397&js_code=' + code + '&grant_type=authorization_code',
           data: {},
           // header: {
           //   'content-type': 'application/json'
           // },
           success: function (res) {
-            console.log(res)
+            // console.log(res)
             let openid = res.data.openid //返回openid
             let session_key = res.data.session_key //返回openid
             that.globalData.openid = openid;
