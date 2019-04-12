@@ -6,17 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="css/birthday.css">
     <title>生日快乐!!!</title>
     <style>
-        /* html{
-            height: 100%;
-        } */
-        body{
-            margin: 0;
-            padding: 0;
-            background: #000000;
-            overflow: hidden;
-        }
         p{
             font-size: 50px;
             font-family: STXingkai;
@@ -39,52 +31,6 @@
         img{
             position: absolute;
             left: 35%;
-            /* bottom: 50% */
-            /* height: 400px;
-            width: 700px; */
-        }
-        .button {
-            background: #fcc3be;
-            background-image: -webkit-linear-gradient(top, #fcc3be, #f34228);
-            background-image: -moz-linear-gradient(top, #fcc3be, #f34228);
-            background-image: -ms-linear-gradient(top, #fcc3be, #f34228);
-            background-image: -o-linear-gradient(top, #fcc3be, #f34228);
-            background-image: linear-gradient(to bottom, #fcc3be, #f34228);
-            display: inline-block;
-            border-radius: 16px;
-            background-color: #f4511e;
-            border: none;
-            color: #FFFFFF;
-            text-align: center;
-            font-size: 28px;
-            padding: 20px;
-            width: 150px;
-            transition: all 0.5s;
-            cursor: pointer;
-            position: absolute;
-            bottom: 0;
-            right: 0;
-        }
-        .button span {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 0.5s;
-        }
-        .button span:after {
-            content: '»';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
-        .button:hover span {
-            padding-right: 25px;
-        }
-        .button:hover span:after {
-            opacity: 1;
-            right: 0;
         }
         #div1{
             position: absolute;
@@ -93,6 +39,66 @@
     </style>
 </head>
 <body>
+    <div id="style1">
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <bokeh></bokeh>
+        <div class="pyro">
+            <div class="before"></div>
+            <div class="after"></div>
+        </div>
+
+        <div class="candle">
+            <div id="flame" class="lit"></div>
+        </div>
+
+        <div class="cake"></div>
+        <div class="plate"></div>
+    </div>
+    <h2>Happy Birthday!</h2>
+    <span>🎉</span>
     <canvas id="canvas"></canvas>
     <div id="div1">
         <div id="div1-1">
@@ -107,7 +113,7 @@
     </div>
     <div id="div2">
         <img id="img">
-        <button id="btnClose" class="button" onClick="custom_close()"><span>关闭</span></button>
+        <!-- <button id="btnClose" class="button" onClick="custom_close()"><span>关闭</span></button> -->
     </div>
 
     <script>
@@ -127,6 +133,14 @@
             window.close();
         }
         if(localStorage.getItem('name')){
+            var numShow = Math.floor(Math.random()*2);
+            if(numShow == 0){
+                $("#canvas").hide();
+                $("#img").hide();
+            }
+            else if(numShow == 1){
+                $("#style1").hide();
+            }
             if(localStorage.getItem('day') > 0){
                 document.getElementById('p2').innerHTML = '&emsp;&emsp;还有' + localStorage.getItem('day') + '天，就到您的生日了！在这个特别的日子里，单位全体同事给您送去真挚的祝福，愿所有的幸福、所有的温馨、所有的好运都永远围绕在您的身边！'
             }
