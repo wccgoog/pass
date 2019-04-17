@@ -207,8 +207,10 @@ export default new Store({
           content: '该区域暂无服务，请选择其他地区。',
         });
       }
-      console.log("index/store.js homeBlockList:" + homeBlockList)
-      myService = await getMyServiceInfo(myserviceParams);
+      console.log("index/store.js homeBlockList:")
+      console.log(homeBlockList)
+      //下面这行代码无法获取返回值,需查明原因  2019.4.16
+      // myService = await getMyServiceInfo(myserviceParams);
       let myServiceList = [];
       let cardList = [];
       if (homeBlockList && homeBlockList[0] && homeBlockList.length > 0) {
@@ -225,14 +227,15 @@ export default new Store({
             cardList = item.list;
           }
         });
-        // commit('pageAreacode', { areaCode });
-        // commit('$global:pageBlockList', { homeBlockList, cardList });
-        // commit('$global:currentMyservice', {
-        //   myService: myServiceList,
-        // });
+        commit('pageAreacode', { areaCode });
+        commit('$global:pageBlockList', { homeBlockList, cardList });
+        commit('$global:currentMyservice', {
+          myService: myServiceList,
+        });
       }
       // else
       // {
+      
       commit('pageAreacode', { areaCode });
       commit('$global:pageBlockList', { homeBlockList, cardList });
       commit('$global:currentMyservice', {

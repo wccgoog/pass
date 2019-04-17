@@ -198,6 +198,12 @@ Page({
     // userid = userid.substring(0, userid.length - 2);
     // userid = 'MTIzMzMyMQ'
     console.log("base64:"+userid);
+    userid = base.encodeBase64URLSafeString(userid)
+    console.log("encodeBase64URLSafeString:" + userid);
+
+    // let testStr = "++--//==abc";
+    // console.log(testStr + "encodeBase64URLSafeString:" + base.encodeBase64URLSafeString(testStr))
+
     // let token = userid + app.globalData.today + "wssmall_jszq";
     let token = userid + app.globalData.today + "wssmall_jszq";
     console.log(token);

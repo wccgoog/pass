@@ -11,8 +11,8 @@
   </slot>
 </view>
 <view a:else onTap="onLoginSetUserInfo">
-  <!-- <view class="loginButton">点我登录</view> -->
-  <!-- <credentials />
+  <!-- <view class="loginButton">点我登录</view>
+   <credentials />
   <service-market />
   <service-card /> -->
 </view>

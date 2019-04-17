@@ -30,6 +30,12 @@
       <template a:if="{{item.title!='我的办件'}}" is="{{item.blockKey}}" data="{{item}}" />
     </view>
   </layout>
+  <!-- <view a:for="{{background}}">
+    {{item}}
+  </view>
+  <view  a:if="{{$global:pageBlockList}}" a:for="{{background}}">
+    {{item}}
+  </view> -->
   <!-- <view class="cr-container">
     <credentials />
   </view> -->

@@ -1,4 +1,12 @@
 function Base64() {
+  this.encodeBase64URLSafeString = function (base64){
+    base64 = base64.replace(/\+/g, '-');
+    base64 = base64.replace(/\//g, '_');
+    while(base64.substr(base64.length - 1) == "="){
+      base64 = base64.substr(0,base64.length - 2);
+    }
+    return base64
+  }
 
   // private property
   let _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";

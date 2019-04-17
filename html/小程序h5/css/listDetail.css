@@ -1,3 +1,8 @@
 body{
     background-color:#eee;
 }
+#none{
+    display: none;
+    font-size: 24px;
+    text-align: center;
+}

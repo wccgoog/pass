@@ -23,7 +23,6 @@ Page(store.register({
     //用户自动登录
     this.dispatch('onLoginSetUserInfo');
 
-
     // const { shareData } = app;
     // const { city } = shareData;
     // const { changed } = city;
@@ -47,7 +46,7 @@ Page(store.register({
   async onLoad(options) {
     this.dispatch('updateCityTabs');
     this.dispatch('updateLocalAuthCode');
-    // this.dispatch('getPageBlocks');
+    this.dispatch('getPageBlocks');
     // this.dispatch('loadServiceMarketInfo', {
     //   'pageInstanceId': '201811231110002121111222',
     //   'areaCode': '310100',

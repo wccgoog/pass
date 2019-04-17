@@ -28,8 +28,16 @@ $(function(){
             'sid' : webData.sid
         },
         success:function(data) {
-            addTitle(data.data.title);
-            addList(data.data.list);
+            if(data.data.list.length == 0){
+                addTitle(data.data.title);
+                $("#none").show();
+                console.log("111111")
+            }
+            else{
+                addTitle(data.data.title);
+                addList(data.data.list);
+            }
+
             console.log(data)
         }
     })
