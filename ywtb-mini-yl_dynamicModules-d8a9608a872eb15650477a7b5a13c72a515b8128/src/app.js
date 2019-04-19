@@ -22,7 +22,11 @@ App({
     await getCityTabs();
   },
   onShow(options) {
+    if(options && options.query){
+      this.qrCode = options.query.qrCode;
+    }
     console.log('app onShow option-------------' + JSON.stringify(options));
+    console.log('app onShow option-------------' + JSON.stringify(options.query));
   },
   onHide() {
     console.log('app onHide');

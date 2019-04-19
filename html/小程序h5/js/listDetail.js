@@ -31,7 +31,6 @@ $(function(){
             if(data.data.list.length == 0){
                 addTitle(data.data.title);
                 $("#none").show();
-                console.log("111111")
             }
             else{
                 addTitle(data.data.title);

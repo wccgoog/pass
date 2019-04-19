@@ -9,7 +9,7 @@ Component(connect({
       return state.$global.cityInfo;
     },
     myService: (state) => {
-      console.log(state);
+      // console.log(state);
       return state.$global.myService;
     },
   },

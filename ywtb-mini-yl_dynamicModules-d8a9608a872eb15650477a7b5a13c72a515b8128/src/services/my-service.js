@@ -7,6 +7,7 @@ import myService from './my-service.mock';
  */
 export default async function modifyUserinfo(param = {}) {
   // http 请求
+  console.log("----------------------------------"+param)
   const userInfo = await Http.post('proxy-user/userservice/getUserServiceList', param);
   // return myService;
   // // mock 数据

@@ -207,10 +207,11 @@ export default new Store({
           content: '该区域暂无服务，请选择其他地区。',
         });
       }
-      console.log("index/store.js homeBlockList:")
-      console.log(homeBlockList)
+      // console.log("index/store.js homeBlockList:")
+      // console.log(homeBlockList)
       //下面这行代码无法获取返回值,需查明原因  2019.4.16
       // myService = await getMyServiceInfo(myserviceParams);
+      //上面代码查询我的服务列表,连接超时.非我方功能需求.
       let myServiceList = [];
       let cardList = [];
       if (homeBlockList && homeBlockList[0] && homeBlockList.length > 0) {
@@ -247,24 +248,25 @@ export default new Store({
       }
     },
     // 是否有未读消息
-    async updateHasReadMessage({ commit, state, dispatch }, payload) {
-      if (!state.$global.isLogin) {
-        return;
-      }
-      // console.log(state);
-      const requestData = {
-        channelType: 'OWNER_MSG',
-        readFlag: 'N',
-        receiverAccount: state.$global.userInfo.uid,
-      };
-      const msgList = await getReadMessageList(requestData);
-      return commit('$global:currentHasReadMessage', {
-        userInfo: {
-          ...state.$global.userInfo,
-          isMsg: msgList.count === 0 ? false : true,
-        },
-      });
-    },
+    //20190419 未使用到消息服务,故注释掉下方代码
+    // async updateHasReadMessage({ commit, state, dispatch }, payload) {
+    //   if (!state.$global.isLogin) {
+    //     return;
+    //   }
+    //   // console.log(state);
+    //   const requestData = {
+    //     channelType: 'OWNER_MSG',
+    //     readFlag: 'N',
+    //     receiverAccount: state.$global.userInfo.uid,
+    //   };
+    //   const msgList = await getReadMessageList(requestData);
+    //   return commit('$global:currentHasReadMessage', {
+    //     userInfo: {
+    //       ...state.$global.userInfo,
+    //       isMsg: msgList.count === 0 ? false : true,
+    //     },
+    //   });
+    // },
   },
 
 });

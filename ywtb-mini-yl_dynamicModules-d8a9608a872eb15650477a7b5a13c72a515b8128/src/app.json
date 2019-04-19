@@ -30,20 +30,20 @@
     "items": [
       {
         "pagePath": "pages/index/index",
-        "icon": "https://jbxqalipay.nanjingdata.cn/m/image/index.png",
-        "activeIcon": "https://gw.alipayobjects.com/zos/rmsportal/IRmNNanjAlkNFrIdGJkL.png",
+        "icon": "images/1-n.png",
+        "activeIcon": "images/1-a.png",
         "name": "首页"
       },
       {
         "pagePath": "pages/scan/scan",
-        "icon": "https://jbxqalipay.nanjingdata.cn/m/image/scan.png",
-        "activeIcon": "https://jbxqalipay.nanjingdata.cn/m/image/scanActive.png",
+        "icon": "images/2-n.png",
+        "activeIcon": "images/2-a.png",
         "name": "扫码导航"
       },
       {
         "pagePath": "pages/personal-center/index",
-        "icon": "https://jbxqalipay.nanjingdata.cn/m/image/personalCenter.png",
-        "activeIcon": "https://jbxqalipay.nanjingdata.cn/m/image/personalCenterActive.png",
+        "icon": "images/3-n.png",
+        "activeIcon": "images/3-a.png",
         "name": "我的"
       }
     ]
