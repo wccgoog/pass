@@ -48,8 +48,8 @@
 }
 
 .service-item{
-  margin-top: 40rpx !important;
+  /* margin-top: 40rpx !important; */
 }
 .service-market-container{
-  padding-bottom: 30rpx !important;
+  /* padding-bottom: 30rpx !important; */
 }

@@ -7,9 +7,19 @@ Page({
       console.log("支付宝外部二维码扫描进入--app.qrCode:"+app.qrCode)
       let url = app.qrCode;
       let num = url.substr(url.lastIndexOf('/')+1);
-      my.navigateTo({
-        url: '/pages/web-view/index?requestUrl=' + "https://jbxqalipay.nanjingdata.cn/m/listOfItems.html?window_id=" + num,
-      });
+      url = url.substr(0,url.lastIndexOf('/'));
+      let name = url.substr(url.lastIndexOf('/')+1);
+      console.log(name);
+      if(name == "img"){
+        my.navigateTo({
+          url: '/pages/web-view/index?requestUrl=' + "https://jbxqalipay.nanjingdata.cn/m/listOfItems.html?window_id=" + num,
+        });
+      }
+      else if(name == "in"){
+        my.navigateTo({
+          url: '/pages/web-view/index?requestUrl=' + "https://jbxqalipay.nanjingdata.cn/m/index.html",
+        });
+      }
     }
     else{
       console("scanning...")

@@ -46,12 +46,12 @@ $(function(){
 
     
     function addTitle(result) {
-            $(".themeTitle").append("<div class='themeTitleWords'>"+getCaption(result)+"</div>");
+            $(".themeTitle").prepend("<div class='themeTitleWords'>"+getCaption(result)+"</div>");
     }
     
     function addList(result) {
         $.each(result,function(index,obj){
-            $(".variousList").append("<div class='listSingle' onclick='goListDetail(this)' data-id="+obj['id']+">"+obj['name']+"</div>");
+            $(".variousList").append("<div class='listSingle' onclick='goListDetail(this)' data-id="+obj['id']+"><div>"+obj['name']+"</div><img src='./image/arrow.png'</div>");
         });
     }
 

@@ -15,7 +15,7 @@
     type="primary"
     disabled="{{isConfirmSubmit}}"
     formType="submit" 
-    >提交 
+    >保存 
     </button>
   </view>
 </view>

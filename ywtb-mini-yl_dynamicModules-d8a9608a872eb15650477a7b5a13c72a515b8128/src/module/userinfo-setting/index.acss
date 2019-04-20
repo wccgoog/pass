@@ -6,3 +6,7 @@
   bottom: 0;
   background: #f5f5f5;
 }
+img{
+  height: 60px;
+  width: 60px;
+}

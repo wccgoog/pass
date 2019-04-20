@@ -63,5 +63,5 @@
       specialServices="{{jtcxService}}"
     />
   </view>-->
-  <!-- <footer />  -->
+  <footer /> 
 </view>

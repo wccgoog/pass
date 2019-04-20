@@ -9,6 +9,7 @@
   align-items: center;
   position: relative;
   background: #fff;
+  font-size: 34rpx;
 }
 
 .page-box .wrapper:first-child {
@@ -28,21 +29,21 @@
 }
 
 .page-box .right {
-  margin-right: 30rpx;
+  margin-right: 32rpx;
   width: 50%;
 }
 
 .page-box .wrapper-name {
   margin-left: 30rpx;
-  font-size: 30rpx;
+  font-size: 34rpx;
   color: #333;
 }
 
 .page-box .name {
   width: 100%;
   text-align: right;
-  margin-right: 30rpx;
-  font-size: 26rpx;
+  margin-right: 35rpx;
+  font-size: 32rpx;
   color: #999;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -50,8 +51,8 @@
 }
 
 .page-box .left-icon {
-  width: 40rpx;
-  height: 40rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
 
 .page-box .right-arrow {

@@ -1,8 +1,12 @@
 body{
-    background-color:#eee;
+    /* background-color:#eee; */
 }
 #none{
     display: none;
     font-size: 24px;
     text-align: center;
+}
+.themeTitle img{
+    margin-right: 30px;
+    height: 120px;
 }

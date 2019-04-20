@@ -73,25 +73,43 @@ body{
     width:100%;
     background-color:#fff;
     font-family:simsun;
+    align-items: center;
+    justify-content: space-between;
 }
 .themeTitleWords{
     left:0;
     border-left:2px solid #079a41;
-    font-size: 15px;
+    padding-left: 10px;
+    vertical-align: middle;
+    font-size: 26px;
+    font-weight: 900;
+    color: black;
 }
 div{
     display:block;
 }
 .variousList{
-    margin-top:20px;
+    /* margin-top:20px; */
 }
 .listSingle{
     background-color:#fff;
     padding:10px;
     font-size:15px;
     color:#333;
-    margin-bottom:10px;
+    margin-bottom:1px;
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px #eee solid;
+}
+.listSingle div{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+.listSingle img{
+    height: 10px;
 }
