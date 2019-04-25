@@ -22,7 +22,6 @@ Page({
       }
     }
     else{
-      console("scanning...")
       this.scan();
     }
   },

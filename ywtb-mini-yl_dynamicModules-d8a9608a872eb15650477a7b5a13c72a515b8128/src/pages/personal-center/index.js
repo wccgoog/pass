@@ -13,6 +13,12 @@ Page(store.register({
   onLoad() {
     this.dispatch('loadPageData');
   },
+  wcc(){
+    console.log("wcc");
+    my.navigateTo({
+      url: '/pages/web-view/index?requestUrl=' + "https://jbxqalipay.nanjingdata.cn/m/",
+    });
+  },
   ...information,
   ...credentials,
   ...serviceCard,
