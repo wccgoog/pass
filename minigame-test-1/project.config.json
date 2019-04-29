@@ -11,6 +11,8 @@
 	"libVersion": "1.9.94",
 	"appid": "wx5516d9395dd310e3",
 	"projectname": "minigame-test-1",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

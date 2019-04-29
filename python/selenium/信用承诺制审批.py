@@ -9,9 +9,10 @@ from selenium.webdriver.support import expected_conditions as EC
 # driver=webdriver.Chrome()
 # driver.get('http://59.83.223.61:18088') 
 # driver.maximize_window()
-projectName="04231226"
+projectName="041803"
 # 9部门工号为032923-032931
 account = 32923
+# visit = [32924,32927,32928]
 for i in range(account,32932):
     driver=webdriver.Chrome()
     driver.get('http://59.83.223.61:18090') 

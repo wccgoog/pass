@@ -17,8 +17,8 @@
       <template a:if="{{item.title=='我的办件'}}" is="{{item.blockKey}}" data="{{item}}" />
     </view>
   </layout>
+  <!-- <logout /> -->
   <view onTap="wcc">
     123
   </view>
-  <!-- <logout /> -->
 </view>
