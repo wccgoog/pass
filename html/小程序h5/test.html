@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"> 
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="js/test.js"></script>
+    <script>
+        if (navigator.userAgent.indexOf('AlipayClient') > -1) {
+            document.writeln('<script src="https://appx/web-view.min.js"' + '>' + '<' + '/' + 'script>');
+        }
+    </script>
+    <title>支付宝跳转H5测试页面</title>
+    <style>
+        body{
+            width: 100%;
+        }
+        div{
+            width: 100%;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <input id="faceVerify" type="button" value="点我进入支付宝的人脸识别页面" />
+</body>
+</html>

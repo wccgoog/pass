@@ -11,7 +11,8 @@
     "pages/my-card/index",
     "pages/message-list/message-list",
     "pages/scan/scan",
-    "pages/listOfItems/listOfItems"
+    "pages/listOfItems/listOfItems",
+    "pages/faceVerify/faceVerify"
   ],
   "window": {
     "enableDSL": "YES",

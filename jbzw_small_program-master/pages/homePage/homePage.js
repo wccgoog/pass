@@ -21,7 +21,12 @@ Page({
     business_topic: '',
     business_department: '',
     // banner图
-    background:[],
+    background: ["https://jbxqalipay.nanjingdata.cn/image/tb1.jpg",
+      "https://jbxqalipay.nanjingdata.cn/image/tb2.jpg",
+      "https://jbxqalipay.nanjingdata.cn/image/tb3.jpg",
+      "https://jbxqalipay.nanjingdata.cn/image/tb4.jpg",
+      "https://jbxqalipay.nanjingdata.cn/image/tb5.jpg",
+      "https://jbxqalipay.nanjingdata.cn/image/tb6.jpg"],
     // banner图相关配置
     indicatorDots: true,
     vertical: false,
@@ -99,21 +104,21 @@ Page({
       }
     })
     //请求首页banner图
-    wx.request({
-      url: 'https://jbzw.qimixi.net/api/banner/bannerList',
-      data: "",
-      method: 'POST',
-      success: function (res) {
-        let list = res.data.data.list;
-        let listArr=[];
-        for(var i in list){
-          listArr.push(list[i].image)
-        }
-        _this.setData({
-          background: listArr
-        })
-      }
-    })
+    // wx.request({
+    //   url: 'https://jbzw.qimixi.net/api/banner/bannerList',
+    //   data: "",
+    //   method: 'POST',
+    //   success: function (res) {
+    //     let list = res.data.data.list;
+    //     let listArr=[];
+    //     for(var i in list){
+    //       listArr.push(list[i].image)
+    //     }
+    //     _this.setData({
+    //       background: listArr
+    //     })
+    //   }
+    // })
   },
   //滑动切换tab
   bindChange: function (e) {

@@ -18,7 +18,5 @@
     </view>
   </layout>
   <!-- <logout /> -->
-  <view onTap="wcc">
-    123
-  </view>
+  <view onTap="toFaceVerify" class="text">人脸识别</view>
 </view>

@@ -22,5 +22,10 @@ Page(store.register({
   ...credentials,
   ...serviceCard,
   ...myservice,
+  toFaceVerify(){
+    my.navigateTo({
+      url:'/pages/faceVerify/faceVerify'
+    })
+  }
 }));
 

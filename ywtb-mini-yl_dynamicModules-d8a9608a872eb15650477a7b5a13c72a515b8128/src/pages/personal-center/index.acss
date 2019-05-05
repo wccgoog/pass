@@ -68,3 +68,7 @@
 .service-market-container{
   /* padding-bottom: 30rpx !important; */
 }
+.text{
+  text-align: center;
+  margin:300px auto;
+}
