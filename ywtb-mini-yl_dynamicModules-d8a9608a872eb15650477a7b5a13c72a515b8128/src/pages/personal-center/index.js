@@ -15,7 +15,8 @@ Page(store.register({
   },
   wcc(){
     my.navigateTo({
-      url: '/pages/web-view/index?requestUrl=' + "https://jbxqalipay.nanjingdata.cn/m/",
+      // url: '/pages/web-view/index?requestUrl=' + "https://jbxqalipay.nanjingdata.cn/m/",
+      url: '/pages/faceVerify/faceVerify',
     });
   },
   ...information,

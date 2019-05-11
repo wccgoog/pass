@@ -3,7 +3,7 @@ import { connect } from 'herculex';
 Component(connect({
   mapStateToProps: {
     stateInfo: (state) => {
-      console.log(state.$global);
+      console.log("state.$global:",state.$global);
       return state.$global;
     },
     title: (state) => {

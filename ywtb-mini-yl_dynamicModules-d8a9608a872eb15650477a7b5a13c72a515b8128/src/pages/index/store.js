@@ -246,6 +246,7 @@ export default new Store({
       if (!isRequest) {
         await getPageInstanceBlocks(homeParams, areaCode, pageName);
       }
+      // console.log("state:"+JSON.stringify(state));
     },
     // 是否有未读消息
     //20190419 未使用到消息服务,故注释掉下方代码

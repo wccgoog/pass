@@ -1,60 +1,63 @@
 <!-- written by wcc -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">    
-        <link rel="stylesheet" href="css/index.css">
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/index.js"></script>
-        <!-- 如该H5页面需要同时在非支付宝客户端内使用，为避免该请求404，可参考以下写法
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/index.js"></script>
+    <!-- 如该H5页面需要同时在非支付宝客户端内使用，为避免该请求404，可参考以下写法
         请尽量在html头部执行以下脚本 -->
-        <script>
-            if (navigator.userAgent.indexOf('AlipayClient') > -1) {
-                document.writeln('<script src="https://appx/web-view.min.js"' + '>' + '<' + '/' + 'script>');
-            }
-        </script>
-        <title>新区e办事</title>
-    </head>
-    <body>
-        <img class="image" src="image/head_img.png"/>
-        <div class="flex flex-box top-div">
-            <div class="content-div">
-                <span class="active content-span" id="type1">个人服务</span>
-            </div>
-            <div class="content-div">
-                <span class="content-span" id="type2">企业服务</span>
-            </div>
+    <script>
+        if (navigator.userAgent.indexOf('AlipayClient') > -1) {
+            document.writeln('<script src="https://appx/web-view.min.js"' + '>' + '<' + '/' + 'script>');
+        }
+    </script>
+    <title>新区e办事</title>
+</head>
+
+<body>
+    <img class="image" src="image/head_img.png" />
+    <div class="flex flex-box top-div">
+        <div class="content-div">
+            <span class="active content-span" id="type1">个人服务</span>
         </div>
-        <div class="saperate"></div>
-        <div class="flex flex-box top-div">
-            <span class="green-left">主题</span>
-            <div class="flex flex-center top-div content-span more" id="goTheme">
-                <div>更多</div>
-                <!-- url待定 -->
-                <img  class="arrow_img"src="image/arrow.png"/>
-            </div>
+        <div class="content-div">
+            <span class="content-span" id="type2">企业服务</span>
         </div>
-        <div class="flex flex-box top-div" id="theme">
+    </div>
+    <div class="saperate"></div>
+    <div class="flex flex-box top-div">
+        <span class="green-left">主题</span>
+        <div class="flex flex-center top-div content-span more" id="goTheme">
+            <div>更多</div>
+            <!-- url待定 -->
+            <img class="arrow_img" src="image/arrow.png" />
         </div>
-        <div class="saperate"></div>
-        <div class="flex flex-box top-div">
-            <span class="green-left">部门</span>
-            <div class="flex flex-center top-div content-span more" id="goDepartment">
-                <div>更多</div>
-                <!-- url待定 -->
-                <img  class="arrow_img"src="image/arrow.png"/>
-            </div>
+    </div>
+    <div class="flex flex-box top-div" id="theme">
+    </div>
+    <div class="saperate"></div>
+    <div class="flex flex-box top-div">
+        <span class="green-left">部门</span>
+        <div class="flex flex-center top-div content-span more" id="goDepartment">
+            <div>更多</div>
+            <!-- url待定 -->
+            <img class="arrow_img" src="image/arrow.png" />
         </div>
-        <div class="departmentClassify" id="department">
-        </div>
-        <script>
-            $(".image").click(function(){
-                my.reLaunch({
-                    //跳转回支付宝小程序首页
-                    url:'/pages/index/index'  
-                })
+    </div>
+    <div class="departmentClassify" id="department">
+    </div>
+    <script>
+        $(".image").click(function () {
+            my.reLaunch({
+                //跳转回支付宝小程序人脸识别
+                url: '/pages/faceVerify/faceVerify'
             })
-        </script>
-    </body>
+        })
+    </script>
+</body>
+
 </html>

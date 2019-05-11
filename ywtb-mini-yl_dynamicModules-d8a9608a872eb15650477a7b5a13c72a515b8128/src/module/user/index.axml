@@ -2,7 +2,7 @@
   <view class="left">
     <view a:if="{{stateInfo.isLogin}}" class="userinfo">
       <image class="avarta" mode="aspectFit" src="{{stateInfo.userInfo.avatar}}" />
-      <view class="name">{{stateInfo.userInfo.nickName}}</view>
+      <view class="name">{{stateInfo.userInfo.name}}</view>
     </view>
     <view a:else onTap="onLogin" class="userinfo">
       <image class="avarta" mode="aspectFit" src="https://gw.alipayobjects.com/zos/rmsportal/OEpRddJBTljCwxpcwDXQ.png" />

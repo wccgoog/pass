@@ -1,4 +1,3 @@
-
 import Store from 'herculex';
 const app = getApp();
 
@@ -12,7 +11,8 @@ export default new Store({
       commit('modifyRequestUrl', {
         requestUrl,
       });
-      console.log(state.requestUrl);
+      console.log("state.requestUrl:"+state.requestUrl);
+      // console.log("state:"+JSON.stringify(state));
     },
   },
 });

@@ -1,8 +1,11 @@
 import getCityTabs from './services/city-service';
 import getPageInstanceBlocks from './services/page-service';
+import {getUid} from './utils/index';
 
 App({
-  qrCode:'',
+  qrCode: '',
+  uid: '',
+  faceVerifyUrl: '',
   async onLaunch(options) {
     const { query = {} } = options;
     if (query.cityId) {
@@ -22,11 +25,11 @@ App({
     await getCityTabs();
   },
   onShow(options) {
-    if(options && options.query){
+    if (options && options.query) {
       this.qrCode = options.query.qrCode;
     }
     console.log('app onShow option-------------' + JSON.stringify(options));
-    console.log('app onShow option-------------' + JSON.stringify(options.query));
+    this.uid = getUid();
   },
   onHide() {
     console.log('app onHide');

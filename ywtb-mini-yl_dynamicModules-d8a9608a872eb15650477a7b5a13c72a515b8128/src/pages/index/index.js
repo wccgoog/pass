@@ -3,6 +3,7 @@ import information from '/templates/information/';
 import credentials from '/templates/credentials/';
 import serviceCard from '/templates/service-card/';
 import myservice from '/templates/my-service/';
+import { getAreaList, navigateToRightUrl, getUid } from '../../utils/index';
 
 // 获取应用实例
 const app = getApp();
@@ -37,6 +38,7 @@ Page(store.register({
     // });
     this.dispatch('updateHasReadMessage');
     this.dispatch('getPageBlocks');
+
     //   city.changed = false;
     // }
   },
@@ -47,6 +49,7 @@ Page(store.register({
     this.dispatch('updateCityTabs');
     this.dispatch('updateLocalAuthCode');
     this.dispatch('getPageBlocks');
+
     // this.dispatch('loadServiceMarketInfo', {
     //   'pageInstanceId': '201811231110002121111222',
     //   'areaCode': '310100',
