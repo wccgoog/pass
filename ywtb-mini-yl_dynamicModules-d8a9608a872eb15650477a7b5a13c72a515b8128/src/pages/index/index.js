@@ -4,13 +4,14 @@ import credentials from '/templates/credentials/';
 import serviceCard from '/templates/service-card/';
 import myservice from '/templates/my-service/';
 import { getAreaList, navigateToRightUrl, getUid } from '../../utils/index';
+import { faceVerify } from '../../utils/faceVerify';
 
 // 获取应用实例
 const app = getApp();
 
 Page(store.register({
-  data:{
-    background:[
+  data: {
+    background: [
       "https://jbxqalipay.nanjingdata.cn/image/tb1.jpg",
       // "https://jbxqalipay.nanjingdata.cn/image/tb2.jpg",
       "https://jbxqalipay.nanjingdata.cn/image/tb3.jpg",
@@ -49,7 +50,20 @@ Page(store.register({
     this.dispatch('updateCityTabs');
     this.dispatch('updateLocalAuthCode');
     this.dispatch('getPageBlocks');
+    console.log(options);
+    if (options.url) {
+      this.setData({
+        url: options.url
+      });
+    }
 
+    //低保事项扫脸
+    if (options.type == "attorneys") {
+      faceVerify('https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/daiban.html', 'https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html');
+    } else if (options.type == "myself") {
+      faceVerify('https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/selfApp.html', 'https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html');
+    }
+    
     // this.dispatch('loadServiceMarketInfo', {
     //   'pageInstanceId': '201811231110002121111222',
     //   'areaCode': '310100',
