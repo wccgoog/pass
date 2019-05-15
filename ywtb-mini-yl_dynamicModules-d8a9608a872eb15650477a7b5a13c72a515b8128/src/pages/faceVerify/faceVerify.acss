@@ -3,3 +3,15 @@
   border:1px red solid;
   padding: 20px;
 }
+.goIndex{
+  display: block;
+  font-weight: 900;
+  font-size: 24px;
+}
+.goIndexButton{
+  width: 100%;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  /* margin-left: 40%; */
+}
