@@ -1,3 +1,4 @@
 <!-- <view onTap="faceVerify" class="text">
   人脸识别,点我
 </view> -->
+<view class="face">正在打开刷脸认证,请稍等......</view>

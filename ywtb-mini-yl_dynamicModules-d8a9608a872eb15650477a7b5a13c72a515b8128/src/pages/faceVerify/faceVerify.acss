@@ -3,3 +3,8 @@
   border:1px red solid;
   padding: 20px;
 }
+.face{
+  margin: 40px 20px;
+  font-weight: 900;
+  font-size:24px;
+}

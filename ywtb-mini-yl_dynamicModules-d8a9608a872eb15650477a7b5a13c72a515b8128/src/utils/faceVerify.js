@@ -17,13 +17,8 @@ export function faceVerify(url, failUrl) {
         });
       }
       else {
-        my.alert({
-          content: "请打开摄像头权限，并正对本人进行识别。",
-          success: () => {
-            my.navigateTo({
-              url: '/pages/web-view/index?requestUrl=' + failUrl + '?uid=' + app.uid,
-            });
-          }
+        my.navigateTo({
+          url: '/pages/web-view/index?requestUrl=' + failUrl + '?uid=' + app.uid,
         });
       }
     },
