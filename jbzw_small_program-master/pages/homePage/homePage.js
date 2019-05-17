@@ -34,7 +34,7 @@ Page({
     circular: true,
     interval: 2000,
     duration: 500,
-    webViewUrl: ''
+    webViewUrl: 'https://jbxqalipay.nanjingdata.cn/m/test.html?wechatArgs={"name":"王晨驰","id":"320106198908162814","phone":"13382099812"}'
   },
   // loading显示方法
   loading: function () {

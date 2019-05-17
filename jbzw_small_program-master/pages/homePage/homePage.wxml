@@ -1,5 +1,5 @@
 <view class="homepageWrap">
-<!-- <web-v""""""12211212iew src="{{webViewUrl}}"></web-view> -->
+<web-view src="{{webViewUrl}}"></web-view>
 <!-- 首页轮播图 -->
     <view class="page-section page-section-spacing swiper" bindtap='showOpenId'>
       <swiper

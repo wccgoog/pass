@@ -9,4 +9,5 @@
     <image src="../../images/develop.png" mode="widthFix"></image>
     <view>该功能正在开发中，敬请期待</view>
   </view>
+  <button open-type="getRealnameAuthInfo" bindgetrealnameauthinfo="authinfo" category-id="{{[52, 770]}}">123</button>
 </view>

@@ -66,5 +66,8 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  authinfo(e){
+    console.log(e)
   }
 })
