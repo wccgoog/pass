@@ -16,9 +16,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.login({
+      success(res) {
+        wx.getUserInfo({
+          success(resuserinfo) {
+            wx.request({
+              url: 'http://jbzw.qimixi.net/api/wechat',
+              data: {
+                code: res.code,
+                encryptedData: resuserinfo.encryptedData,
+                rawData: resuserinfo.rawData,
+                iv: resuserinfo.iv,
+                signature: resuserinfo.signature,
+              },
+              success: function (result) {
+                var res = result.data;
+                console.log(res);
+                wx.setStorage({
+                  key: 'session3rd',
+                  data: res.data.session3rd,
+                })
+              }
+            })
+          }
+        })
+      }
+    })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -68,6 +92,9 @@ Page({
   
   },
   authinfo(e){
+    console.log(e)
+  },
+  getPhoneNumber(e){
     console.log(e)
   }
 })
