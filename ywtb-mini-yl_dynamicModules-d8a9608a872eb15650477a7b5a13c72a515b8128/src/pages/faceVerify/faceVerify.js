@@ -38,7 +38,7 @@ Page({
   },
   onHide() {
     this.setData({
-      isShow: false
+      showText: '请稍等......'
     });
   }
 });
