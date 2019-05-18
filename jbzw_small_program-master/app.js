@@ -1,8 +1,4 @@
 //app.js
-import md5 from "utils/md5.js"
-import base64 from "utils/base64.js"
-import util from "utils/util.js"
-
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -10,14 +6,6 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    console.log("md5.hex_md5('123456'):" + md5.hex_md5("123456"));
-    let base = new base64()
-    console.log("base64.encode('oLpbg0x4RHNjSedfMvLnhwN9FsIg'):" + base.encode("oLpbg0x4RHNjSedfMvLnhwN9FsIg"));
-    // 获取日期并放入全局变量
-    let today = new Date();
-    console.log("util.formatDate(today):" + util.formatDate(today))
-    this.globalData.today = util.formatDate(today)
-    var that = this
 // wx.checkSession({
 //   success:function(){
 
@@ -36,6 +24,7 @@ App({
 //     })
 //   }
 // })
+    var that = this
     // 登录
     wx.login({
       success: res => {
@@ -84,6 +73,9 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    encryptedData:'',
+    iv:'',
+    code:''
   }
 })

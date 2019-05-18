@@ -66,5 +66,52 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  authinfo(res){
+    console.log(res)
+  },
+  faceVerify(){
+    wx.checkIsSupportSoterAuthentication({
+      success(res) {
+        console.log(res.supportMode)
+        if ("facial" in res.supportMode){
+          wx.showToast({
+            title: 'facial is included',
+            duration: 2000
+          })
+          wx.startSoterAuthentication({
+            requestAuthModes: ['facial'],
+            challenge: '123456',
+            authContent: '请刷脸解锁',
+            success(res) {
+              wx.showToast({
+                title: 'facialVerified',
+                duration: 2000
+              })
+            }
+          })
+        }else{
+          wx.showToast({
+            title: 'facial is not included',
+            duration: 2000
+          })
+          wx.startSoterAuthentication({
+            requestAuthModes: ['fingerPrint'],
+            challenge: '123456',
+            authContent: '请用指纹解锁',
+            success(res) {
+              wx.showToast({
+                title: 'fingerPrintVerified',
+                duration: 2000
+              })
+            }
+          })
+        }
+      }
+    })
+
+  },
+  getPhoneNumber(res){
+    console.log(res)
   }
 })

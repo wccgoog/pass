@@ -9,13 +9,6 @@ const formatTime = date => {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
-const formatDate = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  return year + '-' + month.toString().padStart(2, '0') + '-' + day.toString().padStart(2, '0')
-}
-
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -52,6 +45,5 @@ module.exports = {
   formatTime: formatTime,
   //url相关
   getCurrentPageUrl: getCurrentPageUrl,
-  getCurrentPageUrlWithArgs: getCurrentPageUrlWithArgs,
-  formatDate: formatDate
+  getCurrentPageUrlWithArgs: getCurrentPageUrlWithArgs
 }

@@ -17,7 +17,11 @@
     "pages/guide/guide",
     "pages/listDetail/listDetail",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/onePic/onePic",
+    "pages/test/test",
+    "pages/apply/apply",
+    "pages/webview/webview"
   ],
   "window": {
     "backgroundTextStyle": "light",

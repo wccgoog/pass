@@ -7,35 +7,29 @@ Page({
   data: {
     //页面配置
     winWidth: 0,
-    winHeight: 0,  
+    winHeight: 0,
     // tab切换  
     currentTab: 0,
-    //搜索框下拉列表
-    downList:false,
     //获取内容
-    department:null,
-    topic:null,
-    searchList:null,
-    //搜索框关键字
-    keywords:"",
-    // 取消键
-    cancel:false
+    department: null,
+    topic: null,
+    isShowNullList: false,
+    searchList: []
   },
-  showDownList(e){
-    var _this=this;
-    if (e.detail.value!=0){
-      _this.setData({
-        downList: true,
-        cancel:true,
-        keywords: e.detail.value
-      })
-    }else{
-      _this.setData({
-        downList: false,
-        cancel: false,
-        keywords: e.detail.value
-      })
-    }
+  onInputFocus() {
+    this.setData({
+      isShowNullList: true,
+    })
+  },
+  onInputBlur() {
+    this.setData({
+      isShowNullList: false,
+    })
+  },
+  showDownList(e) {
+    // console.log('showDownList.e:', e)
+    var _this = this;
+
     wx.request({
       url: 'https://jbzw.qimixi.net/api/search/affairList',
       data: {
@@ -49,9 +43,10 @@ Page({
         _this.setData({
           searchList: res.data.data.list
         })
+        console.log('searchList数据：', _this.searchList)
       }
     })
-  },  
+  },
   //点击进入列表
   goListDetail(e) {
     if (this.data.currentTab == 0) {
@@ -70,7 +65,7 @@ Page({
     });
   },
   //进入办事指南
-  goContentDetail(e){
+  goContentDetail(e) {
     wx.navigateTo({
       url: '../contentDetail2/contentDetail2?id=' + e.currentTarget.dataset.id,
     });
@@ -80,11 +75,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    // var scan_url = decodeURIComponent(options.q)
-    // let str = scan_url;
-    // let p = str.lastIndexOf("/");
-    // let inParam = str.substring(p + 1, str.length);
-    wx.setStorageSync("in", options.in)
+    var scan_url = decodeURIComponent(options.q)
+    let str = scan_url;
+    let p = str.lastIndexOf("/");
+    let inParam = str.substring(p + 1, str.length);
+    wx.setStorageSync("in", inParam)
     /** 
      * 获取系统信息 
      */
@@ -117,7 +112,7 @@ Page({
      * 滑动切换tab 
      */
   bindChange: function (e) {
-    var typeId = e.detail.current+1;
+    var typeId = e.detail.current + 1;
     wx.request({
       url: 'https://jbzw.qimixi.net/api/search/searchIndex',
       data: {
@@ -171,11 +166,4 @@ Page({
       })
     }
   },
-  clearInput(){
-    this.setData({
-      cancel:false,
-      keywords:"",
-      searchList:null
-    })
-  }
 })

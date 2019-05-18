@@ -2,13 +2,15 @@ Page({
   data: {
     title: true,
     typeDepart: "",
-    list:""
+    list:"",
+    firstCatalog:""
   },
   onLoad: function (options) {
-    console.log(options)
-    console.log(options)
-    console.log(options)
+    console.log("进入更多页面：",options)
     var _this=this;
+    this.setData({
+      firstCatalog: options.firstCatalog
+    })
     //一级判断
     if (options.currentId == 0) {
       this.setData({
@@ -87,7 +89,7 @@ Page({
   //点击进入列表
   goListDetail(e) {
     wx.navigateTo({
-      url: '../listDetail/listDetail?firstCatalog=1&secondCatalog=' + e.currentTarget.dataset.id
+      url: '../listDetail/listDetail?firstCatalog=' + this.firstCatalog + '&secondCatalog=' + e.currentTarget.dataset.id
     });
   },
 })

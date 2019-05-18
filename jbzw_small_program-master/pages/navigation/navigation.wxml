@@ -1,15 +1,14 @@
 <view class="navigationWrap">
   <view class="headSearch">
-    <input type="text" bindinput="showDownList" placeholder='输入关键字查询' value="{{keywords}}">
+    <input type="text" bindinput="showDownList" bindfocus='onInputFocus' bindblur='onInputBlur' placeholder='输入关键字查询'>
     </input>
-    <image src="../../images/cancel.png" mode="widthFix" class="cancel" wx:if="{{cancel}}" bindtap="clearInput"></image>
-    <image src="../../images/navigation.png" mode="widthFix" wx:else></image>
-    <view class="downList" wx:if="{{downList}}">
+    <image src="../../images/navigation.png" mode="widthFix"></image>
+    <view class="downList" wx:if="{{isShowNullList && searchList.length}}">
       <view class="listSingleWrap">
         <view class="downListSingle" wx:for="{{searchList}}" wx:key="{{item.index}}" data-id="{{item.id}}" bindtap="goContentDetail">{{item.name}}</view>
       </view>
     </view>
-    <view class="downList" wx:if="{{searchList.length==0}}">
+    <view class="downList" wx:if="{{isShowNullList && !searchList.length}}">
       <view class="temporary">
         暂无相关事项
       </view>

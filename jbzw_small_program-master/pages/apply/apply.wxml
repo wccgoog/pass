@@ -1,0 +1,7 @@
+<button wx:if="{{authShow}}" open-type="getRealnameAuthInfo" bindgetrealnameauthinfo="authinfo" category-id="{{[52, 770]}}">请先实名授权</button>
+<button wx:if="{{mobileShow}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机号码</button>
+<button bindtap='toWebView' data-id='https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H'>事项1</button>
+<button bindtap='toWebView' data-id='https://jbxqalipay.nanjingdata.cn/m/test.html'>测试</button>
+<button wx:if="{{mobileShow}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber1" data-id='https://jbxqalipay.nanjingdata.cn/m/test.html'>手机号码测试</button>
+
+

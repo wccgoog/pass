@@ -1,4 +1,27 @@
 /* pages/homePage/homePage.wxss */
+movable-area{
+  height: 100vh;
+  width: 100%;
+}
+movable-view{
+  height: 52px; 
+  width: 52px; 
+  /* background: #1b73e6; */
+  /* background: rgba(109, 192, 200, 0.7); */
+  /* background: rgb(109, 192, 200); */
+  background: url("https://jbxqalipay.nanjingdata.cn/image/picBackground.jpg");
+  background-size: cover;
+  z-index: 2;
+  border-radius: 30px;
+}
+.pic{
+  margin-top:2.5px;
+  text-align: center;
+  text-shadow: 1px 3px 5px #000000;
+  color: white;
+  font-size:13px;
+  font-weight: 900;
+}
 .homepageWrap{
   position: fixed;
   top:0;
@@ -146,4 +169,7 @@
 }
 .swiperHeight{
   height:375rpx;
+}
+.apply{
+  margin-bottom: 10px;
 }
