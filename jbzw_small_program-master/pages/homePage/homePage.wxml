@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <movable-area>
   <movable-view x="{{x}}" y="{{y}}" direction="all" bindtap='onePic'>
   <view class="pic">办事</view>
@@ -25,6 +26,21 @@
       <view class="swiper-tab-list" data-current="1" bindtap="swichNav">
         <text class="b-border {{currentTab==1 ? 'on' : ''}}" data-current="1">企业服务</text>
       </view>
+=======
+<view class="homepageWrap">
+<!-- <web-view src="{{webViewUrl}}"></web-view> -->
+<!-- 首页轮播图 -->
+    <view class="page-section page-section-spacing swiper" bindtap='showOpenId'>
+      <swiper
+        indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"
+        interval="{{interval}}" duration="{{duration}}" class="swiperHeight">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item>
+            <image mode="widthFix" src="{{item}}" class="headerImg"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+>>>>>>> 47d38facb77484e166a30c78d82653546ee6ea73
     </view>
     <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
       <!-- 个人服务 -->
