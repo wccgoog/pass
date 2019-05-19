@@ -1,9 +1,5 @@
 <!-- <view onTap="faceVerify" class="text">
   人脸识别,点我
 </view> -->
-<<<<<<< HEAD
 <view class="face">{{showText}}</view>
-=======
-<view class="goIndex">请稍等，启动支付宝刷脸认证中……</view>
-<button type="primary" onTap="goIndex" class="goIndexButton">返回首页</button>
->>>>>>> 47d38facb77484e166a30c78d82653546ee6ea73
+

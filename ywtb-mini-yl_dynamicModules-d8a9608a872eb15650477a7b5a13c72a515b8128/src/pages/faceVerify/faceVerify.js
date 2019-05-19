@@ -21,19 +21,9 @@ Page({
   },
   onShow() {
   },
-<<<<<<< HEAD
   onHide() {
     this.setData({
       showText: '请稍等......'
     });
-=======
-  goIndex(){
-    // my.navigateTo({
-    //   url: '/pages/index/index'
-    // });
-    my.switchTab({
-      url: '../../pages/index/index'
-    })
->>>>>>> 47d38facb77484e166a30c78d82653546ee6ea73
   }
 });

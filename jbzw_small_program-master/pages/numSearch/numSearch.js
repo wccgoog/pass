@@ -91,7 +91,6 @@ Page({
   onShareAppMessage: function () {
   
   },
-<<<<<<< HEAD
   authinfo(res){
     console.log(res)
   },
@@ -138,12 +137,5 @@ Page({
   },
   getPhoneNumber(res){
     console.log(res)
-=======
-  authinfo(e){
-    console.log(e)
-  },
-  getPhoneNumber(e){
-    console.log(e)
->>>>>>> 47d38facb77484e166a30c78d82653546ee6ea73
   }
 })
