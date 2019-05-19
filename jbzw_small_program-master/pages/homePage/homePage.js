@@ -3,27 +3,27 @@
 var app = getApp()
 Page({
   data: {
-    x:10,
-    y:140,
-    delta:1,
+    x: 10,
+    y: 140,
+    delta: 1,
     //页面配置 
     winWidth: 0,
     winHeight: 0,
     // tab切换  
     currentTab: 0,
     //二级目录所用
-    firstCatalog:'',
-    secondCatalog:'',
+    firstCatalog: '',
+    secondCatalog: '',
     //当前1、个人  2、企业
-    currentFirstCatalog:1,
+    currentFirstCatalog: 1,
     // 首页获取数据
-    personal_topic:'',
-    personal_department:'',
+    personal_topic: '',
+    personal_department: '',
     //企业服务
     business_topic: '',
     business_department: '',
     // banner图
-    background:[],
+    background: [],
     // banner图相关配置
     indicatorDots: true,
     vertical: false,
@@ -33,28 +33,61 @@ Page({
     duration: 500
   },
   // loading显示方法
-  loading: function () {
+  loading: function() {
     wx.showLoading({
       title: 'XXX',
     })
   },
-  onLoad: function () {
-    wx.getStorage({
-      key: 'session3rd',
-      success: function(res) {
-        console.log('getStorage success',res)
+  onLoad: function() {
+    wx.login({
+      success(res) {
+        app.globalData.code = res.code;
+        wx.getUserInfo({
+          success(resuserinfo) {
+            //登录第三方系统返回用户已留存的信息
+            wx.request({
+              url: 'http://jbzw.qimixi.net/api/wechat',
+              data: {
+                code: res.code,
+                encryptedData: resuserinfo.encryptedData,
+                rawData: resuserinfo.rawData,
+                iv: resuserinfo.iv,
+                signature: resuserinfo.signature,
+              },
+              success: function(result) {
+                console.log(result);
+                //记录session3rd到app.globalData
+                app.globalData.session3rd = result.data.data.session3rd;
+                app.globalData.realname = result.data.data.user_info.realname;
+                app.globalData.mobile = result.data.data.user_info.mobile;
+                app.globalData.credential_id = result.data.data.user_info.credential_id;
+                wx.setStorage({
+                  key: 'session3rd',
+                  data: result.data.data.session3rd,
+                })
+              },
+              fail(e) {
+                console.log('request failed');
+              }
+            })
+          },
+          fail(e) {
+            console.log('getUserInfo failed----------', e);
+          }
+        })
       },
-      fail: (e)=>{
-        console.log("getStorage error",e)
+      fail(e) {
+        console('login failed', e)
       }
     })
+    //首页小圆圈漂浮
     console.log(wx.getSystemInfoSync().windowWidth)
-    setInterval(()=>{
-      if (_this.data.x == wx.getSystemInfoSync().windowWidth){
+    setInterval(() => {
+      if (_this.data.x == wx.getSystemInfoSync().windowWidth - 52) {
         _this.setData({
-          delta : -_this.data.delta
+          delta: -_this.data.delta
         })
-      } else if (_this.data.x == 0){
+      } else if (_this.data.x == 0) {
         _this.setData({
           delta: -_this.data.delta
         })
@@ -62,8 +95,8 @@ Page({
       _this.setData({
         x: _this.data.x + _this.data.delta,
         y: _this.data.y + _this.data.delta,
-      }) 
-    },100)
+      })
+    }, 100)
     wx.showLoading({
       title: '加载中',
     })
@@ -72,30 +105,30 @@ Page({
      * 获取系统信息 
      */
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         that.setData({
           winWidth: res.windowWidth,
           winHeight: res.windowHeight
         });
       }
     });
-    var _this=this;
+    var _this = this;
     //初始加载获取个人服务下方主题和部门数据
     wx.request({
       url: 'https://jbzw.qimixi.net/api/Index/index?type=1',
       data: "",
       method: 'GET',
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           personal_topic: res.data.data.topic,
           personal_department: res.data.data.department
         })
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log("fail");
         console.log(res);
       },
-      complete: function (res) {
+      complete: function(res) {
         console.log('submit complete');
         wx.hideLoading()
       }
@@ -105,10 +138,10 @@ Page({
       url: 'https://jbzw.qimixi.net/api/banner/bannerList',
       data: "",
       method: 'POST',
-      success: function (res) {
+      success: function(res) {
         let list = res.data.data.list;
-        let listArr=[];
-        for(var i in list){
+        let listArr = [];
+        for (var i in list) {
           listArr.push(list[i].image)
         }
         _this.setData({
@@ -118,20 +151,22 @@ Page({
     })
   },
   //滑动切换tab
-  bindChange: function (e) {
+  bindChange: function(e) {
     wx.showLoading({
       title: '加载中',
     })
     var that = this;
-    that.setData({ currentTab: e.detail.current });
-    if (e.detail.current==1){
+    that.setData({
+      currentTab: e.detail.current
+    });
+    if (e.detail.current == 1) {
       this.company(2);
-    }else{
+    } else {
       this.company(1);
     }
   },
   //点击tab切换
-  swichNav: function (e) {
+  swichNav: function(e) {
     var that = this;
     if (this.data.currentTab === e.target.dataset.current) {
       return false;
@@ -147,37 +182,37 @@ Page({
     // }
   },
   //点击企业服务，获取企业服务下方主题和部门数据
-  company(type){
+  company(type) {
     var _this = this;
     _this.currentFirstCatalog = type
     wx.request({
-      url: 'https://jbzw.qimixi.net/api/Index/index?type='+type,
+      url: 'https://jbzw.qimixi.net/api/Index/index?type=' + type,
       data: "",
       method: 'GET',
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           business_topic: res.data.data.topic,
           business_department: res.data.data.department
         })
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log("fail");
         console.log(res);
       },
-      complete: function (res) {
+      complete: function(res) {
         console.log('submit complete');
         wx.hideLoading()
       }
-    }) 
+    })
   },
   //点击进入列表
-  goListDetail(e){
-    if (this.data.currentTab==0){
+  goListDetail(e) {
+    if (this.data.currentTab == 0) {
       this.setData({
         firstCatalog: 1,
         secondCatalog: e.currentTarget.dataset.id,
       })
-    } else if (this.data.currentTab == 1){
+    } else if (this.data.currentTab == 1) {
       this.setData({
         firstCatalog: 2,
         secondCatalog: e.currentTarget.dataset.id,
@@ -188,19 +223,19 @@ Page({
     });
   },
   // 更多
-  goMore(e){
+  goMore(e) {
     wx.navigateTo({
-      url: '../more/more?currentId=' + this.data.currentTab+'&typeId='+e.currentTarget.dataset.type + "&firstCatalog=" + this.currentFirstCatalog
+      url: '../more/more?currentId=' + this.data.currentTab + '&typeId=' + e.currentTarget.dataset.type + "&firstCatalog=" + this.currentFirstCatalog
     })
   },
-  onePic(){
+  onePic() {
     wx.navigateTo({
       url: '/pages/onePic/onePic',
     })
   },
-  toApplyPage(){
+  toApplyPage() {
     wx.navigateTo({
       url: '/pages/apply/apply',
     })
   }
-})  
+})

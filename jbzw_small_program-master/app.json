@@ -21,7 +21,8 @@
     "pages/onePic/onePic",
     "pages/test/test",
     "pages/apply/apply",
-    "pages/webview/webview"
+    "pages/webview/webview",
+    "pages/auth/auth"
   ],
   "window": {
     "backgroundTextStyle": "light",

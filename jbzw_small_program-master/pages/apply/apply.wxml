@@ -1,7 +1,28 @@
-<button wx:if="{{authShow}}" open-type="getRealnameAuthInfo" bindgetrealnameauthinfo="authinfo" category-id="{{[52, 770]}}">请先实名授权</button>
-<button wx:if="{{mobileShow}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机号码</button>
-<button bindtap='toWebView' data-id='https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H'>事项1</button>
 <button bindtap='toWebView' data-id='https://jbxqalipay.nanjingdata.cn/m/test.html'>测试</button>
-<button wx:if="{{mobileShow}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber1" data-id='https://jbxqalipay.nanjingdata.cn/m/test.html'>手机号码测试</button>
-
-
+<view class="recommend-service-container">
+  <view class="title">
+    <view class="left">推荐服务</view>
+    <!-- <view 
+      class="right" 
+      onTap="onGoMarket"
+    >更多</view> -->
+  </view>
+  <view class="service-list">
+    <view bindtap='toWebView' class="service-item" data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/handicapped/index.html">
+      <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557992849817.jpg" />
+      <view class="service-name">智慧残联</view>
+    </view>
+    <view bindtap='toWebView' class="service-item" data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D">
+      <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557887008811.jpg" />
+      <view class="service-name">电影类事项</view>
+    </view>
+    <view bindtap='toWebView' class="service-item" data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H">
+      <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png" />
+      <view class="service-name">城环办事项</view>
+    </view>
+    <view bindtap='toWebView' class="service-item" data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=G">
+      <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009651180.png" />
+      <view class="service-name">经发事项</view>
+    </view>
+  </view>
+</view>

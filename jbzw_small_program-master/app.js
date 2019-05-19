@@ -1,29 +1,29 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-// wx.checkSession({
-//   success:function(){
+    // wx.checkSession({
+    //   success:function(){
 
-//   },
-//   fail:function(){
-//     wx.login({
-//       success:function(res){
+    //   },
+    //   fail:function(){
+    //     wx.login({
+    //       success:function(res){
 
-//         var code = res.code;
-//         wx.getUserInfo({
-//           wx.request({
-//             url: '服务器地址',
-//           })
-//         })
-//       }
-//     })
-//   }
-// })
+    //         var code = res.code;
+    //         wx.getUserInfo({
+    //           wx.request({
+    //             url: '服务器地址',
+    //           })
+    //         })
+    //       }
+    //     })
+    //   }
+    // })
     var that = this
     // 登录
     wx.login({
@@ -39,7 +39,7 @@ App({
           // header: {
           //   'content-type': 'application/json'
           // },
-          success: function (res) {
+          success: function(res) {
             // console.log(res)
             let openid = res.data.openid //返回openid
             let session_key = res.data.session_key //返回openid
@@ -74,8 +74,12 @@ App({
   },
   globalData: {
     userInfo: null,
-    encryptedData:'',
-    iv:'',
-    code:''
+    encryptedData: '',
+    iv: '',
+    code: '',
+    session3rd: '',
+    mobile:'',
+    credential_id:'',
+    realname:''
   }
 })

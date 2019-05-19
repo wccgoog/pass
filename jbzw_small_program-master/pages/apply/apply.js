@@ -15,58 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var that = this;
-    wx.login({
-      success(res) {
-        app.globalData.code = res.code;
-        console.log('login---', res);
-        wx.getUserInfo({
-          success(resuserinfo) {
-            console.log('getUserInfo---', resuserinfo);
-            //登录第三方系统返回用户已留存的信息
-            wx.request({
-              url: 'http://jbzw.qimixi.net/api/wechat',
-              data: {
-                code: res.code,
-                encryptedData: resuserinfo.encryptedData,
-                rawData: resuserinfo.rawData,
-                iv: resuserinfo.iv,
-                signature: resuserinfo.signature,
-              },
-              success: function(result) {
-                var res = result.data;
-                console.log('request---http://jbzw.qimixi.net/api/wechat', res);
-                //记录session3rd到app.globalData
-                app.globalData.session3rd = res.data.session3rd
-                wx.setStorage({
-                  key: 'session3rd',
-                  data: res.data.session3rd,
-                })
-                //未获取到手机号,则显示绑定手机号码按钮
-                if (!res.data.user_info.mobile) {
-                  this.setData({
-                    mobileShow: true
-                  })
-                }
-              },
-              fail(e) {
-                console.log('request failed');
-              }
-            })
-          },
-          fail(e) {
-            console.log('getUserInfo failed----------', e);
-            that.setData({
-              authShow: true,
-              mobileShow: true
-            })
-          }
-        })
-      },
-      fail(e) {
-        console('login failed', e)
-      }
-    })
+    
   },
 
   /**
@@ -123,70 +72,15 @@ Page({
     if (url.indexOf("?") == -1) {
       url = url + "?wechat=1"
     }
-    var toUrl = escape(url + '&wechatArgs={"encryptedData":"' + app.globalData.encryptedData + '","iv":"' + app.globalData.iv + '",         "session3rd":"' + app.globalData.session3rd + '"}')
-    wx.navigateTo({
-      url: '/pages/webview/webview?url=' + toUrl
-    })
-  },
-  authinfo(res) {
-    wx.getStorage({
-      key: 'session3rd',
-      success: function(storageres) {
-        wx.request({
-          url: 'http://jbzw.qimixi.net/api/wechat_pay/getCredentialInfo',
-          data: {
-            auth_token: res.detail.auth_token,
-            session3rd: storageres.data
-          },
-          success: function(result) {
-            var res = result.data;
-            console.log('authinfo---', res);
-            that.onLoad;
-          }
-        })
-      },
-    })
-  },
-  getPhoneNumber(res) {
-    var that = this;
-    console.log("getPhoneNumber:", res);
-    //记录encryptedData,iv
-    app.globalData.encryptedData = res.detail.encryptedData;
-    app.globalData.iv = res.detail.iv;
-    wx.getStorage({
-      key: 'session3rd',
-      success: function(storageres) {
-        wx.request({
-          url: 'http://jbzw.qimixi.net/api/wechat_pay/getPhoneNumber',
-          data: {
-            encryptedData: res.detail.encryptedData,
-            iv: res.detail.iv,
-            session3rd: storageres.data
-          },
-          success: function(result) {
-            var res = result.data;
-            console.log('getPhoneNumber---', res);
-            that.onLoad;
-          }
-        })
-      },
-    })
-  },
-  getPhoneNumber1(res) {
-    var that = this;
-    console.log("getPhoneNumber:", res);
-    console.log("data-set:", res.currentTarget);
-    //记录encryptedData,iv
-    app.globalData.encryptedData = res.detail.encryptedData;
-    app.globalData.iv = res.detail.iv;
-    console.log("----------------", app.globalData.encryptedData, app.globalData.iv, app.globalData.session3rd)
-    var url = res.currentTarget.dataset.id;
-    if (url.indexOf("?") == -1) {
-      url = url + "?wechat=1"
+    var toUrl = escape(url + '&wechatArgs=' + app.globalData.session3rd)
+    if (app.globalData.realname && app.globalData.mobile && app.globalData.credential_id) {
+      wx.navigateTo({
+        url: '/pages/webview/webview?url=' + toUrl
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/auth/auth?url=' + toUrl
+      })
     }
-    var toUrl = escape(url + '&wechatArgs={"encryptedData":"' + app.globalData.encryptedData + '","iv":"' + app.globalData.iv + '",         "session3rd":"' + app.globalData.session3rd + '"}')
-    wx.navigateTo({
-      url: '/pages/webview/webview?url=' + toUrl
-    })
   }
 })

@@ -1,0 +1,2 @@
+<button wx:if="{{authShow}}" open-type="getRealnameAuthInfo" bindgetrealnameauthinfo="authinfo" category-id="{{[52, 770]}}" type='primary'>请先实名授权</button>
+<button wx:if="{{!authShow}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" type='primary' class='phone'>下一步</button>
