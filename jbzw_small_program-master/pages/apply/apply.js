@@ -15,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    
+
   },
 
   /**
@@ -67,12 +67,13 @@ Page({
 
   },
   toWebView(e) {
-    console.log("----------------", app.globalData.encryptedData, app.globalData.iv, app.globalData.session3rd)
     var url = e.currentTarget.dataset.id;
+    var toUrl = '';
     if (url.indexOf("?") == -1) {
-      url = url + "?wechat=1"
+      toUrl = escape(url + '?wechatArgs=' + app.globalData.session3rd)
+    } else {
+      toUrl = escape(url + '&wechatArgs=' + app.globalData.session3rd)
     }
-    var toUrl = escape(url + '&wechatArgs=' + app.globalData.session3rd)
     if (app.globalData.realname && app.globalData.mobile && app.globalData.credential_id) {
       wx.navigateTo({
         url: '/pages/webview/webview?url=' + toUrl

@@ -92,8 +92,6 @@ Page({
             session3rd: storageres.data
           },
           success: function(result) {
-            var res = result.data;
-            console.log('getPhoneNumber---', res);
             app.globalData.mobile = result.data.data.mobile;
             var toUrl = escape(that.data.url);
             if (app.globalData.realname && app.globalData.mobile && app.globalData.credential_id) {
@@ -101,12 +99,14 @@ Page({
                 url: '/pages/webview/webview?url=' + toUrl
               })
             }
+            debugger
           }
         })
       },
     })
   },
   authinfo(res) {
+    var that = this;
     wx.getStorage({
       key: 'session3rd',
       success: function(storageres) {
@@ -117,10 +117,11 @@ Page({
             session3rd: storageres.data
           },
           success: function(result) {
-            var res = result.data;
-            app.globalData.realname = result.data.realname;
-            app.globalData.credential_id = result.data.credential_id;
-            console.log('authinfo---', res);
+            app.globalData.realname = result.data.data.realname;
+            app.globalData.credential_id = result.data.data.credential_id;
+            that.setData({
+              authShow: false
+            })
           }
         })
       },

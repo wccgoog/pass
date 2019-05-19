@@ -1,4 +1,11 @@
 /* pages/auth/auth.wxss */
+page{
+  background: white no-repeat;
+  background-position-x: center;
+  background-position-y: 20%;
+  background-image: url("http://jbxqalipay.nanjingdata.cn/image/auth.png");
+  background-size: 70%;
+}
 button{
   position: absolute;
   bottom: 0;
