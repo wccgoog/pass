@@ -22,7 +22,8 @@
     "pages/test/test",
     "pages/apply/apply",
     "pages/webview/webview",
-    "pages/auth/auth"
+    "pages/auth/auth",
+    "pages/recommend/recommend"
   ],
   "window": {
     "backgroundTextStyle": "light",

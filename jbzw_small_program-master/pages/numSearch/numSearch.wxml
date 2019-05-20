@@ -10,7 +10,5 @@
     <view>该功能正在开发中，敬请期待</view>
   </view>
   
-  <button open-type="getRealnameAuthInfo" bindgetrealnameauthinfo="authinfo" category-id="{{[52, 770]}}">实名授权</button>
-  <button bindtap='faceVerify'>人脸识别</button>
-  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">手机号码</button>
+
 </view>

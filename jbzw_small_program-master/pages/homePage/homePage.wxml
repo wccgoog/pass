@@ -1,23 +1,46 @@
 <movable-area>
   <movable-view x="{{x}}" y="{{y}}" direction="all" bindtap='onePic'>
-  <view class="pic">办事</view>
-  <view class="pic">一张图</view>
+    <view class="pic">办事</view>
+    <view class="pic">一张图</view>
   </movable-view>
   <view class="homepageWrap">
-  <!-- 首页轮播图 -->
-      <view class="page-section page-section-spacing swiper">
-        <swiper
-          indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"
-          interval="{{interval}}" duration="{{duration}}" class="swiperHeight">
-          <block wx:for="{{background}}" wx:key="*this">
-            <swiper-item>
-              <image mode="widthFix" src="{{item}}" class="headerImg"></image>
-            </swiper-item>
-          </block>
-        </swiper>
+    <!-- 首页轮播图 -->
+    <view class="page-section page-section-spacing swiper">
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" class="swiperHeight">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item>
+            <image mode="widthFix" src="{{item}}" class="headerImg"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!-- 首页轮播图 -->
+    <view class="recommend-service-container">
+      <view class="title">
+        <view class="left-title">推荐服务</view>
+        <view class="right-title" bindtap='toApply'>更多</view>
       </view>
-  <!-- 首页轮播图 -->
-  <view class='swiper-tab apply' bindtap='toApplyPage'>事项申报</view>
+      <view class="service-list">
+        <view bindtap='toWebView' class="service-item" data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/handicapped/index.html">
+          <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557992849817.jpg" />
+          <view class="service-name">智慧残联</view>
+        </view>
+        <view bindtap='toWebView' class="service-item" data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D">
+          <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557887008811.jpg" />
+          <view class="service-name">电影类事项</view>
+        </view>
+        <view bindtap='toWebView' class="service-item" data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H">
+          <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png" />
+          <view class="service-name">城环办事项</view>
+        </view>
+        <view bindtap='toWebView' class="service-item" data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=G">
+          <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009651180.png" />
+          <view class="service-name">经发事项</view>
+        </view>
+      </view>
+    </view>
+
+
     <view class="swiper-tab">
       <view class="swiper-tab-list" data-current="0" bindtap="swichNav" style="border-right:1px solid #eee;box-sizing:border-box">
         <text class="b-border {{currentTab==0 ? 'on' : ''}}" data-current="0">个人服务</text>
@@ -26,10 +49,10 @@
         <text class="b-border {{currentTab==1 ? 'on' : ''}}" data-current="1">企业服务</text>
       </view>
     </view>
-    <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
+    <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 250}}px" bindchange="bindChange">
       <!-- 个人服务 -->
       <swiper-item>
-        <scroll-view scroll-y="true" style="height:58%">
+        <scroll-view scroll-y="true">
           <!-- 个人服务-主题 -->
           <view class="themeWrap">
             <view class="themeTitle">
@@ -40,7 +63,7 @@
               </view>
             </view>
             <view class="themeClassify">
-              <view class="themeSingle" wx:for="{{personal_topic}}" wx:key="{{index}}" bindtap="goListDetail" data-id="{{item.sid}}" >
+              <view class="themeSingle" wx:for="{{personal_topic}}" wx:key="{{index}}" bindtap="goListDetail" data-id="{{item.sid}}">
                 <view class="left">
                   <view class="leftTitle">{{item.name}}</view>
                   <view class="leftDetail">{{item.intro}}</view>
@@ -66,7 +89,7 @@
       </swiper-item>
       <!-- 企业服务 -->
       <swiper-item>
-        <scroll-view scroll-y="true" style="height:58%">
+        <scroll-view scroll-y="true">
           <!-- 企业服务-主题 -->
           <view class="themeWrap">
             <view class="themeTitle">

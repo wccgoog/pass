@@ -12,14 +12,14 @@ page{
   margin-bottom: 80rpx;
 }
 
-.recommend-service-container .title .left {
+.recommend-service-container .title .left-title {
   font-size: 36rpx;
   flex: 1;
   display: flex;
   justify-content: flex-start;
 }
 
-.recommend-service-container .title .right {
+.recommend-service-container .title .right-title {
   flex: 1;
   display: flex;
   justify-content: flex-end;

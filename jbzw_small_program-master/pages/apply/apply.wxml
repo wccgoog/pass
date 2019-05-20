@@ -1,9 +1,9 @@
 <button bindtap='toWebView' data-id='https://jbxqalipay.nanjingdata.cn/m/test.html'>测试</button>
 <view class="recommend-service-container">
   <view class="title">
-    <view class="left">推荐服务</view>
+    <view class="left-title">推荐服务</view>
     <!-- <view 
-      class="right" 
+      class="right-title" 
       onTap="onGoMarket"
     >更多</view> -->
   </view>

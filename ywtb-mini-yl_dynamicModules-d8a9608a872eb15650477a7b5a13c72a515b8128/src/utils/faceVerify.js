@@ -11,14 +11,14 @@ export function faceVerify(url, failUrl) {
         // });
         my.navigateTo({
           //跳转低保办理页面
-          url: '/pages/web-view/index?requestUrl=' + url + '?uid=' + app.uid,
+          url: '/pages/web-view/index?requestUrl=' + url + '?code=A&uid=' + app.uid,
           // options有url作为参数时可用下面的url
           // url: '/pages/web-view/index?requestUrl=' +  this.data.url + app.uid,   
         });
       }
       else {
         my.navigateTo({
-          url: '/pages/web-view/index?requestUrl=' + failUrl + '?uid=' + app.uid,
+          url: '/pages/web-view/index?requestUrl=' + failUrl + '?code=A&uid=' + app.uid,
         });
       }
     },

@@ -1,0 +1,31 @@
+/* pages/recommend/recommend.wxss */
+
+page {
+  background: white;
+}
+
+.more {
+  height: 20px;
+  width: 20px;
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+}
+
+.context-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.context {
+  width: 40%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.service-container {
+  padding: 20px 0;
+  border-bottom: 5px solid #eee;
+}

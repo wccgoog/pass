@@ -46,7 +46,7 @@ Page({
           success(resuserinfo) {
             //登录第三方系统返回用户已留存的信息
             wx.request({
-              url: 'http://jbzw.qimixi.net/api/wechat',
+              url: 'https://jbzw.qimixi.net/api/wechat',
               data: {
                 code: res.code,
                 encryptedData: resuserinfo.encryptedData,
@@ -73,11 +73,18 @@ Page({
           },
           fail(e) {
             console.log('getUserInfo failed----------', e);
+            wx.getStorage({
+              key: 'session3rd',
+              success: function(res) {
+                console.log(res);
+                app.globalData.session3rd = res.data;
+              },
+            })
           }
         })
       },
       fail(e) {
-        console('login failed', e)
+        console.log('login failed', e)
       }
     })
     //首页小圆圈漂浮
@@ -236,6 +243,30 @@ Page({
   toApplyPage() {
     wx.navigateTo({
       url: '/pages/apply/apply',
+    })
+  },
+  toWebView(e) {
+    var url = e.currentTarget.dataset.id;
+    var toUrl = '';
+    if (url.indexOf("?") == -1) {
+      toUrl = escape(url + '?code=B&wechatArgs=' + app.globalData.session3rd)
+    } else {
+      toUrl = escape(url + '&code=B&wechatArgs=' + app.globalData.session3rd)
+    }
+    if (app.globalData.realname && app.globalData.mobile && app.globalData.credential_id) {
+      wx.navigateTo({
+        url: '/pages/webview/webview?url=' + toUrl
+      })
+    } else {
+      //在auth页面重新拼接session3rd
+      wx.navigateTo({
+        url: '/pages/auth/auth?url=' + escape(url)
+      })
+    }
+  },
+  toApply() {
+    wx.navigateTo({
+      url: '/pages/apply/apply'
     })
   }
 })

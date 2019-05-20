@@ -7,8 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    authShow: true,
-    mobileShow: true
+
   },
 
   /**
@@ -70,17 +69,18 @@ Page({
     var url = e.currentTarget.dataset.id;
     var toUrl = '';
     if (url.indexOf("?") == -1) {
-      toUrl = escape(url + '?wechatArgs=' + app.globalData.session3rd)
+      toUrl = escape(url + '?code=B&wechatArgs=' + app.globalData.session3rd)
     } else {
-      toUrl = escape(url + '&wechatArgs=' + app.globalData.session3rd)
+      toUrl = escape(url + '&code=B&wechatArgs=' + app.globalData.session3rd)
     }
     if (app.globalData.realname && app.globalData.mobile && app.globalData.credential_id) {
       wx.navigateTo({
         url: '/pages/webview/webview?url=' + toUrl
       })
     } else {
+      //在auth页面重新拼接session3rd
       wx.navigateTo({
-        url: '/pages/auth/auth?url=' + toUrl
+        url: '/pages/auth/auth?url=' + escape(url)
       })
     }
   }

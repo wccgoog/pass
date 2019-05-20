@@ -10,34 +10,47 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
-    wx.login({
+    wx.getSetting({
       success(res) {
-        console.log('login---',res)
-        wx.getUserInfo({
-          success(resuserinfo) {
-            console.log('getUserInfo---',resuserinfo)
-            wx.request({
-              url: 'http://jbzw.qimixi.net/api/wechat',
-              data: {
-                code: res.code,
-                encryptedData: resuserinfo.encryptedData,
-                rawData: resuserinfo.rawData,
-                iv: resuserinfo.iv,
-                signature: resuserinfo.signature,
-              },
-              success: function (result) {
-                var res = result.data;
-                console.log('request---',res);
-                wx.setStorage({
-                  key: 'session3rd',
-                  data: res.data.session3rd,
-                })
-              }
-            })
-          }
-        })
+        if (!res.authSetting['scope.userInfo']) {
+          wx.authorize({
+            scope: 'scope.userInfo',
+            success(res) {
+              console.log(res)
+            }
+          })
+        } else {
+          console.log(res)
+          wx.login({
+            success(res) {
+
+              wx.getUserInfo({
+                success(resuserinfo) {
+                  wx.request({
+                    url: 'https://jbzw.qimixi.net/api/wechat',
+                    data: {
+                      code: res.code,
+                      encryptedData: resuserinfo.encryptedData,
+                      rawData: resuserinfo.rawData,
+                      iv: resuserinfo.iv,
+                      signature: resuserinfo.signature,
+                    },
+                    success: function(result) {
+                      var res = result.data;
+                      console.log(res);
+                      wx.setStorage({
+                        key: 'session3rd',
+                        data: res.data.session3rd,
+                      })
+                    }
+                  })
+                }
+              })
+            }
+          })
+        }
       }
     })
     // wx.login({
@@ -47,19 +60,19 @@ Page({
     //   }
     // })
   },
-  authinfo: function (res) {
+  authinfo: function(res) {
     wx.getStorage({
       key: 'session3rd',
-      success: function (storageres) {
+      success: function(storageres) {
         wx.request({
-          url: 'http://jbzw.qimixi.net/api/wechat_pay/getCredentialInfo',
+          url: 'https://jbzw.qimixi.net/api/wechat_pay/getCredentialInfo',
           data: {
             auth_token: res.detail.auth_token,
             session3rd: storageres.data
           },
-          success: function (result) {
+          success: function(result) {
             var res = result.data;
-            console.log('authinfo---',res);
+            console.log('authinfo---', res);
           }
         })
       },

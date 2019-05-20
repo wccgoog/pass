@@ -21,7 +21,7 @@ Page({
         wx.getUserInfo({
           success(resuserinfo) {
             wx.request({
-              url: 'http://jbzw.qimixi.net/api/wechat',
+              url: 'https://jbzw.qimixi.net/api/wechat',
               data: {
                 code: res.code,
                 encryptedData: resuserinfo.encryptedData,

@@ -32,7 +32,6 @@ App({
 
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         let code = res.code //返回code
-        // console.log(code)
         wx.request({
           url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxf0f0298a0ad564f6&secret=a48f666969ce34f8990d2b39c3ecb397&js_code=' + code + '&grant_type=authorization_code',
           data: {},
@@ -49,6 +48,7 @@ App({
         })
       }
     })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -78,8 +78,8 @@ App({
     iv: '',
     code: '',
     session3rd: '',
-    mobile:'',
-    credential_id:'',
-    realname:''
+    mobile: '',
+    credential_id: '',
+    realname: ''
   }
 })
