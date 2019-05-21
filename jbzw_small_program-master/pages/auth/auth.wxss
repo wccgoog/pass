@@ -14,3 +14,7 @@ button{
 .userInfo{
   z-index: 2;
 }
+.auth{
+  margin: 400px 10px 0;
+  color: #666;
+}

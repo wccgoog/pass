@@ -7,14 +7,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    moreShow:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.setData({
+      moreShow:false
+    })
   },
 
   /**
@@ -83,5 +85,10 @@ Page({
         url: '/pages/auth/auth?url=' + escape(url)
       })
     }
+  },
+  toApply() {
+    wx.navigateTo({
+      url: '/pages/apply/apply'
+    })
   }
 })

@@ -55,7 +55,7 @@ Page({
                 signature: resuserinfo.signature,
               },
               success: function(result) {
-                console.log(result);
+                // console.log(result);
                 //记录session3rd到app.globalData
                 app.globalData.session3rd = result.data.data.session3rd;
                 app.globalData.realname = result.data.data.user_info.realname;

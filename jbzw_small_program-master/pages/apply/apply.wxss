@@ -1,15 +1,16 @@
-/* pages/apply/apply.wxss */
-page{
-  background: white;
-}
 .recommend-service-container {
-  padding: 20rpx 32rpx 80rpx;
+  padding: 20rpx 32rpx 10rpx;
+  background: white;
+  border-bottom: 10px solid #eee;
 }
 
 .recommend-service-container .title {
+  border-bottom: 1px solid #eee;
+
   display: flex;
   flex-direction: row;
-  margin-bottom: 80rpx;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .recommend-service-container .title .left-title {
@@ -29,6 +30,7 @@ page{
 }
 
 .recommend-service-container .service-list {
+  
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -37,6 +39,7 @@ page{
 }
 
 .recommend-service-container .service-list .service-item {
+  margin-bottom: 20px;
   width: 25%;
   display: flex;
   flex-direction: column;
@@ -44,8 +47,8 @@ page{
 }
 
 .recommend-service-container .service-list .service-item .service-icon {
-  width: 56px;
-  height: 56px;
+  width: 40px;
+  height: 40px;
   margin-bottom: 14rpx;
 }
 
@@ -53,4 +56,3 @@ page{
   color: #333333;
   font-size: 24rpx;
 }
-

@@ -1,3 +1,4 @@
+<view class='auth'>为了能更好地给您提供服务,请先点击下方按钮允许我们获取您的信息</view>
 <button wx:if="{{userInfoShow}}" class='userInfo' open-type="getUserInfo" bindgetuserinfo="userInfo" type='primary'>下一步将获取您的信息</button>
 <button wx:if="{{authShow}}" open-type="getRealnameAuthInfo" bindgetrealnameauthinfo="authinfo" category-id="{{[52, 770]}}" type='primary'>请先实名授权</button>
 <button wx:if="{{!authShow}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" type='primary' class='phone'>下一步</button>
