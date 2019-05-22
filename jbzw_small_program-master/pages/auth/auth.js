@@ -125,9 +125,6 @@ Page({
             session3rd: storageres.data
           },
           success: function(result) {
-            wx.showToast({
-              title: 'success',
-            })
             app.globalData.realname = result.data.data.realname;
             app.globalData.credential_id = result.data.data.credential_id;
             that.setData({
@@ -137,10 +134,6 @@ Page({
         })
       },
       fail: (e) => {
-        wx.showModal({
-          title: 'getStorage',
-          content: 'none'
-        })
       }
     })
   },
@@ -149,9 +142,6 @@ Page({
     console.log(resuserinfo);
     wx.login({
       success: (res) => {
-        wx.showToast({
-          title: 'success',
-        });
         wx.request({
           url: 'https://jbzw.qimixi.net/api/wechat',
           method: 'GET',
@@ -163,9 +153,6 @@ Page({
             signature: resuserinfo.detail.signature,
           },
           success: function(result) {
-            wx.showToast({
-              title: 'request',
-            })
             var res = result.data;
             console.log(res);
             wx.setStorage({
@@ -179,9 +166,6 @@ Page({
         })
       },
       fail: (e) => {
-        wx.showToast({
-          title: 'fail',
-        })
       }
     })
   }

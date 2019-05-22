@@ -21,6 +21,10 @@
       <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png" />
       <view class="service-name">城环办事项</view>
     </view>
+    <view bindtap='toWebView' class="service-item" data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=F">
+      <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009274987.JPG" />
+      <view class="service-name">宣传部事项</view>
+    </view>
     <view bindtap='toWebView' class="service-item" data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=G">
       <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009651180.png" />
       <view class="service-name">经发事项</view>

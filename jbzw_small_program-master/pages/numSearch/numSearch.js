@@ -1,4 +1,5 @@
 // pages/numSearch/numSearch.js
+var app = getApp()
 Page({
 
   /**
@@ -16,32 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.login({
-      success(res) {
-        wx.getUserInfo({
-          success(resuserinfo) {
-            wx.request({
-              url: 'https://jbzw.qimixi.net/api/wechat',
-              data: {
-                code: res.code,
-                encryptedData: resuserinfo.encryptedData,
-                rawData: resuserinfo.rawData,
-                iv: resuserinfo.iv,
-                signature: resuserinfo.signature,
-              },
-              success: function (result) {
-                var res = result.data;
-                console.log(res);
-                wx.setStorage({
-                  key: 'session3rd',
-                  data: res.data.session3rd,
-                })
-              }
-            })
-          }
-        })
-      }
-    })
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -91,51 +67,26 @@ Page({
   onShareAppMessage: function () {
   
   },
-  authinfo(res){
-    console.log(res)
-  },
-  faceVerify(){
-    wx.checkIsSupportSoterAuthentication({
-      success(res) {
-        console.log(res.supportMode)
-        if ("facial" in res.supportMode){
-          wx.showToast({
-            title: 'facial is included',
-            duration: 2000
-          })
-          wx.startSoterAuthentication({
-            requestAuthModes: ['facial'],
-            challenge: '123456',
-            authContent: '请刷脸解锁',
-            success(res) {
-              wx.showToast({
-                title: 'facialVerified',
-                duration: 2000
-              })
-            }
-          })
-        }else{
-          wx.showToast({
-            title: 'facial is not included',
-            duration: 2000
-          })
-          wx.startSoterAuthentication({
-            requestAuthModes: ['fingerPrint'],
-            challenge: '123456',
-            authContent: '请用指纹解锁',
-            success(res) {
-              wx.showToast({
-                title: 'fingerPrintVerified',
-                duration: 2000
-              })
-            }
-          })
-        }
-      }
-    })
 
-  },
-  getPhoneNumber(res){
-    console.log(res)
+
+
+  toWebView(e) {
+    var url = e.currentTarget.dataset.id;
+    var toUrl = '';
+    if (url.indexOf("?") == -1) {
+      toUrl = escape(url + '?code=B&wechatArgs=' + app.globalData.session3rd)
+    } else {
+      toUrl = escape(url + '&code=B&wechatArgs=' + app.globalData.session3rd)
+    }
+    if (app.globalData.realname && app.globalData.mobile && app.globalData.credential_id) {
+      wx.navigateTo({
+        url: '/pages/webview/webview?url=' + toUrl
+      })
+    } else {
+      //在auth页面重新拼接session3rd
+      wx.navigateTo({
+        url: '/pages/auth/auth?url=' + escape(url)
+      })
+    }
   }
 })

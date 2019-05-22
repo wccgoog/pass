@@ -35,7 +35,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -84,6 +84,12 @@
 					"name": "recommend",
 					"pathName": "pages/recommend/recommend",
 					"query": "url",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/numSearch/numSearch",
 					"scene": null
 				}
 			]

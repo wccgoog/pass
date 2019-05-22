@@ -1,14 +1,29 @@
-<view class="searchWrap">
+<!-- <view class="searchWrap"> -->
 <!-- 暂时不用 -->
   <!-- <view class="searchTip">输入身份证号或者证件号</view>
   <view class="inputWrap">
     <input type="number"></input>
     <image src="../../images/magnifier.png" mode="widthFix" class="magnifier" bindtap="goOfficeList"></image>
   </view> -->
-  <view class="develop">
+  <!-- <view class="develop">
     <image src="../../images/develop.png" mode="widthFix"></image>
     <view>该功能正在开发中，敬请期待</view>
-  </view>
-  
+  </view> -->
+<!-- </view> -->
 
+<view class="recommend-service-container">
+  <view class="title">
+    <view class="left-title">我的办件</view>
+    <view wx:if="{{moreShow}}" class="right-title" bindtap='toApply'>更多</view>
+  </view>
+  <view class="service-list">
+    <view bindtap='toWebView' class="service-item" data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/myOffice/templates/inOffice.html">
+      <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png" />
+      <view class="service-name">在办件</view>
+    </view>
+    <view bindtap='toWebView' class="service-item" data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/myOffice/templates/settlePiece.html">
+      <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png" />
+      <view class="service-name">办结件</view>
+    </view>
+  </view>
 </view>
