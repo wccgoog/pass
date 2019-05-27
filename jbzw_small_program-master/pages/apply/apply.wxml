@@ -1,4 +1,4 @@
-<!-- <button bindtap='toWebView' data-id='https://jbxqalipay.nanjingdata.cn/m/test.html'>测试</button> -->
+<button bindtap='toWebView' data-id='https://jbxqalipay.nanjingdata.cn/m/test.html'>测试</button>
 <view class="recommend-service-container">
   <view class="title">
     <view class="left-title">推荐服务</view>

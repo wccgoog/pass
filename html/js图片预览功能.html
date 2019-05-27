@@ -1,0 +1,28 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>js图片预览功能</title>
+  <script language=javascript>
+    function previewFile() {//名字相应的也要改，在input的onchange="previewFile()"也要记得对应好
+      var preview = document.querySelector('img');//这个是在下面input框里面加入id="xx"，要写入xx的，要写成这样(‘#xx’)
+      var file = document.querySelector('input[type=file]').files[0];//这个下标也相对应的来改，第一个的图片是下标是0，那么第二个图片的话，下标就要是1，以此类推
+      var reader = new FileReader();
+      reader.onloadend = function () {
+        preview.src = reader.result;
+      }
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        preview.src = "";
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <input type="file" onchange="previewFile()"><br>
+  <img src="" height="200" width="300" alt="Image preview..." id="xx" />
+</body>
+
+</html>
