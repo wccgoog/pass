@@ -15,11 +15,13 @@ Page({
         url: options.url
       });
     }
-    if (options.type == "attorneys") {
-      faceVerify('https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/otherApplyInfo.html', 'https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html');
-    } else if (options.type == "myself") {
-      faceVerify('https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/selfApplyInfo.html', 'https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html');
-    }
+    //以前分为本人申报和代他人申报，后来改了 2019.5.26
+    // if (options.type == "attorneys") {
+    //   faceVerify('https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/otherApplyInfo.html', 'https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html');
+    // } else if (options.type == "myself") {
+    //   faceVerify('https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/selfApplyInfo.html', 'https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html');
+    // }
+    faceVerify('https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/applyForm.html', 'https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html');
   },
   onShow() {
     this.setData({
