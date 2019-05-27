@@ -15,11 +15,12 @@ Page({
         url: options.url
       });
     }
-    if (options.type == "attorneys") {
-      faceVerify('https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/otherApplyInfo.html', 'https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html');
-    } else if (options.type == "myself") {
-      faceVerify('https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/selfApplyInfo.html', 'https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html');
-    }
+    // if (options.type == "attorneys") {
+    //   faceVerify('https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/otherApplyInfo.html', 'https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html');
+    // } else if (options.type == "myself") {
+    //   faceVerify('https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/selfApplyInfo.html', 'https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html');
+    // }
+    faceVerify('https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/selfApplyInfo.html', 'https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html');
   },
   onShow() {
     this.setData({

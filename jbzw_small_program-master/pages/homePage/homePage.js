@@ -103,7 +103,7 @@ Page({
         x: _this.data.x + _this.data.delta,
         y: _this.data.y + _this.data.delta,
       })
-    }, 100)
+    }, 300)
     wx.showLoading({
       title: '加载中',
     })
