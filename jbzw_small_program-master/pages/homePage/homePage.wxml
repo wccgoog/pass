@@ -4,6 +4,13 @@
     <view class="pic">办事</view>
     <view class="pic">一张图</view>
   </movable-view>
+
+  <!-- <movable-view direction="all" bindtap='onePic' animation="{{picAnimation}}">
+    <view class='movable-view' animation="{{picAnimation}}">
+      <view class="pic">办事</view>
+      <view class="pic">一张图</view>
+    </view>
+  </movable-view> -->
   <view class="homepageWrap">
     <!-- 首页轮播图 -->
     <view class="page-section page-section-spacing swiper">

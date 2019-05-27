@@ -30,7 +30,9 @@ Page({
     autoplay: true,
     circular: true,
     interval: 2000,
-    duration: 500
+    duration: 500,
+    picAnimation: {},
+    intervalNum: 0
   },
   // loading显示方法
   loading: function() {
@@ -39,6 +41,7 @@ Page({
     })
   },
   onLoad: function() {
+
     wx.login({
       success(res) {
         app.globalData.code = res.code;
@@ -86,24 +89,11 @@ Page({
       fail(e) {
         console.log('login failed', e)
       }
-    })
-    //首页小圆圈漂浮
-    console.log(wx.getSystemInfoSync().windowWidth)
-    setInterval(() => {
-      if (_this.data.x == wx.getSystemInfoSync().windowWidth - 52) {
-        _this.setData({
-          delta: -_this.data.delta
-        })
-      } else if (_this.data.x == 0) {
-        _this.setData({
-          delta: -_this.data.delta
-        })
-      }
-      _this.setData({
-        x: _this.data.x + _this.data.delta,
-        y: _this.data.y + _this.data.delta,
-      })
-    }, 300)
+    });
+
+
+
+
     wx.showLoading({
       title: '加载中',
     })
@@ -156,6 +146,44 @@ Page({
         })
       }
     })
+  },
+  onShow() {
+    var _this = this;
+    //本来想用animation做办事一张图的圆形图标的飘动效果,但是有一些问题
+    // let animation = wx.createAnimation({
+    //   duration:20000,
+    //   timingFunction:'linear'
+    // });
+    // animation.translate(100,100).step();
+    // this.setData({
+    //   picAnimation:animation.export()
+    // });
+    // console.log(this.data.picAnimation)
+
+    //首页小圆圈漂浮,setData性能消耗过多
+    console.log(wx.getSystemInfoSync().windowWidth)
+    var n = setInterval(() => {
+      if (_this.data.x == wx.getSystemInfoSync().windowWidth - 52) {
+        _this.setData({
+          delta: -_this.data.delta
+        })
+      } else if (_this.data.x == 0) {
+        _this.setData({
+          delta: -_this.data.delta
+        })
+      }
+      _this.setData({
+        x: _this.data.x + _this.data.delta,
+        y: _this.data.y + _this.data.delta,
+      })
+    }, 300);
+    this.setData({
+      intervalNum: n
+    })
+  },
+  onHide() {
+    console.log('hide', this.data.x)
+    clearInterval(this.data.intervalNum);
   },
   //滑动切换tab
   bindChange: function(e) {
