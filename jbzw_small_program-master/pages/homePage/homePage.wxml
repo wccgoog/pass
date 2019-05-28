@@ -33,7 +33,7 @@
         <text class="b-border {{currentTab==1 ? 'on' : ''}}" data-current="1">企业服务</text>
       </view>
     </view>
-    <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 150}}px" bindchange="bindChange">
+    <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 100}}px" bindchange="bindChange">
       <!-- 个人服务 -->
       <swiper-item>
         <scroll-view scroll-y="true">

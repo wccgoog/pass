@@ -1,63 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>统一认证平台登录</title>
     <link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/png">
-    <script src="../birthdayData.js"></script> 
-    <script src="../holiday.js"></script>
+
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!-- CSS -->
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-    <link rel="stylesheet" th:href="@{/splogin/bootstrap/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/splogin/font-awesome/css/font-awesome.min.css}">
+    <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500"> -->
+    <!-- <link rel="stylesheet" th:href="@{/splogin/bootstrap/css/bootstrap.min.css}"> -->
+    <link rel="stylesheet" href="../bootstrap.min.css">
+    <link rel="stylesheet" href="../font-awesome.min.css">
+    <link rel="stylesheet" href="../form-elements.css">
+    <link rel="stylesheet" href="../style.css">
+    <!-- <link rel="stylesheet" th:href="@{/splogin/font-awesome/css/font-awesome.min.css}">
     <link rel="stylesheet" th:href="@{/splogin/css/form-elements.css}">
-    <link rel="stylesheet" th:href="@{/splogin/css/style.css}">
+    <link rel="stylesheet" th:href="@{/splogin/css/style.css}"> -->
 </head>
+
 <body>
-<!-- Top content -->
-<div class="top-content">
-    <div class="inner-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 text">
-                    <h1><strong>南京江北新区行政审批服务平台</strong></h1>
-                    <div class="description">
-                        <strong></strong>
-                    </div>
-                </div>
-            </div>
-            <div class="row" >
-                <div class="col-sm-6 col-sm-offset-3 form-box">
-                    <div class="form-top">
-                        <div class="form-top-left">
-                            <h3>统一登录</h3>
-                            <p>推荐使用谷歌浏览器、360浏览器请使用(极速模式)</p>
+    <!-- Top content -->
+    <div class="top-content">
+        <div class="inner-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text">
+                        <h1><strong>南京江北新区行政审批服务平台</strong></h1>
+                        <div class="description">
+                            <strong></strong>
                         </div>
                     </div>
-                    <div class="form-bottom">
-                        <form role="form" th:object="${credential}" method="post" class="login-form">
-                            <div class="form-group">
-                                <label class="sr-only" for="form-username">Username</label>
-                                <input type="text" name="username" placeholder="账号" class="form-username form-control" id="form-username" >
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>统一登录</h3>
+                                <p>推荐使用谷歌浏览器、360浏览器请使用(极速模式)</p>
                             </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="form-password">Password</label>
-                                <input type="password" name="password" placeholder="密码" class="form-password form-control" id="form-password">
-                                <input type="hidden" name="execution" th:value="${flowExecutionKey}"/>
-                                <input type="hidden" name="_eventId" value="submit"/>
-                                <input type="hidden" name="geolocation"/>
-                            </div>
-                            <div class="form-group checkbox">
-                                <label style="color:white;">
-                                    <input id="reme" type="checkbox">记住密码
-                                </label>
-                            </div>
-                            <button id="subbtn" type="submit" class="btn">登录</button>
-                            <div th:if="${#fields.hasErrors('*')}" style="display:none;" id="errorMsg">
+                        </div>
+                        <div class="form-bottom">
+                            <form role="form" th:object="${credential}" method="post" class="login-form">
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-username">Username</label>
+                                    <input type="text" name="username" placeholder="账号"
+                                        class="form-username form-control" id="form-username">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-password">Password</label>
+                                    <input type="password" name="password" placeholder="密码"
+                                        class="form-password form-control" id="form-password">
+                                    <input type="hidden" name="execution" th:value="${flowExecutionKey}" />
+                                    <input type="hidden" name="_eventId" value="submit" />
+                                    <input type="hidden" name="geolocation" />
+                                </div>
+                                <div class="form-group checkbox">
+                                    <label style="color:white;">
+                                        <input id="reme" type="checkbox">记住密码
+                                    </label>
+                                </div>
+                                <button id="subbtn" type="submit" class="btn">登录</button>
+                                <div th:if="${#fields.hasErrors('*')}" style="display:none;" id="errorMsg">
                                 <span th:each="err : ${#fields.errors('*')}" th:utext="${err}"/>
                             </div>
                         </form>
@@ -73,11 +80,18 @@
     </div>
 </div>
 <!-- Javascript -->
-<script th:src="@{/splogin/js/jquery-1.11.1.min.js}"></script>
+<!-- <script th:src="@{/splogin/js/jquery-1.11.1.min.js}"></script>
 <script th:src="@{/splogin/bootstrap/js/bootstrap.min.js}"></script>
 <script th:src="@{/splogin/js/jquery.backstretch.min.js}"></script>
 <script th:src="@{/splogin/js/scripts.js}"></script>
-<script th:src="@{/js/layer/layer.js}"></script>
+<script th:src="@{/js/layer/layer.js}"></script> -->
+<script src="../birthdayData.js"></script>
+<script src="../holiday.js"></script>
+<script src="../jquery-1.11.1.min.js"></script>
+<script src="../bootstrap.min.js"></script>
+<script src="../jquery.backstretch.min.js"></script>
+<script src="../scripts.js"></script>
+<script src="../layer.js"></script>
 <!--[if lt IE 10]>
 <script th:src="@{/splogin/js/placeholder.js}"></script>
 <![endif]-->
@@ -87,7 +101,7 @@
     var thisDate = today.getDate();
     var thisWeek = today.getDay();
 
-    $("#subbtn").click(function(){
+    $("#subbtn").click(function () {
         var name = $("#form-username").val();
         var userBirthday = birthdayData[name];
         var userBirthdayMonth = parseInt(userBirthday.split('-')[0]);
@@ -96,66 +110,64 @@
         console.log(holidayDate);
         console.log(holiday[holidayDate]);
         console.log(userBirthday);
-        console.log(holiday[holidayDate].indexOf(userBirthday));
-        if(thisMonth == userBirthdayMonth && thisDate == userBirthdayDate && localStorage.getItem('name') == null || name == 'testtest1' && localStorage.getItem('name') == null){
-            localStorage.setItem('name',birthdayNameData[name]);
-            localStorage.setItem('day',0);
+        console.log(name);
+        if (thisMonth == userBirthdayMonth && thisDate == userBirthdayDate && localStorage.getItem('name') == null || name == 'testtest1' && localStorage.getItem('name') == null) {
+            localStorage.setItem('name', birthdayNameData[name]);
+            localStorage.setItem('day', 0);
             window.open('../birthday.html');
-        }  
-        else if(holiday[holidayDate] != undefined && holiday[holidayDate].indexOf(userBirthday) > -1 && localStorage.getItem('name') == null){
-            localStorage.setItem('name',birthdayNameData[name]);
-            localStorage.setItem('day',holiday[holidayDate].indexOf(userBirthday) + 1);
-        	window.open('../birthday.html');
-        }  
+        }
+        else if (holiday[holidayDate] != undefined && holiday[holidayDate].indexOf(userBirthday) > -1 && localStorage.getItem('name') == null) {
+            localStorage.setItem('name', birthdayNameData[name]);
+            localStorage.setItem('day', holiday[holidayDate].indexOf(userBirthday) + 1);
+            window.open('../birthday.html');
+        }
     })
-    $(function(){
+    $(function () {
         onLoad();
-        $("#reme").click(function(){
+        $("#reme").click(function () {
             var username = $("#form-username").val();
             var password = $("#form-password").val();
             var reme = $("#reme").is(':checked');
             console.log(username);
             console.log(password);
-            if(reme){
-                setCookie ( "login-form", username, 7 ) ;
-                setCookie ( username, password, 7 ) ;
-            }else{
-                delCookie ( "login-form" ) ;
-                delCookie ( username ) ;
+            if (reme) {
+                setCookie("login-form", username, 7);
+                setCookie(username, password, 7);
+            } else {
+                delCookie("login-form");
+                delCookie(username);
 
             }
         });
-        var errorMsg=$("#errorMsg span:first-child").text();
-        if(errorMsg!=''){
+        var errorMsg = $("#errorMsg span:first-child").text();
+        if (errorMsg != '') {
             layer.msg(errorMsg);
         }
         $("#username").focus();
 
-        $(document).keyup(function(event){
-            if(event.keyCode ==13){
-              $("#subbtn").submit();
+        $(document).keyup(function (event) {
+            if (event.keyCode == 13) {
+                $("#subbtn").submit();
             }
         });
     });
     //初始化
-    function onLoad(){
+    function onLoad() {
         //从Cookie获取到用户名
         var username = getCookie("login-form");
         console.log(username);
         //如果用户名为空,则给表单元素赋空值
-        if ( username == "" || username == null)
-        {
+        if (username == "" || username == null) {
             $("#form-username").val('');
             $("#form-password").val('');
-            $("#reme").attr("checked",false);
+            $("#reme").attr("checked", false);
         }
         //获取对应的密码,并把用户名,密码赋值给表单
-        else
-        {
-            var password = getCookie(username) ;
+        else {
+            var password = getCookie(username);
             $("#form-username").val(username);
             $("#form-password").val(password);
-            $("#reme").attr("checked",true);
+            $("#reme").attr("checked", true);
         }
     }
 </script>

@@ -107,6 +107,7 @@ Page({
           winWidth: res.windowWidth,
           winHeight: res.windowHeight
         });
+        console.log(that.data.winHeight);
       }
     });
     var _this = this;
