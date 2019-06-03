@@ -32,7 +32,7 @@ Page({
     interval: 2000,
     duration: 500,
     picAnimation: {},
-    intervalNum: 0
+    intervalNum: 0,
   },
   // loading显示方法
   loading: function() {
@@ -177,7 +177,7 @@ Page({
         x: _this.data.x + _this.data.delta,
         y: _this.data.y + _this.data.delta,
       })
-    }, 300);
+    }, 100);
     this.setData({
       intervalNum: n
     })

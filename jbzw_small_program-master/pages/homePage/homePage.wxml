@@ -5,12 +5,12 @@
     <view class="pic">一张图</view>
   </movable-view>
 
-  <!-- <movable-view direction="all" bindtap='onePic' animation="{{picAnimation}}">
-    <view class='movable-view' animation="{{picAnimation}}">
-      <view class="pic">办事</view>
-      <view class="pic">一张图</view>
-    </view>
-  </movable-view> -->
+    <!-- <movable-view direction="all" bindtap='onePic' animation="{{picAnimation}}">
+      <view class='movable-view' animation="{{picAnimation}}">
+        <view class="pic">办事</view>
+        <view class="pic">一张图</view>
+      </view>
+    </movable-view> -->
   <view class="homepageWrap">
     <!-- 首页轮播图 -->
     <view class="page-section page-section-spacing swiper">
@@ -33,10 +33,10 @@
         <text class="b-border {{currentTab==1 ? 'on' : ''}}" data-current="1">企业服务</text>
       </view>
     </view>
-    <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 100}}px" bindchange="bindChange">
+    <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:840rpx" bindchange="bindChange">
       <!-- 个人服务 -->
       <swiper-item>
-        <scroll-view scroll-y="true">
+        <scroll-view>
           <!-- 个人服务-主题 -->
           <view class="themeWrap">
             <view class="themeTitle">
@@ -73,7 +73,7 @@
       </swiper-item>
       <!-- 企业服务 -->
       <swiper-item>
-        <scroll-view scroll-y="true">
+        <scroll-view>
           <!-- 企业服务-主题 -->
           <view class="themeWrap">
             <view class="themeTitle">
@@ -110,4 +110,5 @@
       </swiper-item>
     </swiper>
   </view>
+    <view class='x'>南京市江北新区管理委员会行政审批局主办</view>
 </movable-area>
