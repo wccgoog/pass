@@ -5,7 +5,7 @@
     <view class="pic">一张图</view>
   </movable-view>
 
-    <!-- <movable-view direction="all" bindtap='onePic' animation="{{picAnimation}}">
+  <!-- <movable-view direction="all" bindtap='onePic' animation="{{picAnimation}}">
       <view class='movable-view' animation="{{picAnimation}}">
         <view class="pic">办事</view>
         <view class="pic">一张图</view>
@@ -23,8 +23,9 @@
       </swiper>
     </view>
     <!-- 首页轮播图 -->
-
+    <view class='iWanna'>我要办</view>
     <apply />
+    <view class='iWanna'>我要查</view>
     <view class="swiper-tab">
       <view class="swiper-tab-list" data-current="0" bindtap="swichNav" style="border-right:1px solid #eee;box-sizing:border-box">
         <text class="b-border {{currentTab==0 ? 'on' : ''}}" data-current="0">个人服务</text>
@@ -110,5 +111,5 @@
       </swiper-item>
     </swiper>
   </view>
-    <view class='x'>南京市江北新区管理委员会行政审批局主办</view>
+  <view class='x'>南京市江北新区管理委员会行政审批局主办</view>
 </movable-area>

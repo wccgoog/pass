@@ -188,3 +188,9 @@ movable-view{
   background: white;
   padding-bottom: 10px;
 }
+.iWanna{
+  background: white;
+  /* border-bottom: 1px solid #eee; */
+  border-left:4px solid #079a41;
+  padding: 5px;
+}
