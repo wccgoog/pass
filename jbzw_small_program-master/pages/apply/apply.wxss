@@ -136,17 +136,28 @@ page {
 }
 
 .recommend-service-container3 {
+  margin: 10px;
 }
 
 .title3 {
-  font-weight: 900;
+  /* font-weight: 900; */
   font-size: 20px;
-  margin: 10px 0 0 10px;
+  /* margin: 10px 0 0 10px; */
+  display: flex;
+  align-items: center;
 }
-
+.isChosen{
+  font-weight: 900;
+  font-size: 22px;
+  padding-bottom: 5px;
+  border-bottom: 3px solid green;
+}
+.title3 view{
+  margin-right: 10px;
+}
 .service-list3 {
   border: 1px solid #eee;
-  margin: 10px 20px;
+  margin: 10px 10px;
 }
 
 .service-title3 {
@@ -208,4 +219,8 @@ page {
   color: #aaa;
   font-size: 12px;
   margin: 10px;
+}
+.goTo3{
+  width: 100%;
+  margin-top: 20px;
 }

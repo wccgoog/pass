@@ -12,7 +12,7 @@
   </view>
 </view> -->
 
-<view class="recommend-service-container2">
+<!-- <view class="recommend-service-container2">
   <view class="title2">
     <view class="left-title2">推荐服务</view>
     <view wx:if="{{moreShow}}" class="right-title2" bindtap='toApply'>更多</view>
@@ -27,7 +27,7 @@
       <image class="service-arrow2" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/m/image/arrow.png" />
     </view>
   </view>
-</view>
+</view> -->
 
 <!-- <view class="recommend-service-container2">
   <view wx:for="{{itemList}}" class="service-list2">
@@ -45,9 +45,12 @@
 
 
 
-<!-- <view class='recommend-service-container3'>
-  <view class='title3'>推荐服务</view>
-  <view class='service-list3'>
+<view class='recommend-service-container3'>
+  <view class='title3'>
+    <view data-id='0' class='{{dataId==0?"isChosen":""}}' bindtap='choose'>推荐服务</view>
+    <view data-id='1' class='{{dataId==1?"isChosen":""}}' bindtap='choose'>专区</view>
+  </view>
+  <view wx:if="{{dataId==0}}" class='service-list3'>
     <view class='service-title3'>
       <view class='service-title3-left3'>
         <image class="service-icon3" src='https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png'></image>
@@ -65,7 +68,7 @@
     </view>
     <view class='service-detail3'>江北新区行政审批局</view>
   </view>
-  <view class='service-list3'>
+  <view wx:if="{{dataId==0}}" class='service-list3'>
     <view class='service-title3'>
       <view class='service-title3-left3'>
         <image class="service-icon3" src='https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289514896.png'></image>
@@ -82,4 +85,6 @@
     </view>
     <view class='service-detail3'>江北新区行政审批局</view>
   </view>
-</view> -->
+  <image bindtap='toWebView' data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/handicapped/index.html" wx:if="{{dataId==1}}" class='goTo3' mode="widthFix" src='https://jbxqalipay.nanjingdata.cn/image/disabled.png'></image>
+  <image bindtap='toWebView' data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html" wx:if="{{dataId==1}}" class='goTo3' mode="widthFix" src='https://jbxqalipay.nanjingdata.cn/image/live.png'></image>
+</view>

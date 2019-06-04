@@ -35,7 +35,7 @@
     "list": [
       {
         "pagePath": "pages/homePage/homePage",
-        "text": "事项查询",
+        "text": "首页",
         "iconPath": "images/ScanNavigation.png",
         "selectedIconPath": "images/ScanNavigation-selected.png"
       },

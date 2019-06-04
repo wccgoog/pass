@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    dataId: 0,
     moreShow: true,
     items: [{
         dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/handicapped/index.html",
@@ -90,9 +91,8 @@ Page({
         ]
       },
       {
-        title:"城市环保",
-        items:[
-          {
+        title: "城市环保",
+        items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H",
             src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png",
             name: "城市道路绿化",
@@ -113,15 +113,13 @@ Page({
         ]
       },
       {
-        title:"农林机械",
-        items:[
-          {
-            dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=G",
-            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009651180.png",
-            name: "农业林业",
-            detail: "农业林业相关事项"
-          }
-        ]
+        title: "农林机械",
+        items: [{
+          dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=G",
+          src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009651180.png",
+          name: "农业林业",
+          detail: "农业林业相关事项"
+        }]
       }
     ]
   },
@@ -206,6 +204,11 @@ Page({
   toApply() {
     wx.navigateTo({
       url: '/pages/apply/apply'
+    })
+  },
+  choose(e) {
+    this.setData({
+      dataId:e.target.dataset.id
     })
   }
 })
