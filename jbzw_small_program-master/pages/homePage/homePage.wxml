@@ -23,9 +23,9 @@
       </swiper>
     </view>
     <!-- 首页轮播图 -->
-    <view class='iWanna'>我要办</view>
+    <!-- <view class='iWanna'>我要办</view> -->
     <apply />
-    <view class='iWanna'>我要查</view>
+    <!-- <view class='iWanna'>我要查</view> -->
     <view class="swiper-tab">
       <view class="swiper-tab-list" data-current="0" bindtap="swichNav" style="border-right:1px solid #eee;box-sizing:border-box">
         <text class="b-border {{currentTab==0 ? 'on' : ''}}" data-current="0">个人服务</text>
