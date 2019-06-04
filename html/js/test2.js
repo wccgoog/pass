@@ -1,3 +1,9 @@
-var a = 1;
-var b = 2;
-export {a,b};
+define(function () {
+    'use strict';
+    var test2 = (msg) => {
+        $("#main").append("<p>" + msg + "</p>")
+    }
+    return {
+        test2: test2
+    }
+});
