@@ -13,25 +13,17 @@
   </view>
 </view> -->
 
-<!-- <view class="recommend-service-container2">
-  <view class="title2">
-    <view class="left-title2">推荐服务</view>
-    <view wx:if="{{moreShow}}" class="right-title2" bindtap='toApply'>更多</view>
-  </view>
-  <view class="service-list2">
-    <view wx:for="{{items}}" wx:key="*this" bindtap='toWebView' class="service-item2" data-id="{{item.dataId}}">
-      <image class="service-icon2" mode="aspectFit" src="{{item.src}}" />
-      <view>
-        <view class="service-name2">{{item.name}}</view>
-        <view class="service-detail2">{{item.detail}}</view>
-      </view>
-      <image class="service-arrow2" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/m/image/arrow.png" />
+
+<view class="recommend-service-container2">
+  <view class='title2'>
+    <view class='title-item2' bindtap='choose'>
+      <view data-id='0' class='{{dataId==0?"isChosen":""}} title-item-detail2'>企业服务</view>
+    </view>
+    <view class='title-item2' bindtap='choose'>
+      <view data-id='1' class='{{dataId==1?"isChosen":""}} title-item-detail2'>个人服务</view>
     </view>
   </view>
-</view> -->
-
-<!-- <view class="recommend-service-container2">
-  <view wx:for="{{itemList}}" class="service-list2">
+  <view wx:for="{{itemList}}"  wx:if="{{dataId==item.bOrC}}"class="service-list2">
     <view class='service-title2'>{{item.title}}</view>
     <view wx:for="{{item.items}}" wx:key="*this" bindtap='toWebView' class="service-item2" data-id="{{item.dataId}}">
       <image class="service-icon2" mode="aspectFit" src="{{item.src}}" />
@@ -42,11 +34,11 @@
       <image class="service-arrow2" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/m/image/arrow.png" />
     </view>
   </view>
-</view> -->
+</view>
 
 
 
-<view class='recommend-service-container3'>
+<!-- <view class='recommend-service-container3'>
   <view class='title3'>
     <view data-id='0' class='{{dataId==0?"isChosen":""}}' bindtap='choose'>特色服务</view>
     <view data-id='1' class='{{dataId==1?"isChosen":""}}' bindtap='choose'>专区</view>
@@ -68,4 +60,4 @@
   </view>
   <image bindtap='toWebView' data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/handicapped/index.html" wx:if="{{dataId==1}}" class='goTo3' mode="widthFix" src='https://jbxqalipay.nanjingdata.cn/image/disabled.png'></image>
   <image bindtap='toWebView' data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html" wx:if="{{dataId==1}}" class='goTo3' mode="widthFix" src='https://jbxqalipay.nanjingdata.cn/image/live.png'></image>
-</view>
+</view> -->

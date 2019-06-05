@@ -88,8 +88,15 @@ Page({
   },
   //点击进入列表
   goListDetail(e) {
-    wx.navigateTo({
-      url: '../listDetail/listDetail?firstCatalog=' + this.firstCatalog + '&secondCatalog=' + e.currentTarget.dataset.id
-    });
+    console.log(this.data.typeDepart)
+    if (this.data.typeDepart =="主 题"){
+      wx.navigateTo({
+        url: '../listDetail/listDetail?firstCatalog=' + this.data.firstCatalog + '&secondCatalog=' + e.currentTarget.dataset.id
+      });
+    } else if (this.data.typeDepart == "部 门"){
+      wx.navigateTo({
+        url: '../listDetail/listDetail?firstCatalog=' + this.data.firstCatalog + '&secondCatalog=d' + e.currentTarget.dataset.id
+      });
+    }
   },
 })

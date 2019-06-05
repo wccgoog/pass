@@ -23,7 +23,8 @@
     "pages/apply/apply",
     "pages/webview/webview",
     "pages/auth/auth",
-    "pages/recommend/recommend"
+    "pages/recommend/recommend",
+    "pages/home2/home2"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -40,14 +41,20 @@
         "selectedIconPath": "images/ScanNavigation-selected.png"
       },
       {
+        "pagePath": "pages/home2/home2",
+        "text": "办事指南",
+        "iconPath": "images/material.png",
+        "selectedIconPath": "images/material-selected.png"
+      },
+      {
         "pagePath": "pages/scan/scan",
         "text": "扫码导航",
         "iconPath": "images/scan.png",
-        "selectedIconPath": "images/scan.png"
+        "selectedIconPath": "images/scan-selected.png"
       },
       {
         "pagePath": "pages/numSearch/numSearch",
-        "text": "我的办件",
+        "text": "我的",
         "iconPath": "images/office.png",
         "selectedIconPath": "images/office-selected.png"
       }

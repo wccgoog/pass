@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //0是个人,1是企业
     dataId: 0,
     moreShow: true,
     items: [
@@ -62,6 +63,7 @@ Page({
     ],
     itemList: [{
         title: "社会保障",
+        bOrC: 1,
         items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/handicapped/index.html",
             src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289496383.png",
@@ -78,6 +80,7 @@ Page({
       },
       {
         title: "文化生活",
+        bOrC: 0,
         items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D",
             src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289514896.png",
@@ -94,6 +97,7 @@ Page({
       },
       {
         title: "城市环保",
+        bOrC: 0,
         items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H",
             src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png",
@@ -116,6 +120,7 @@ Page({
       },
       {
         title: "农林机械",
+        bOrC: 0,
         items: [{
           dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=G",
           src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009651180.png",
@@ -124,10 +129,9 @@ Page({
         }]
       }
     ],
-    newItemList: [
-      {
+    newItemList: [{
         listTitle: "城市道路绿化",
-      src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png",
         num: "5项服务",
         dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H",
         list: [{
@@ -153,8 +157,7 @@ Page({
         src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559287396293.png",
         num: "2项服务",
         dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=K",
-        list: [
-          {
+        list: [{
             title: "从事城市生活垃圾经营性清扫、收集、运输、处理服务审批",
             dataId: ""
           },
@@ -169,8 +172,7 @@ Page({
         src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559287660191.png",
         num: "2项服务",
         dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=J",
-        list: [
-          {
+        list: [{
             title: "生产建设项目水土保持方案审批",
             dataId: ""
           },

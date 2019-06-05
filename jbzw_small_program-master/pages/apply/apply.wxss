@@ -63,17 +63,17 @@ page {
 .recommend-service-container2 {
   padding: 20rpx 32rpx 10rpx;
   background: white;
-  border-bottom: 10px solid #eee;
 }
 
-.recommend-service-container2 .title2 {
-  border-bottom: 1px solid #eee;
+.title2 {
+  font-size: 20px;
   display: flex;
-  flex-direction: row;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
+  align-items: center;
 }
-
+.title-item2{
+  width: 50%;
+  text-align: center;
+}
 .recommend-service-container2 .title2 .left-title2 {
   font-size: 36rpx;
   flex: 1;
@@ -112,7 +112,9 @@ page {
   padding: 10px 0;
   border-bottom: 1px solid #eee;
 }
-
+.title-item-detail2{
+display: inline-block;
+}
 .service-item2:last-of-type {
   border: none;
 }
@@ -140,9 +142,7 @@ page {
 }
 
 .title3 {
-  /* font-weight: 900; */
   font-size: 20px;
-  /* margin: 10px 0 0 10px; */
   display: flex;
   align-items: center;
 }
