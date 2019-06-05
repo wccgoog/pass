@@ -1,5 +1,6 @@
-<!-- <button wx:if="{{!moreShow}}" bindtap='toWebView' data-id='https://jbxqalipay.nanjingdata.cn/m/test.html'>测试</button>
-<view class="recommend-service-container">
+<!-- <button wx:if="{{!moreShow}}" bindtap='toWebView' data-id='https://jbxqalipay.nanjingdata.cn/m/test.html'>测试</button> -->
+
+<!-- <view class="recommend-service-container">
   <view class="title">
     <view class="left-title">推荐服务</view>
     <view wx:if="{{moreShow}}" class="right-title" bindtap='toApply'>更多</view>
@@ -47,41 +48,21 @@
 
 <view class='recommend-service-container3'>
   <view class='title3'>
-    <view data-id='0' class='{{dataId==0?"isChosen":""}}' bindtap='choose'>推荐服务</view>
+    <view data-id='0' class='{{dataId==0?"isChosen":""}}' bindtap='choose'>特色服务</view>
     <view data-id='1' class='{{dataId==1?"isChosen":""}}' bindtap='choose'>专区</view>
   </view>
-  <view wx:if="{{dataId==0}}" class='service-list3'>
-    <view class='service-title3'>
+  <view wx:if="{{dataId==0}}" class='service-list3' wx:for="{{newItemList}}">
+    <view class='service-title3' bindtap='toWebView' data-id="{{item.dataId}}">
       <view class='service-title3-left3'>
-        <image class="service-icon3" src='https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png'></image>
-        <view class='left3'>城市道路绿化</view>
+        <image class="service-icon3" src='{{item.src}}'></image>
+        <view class='left3'>{{item.listTitle}}</view>
       </view>
       <view class='service-title3-right3'>
-        <view class='right3'>5项服务</view>
+        <view class='right3'>{{item.num}}</view>
       </view>
     </view>
     <view class='service-item3'>
-      <view class='service-content3'>砍伐城市树木/迁移古树名木审批</view>
-      <view class='service-content3'>占用、挖掘城市道路审批</view>
-      <view class='service-content3'>临时占用城市绿地审批</view>
-      <view class='service-content3'>树木砍伐、移植、修建补偿费征收</view>
-    </view>
-    <view class='service-detail3'>江北新区行政审批局</view>
-  </view>
-  <view wx:if="{{dataId==0}}" class='service-list3'>
-    <view class='service-title3'>
-      <view class='service-title3-left3'>
-        <image class="service-icon3" src='https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289514896.png'></image>
-        <view class='left3'>电影放映</view>
-      </view>
-      <view class='service-title3-right3'>
-        <view class='right3'>3项服务</view>
-      </view>
-    </view>
-    <view class='service-item3'>
-      <view class='service-content3'>电影放映单位设立审批</view>
-      <view class='service-content3'>改建、拆除电影院和放映设施的审批</view>
-      <view class='service-content3'>电影放映单位变更名称、地址、法定代表人或者主要负责人，或者终止电影放映经营活动的备案</view>
+      <view class='service-content3' wx:for="{{item.list}}">{{item.title}}</view>
     </view>
     <view class='service-detail3'>江北新区行政审批局</view>
   </view>

@@ -9,24 +9,20 @@ Page({
   data: {
     dataId: 0,
     moreShow: true,
-    items: [{
-        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/handicapped/index.html",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289496383.png",
-        name: "智慧残联",
-        detail: "智慧残联相关事项"
-      },
-      {
-        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993197712.jpg",
-        name: "低保申请",
-        detail: "低保申请相关事项"
-      },
-      {
-        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289514896.png",
-        name: "电影放映",
-        detail: "电影放映相关事项"
-      },
+    items: [
+      // {
+      //   dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/handicapped/index.html",
+      //   src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289496383.png",
+      //   name: "智慧残联",
+      //   detail: "智慧残联相关事项"
+      // },
+      // {
+      //   dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html",
+      //   src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993197712.jpg",
+      //   name: "低保申请",
+      //   detail: "低保申请相关事项"
+      // },
+
       {
         dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H",
         src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png",
@@ -46,17 +42,23 @@ Page({
         detail: "水土保持相关事项"
       },
       {
-        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=F",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009274987.JPG",
-        name: "文化演艺",
-        detail: "文化演艺相关事项"
+        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289514896.png",
+        name: "电影放映",
+        detail: "电影放映相关事项"
       },
-      {
-        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=G",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009651180.png",
-        name: "农业林业",
-        detail: "农业林业相关事项"
-      },
+      // {
+      //   dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=F",
+      //   src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009274987.JPG",
+      //   name: "文化演艺",
+      //   detail: "文化演艺相关事项"
+      // },
+      // {
+      //   dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=G",
+      //   src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009651180.png",
+      //   name: "农业林业",
+      //   detail: "农业林业相关事项"
+      // },
     ],
     itemList: [{
         title: "社会保障",
@@ -120,6 +122,82 @@ Page({
           name: "农业林业",
           detail: "农业林业相关事项"
         }]
+      }
+    ],
+    newItemList: [
+      {
+        listTitle: "城市道路绿化",
+      src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png",
+        num: "5项服务",
+        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H",
+        list: [{
+            title: "砍伐城市树木/迁移古树名木审批",
+            dataId: ""
+          },
+          {
+            title: "占用、挖掘城市道路审批",
+            dataId: ""
+          },
+          {
+            title: "临时占用城市绿地审批",
+            dataId: ""
+          },
+          {
+            title: "树木砍伐、移植、修建补偿费征收",
+            dataId: ""
+          },
+        ]
+      },
+      {
+        listTitle: "餐厨垃圾",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559287396293.png",
+        num: "2项服务",
+        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=K",
+        list: [
+          {
+            title: "从事城市生活垃圾经营性清扫、收集、运输、处理服务审批",
+            dataId: ""
+          },
+          {
+            title: "餐厨废弃物收集、运输、处置许可",
+            dataId: ""
+          }
+        ]
+      },
+      {
+        listTitle: "水土保持",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559287660191.png",
+        num: "2项服务",
+        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=J",
+        list: [
+          {
+            title: "生产建设项目水土保持方案审批",
+            dataId: ""
+          },
+          {
+            title: "水土保持补偿费的征收",
+            dataId: ""
+          }
+        ]
+      },
+      {
+        listTitle: "电影放映",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289514896.png",
+        num: "3项服务",
+        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D",
+        list: [{
+            title: "电影放映单位设立审批",
+            dataId: ""
+          },
+          {
+            title: "改建、拆除电影院和放映设施的审批",
+            dataId: ""
+          },
+          {
+            title: "电影放映单位变更名称、地址、法定代表人或者主要负责人，或者终止电影放映经营活动的备案",
+            dataId: ""
+          }
+        ]
       }
     ]
   },
@@ -208,7 +286,7 @@ Page({
   },
   choose(e) {
     this.setData({
-      dataId:e.target.dataset.id
+      dataId: e.target.dataset.id
     })
   }
 })
