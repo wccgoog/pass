@@ -41,12 +41,6 @@
         "selectedIconPath": "images/ScanNavigation-selected.png"
       },
       {
-        "pagePath": "pages/home2/home2",
-        "text": "办事指南",
-        "iconPath": "images/material.png",
-        "selectedIconPath": "images/material-selected.png"
-      },
-      {
         "pagePath": "pages/scan/scan",
         "text": "扫码导航",
         "iconPath": "images/scan.png",

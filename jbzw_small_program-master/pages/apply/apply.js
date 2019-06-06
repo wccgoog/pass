@@ -1,6 +1,8 @@
 // pages/apply/apply.js
 var app = getApp()
 
+
+
 Page({
 
   /**
@@ -63,7 +65,7 @@ Page({
     ],
     itemList: [{
         title: "社会保障",
-        bOrC: 1,
+        bOrC: 0,
         items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/handicapped/index.html",
             src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289496383.png",
@@ -80,7 +82,7 @@ Page({
       },
       {
         title: "文化生活",
-        bOrC: 0,
+        bOrC: 1,
         items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D",
             src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289514896.png",
@@ -97,7 +99,7 @@ Page({
       },
       {
         title: "城市环保",
-        bOrC: 0,
+        bOrC: 1,
         items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H",
             src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png",
@@ -120,7 +122,7 @@ Page({
       },
       {
         title: "农林机械",
-        bOrC: 0,
+        bOrC: 1,
         items: [{
           dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=G",
           src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009651180.png",
@@ -211,7 +213,7 @@ Page({
     console.log("onload");
     this.setData({
       moreShow: false
-    })
+    });
   },
 
   /**
@@ -290,5 +292,5 @@ Page({
     this.setData({
       dataId: e.target.dataset.id
     })
-  }
+  },
 })

@@ -13,16 +13,7 @@
   </view>
 </view> -->
 
-
 <view class="recommend-service-container2">
-  <view class='title2'>
-    <view class='title-item2' bindtap='choose'>
-      <view data-id='0' class='{{dataId==0?"isChosen":""}} title-item-detail2'>企业服务</view>
-    </view>
-    <view class='title-item2' bindtap='choose'>
-      <view data-id='1' class='{{dataId==1?"isChosen":""}} title-item-detail2'>个人服务</view>
-    </view>
-  </view>
   <view wx:for="{{itemList}}"  wx:if="{{dataId==item.bOrC}}"class="service-list2">
     <view class='service-title2'>{{item.title}}</view>
     <view wx:for="{{item.items}}" wx:key="*this" bindtap='toWebView' class="service-item2" data-id="{{item.dataId}}">

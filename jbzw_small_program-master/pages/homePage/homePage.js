@@ -3,6 +3,7 @@
 var app = getApp()
 Page({
   data: {
+    dataId: 0,
     x: 10,
     y: 140,
     delta: 1,
@@ -33,6 +34,74 @@ Page({
     duration: 500,
     picAnimation: {},
     intervalNum: 0,
+    itemList: [{
+      title: "社会保障",
+      bOrC: 0,
+      items: [{
+        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/handicapped/index.html",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289496383.png",
+        name: "智慧残联",
+        detail: "智慧残联相关事项"
+      },
+      {
+        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993197712.jpg",
+        name: "低保申请",
+        detail: "低保申请相关事项"
+      }
+      ]
+    },
+    {
+      title: "文化生活",
+      bOrC: 1,
+      items: [{
+        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289514896.png",
+        name: "电影放映",
+        detail: "电影放映相关事项"
+      },
+      {
+        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=F",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009274987.JPG",
+        name: "文化演艺",
+        detail: "文化演艺相关事项"
+      }
+      ]
+    },
+    {
+      title: "城市环保",
+      bOrC: 1,
+      items: [{
+        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png",
+        name: "城市道路绿化",
+        detail: "城市道路绿化相关事项"
+      },
+      {
+        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=K",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559287396293.png",
+        name: "餐厨垃圾",
+        detail: "餐厨垃圾相关事项"
+      },
+      {
+        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=J",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559287660191.png",
+        name: "水土保持",
+        detail: "水土保持相关事项"
+      }
+      ]
+    },
+    {
+      title: "农林机械",
+      bOrC: 1,
+      items: [{
+        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=G",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009651180.png",
+        name: "农业林业",
+        detail: "农业林业相关事项"
+      }]
+    }
+    ],
   },
   // loading显示方法
   loading: function() {
@@ -192,8 +261,10 @@ Page({
       title: '加载中',
     })
     var that = this;
+    console.log(e.detail.current)
     that.setData({
-      currentTab: e.detail.current
+      currentTab: e.detail.current,
+      dataId: e.detail.current
     });
     if (e.detail.current == 1) {
       this.company(2);
@@ -203,6 +274,9 @@ Page({
   },
   //点击tab切换
   swichNav: function(e) {
+    this.setData({
+      dataId: e.target.dataset.id
+    });
     var that = this;
     if (this.data.currentTab === e.target.dataset.current) {
       return false;

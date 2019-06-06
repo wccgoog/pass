@@ -63,6 +63,7 @@ page {
 .recommend-service-container2 {
   padding: 20rpx 32rpx 10rpx;
   background: white;
+  border-bottom: 10px solid #eee;
 }
 
 .title2 {
