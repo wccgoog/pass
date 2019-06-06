@@ -91,7 +91,7 @@ Page({
     console.log(this.data.typeDepart)
     if (this.data.typeDepart =="主 题"){
       wx.navigateTo({
-        url: '../listDetail/listDetail?firstCatalog=' + this.data.firstCatalog + '&secondCatalog=' + e.currentTarget.dataset.id
+        url: '../listDetail/listDetail?firstCatalog=' + this.data.firstCatalog + '&secondCatalog=t' + e.currentTarget.dataset.id
       });
     } else if (this.data.typeDepart == "部 门"){
       wx.navigateTo({

@@ -1,6 +1,6 @@
 <!-- <button wx:if="{{!moreShow}}" bindtap='toWebView' data-id='https://jbxqalipay.nanjingdata.cn/m/test.html'>测试</button> -->
 
-<!-- <view class="recommend-service-container">
+<view class="recommend-service-container">
   <view class="title">
     <view class="left-title">推荐服务</view>
     <view wx:if="{{moreShow}}" class="right-title" bindtap='toApply'>更多</view>
@@ -11,9 +11,9 @@
       <view class="service-name">{{item.name}}</view>
     </view>
   </view>
-</view> -->
+</view>
 
-<view class="recommend-service-container2">
+<!-- <view class="recommend-service-container2">
   <view wx:for="{{itemList}}"  wx:if="{{dataId==item.bOrC}}"class="service-list2">
     <view class='service-title2'>{{item.title}}</view>
     <view wx:for="{{item.items}}" wx:key="*this" bindtap='toWebView' class="service-item2" data-id="{{item.dataId}}">
@@ -25,7 +25,7 @@
       <image class="service-arrow2" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/m/image/arrow.png" />
     </view>
   </view>
-</view>
+</view> -->
 
 
 
