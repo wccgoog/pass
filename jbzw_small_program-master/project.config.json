@@ -35,18 +35,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": -1,
 			"list": [
 				{
-					"id": -1,
-					"name": "搜索页面",
+					"id": 0,
+					"name": "navigation",
 					"pathName": "pages/navigation/navigation",
 					"query": "q=1",
 					"scene": null
 				},
 				{
 					"id": 1,
-					"name": "搜索页面",
+					"name": "hall",
 					"pathName": "pages/hall/hall",
 					"query": "id=29",
 					"scene": null
@@ -87,8 +87,8 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "我的",
+					"id": 7,
+					"name": "numSearch",
 					"pathName": "pages/numSearch/numSearch",
 					"query": "",
 					"scene": null
@@ -97,6 +97,7 @@
 					"id": -1,
 					"name": "home2",
 					"pathName": "pages/home2/home2",
+					"query": "",
 					"scene": null
 				}
 			]

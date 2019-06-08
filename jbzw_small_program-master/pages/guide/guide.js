@@ -34,9 +34,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("guide")
-    console.log(options)
-    console.log("guide")
+    console.log("guide.js-options",options)
     if (options.scanEnter) {
       this.setData({
         scanEnter: options.scanEnter,

@@ -34,7 +34,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("-------------",options)
+    console.log("listDetail--onLoad:",options)
     if (options.scanEnter){
       this.setData({
         scanEnter: options.scanEnter,
@@ -57,7 +57,7 @@ Page({
       },
       method: 'GET',
       success: function (res) {
-        console.log(res)
+        console.log("listDetail.js",res.data.data)
         if (res.data.data.list == "" || res.data.data.list==null){
           _this.setData({
             imgHide:false
