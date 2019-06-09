@@ -16,5 +16,8 @@ class JszwfwSpider(scrapy.Spider):
             '//div[@class="right_list_sub"]')
         logging.warning(items)
         for item in items:
+            # 获取onclick中的id，可以进入单个事项
+            # logging.warning(item.xpath(
+            #     './div[@class="sub_r1_main"]/div[@class="r_tit"]/a[@class="r_tit_a"]').extract()[0])
             logging.warning(item.xpath(
                 './div[@class="sub_r1_main"]/div[@class="r_tit"]/a[@class="r_tit_a"]/text()').extract()[0])
