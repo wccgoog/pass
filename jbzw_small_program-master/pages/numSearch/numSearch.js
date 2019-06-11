@@ -1,14 +1,28 @@
 // pages/numSearch/numSearch.js
-var app = getApp()
+import {
+  webView
+} from '../../utils/webView.js'
+
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    items: [{
+        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=S",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
+        name: "在办件"
+      },
+      {
+        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=O",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png",
+        name: "办结件"
+      },
+    ]
   },
-  goOfficeList(){
+  goOfficeList() {
     wx.navigateTo({
       url: '../officeList/officeList'
     });
@@ -16,77 +30,58 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
+  onShow: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-  
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  
+  onPullDownRefresh: function() {
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
+  onReachBottom: function() {
+
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function() {
+
   },
-
-
-
   toWebView(e) {
-    var url = e.currentTarget.dataset.id;
-    var toUrl = '';
-    if (url.indexOf("?") == -1) {
-      toUrl = escape(url + '?code=B&wechatArgs=' + app.globalData.session3rd)
-    } else {
-      toUrl = escape(url + '&code=B&wechatArgs=' + app.globalData.session3rd)
-    }
-    if (app.globalData.realname && app.globalData.mobile && app.globalData.credential_id) {
-      wx.navigateTo({
-        url: '/pages/webview/webview?url=' + toUrl
-      })
-    } else {
-      //在auth页面重新拼接session3rd
-      wx.navigateTo({
-        url: '/pages/auth/auth?url=' + escape(url)
-      })
-    }
+    webView(e)
   }
 })

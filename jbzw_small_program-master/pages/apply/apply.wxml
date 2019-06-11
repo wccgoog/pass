@@ -1,4 +1,4 @@
-<!-- <button wx:if="{{!moreShow}}" bindtap='toWebView' data-id='https://jbxqalipay.nanjingdata.cn/m/test.html'>测试</button> -->
+<button wx:if="{{moreShow}}" bindtap='toWebView' data-id='https://jbxqalipay.nanjingdata.cn/m/test.html'>测试</button>
 
 <view class="recommend-service-container">
   <view class="title">

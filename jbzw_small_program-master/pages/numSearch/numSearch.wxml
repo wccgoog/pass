@@ -17,13 +17,9 @@
     <view wx:if="{{moreShow}}" class="right-title" bindtap='toApply'>更多</view>
   </view>
   <view class="service-list">
-    <view bindtap='toWebView' class="service-item" data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/newOffice.html?workType=S">
-      <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png" />
-      <view class="service-name">在办件</view>
-    </view>
-    <view bindtap='toWebView' class="service-item" data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/newOffice.html?workType=O">
-      <image class="service-icon" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png" />
-      <view class="service-name">办结件</view>
+    <view wx:for="{{items}}" bindtap='toWebView' class="service-item" data-id="{{item.dataId}}">
+      <image class="service-icon" mode="aspectFit" src="{{item.src}}" />
+      <view class="service-name">{{item.name}}</view>
     </view>
   </view>
 </view>

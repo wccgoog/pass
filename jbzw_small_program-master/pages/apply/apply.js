@@ -1,5 +1,9 @@
 // pages/apply/apply.js
-var app = getApp()
+import {
+  webView
+} from '../../utils/webView.js'
+
+const app = getApp()
 
 
 
@@ -265,23 +269,7 @@ Page({
 
   },
   toWebView(e) {
-    var url = e.currentTarget.dataset.id;
-    var toUrl = '';
-    if (url.indexOf("?") == -1) {
-      toUrl = escape(url + '?code=B&wechatArgs=' + app.globalData.session3rd)
-    } else {
-      toUrl = escape(url + '&code=B&wechatArgs=' + app.globalData.session3rd)
-    }
-    if (app.globalData.realname && app.globalData.mobile && app.globalData.credential_id) {
-      wx.navigateTo({
-        url: '/pages/webview/webview?url=' + toUrl
-      })
-    } else {
-      //在auth页面重新拼接session3rd
-      wx.navigateTo({
-        url: '/pages/auth/auth?url=' + escape(url)
-      })
-    }
+    webView(e)
   },
   toApply() {
     wx.navigateTo({

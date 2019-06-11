@@ -34,7 +34,7 @@ Page({
           let str = res.code;
           let p = str.lastIndexOf("/");
           let id = str.substring(p + 1, str.length);
-          console.log(id);
+          console.log("scan.js",id);
           my.navigateTo({
             url: '/pages/web-view/index?requestUrl=' + "https://jbxqalipay.nanjingdata.cn/m/listOfItems.html?window_id=" + id,
           });

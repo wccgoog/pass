@@ -4,7 +4,7 @@ Page(store.register({
   },
 
   onLoad(option) {
-    console.log(option);
+    console.log("web-view.js",option);
     let requestUrl = option.requestUrl ? option.requestUrl : '';
     this.dispatch('loadRequestUrl', requestUrl);
   },

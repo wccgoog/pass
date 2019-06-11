@@ -4,6 +4,7 @@ import {getUid} from './utils/index';
 
 App({
   qrCode: '',
+  test:':18081',
   uid: '',
   faceVerifyUrl: '',
   async onLaunch(options) {
@@ -29,7 +30,7 @@ App({
       this.qrCode = options.query.qrCode;
     }
     console.log('app onShow option-------------' + JSON.stringify(options));
-    this.uid = getUid();
+    // this.uid = getUid();
   },
   onHide() {
     console.log('app onHide');

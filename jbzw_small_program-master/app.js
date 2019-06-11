@@ -80,6 +80,8 @@ App({
     session3rd: '',
     mobile: '',
     credential_id: '',
-    realname: ''
+    realname: '',
+    test:':18081',
+    // test:''
   }
 })

@@ -1,4 +1,4 @@
-<view class="header-container">
+<!-- <view class="header-container" class="displayNone">
   <view 
     class="city"
     onTap="onCityTap"
@@ -16,4 +16,4 @@
 
   </view>
 
-</view>
+</view> -->

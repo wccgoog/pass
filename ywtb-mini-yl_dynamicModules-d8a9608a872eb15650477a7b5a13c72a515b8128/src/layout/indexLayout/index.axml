@@ -1,4 +1,7 @@
-<view a:if="{{isLogin}}">
+  <slot onTap="onLoginSetUserInfo" name="tpl-recommendservice">
+  </slot>
+  <service-market />
+<!-- <view a:if="{{isLogin}}">
   <slot name="tpl-information">
   </slot>
   <slot name="tpl-recommendservice">
@@ -9,10 +12,11 @@
   </slot>
   <slot name="tpl-servicecard">
   </slot>
+   <service-market />
 </view>
-<view a:else onTap="onLoginSetUserInfo">
-  <!-- <view class="loginButton">点我登录</view>
+<view a:else>
+  <view class="loginButton">点我登录</view>
    <credentials />
   <service-market />
-  <service-card /> -->
-</view>
+  <service-card />
+</view> -->

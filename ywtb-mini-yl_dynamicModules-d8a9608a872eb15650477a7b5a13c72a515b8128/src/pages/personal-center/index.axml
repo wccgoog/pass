@@ -12,11 +12,23 @@
   <view class="personal-center-list" a:for="{{list}}" a:for-item="item" a:for-index="i">
     <personal-center-card cardInfo="{{item}}" />
   </view>
-    <layout>
+    <!-- <layout>
     <view a:if="{{$global.homeBlockList && $global.homeBlockList.length>0}}" a:for="{{$global.homeBlockList}}" slot="{{item.blockKey}}">
       <template a:if="{{item.title=='我的办件'}}" is="{{item.blockKey}}" data="{{item}}" />
     </view>
-  </layout>
-  <!-- <logout /> -->
+  </layout> -->
+  <view class="recommend-service-container">
+  <view class="title">
+    <view class="left-title">我的办件</view>
+    <view a:if="{{moreShow}}" class="right-title" bindtap='toApply'>更多</view>
+  </view>
+  <view class="service-list">
+    <view a:for="{{items}}" onTap='toWebView' class="service-item" data-id="{{item.dataId}}">
+      <image class="service-icon" mode="aspectFit" src="{{item.src}}" />
+      <view class="service-name">{{item.name}}</view>
+    </view>
+  </view>
+</view>
+  <logout />
   <!-- <view onTap="toFaceVerify" class="text">人脸识别</view> -->
 </view>
