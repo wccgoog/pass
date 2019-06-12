@@ -43,7 +43,7 @@ App({
             let openid = res.data.openid //返回openid
             let session_key = res.data.session_key //返回openid
             that.globalData.openid = openid;
-            that.globalData.isLogin = true;
+            // that.globalData.isLogin = true;
           }
         })
       }
@@ -81,7 +81,20 @@ App({
     mobile: '',
     credential_id: '',
     realname: '',
+    //测试端口号,置空时为正式环境
     test:':18081',
-    // test:''
+    // test:'',
+    //初始头像
+    avatar:'/images/noneAvatar.png',
+    //初始姓名栏
+    nickName:'请点击此处登录',
+    //默认未登录,获取到用户昵称和头像后才会变为true
+    isLogin:false,
+    //只有在用户未授权的时候,点击登录,才会进入auth界面,在auth界面变为true,跳转回首页时,会获取用户信息,获取后消耗,变回false
+    isAuth:false,
+    //退出登录后姓名栏,务必与nickName同步修改
+    constNickName:'请点击此处登录',
+    //退出登录后头像,务必与avatar同步修改
+    constAvatar:'/images/noneAvatar.png'
   }
 })

@@ -21,11 +21,13 @@ Page({
         authShow: false
       })
     }
-    console.log(options);
-    this.setData({
-      url: unescape(options.url)
-    });
-    console.log(this.data.url);
+
+    if (options) {
+      console.log("auth.js.options", options);
+      this.setData({
+        url: unescape(options.url)
+      });
+    }
   },
 
   /**
@@ -95,17 +97,25 @@ Page({
           success: function(result) {
             app.globalData.mobile = result.data.data.mobile;
             var url = that.data.url;
-            var toUrl = '';
-            if (url.indexOf("?") == -1) {
-              toUrl = escape(url + '?code=B&wechatArgs=' + storageres.data)
-            } else {
-              toUrl = escape(url + '&code=B&wechatArgs=' + storageres.data)
-            }
-            if (app.globalData.realname && app.globalData.mobile && app.globalData.credential_id) {
-              console.log(toUrl)
-              wx.navigateTo({
-                url: '/pages/webview/webview?url=' + toUrl
+            console.log("---------------", url)
+            if (url == 'homePage') {
+              app.globalData.isAuth = true;
+              wx.switchTab({
+                url: '/pages/homePage/homePage',
               })
+            } else {
+              var toUrl = '';
+              if (url.indexOf("?") == -1) {
+                toUrl = escape(url + '?code=B&wechatArgs=' + storageres.data)
+              } else {
+                toUrl = escape(url + '&code=B&wechatArgs=' + storageres.data)
+              }
+              if (app.globalData.realname && app.globalData.mobile && app.globalData.credential_id) {
+                console.log(toUrl)
+                wx.navigateTo({
+                  url: '/pages/webview/webview?url=' + toUrl
+                })
+              }
             }
           }
         })
@@ -133,8 +143,7 @@ Page({
           }
         })
       },
-      fail: (e) => {
-      }
+      fail: (e) => {}
     })
   },
   userInfo(resuserinfo) {
@@ -165,8 +174,7 @@ Page({
           }
         })
       },
-      fail: (e) => {
-      }
+      fail: (e) => {}
     })
   }
 })

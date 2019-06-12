@@ -31,25 +31,25 @@ Page({
       // },
 
       {
-        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H",
+        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H",
         src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png",
         name: "城市道路绿化",
         detail: "城市道路绿化相关事项"
       },
       {
-        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=K",
+        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=K",
         src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559287396293.png",
         name: "餐厨垃圾",
         detail: "餐厨垃圾相关事项"
       },
       {
-        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=J",
+        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=J",
         src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559287660191.png",
         name: "水土保持",
         detail: "水土保持相关事项"
       },
       {
-        dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D",
+        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D",
         src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289514896.png",
         name: "电影放映",
         detail: "电影放映相关事项"

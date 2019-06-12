@@ -1,6 +1,29 @@
 const app = getApp()
 
 export function webView(e) {
+  if (app.globalData.isLogin == false) {
+    //未登录状态
+    wx.login({
+      success(res) {
+        app.globalData.code = res.code;
+        wx.getUserInfo({
+          success(resuserinfo) {
+            let userInfo = JSON.parse(resuserinfo.rawData)
+            console.log(userInfo)
+            //登录第三方系统返回用户已留存的信息
+            app.globalData.nickName = userInfo.nickName;
+            app.globalData.avatar = userInfo.avatarUrl;
+            if (app.globalData.nickName != app.globalData.constNickName && app.globalData.avatar != app.globalData.constAvatar) {
+              app.globalData.isLogin = true;
+            } else {
+              app.globalData.isLogin = false;
+            }
+          }
+        })
+      }
+    });
+  }
+
   var url = e.currentTarget.dataset.id;
   wx.request({
     url: 'https://jbzw.qimixi.net/api/user/getUserInfo',
@@ -43,6 +66,12 @@ export function webView(e) {
                     goToWebView(url)
                   }
                 })
+              },
+              fail(e) {
+                console.log(e);
+                wx.navigateTo({
+                  url: '/pages/auth/auth?url=' + escape(url)
+                })
               }
             })
           }
@@ -53,8 +82,8 @@ export function webView(e) {
 
 }
 
-function goToWebView(url){
-  let toUrl='';
+function goToWebView(url) {
+  let toUrl = '';
   if (url.indexOf("?") == -1) {
     toUrl = escape(url + '?code=B&wechatArgs=' + app.globalData.session3rd)
   } else {

@@ -1,6 +1,8 @@
 // pages/homePage/homePage.js
 //获取应用实例  
-import {webView} from '../../utils/webView.js'
+import {
+  webView
+} from '../../utils/webView.js'
 
 const app = getApp()
 Page({
@@ -111,14 +113,24 @@ Page({
       title: 'XXX',
     })
   },
-  onLoad: function() {
-
+  onLoad: function(options) {
     wx.login({
       success(res) {
         app.globalData.code = res.code;
         wx.getUserInfo({
           success(resuserinfo) {
             console.log(JSON.parse(resuserinfo.rawData))
+            let userInfo = JSON.parse(resuserinfo.rawData)
+            //登录第三方系统返回用户已留存的信息
+
+            // 获取用户昵称和头像,如果
+            app.globalData.nickName = userInfo.nickName;
+            app.globalData.avatar = userInfo.avatarUrl;
+            if (app.globalData.nickName == app.globalData.constNickName && app.globalData.avatar == app.globalData.constAvatar) {
+              app.globalData.isLogin = false;
+            } else {
+              app.globalData.isLogin = true;
+            }
             //登录第三方系统返回用户已留存的信息
             wx.request({
               url: 'https://jbzw.qimixi.net/api/wechat',
@@ -130,7 +142,6 @@ Page({
                 signature: resuserinfo.signature,
               },
               success: function(result) {
-                // console.log(result);
                 //记录session3rd到app.globalData
                 app.globalData.session3rd = result.data.data.session3rd;
                 app.globalData.realname = result.data.data.user_info.realname;
@@ -140,31 +151,12 @@ Page({
                   key: 'session3rd',
                   data: result.data.data.session3rd,
                 })
-              },
-              fail(e) {
-                console.log('request failed');
               }
-            })
-          },
-          fail(e) {
-            console.log('getUserInfo failed----------', e);
-            wx.getStorage({
-              key: 'session3rd',
-              success: function(res) {
-                console.log(res);
-                app.globalData.session3rd = res.data;
-              },
             })
           }
         })
-      },
-      fail(e) {
-        console.log('login failed', e)
       }
     });
-
-
-
 
     wx.showLoading({
       title: '加载中',
@@ -179,7 +171,6 @@ Page({
           winWidth: res.windowWidth,
           winHeight: res.windowHeight
         });
-        console.log(that.data.winHeight);
       }
     });
     var _this = this;
@@ -195,11 +186,8 @@ Page({
         })
       },
       fail: function(res) {
-        console.log("fail");
-        console.log(res);
       },
       complete: function(res) {
-        console.log('submit complete');
         wx.hideLoading()
       }
     })
@@ -220,7 +208,31 @@ Page({
       }
     })
   },
-  onShow() {
+  onShow(e) {
+    if (app.globalData.nickName == app.globalData.constNickName && app.globalData.avatar == app.globalData.constAvatar && app.globalData.isAuth == true) {  
+      //从auth页面跳转回homePage,isAuth状态消耗掉,变回false
+      app.globalData.isAuth=false;
+      //
+      app.globalData.isLogin = false;
+      wx.login({
+        success(res) {
+          app.globalData.code = res.code;
+          wx.getUserInfo({
+            success(resuserinfo) {
+              let userInfo = JSON.parse(resuserinfo.rawData)
+              //登录第三方系统返回用户已留存的信息
+              app.globalData.nickName = userInfo.nickName;
+              app.globalData.avatar = userInfo.avatarUrl;
+              if (app.globalData.nickName != app.globalData.constNickName && app.globalData.avatar != app.globalData.constAvatar) {
+                app.globalData.isLogin = true;
+              } else {
+                app.globalData.isLogin = false;
+              }
+            }
+          })
+        }
+      });
+    }
     var _this = this;
     //本来想用animation做办事一张图的圆形图标的飘动效果,但是有一些问题
     // let animation = wx.createAnimation({
@@ -234,7 +246,8 @@ Page({
     // console.log(this.data.picAnimation)
 
     //首页小圆圈漂浮,setData性能消耗过多
-    console.log(wx.getSystemInfoSync().windowWidth)
+
+    // console.log(wx.getSystemInfoSync().windowWidth)
     var n = setInterval(() => {
       if (_this.data.x == wx.getSystemInfoSync().windowWidth - 52) {
         _this.setData({
@@ -255,7 +268,6 @@ Page({
     })
   },
   onHide() {
-    console.log('hide', this.data.x)
     clearInterval(this.data.intervalNum);
   },
   //滑动切换tab
@@ -264,7 +276,6 @@ Page({
       title: '加载中',
     })
     var that = this;
-    console.log(e.detail.current)
     that.setData({
       currentTab: e.detail.current,
       dataId: e.detail.current
@@ -309,11 +320,8 @@ Page({
         })
       },
       fail: function(res) {
-        console.log("fail");
-        console.log(res);
       },
       complete: function(res) {
-        console.log('submit complete');
         wx.hideLoading()
       }
     })
@@ -357,7 +365,7 @@ Page({
       url: '/pages/apply/apply',
     })
   },
-  toWebView(e){
+  toWebView(e) {
     webView(e)
   },
   toApply() {
@@ -365,7 +373,7 @@ Page({
       url: '/pages/apply/apply'
     })
   },
-  log(){
+  log() {
     console.log(this.data)
   }
 })

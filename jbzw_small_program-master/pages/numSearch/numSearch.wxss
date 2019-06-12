@@ -1,52 +1,57 @@
 /* pages/numSearch/numSearch.wxss */
 
-
-page{
+page {
   background: white;
 }
-.searchWrap{
-  margin-top:20%;
+
+.searchWrap {
+  margin-top: 20%;
 }
-.searchTip{
-  color:#333;
+
+.searchTip {
+  color: #333;
   text-align: center;
-  padding:50rpx 0;
+  padding: 50rpx 0;
   font-size: 35rpx;
 }
-.inputWrap{
+
+.inputWrap {
   background-color: #fff;
-  width:90%;
-  margin:0 auto;
-  padding:20rpx 100rpx 20rpx 20rpx;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20rpx 100rpx 20rpx 20rpx;
   border-radius: 5px;
   box-sizing: border-box;
   position: relative;
   box-shadow: 0 0 10px #ccc;
 }
-.magnifier{
-  position: absolute;
-  top:50%;
-  right:4%;
-  transform: translateY(-50%);
-  width:60rpx;
-}
 
+.magnifier {
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  transform: translateY(-50%);
+  width: 60rpx;
+}
 
 /* 开发中 */
-.develop{
+
+.develop {
   position: absolute;
-  top:45%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
-.develop image{
-width:170rpx;
+
+.develop image {
+  width: 170rpx;
 }
-.develop view{
-  margin-top:50rpx;
+
+.develop view {
+  margin-top: 50rpx;
   font-size: 40rpx;
-  color:#777;
+  color: #777;
 }
 
 .recommend-service-container {
@@ -57,7 +62,6 @@ width:170rpx;
 
 .recommend-service-container .title {
   border-bottom: 1px solid #eee;
-
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
@@ -81,7 +85,6 @@ width:170rpx;
 }
 
 .recommend-service-container .service-list {
-  
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -104,6 +107,31 @@ width:170rpx;
 }
 
 .recommend-service-container .service-list .service-item .service-name {
-  color: #333333;
+  color: #333;
   font-size: 24rpx;
+}
+
+.avatar {
+  height: 50px;
+  width: 50px;
+  margin: 20px;
+  border-radius: 50%;
+}
+.user{
+  display: flex;
+  align-items: center;
+}
+.header{
+  border-bottom: 1px solid #eee;
+}
+.logout{
+  position: absolute;
+  bottom: 0;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+  border: 1px solid #eee;
+  padding: 10px;
+  font-size: 40rpx;
+  font-weight: 300;
 }
