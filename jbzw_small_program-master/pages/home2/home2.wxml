@@ -1,4 +1,16 @@
 <!--pages/home2/home2.wxml-->
+  <view class="homepageWrap" bindtap='log'>
+    <!-- 首页轮播图 -->
+    <view class="page-section page-section-spacing swiper">
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" class="swiperHeight">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item>
+            <image mode="widthFix" src="{{item}}" class="headerImg"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    </view>
 <view class="swiper-tab">
   <view class="swiper-tab-list" data-current="0" bindtap="swichNav" style="border-right:1px solid #eee;box-sizing:border-box">
     <text class="b-border {{currentTab==0 ? 'on' : ''}}" data-current="0">个人服务</text>

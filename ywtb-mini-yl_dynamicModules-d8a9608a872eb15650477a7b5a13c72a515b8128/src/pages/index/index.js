@@ -148,8 +148,8 @@ Page(store.register({
       items: [{
         dataId: "https://jbxqalipay.nanjingdata.cn"+app.test+"/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=G",
         src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009651180.png",
-        name: "农业林业",
-        detail: "农业林业相关事项"
+        name: "农兽医药",
+        detail: "农兽医药相关事项"
       }]
     }
     ],

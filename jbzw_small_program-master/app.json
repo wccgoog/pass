@@ -24,7 +24,8 @@
     "pages/webview/webview",
     "pages/auth/auth",
     "pages/recommend/recommend",
-    "pages/home2/home2"
+    "pages/home2/home2",
+    "pages/homePage2/homePage2"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -36,9 +37,21 @@
     "list": [
       {
         "pagePath": "pages/homePage/homePage",
-        "text": "首页",
+        "text": "首页1",
         "iconPath": "images/ScanNavigation.png",
         "selectedIconPath": "images/ScanNavigation-selected.png"
+      },
+      {
+        "pagePath": "pages/homePage2/homePage2",
+        "text": "首页2",
+        "iconPath": "images/ScanNavigation.png",
+        "selectedIconPath": "images/ScanNavigation-selected.png"
+      },
+      {
+        "pagePath": "pages/home2/home2",
+        "text": "事项查询2",
+        "iconPath": "images/material.png",
+        "selectedIconPath": "images/material-selected.png"
       },
       {
         "pagePath": "pages/scan/scan",

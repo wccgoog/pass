@@ -1,9 +1,9 @@
-<button wx:if="{{moreShow}}" bindtap='toWebView' data-id='https://jbxqalipay.nanjingdata.cn/m/test.html'>测试</button>
+<!-- <button wx:if="{{moreShow}}" bindtap='toWebView' data-id='https://jbxqalipay.nanjingdata.cn/m/test.html'>测试</button> -->
 
 <view class="recommend-service-container">
   <view class="title">
-    <view class="left-title">推荐服务</view>
-    <view wx:if="{{moreShow}}" class="right-title" bindtap='toApply'>更多</view>
+    <view class="left-title">最近使用</view>
+    <!-- <view wx:if="{{moreShow}}" class="right-title" bindtap='toApply'>更多</view> -->
   </view>
   <view class="service-list">
     <view wx:for="{{items}}" wx:key="*this" bindtap='toWebView' class="service-item" data-id="{{item.dataId}}">
