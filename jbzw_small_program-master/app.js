@@ -95,6 +95,6 @@ App({
     //退出登录后姓名栏,务必与nickName同步修改
     constNickName:'请点击此处登录',
     //退出登录后头像,务必与avatar同步修改
-    constAvatar:'/images/noneAvatar.png'
+    constAvatar:'/images/noneAvatar.png',
   }
 })

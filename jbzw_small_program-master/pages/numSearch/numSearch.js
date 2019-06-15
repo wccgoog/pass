@@ -93,32 +93,35 @@ Page({
   },
   login() {
     let that = this;
-    wx.login({
-      success(res) {
-        app.globalData.code = res.code;
-        wx.getUserInfo({
-          success(resuserinfo) {
-            let userInfo = JSON.parse(resuserinfo.rawData)
-            console.log(userInfo)
-            //登录第三方系统返回用户已留存的信息
-            app.globalData.nickName = userInfo.nickName;
-            app.globalData.avatar = userInfo.avatarUrl;
-            app.globalData.isLogin = true;
-            that.setData({
-              nickName: app.globalData.nickName,
-              avatar: app.globalData.avatar,
-              isLogin: true
-            })
-          },
-          fail(e) {
-            console.log(e);
-            wx.navigateTo({
-              url: '/pages/auth/auth?url=homePage'
-            })
-          }
-        })
-      }
-    });
+    wx.navigateTo({
+      url: '/pages/auth/auth?url=homePage'
+    })
+    // wx.login({
+    //   success(res) {
+    //     app.globalData.code = res.code;
+    //     wx.getUserInfo({
+    //       success(resuserinfo) {
+    //         let userInfo = JSON.parse(resuserinfo.rawData)
+    //         console.log(userInfo)
+    //         //登录第三方系统返回用户已留存的信息
+    //         app.globalData.nickName = userInfo.nickName;
+    //         app.globalData.avatar = userInfo.avatarUrl;
+    //         app.globalData.isLogin = true;
+    //         that.setData({
+    //           nickName: app.globalData.nickName,
+    //           avatar: app.globalData.avatar,
+    //           isLogin: true
+    //         })
+    //       },
+    //       fail(e) {
+    //         console.log(e);
+    //         wx.navigateTo({
+    //           url: '/pages/auth/auth?url=homePage'
+    //         })
+    //       }
+    //     })
+    //   }
+    // });
   },
   logout() {
     this.setData({
@@ -129,5 +132,6 @@ Page({
     app.globalData.nickName = app.globalData.constNickName,
     app.globalData.avatar = app.globalData.constAvatar,
     app.globalData.isLogin = false
+    console.log("logout:",app.globalData)
   }
 })

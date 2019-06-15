@@ -16,11 +16,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    if (app.globalData.realname && app.globalData.credential_id) {
-      this.setData({
-        authShow: false
-      })
-    }
+    // if (app.globalData.realname && app.globalData.credential_id) {
+    //   this.setData({
+    //     authShow: false
+    //   })
+    // }
 
     if (options) {
       console.log("auth.js.options", options);

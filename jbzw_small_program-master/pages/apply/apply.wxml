@@ -49,6 +49,7 @@
     </view>
     <view class='service-detail3'>江北新区行政审批局</view>
   </view>
-  <image bindtap='toWebView' data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/handicapped/index.html" wx:if="{{dataId==1}}" class='goTo3' mode="widthFix" src='https://jbxqalipay.nanjingdata.cn/image/disabled.png'></image>
-  <image bindtap='toWebView' data-id="https://jbxqalipay.nanjingdata.cn/web/wechat/modules/lowSecurity/templates/index.html" wx:if="{{dataId==1}}" class='goTo3' mode="widthFix" src='https://jbxqalipay.nanjingdata.cn/image/live.png'></image>
+<view class='imageContainer3'>
+  <image wx:for="{{specificZone}}" bindtap='toWebView' data-id="{{item.dataId}}" wx:if="{{dataId==1}}" class='goTo3' mode="widthFix" src='{{item.src}}'></image>
+</view>
 </view> -->

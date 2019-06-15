@@ -38,13 +38,13 @@ Page({
       },
       {
         dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=K",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559287396293.png",
+        src: "https://jbxqalipay.nanjingdata.cn/image/garbage.png",
         name: "餐厨垃圾",
         detail: "餐厨垃圾相关事项"
       },
       {
         dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=J",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559287660191.png",
+        src: "https://jbxqalipay.nanjingdata.cn/image/stbc.png",
         name: "水土保持",
         detail: "水土保持相关事项"
       },
@@ -118,7 +118,7 @@ Page({
           },
           {
             dataId: "https://jbxqalipay.nanjingdata.cn/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=J",
-            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559287660191.png",
+            src: "https://jbxqalipay.nanjingdata.cn/image/stbc.png",
             name: "水土保持",
             detail: "水土保持相关事项"
           }
@@ -207,6 +207,17 @@ Page({
           }
         ]
       }
+    ],
+    specificZone:[{
+      title:'残联',
+      dataId: 'https://jbxqalipay.nanjingdata.cn'+app.globalData.test+'/web/wechat/modules/handicapped/index.html',
+      src:'https://jbxqalipay.nanjingdata.cn/image/disabled.png'
+    },
+    {
+      title:'低保',
+      dataId: 'https://jbxqalipay.nanjingdata.cn'+app.globalData.test+'/web/wechat/modules/lowSecurity/templates/index.html',
+      src: 'https://jbxqalipay.nanjingdata.cn/image/live.png'
+    }
     ]
   },
 

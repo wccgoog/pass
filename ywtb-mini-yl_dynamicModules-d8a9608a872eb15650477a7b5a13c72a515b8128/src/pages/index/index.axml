@@ -53,7 +53,7 @@
       </text>
     </view>
   </view>
-  <!-- <view class="recommend-service-container2">
+  <view class="recommend-service-container2">
     <view a:for="{{itemList}}" a:key="{{index}}" a:if="{{dataId==item.bOrC}}" class="service-list2">
       <view class='service-title2'>{{item.title}}
       </view>
@@ -68,7 +68,7 @@
         <image class="service-arrow2" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/m/image/arrow.png" />
       </view>
     </view>
-  </view> -->
+  </view>
   <view a:if="{{dataId == 0}}" class="themeWrap">
     <view class="themeTitle">
       <text class="themeTitleWords">主题                                    

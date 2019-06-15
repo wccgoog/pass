@@ -2,9 +2,9 @@
 
 @import "../apply/apply.wxss";
 .newTitle{
-  margin: 10px;
+  margin: 20px 10px 10px 20px;
   font-size: 22px;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .recommend-service-container{

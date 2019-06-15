@@ -37,9 +37,13 @@
     </view>
   </view>
 </view> -->
-<view class='newTitle'>新区通办</view>
-<view class="recommend-service-container2">
-  <view wx:for="{{itemList}}" wx:key="{{index}}"  class="service-list2">
+<!-- <view class='newTitle'>新区通办</view> -->
+<view class='title3'>
+  <view data-id='0' class='{{dataId==0?"isChosen":""}}' bindtap='choose'>新区通办</view>
+  <view data-id='1' class='{{dataId==1?"isChosen":""}}' bindtap='choose'>专区</view>
+</view>
+<view wx:if="{{dataId==0}}" class="recommend-service-container2">
+  <view wx:for="{{itemList}}" wx:key="{{index}}" class="service-list2">
     <view class='service-title2'>{{item.title}}</view>
     <view wx:for="{{item.items}}" wx:key="{{index}}" bindtap='toWebView' class="service-item2" data-id="{{item.dataId}}">
       <image class="service-icon2" mode="aspectFit" src="{{item.src}}" />
@@ -51,6 +55,11 @@
     </view>
   </view>
 </view>
+<view class='imageContainer3'>
+  <image wx:for="{{specificZone}}" bindtap='toWebView' data-id="{{item.dataId}}" wx:if="{{dataId==1}}" class='goTo3' mode="widthFix" src='{{item.src}}'></image>
+</view>
+  <view class='x'>南京市江北新区管理委员会行政审批局主办</view>
+
 
 
 

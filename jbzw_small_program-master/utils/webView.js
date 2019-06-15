@@ -1,85 +1,101 @@
 const app = getApp()
 
 export function webView(e) {
+  console.log("webview=====", app.globalData.isLogin);
   if (app.globalData.isLogin == false) {
     //未登录状态
-    wx.login({
-      success(res) {
-        app.globalData.code = res.code;
-        wx.getUserInfo({
-          success(resuserinfo) {
-            let userInfo = JSON.parse(resuserinfo.rawData)
-            console.log(userInfo)
-            //登录第三方系统返回用户已留存的信息
-            app.globalData.nickName = userInfo.nickName;
-            app.globalData.avatar = userInfo.avatarUrl;
-            if (app.globalData.nickName != app.globalData.constNickName && app.globalData.avatar != app.globalData.constAvatar) {
-              app.globalData.isLogin = true;
-            } else {
-              app.globalData.isLogin = false;
+    wx.showModal({
+      title: '请在"我的"页面登录',
+      content: '登录账号后即可申报和查询事项',
+      success: (res) => {
+        console.log(res)
+        if (res.confirm) {
+          wx.switchTab({
+            url: '/pages/numSearch/numSearch',
+          })
+        }
+      }
+    })
+    // wx.login({
+    //   success(res) {
+    //     app.globalData.code = res.code;
+    //     wx.getUserInfo({
+    //       success(resuserinfo) {
+    //         let userInfo = JSON.parse(resuserinfo.rawData)
+    //         console.log(userInfo)
+    //         //登录第三方系统返回用户已留存的信息
+    //         app.globalData.nickName = userInfo.nickName;
+    //         app.globalData.avatar = userInfo.avatarUrl;
+    //         if (app.globalData.nickName != app.globalData.constNickName && app.globalData.avatar != app.globalData.constAvatar) {
+    //           app.globalData.isLogin = true;
+    //         } else {
+    //           app.globalData.isLogin = false;
+    //         }
+    //       }
+    //     })
+    //   }
+    // });
+  } else {
+
+
+
+    var url = e.currentTarget.dataset.id;
+    wx.request({
+      url: 'https://jbzw.qimixi.net/api/user/getUserInfo',
+      data: {
+        session3rd: app.globalData.session3rd
+      },
+      success: (res) => {
+        if (res.data.code == 1) {
+          console.log("状态未过期===========================", res)
+          goToWebView(url)
+        } else if (res.data.code == 0) {
+          console.log("状态过期,重新登录===========================", res)
+          wx.login({
+            success(res) {
+              app.globalData.code = res.code;
+              wx.getUserInfo({
+                success(resuserinfo) {
+                  //登录第三方系统返回用户已留存的信息
+                  wx.request({
+                    url: 'https://jbzw.qimixi.net/api/wechat',
+                    data: {
+                      code: res.code,
+                      encryptedData: resuserinfo.encryptedData,
+                      rawData: resuserinfo.rawData,
+                      iv: resuserinfo.iv,
+                      signature: resuserinfo.signature,
+                    },
+                    success: function(result) {
+                      console.log(result);
+                      //记录session3rd到app.globalData
+                      app.globalData.session3rd = result.data.data.session3rd;
+                      app.globalData.realname = result.data.data.user_info.realname;
+                      app.globalData.mobile = result.data.data.user_info.mobile;
+                      app.globalData.credential_id = result.data.data.user_info.credential_id;
+                      wx.setStorage({
+                        key: 'session3rd',
+                        data: result.data.data.session3rd,
+                      })
+                      console.log(app.globalData.session3rd);
+                      goToWebView(url)
+                    }
+                  })
+                },
+                fail(e) {
+                  console.log(e);
+                  wx.navigateTo({
+                    url: '/pages/auth/auth?url=' + escape(url)
+                  })
+                }
+              })
             }
-          }
-        })
+          });
+        }
       }
-    });
+    })
+
   }
-
-  var url = e.currentTarget.dataset.id;
-  wx.request({
-    url: 'https://jbzw.qimixi.net/api/user/getUserInfo',
-    data: {
-      session3rd: app.globalData.session3rd
-    },
-    success: (res) => {
-      if (res.data.code == 1) {
-        console.log("状态未过期===========================", res)
-        goToWebView(url)
-      } else if (res.data.code == 0) {
-        console.log("状态过期,重新登录===========================", res)
-        wx.login({
-          success(res) {
-            app.globalData.code = res.code;
-            wx.getUserInfo({
-              success(resuserinfo) {
-                //登录第三方系统返回用户已留存的信息
-                wx.request({
-                  url: 'https://jbzw.qimixi.net/api/wechat',
-                  data: {
-                    code: res.code,
-                    encryptedData: resuserinfo.encryptedData,
-                    rawData: resuserinfo.rawData,
-                    iv: resuserinfo.iv,
-                    signature: resuserinfo.signature,
-                  },
-                  success: function(result) {
-                    console.log(result);
-                    //记录session3rd到app.globalData
-                    app.globalData.session3rd = result.data.data.session3rd;
-                    app.globalData.realname = result.data.data.user_info.realname;
-                    app.globalData.mobile = result.data.data.user_info.mobile;
-                    app.globalData.credential_id = result.data.data.user_info.credential_id;
-                    wx.setStorage({
-                      key: 'session3rd',
-                      data: result.data.data.session3rd,
-                    })
-                    console.log(app.globalData.session3rd);
-                    goToWebView(url)
-                  }
-                })
-              },
-              fail(e) {
-                console.log(e);
-                wx.navigateTo({
-                  url: '/pages/auth/auth?url=' + escape(url)
-                })
-              }
-            })
-          }
-        });
-      }
-    }
-  })
-
 }
 
 function goToWebView(url) {

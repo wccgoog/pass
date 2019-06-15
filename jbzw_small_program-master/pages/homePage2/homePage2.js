@@ -41,125 +41,152 @@ Page({
     duration: 500,
     picAnimation: {},
     intervalNum: 0,
-    itemList: [{
-      title: "社会保障",
-      bOrC: 0,
-      items: [{
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/handicapped/index.html",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289496383.png",
-        name: "智慧残联",
-        detail: "智慧残联相关事项"
+    itemList: [
+      //   {
+      //   title: "社会保障",
+      //   bOrC: 0,
+      //   items: [{
+      //     dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/handicapped/index.html",
+      //     src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289496383.png",
+      //     name: "智慧残联",
+      //     detail: "残疾人政策、助残、就业服务"
+      //   },
+      //   {
+      //     dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/lowSecurity/templates/index.html",
+      //     src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993197712.jpg",
+      //     name: "低保申请",
+      //     detail: "江北新区本地户籍低保在线申请"
+      //   }
+      //   ]
+      // },
+
+      {
+        title: "城市环保",
+        bOrC: 1,
+        items: [{
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H",
+            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png",
+            name: "城市道路绿化",
+            detail: "建设单位占道挖掘、修复补偿征收"
+          },
+          {
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=K",
+            src: "https://jbxqalipay.nanjingdata.cn/image/garbage.png",
+            name: "餐厨垃圾",
+            detail: "餐厨垃圾、城市生活垃圾审批"
+          },
+          {
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=J",
+            src: "https://jbxqalipay.nanjingdata.cn/image/stbc.png",
+            name: "水土保持",
+            detail: "建设单位水土保持方案审批与征收"
+          }
+        ]
       },
       {
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/lowSecurity/templates/index.html",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993197712.jpg",
-        name: "低保申请",
-        detail: "低保申请相关事项"
-      }
-      ]
-    },
-    {
-      title: "文化生活",
-      bOrC: 1,
-      items: [{
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289514896.png",
-        name: "电影放映",
-        detail: "电影放映相关事项"
+        title: "农业发展",
+        bOrC: 1,
+        items: [
+          {
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/movehandleItem.html?siteId=1&id=JFJ00001&types=c&isOne=A",
+            src: "https://jbxqalipay.nanjingdata.cn/image/animal.png",
+            name: "兽医师注册",
+            detail: "兽医师注册、助理执业兽医师备案"
+          },
+          {
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=M",
+            src: "https://jbxqalipay.nanjingdata.cn/image/medicine.png",
+            name: "农兽药许可",
+            detail: "农药、兽药经营许可证核发"
+          },
+          {
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/movehandleItem.html?siteId=1&id=JFJ00002&types=c&isOne=A",
+            src: "https://jbxqalipay.nanjingdata.cn/image/pipe.png",
+            name: "管道事故备案",
+            detail: "管道事故应急预案备案"
+          },
+        ]
       },
       {
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=F",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009274987.JPG",
-        name: "文化演艺",
-        detail: "文化演艺相关事项"
-      }
-      ]
-    },
-    {
-      title: "城市环保",
-      bOrC: 1,
-      items: [{
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png",
-        name: "城市道路绿化",
-        detail: "城市道路绿化相关事项"
+        title: "文化生活",
+        bOrC: 1,
+        items: [{
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D",
+            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289514896.png",
+            name: "电影放映",
+            detail: "电影单位设立、变更及注销审批"
+          },
+          // {
+          //   dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=F",
+          //   src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009274987.JPG",
+          //   name: "文化演艺",
+          //   detail: "文化演艺相关事项"
+          // }
+        ]
       },
-      {
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=K",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559287396293.png",
-        name: "餐厨垃圾",
-        detail: "餐厨垃圾相关事项"
-      },
-      {
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=J",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559287660191.png",
-        name: "水土保持",
-        detail: "水土保持相关事项"
-      }
-      ]
-    },
-    {
-      title: "农林机械",
-      bOrC: 1,
-      items: [{
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=G",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1558009651180.png",
-        name: "农兽医药",
-        detail: "农兽医药相关事项"
-      }]
-    }
     ],
+    specificZone: [{
+        title: '残联',
+        dataId: 'https://jbxqalipay.nanjingdata.cn' + app.globalData.test + '/web/wechat/modules/handicapped/index.html',
+        src: 'https://jbxqalipay.nanjingdata.cn/image/disabled.png'
+      },
+      {
+        title: '低保',
+        dataId: 'https://jbxqalipay.nanjingdata.cn' + app.globalData.test + '/web/wechat/modules/lowSecurity/templates/index.html',
+        src: 'https://jbxqalipay.nanjingdata.cn/image/live.png'
+      }
+    ]
   },
   // loading显示方法
-  loading: function () {
+  loading: function() {
     wx.showLoading({
       title: 'XXX',
     })
   },
-  onLoad: function (options) {
-    wx.login({
-      success(res) {
-        app.globalData.code = res.code;
-        wx.getUserInfo({
-          success(resuserinfo) {
-            console.log(JSON.parse(resuserinfo.rawData))
-            let userInfo = JSON.parse(resuserinfo.rawData)
-            //登录第三方系统返回用户已留存的信息
+  onLoad: function(options) {
+    // wx.login({
+    //   success(res) {
+    //     app.globalData.code = res.code;
+    //     wx.getUserInfo({
+    //       success(resuserinfo) {
+    //         console.log(JSON.parse(resuserinfo.rawData))
+    //         let userInfo = JSON.parse(resuserinfo.rawData)
+    //         //登录第三方系统返回用户已留存的信息
 
-            // 获取用户昵称和头像,如果
-            app.globalData.nickName = userInfo.nickName;
-            app.globalData.avatar = userInfo.avatarUrl;
-            if (app.globalData.nickName == app.globalData.constNickName && app.globalData.avatar == app.globalData.constAvatar) {
-              app.globalData.isLogin = false;
-            } else {
-              app.globalData.isLogin = true;
-            }
-            //登录第三方系统返回用户已留存的信息
-            wx.request({
-              url: 'https://jbzw.qimixi.net/api/wechat',
-              data: {
-                code: res.code,
-                encryptedData: resuserinfo.encryptedData,
-                rawData: resuserinfo.rawData,
-                iv: resuserinfo.iv,
-                signature: resuserinfo.signature,
-              },
-              success: function (result) {
-                //记录session3rd到app.globalData
-                app.globalData.session3rd = result.data.data.session3rd;
-                app.globalData.realname = result.data.data.user_info.realname;
-                app.globalData.mobile = result.data.data.user_info.mobile;
-                app.globalData.credential_id = result.data.data.user_info.credential_id;
-                wx.setStorage({
-                  key: 'session3rd',
-                  data: result.data.data.session3rd,
-                })
-              }
-            })
-          }
-        })
-      }
-    });
+    //         // 获取用户昵称和头像,如果
+    //         app.globalData.nickName = userInfo.nickName;
+    //         app.globalData.avatar = userInfo.avatarUrl;
+    //         if (app.globalData.nickName == app.globalData.constNickName && app.globalData.avatar == app.globalData.constAvatar) {
+    //           app.globalData.isLogin = false;
+    //         } else {
+    //           app.globalData.isLogin = true;
+    //         }
+    //         //登录第三方系统返回用户已留存的信息
+    //         wx.request({
+    //           url: 'https://jbzw.qimixi.net/api/wechat',
+    //           data: {
+    //             code: res.code,
+    //             encryptedData: resuserinfo.encryptedData,
+    //             rawData: resuserinfo.rawData,
+    //             iv: resuserinfo.iv,
+    //             signature: resuserinfo.signature,
+    //           },
+    //           success: function(result) {
+    //             //记录session3rd到app.globalData
+    //             app.globalData.session3rd = result.data.data.session3rd;
+    //             app.globalData.realname = result.data.data.user_info.realname;
+    //             app.globalData.mobile = result.data.data.user_info.mobile;
+    //             app.globalData.credential_id = result.data.data.user_info.credential_id;
+    //             wx.setStorage({
+    //               key: 'session3rd',
+    //               data: result.data.data.session3rd,
+    //             })
+    //           }
+    //         })
+    //       }
+    //     })
+    //   }
+    // });
 
     wx.showLoading({
       title: '加载中',
@@ -169,7 +196,7 @@ Page({
      * 获取系统信息 
      */
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         that.setData({
           winWidth: res.windowWidth,
           winHeight: res.windowHeight
@@ -182,15 +209,14 @@ Page({
       url: 'https://jbzw.qimixi.net/api/Index/index?type=1',
       data: "",
       method: 'GET',
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           personal_topic: res.data.data.topic,
           personal_department: res.data.data.department
         })
       },
-      fail: function (res) {
-      },
-      complete: function (res) {
+      fail: function(res) {},
+      complete: function(res) {
         wx.hideLoading()
       }
     })
@@ -199,7 +225,7 @@ Page({
       url: 'https://jbzw.qimixi.net/api/banner/bannerList',
       data: "",
       method: 'POST',
-      success: function (res) {
+      success: function(res) {
         let list = res.data.data.list;
         let listArr = [];
         for (var i in list) {
@@ -213,9 +239,10 @@ Page({
   },
   onShow(e) {
     this.setData({
-      nickName:app.globalData.nickName,
-      avatar:app.globalData.avatar
+      nickName: app.globalData.nickName,
+      avatar: app.globalData.avatar
     })
+    console.log("homePage2,app.globalData",app.globalData)
     if (app.globalData.nickName == app.globalData.constNickName && app.globalData.avatar == app.globalData.constAvatar && app.globalData.isAuth == true) {
       //从auth页面跳转回homePage,isAuth状态消耗掉,变回false
       app.globalData.isAuth = false;
@@ -278,7 +305,7 @@ Page({
     // clearInterval(this.data.intervalNum);
   },
   //滑动切换tab
-  bindChange: function (e) {
+  bindChange: function(e) {
     wx.showLoading({
       title: '加载中',
     })
@@ -294,7 +321,7 @@ Page({
     }
   },
   //点击tab切换
-  swichNav: function (e) {
+  swichNav: function(e) {
     this.setData({
       dataId: e.target.dataset.id
     });
@@ -320,15 +347,14 @@ Page({
       url: 'https://jbzw.qimixi.net/api/Index/index?type=' + type,
       data: "",
       method: 'GET',
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           business_topic: res.data.data.topic,
           business_department: res.data.data.department
         })
       },
-      fail: function (res) {
-      },
-      complete: function (res) {
+      fail: function(res) {},
+      complete: function(res) {
         wx.hideLoading()
       }
     })
@@ -411,5 +437,10 @@ Page({
         })
       }
     });
+  },
+  choose(e) {
+    this.setData({
+      dataId: e.target.dataset.id
+    })
   },
 })
