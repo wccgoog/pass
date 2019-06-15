@@ -34,7 +34,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log("onLoad",app.globalData)
+    console.log("onLoad", app.globalData)
 
   },
   /**
@@ -48,8 +48,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    console.log("onShow");
-    if (app.globalData.isLogin == false && app.globalData.isJump==1) {
+    console.log("numSearch,onShow", app.globalData);
+    if (app.globalData.isLogin == false && app.globalData.isJump == 1) {
       wx.navigateTo({
         url: '/pages/auth/auth?url=homePage',
       })
@@ -99,10 +99,11 @@ Page({
     webView(e)
   },
   login() {
-    let that = this;
-    wx.navigateTo({
-      url: '/pages/auth/auth?url=homePage'
-    })
+    if (app.globalData.isLogin == false) {
+      wx.navigateTo({
+        url: '/pages/auth/auth?url=homePage'
+      })
+    }
     // wx.login({
     //   success(res) {
     //     app.globalData.code = res.code;
@@ -137,8 +138,8 @@ Page({
       isLogin: false
     });
     app.globalData.nickName = app.globalData.constNickName,
-    app.globalData.avatar = app.globalData.constAvatar,
-    app.globalData.isLogin = false
-    console.log("logout:",app.globalData)
+      app.globalData.avatar = app.globalData.constAvatar,
+      app.globalData.isLogin = false
+    console.log("logout:", app.globalData)
   }
 })

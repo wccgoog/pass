@@ -241,7 +241,7 @@ Page({
       nickName: app.globalData.nickName,
       avatar: app.globalData.avatar
     })
-    console.log("homePage2,app.globalData", app.globalData)
+    console.log("homePage2-onShow,app.globalData", app.globalData)
     if (app.globalData.nickName == app.globalData.constNickName && app.globalData.avatar == app.globalData.constAvatar && app.globalData.isAuth == true) {
       //从auth页面跳转回homePage,isAuth状态消耗掉,变回false
       app.globalData.isAuth = false;
