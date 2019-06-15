@@ -14,15 +14,15 @@ Page({
     nickName: app.globalData.nickName,
     isLogin: app.globalData.isLogin,
     items: [{
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=S",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
-        name: "在办件"
-      },
-      {
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=O",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png",
-        name: "办结件"
-      },
+      dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=S",
+      src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
+      name: "在办件"
+    },
+    {
+      dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=O",
+      src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png",
+      name: "办结件"
+    },
     ]
   },
   goOfficeList() {
@@ -33,23 +33,23 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    console.log("onLoad",app.globalData)
+  onLoad: function (options) {
+    console.log("onLoad", app.globalData)
 
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     console.log("onShow");
-    if (app.globalData.isLogin == false && app.globalData.isJump==1) {
+    if (app.globalData.isLogin == false && app.globalData.isJump == 1) {
       wx.navigateTo({
         url: '/pages/auth/auth?url=homePage',
       })
@@ -64,35 +64,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
   toWebView(e) {
@@ -137,8 +137,8 @@ Page({
       isLogin: false
     });
     app.globalData.nickName = app.globalData.constNickName,
-    app.globalData.avatar = app.globalData.constAvatar,
-    app.globalData.isLogin = false
-    console.log("logout:",app.globalData)
+      app.globalData.avatar = app.globalData.constAvatar,
+      app.globalData.isLogin = false
+    console.log("logout:", app.globalData)
   }
 })

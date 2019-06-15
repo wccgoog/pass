@@ -25,7 +25,8 @@
     "pages/auth/auth",
     "pages/recommend/recommend",
     "pages/home2/home2",
-    "pages/homePage2/homePage2"
+    "pages/homePage2/homePage2",
+    "pages/numSearch2/numSearch2"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -42,6 +43,18 @@
         "selectedIconPath": "images/ScanNavigation-selected.png"
       },
       {
+        "pagePath": "pages/numSearch2/numSearch2",
+        "text": "我的1",
+        "iconPath": "images/office.png",
+        "selectedIconPath": "images/office-selected.png"
+      },
+      {
+        "pagePath": "pages/scan/scan",
+        "text": "扫码导航",
+        "iconPath": "images/scan.png",
+        "selectedIconPath": "images/scan-selected.png"
+      },
+      {
         "pagePath": "pages/homePage2/homePage2",
         "text": "首页2",
         "iconPath": "images/ScanNavigation.png",
@@ -52,18 +65,6 @@
         "text": "事项查询2",
         "iconPath": "images/material.png",
         "selectedIconPath": "images/material-selected.png"
-      },
-      {
-        "pagePath": "pages/scan/scan",
-        "text": "扫码导航",
-        "iconPath": "images/scan.png",
-        "selectedIconPath": "images/scan-selected.png"
-      },
-      {
-        "pagePath": "pages/numSearch/numSearch",
-        "text": "我的",
-        "iconPath": "images/office.png",
-        "selectedIconPath": "images/office-selected.png"
       }
     ]
   },

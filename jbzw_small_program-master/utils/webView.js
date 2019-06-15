@@ -5,13 +5,15 @@ export function webView(e) {
   if (app.globalData.isLogin == false) {
     //未登录状态
     wx.showModal({
-      title: '请在"我的"页面登录',
-      content: '登录账号后即可申报和查询事项',
+      title: '请登录',
+      content: '登录后即可网上申报和查询办件',
+      confirmText:'登录',
       success: (res) => {
         console.log(res)
         if (res.confirm) {
-          wx.switchTab({
-            url: '/pages/numSearch/numSearch',
+          app.globalData.isJump = 1;
+          wx.navigateTo({
+            url: '/pages/numSearch/numSearch'
           })
         }
       }

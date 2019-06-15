@@ -96,5 +96,7 @@ App({
     constNickName:'请点击此处登录',
     //退出登录后头像,务必与avatar同步修改
     constAvatar:'/images/noneAvatar.png',
+    //是否从homePage跳转登录
+    isJump:0
   }
 })

@@ -3,8 +3,8 @@ page{
   background: white no-repeat;
   background-position-x: center;
   background-position-y: 20%;
-  background-image: url("https://jbxqalipay.nanjingdata.cn/image/auth.jpg");
-  background-size: 70%;
+  background-image: url("https://jbxqalipay.nanjingdata.cn/image/auth.png");
+  background-size: 40%;
 }
 button{
   position: absolute;
@@ -15,6 +15,13 @@ button{
   z-index: 2;
 }
 .auth{
-  margin: 400px 10px 0;
+  margin: 300px 10px 0;
   color: #666;
+  font-size: 16px;
+}
+.title{
+  color: black;
+  text-align: center;
+  margin: 20px;
+  font-size: 22px;
 }

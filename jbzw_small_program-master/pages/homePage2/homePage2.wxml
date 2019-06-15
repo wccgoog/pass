@@ -5,6 +5,7 @@
   </view>
   <view class='login'>
     <view>{{}}</view>
+    <image class="service-arrow2" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/m/image/arrow.png" />
   </view>
 </view>
 
@@ -56,9 +57,10 @@
   </view>
 </view>
 <view class='imageContainer3'>
-  <image wx:for="{{specificZone}}" bindtap='toWebView' data-id="{{item.dataId}}" wx:if="{{dataId==1}}" class='goTo3' mode="widthFix" src='{{item.src}}'></image>
+  <image wx:for="{{specificZone}}"  wx:key="{{index}}" bindtap='toWebView' data-id="{{item.dataId}}" wx:if="{{dataId==1}}" class='goTo3' mode="widthFix" src='{{item.src}}'></image>
 </view>
   <view class='x'>南京市江北新区管理委员会行政审批局主办</view>
+  <!-- <view class='x'>浩鲸科技提供技术支持</view> -->
 
 
 

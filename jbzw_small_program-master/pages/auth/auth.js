@@ -22,6 +22,8 @@ Page({
     //   })
     // }
 
+    //消耗掉isJump状态
+    app.globalData.isJump = 0;
     if (options) {
       console.log("auth.js.options", options);
       this.setData({
@@ -99,9 +101,21 @@ Page({
             var url = that.data.url;
             console.log("---------------", url)
             if (url == 'homePage') {
-              app.globalData.isAuth = true;
-              wx.switchTab({
-                url: '/pages/homePage/homePage',
+              wx.getUserInfo({
+                success(resuserinfo) {
+                  let userInfo = JSON.parse(resuserinfo.rawData)
+                  // 获取用户昵称和头像,如果
+                  app.globalData.nickName = userInfo.nickName;
+                  app.globalData.avatar = userInfo.avatarUrl;
+                  if (app.globalData.nickName == app.globalData.constNickName && app.globalData.avatar == app.globalData.constAvatar) {
+                    app.globalData.isLogin = false;
+                  } else {
+                    app.globalData.isLogin = true;
+                  }
+                  wx.navigateBack({
+                    delta: 1
+                  });
+                }
               })
             } else {
               var toUrl = '';
@@ -123,6 +137,15 @@ Page({
     })
   },
   authinfo(res) {
+    console.log("支付密码", res)
+    if (res.detail.errMsg == "openRealnameAuth:cancel") {
+      app.globalData.isLogin = false;
+      app.globalData.nickName = app.globalData.constNickName;
+      app.globalData.avatar = app.globalData.constAvatar;
+      wx.navigateBack({
+        delta: 2
+      })
+    }
     var that = this;
     wx.getStorage({
       key: 'session3rd',
@@ -143,12 +166,18 @@ Page({
           }
         })
       },
-      fail: (e) => {}
+      fail: (e) => {
+        console.log(e)
+      }
     })
   },
   userInfo(resuserinfo) {
     var that = this;
-    console.log(resuserinfo);
+    console.log(resuserinfo.detail.userInfo);
+    // app.globalData.avatar = resuserinfo.detail.userInfo.avatarUrl;
+    // app.globalData.nickName = resuserinfo.detail.userInfo.nickName;
+    // app.globalData.isLogin = true;
+    console.log(app.globalData)
     wx.login({
       success: (res) => {
         wx.request({

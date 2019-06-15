@@ -86,8 +86,7 @@ Page({
       {
         title: "农业发展",
         bOrC: 1,
-        items: [
-          {
+        items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/movehandleItem.html?siteId=1&id=JFJ00001&types=c&isOne=A",
             src: "https://jbxqalipay.nanjingdata.cn/image/animal.png",
             name: "兽医师注册",
@@ -242,7 +241,7 @@ Page({
       nickName: app.globalData.nickName,
       avatar: app.globalData.avatar
     })
-    console.log("homePage2,app.globalData",app.globalData)
+    console.log("homePage2,app.globalData", app.globalData)
     if (app.globalData.nickName == app.globalData.constNickName && app.globalData.avatar == app.globalData.constAvatar && app.globalData.isAuth == true) {
       //从auth页面跳转回homePage,isAuth状态消耗掉,变回false
       app.globalData.isAuth = false;
@@ -411,32 +410,38 @@ Page({
   },
   login() {
     let that = this;
-    wx.login({
-      success(res) {
-        app.globalData.code = res.code;
-        wx.getUserInfo({
-          success(resuserinfo) {
-            let userInfo = JSON.parse(resuserinfo.rawData)
-            console.log(userInfo)
-            //登录第三方系统返回用户已留存的信息
-            app.globalData.nickName = userInfo.nickName;
-            app.globalData.avatar = userInfo.avatarUrl;
-            app.globalData.isLogin = true;
-            that.setData({
-              nickName: app.globalData.nickName,
-              avatar: app.globalData.avatar,
-              isLogin: true
-            })
-          },
-          fail(e) {
-            console.log(e);
-            wx.navigateTo({
-              url: '/pages/auth/auth?url=homePage'
-            })
-          }
-        })
-      }
-    });
+    app.globalData.isJump = 1;
+    wx.navigateTo({
+      url: '/pages/numSearch/numSearch'
+    })
+
+
+    // wx.login({
+    //   success(res) {
+    //     app.globalData.code = res.code;
+    //     wx.getUserInfo({
+    //       success(resuserinfo) {
+    //         let userInfo = JSON.parse(resuserinfo.rawData)
+    //         console.log(userInfo)
+    //         //登录第三方系统返回用户已留存的信息
+    //         app.globalData.nickName = userInfo.nickName;
+    //         app.globalData.avatar = userInfo.avatarUrl;
+    //         app.globalData.isLogin = true;
+    //         that.setData({
+    //           nickName: app.globalData.nickName,
+    //           avatar: app.globalData.avatar,
+    //           isLogin: true
+    //         })
+    //       },
+    //       fail(e) {
+    //         console.log(e);
+    //         wx.navigateTo({
+    //           url: '/pages/auth/auth?url=homePage'
+    //         })
+    //       }
+    //     })
+    //   }
+    // });
   },
   choose(e) {
     this.setData({
