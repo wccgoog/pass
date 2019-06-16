@@ -97,6 +97,8 @@ App({
     //退出登录后头像,务必与avatar同步修改
     constAvatar:'/images/noneAvatar.png',
     //是否从homePage跳转登录
-    isJump:0
+    isJump:0,
+    //最近使用
+    latestUsed:[[0,0],[0,1],[0,2],[2,0]],
   }
 })

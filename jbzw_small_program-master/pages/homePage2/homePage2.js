@@ -1,7 +1,8 @@
 // pages/homePage/homePage.js
 //获取应用实例  
 import {
-  webView
+  webView,
+  latestUsed
 } from '../../utils/webView.js'
 
 const app = getApp()
@@ -41,6 +42,7 @@ Page({
     duration: 500,
     picAnimation: {},
     intervalNum: 0,
+    items: [],
     itemList: [
       //   {
       //   title: "社会保障",
@@ -237,6 +239,18 @@ Page({
     })
   },
   onShow(e) {
+    var _this = this;
+    //最近使用
+    var latestUsedItems = [];
+    app.globalData.latestUsed.forEach(
+      (value, index) => {
+        latestUsedItems[index] = _this.data.itemList[value[0]].items[value[1]];
+      }
+    )
+    this.setData({
+      items: latestUsedItems
+    });
+    console.log("onshow",app.globalData.latestUsed)
     this.setData({
       nickName: app.globalData.nickName,
       avatar: app.globalData.avatar
@@ -398,7 +412,20 @@ Page({
     })
   },
   toWebView(e) {
-    webView(e)
+    var _this = this;
+    //最近使用
+
+    latestUsed(e);
+    webView(e);
+    var latestUsedItems = [];
+    app.globalData.latestUsed.forEach(
+      (value, index) => {
+        latestUsedItems[index] = _this.data.itemList[value[0]].items[value[1]];
+      }
+    )
+    this.setData({
+      items: latestUsedItems
+    })
   },
   toApply() {
     wx.navigateTo({

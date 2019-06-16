@@ -225,7 +225,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log("onload");
+    console.log("apply.js.onload");
     this.setData({
       moreShow: false
     });
@@ -242,7 +242,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    console.log("onshow")
+    console.log("apply.js.onshow")
   },
 
   /**

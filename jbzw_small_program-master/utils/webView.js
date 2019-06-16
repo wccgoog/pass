@@ -7,7 +7,7 @@ export function webView(e) {
     wx.showModal({
       title: '请登录',
       content: '登录后即可网上申报和查询办件',
-      confirmText:'登录',
+      confirmText: '登录',
       success: (res) => {
         console.log(res)
         if (res.confirm) {
@@ -116,5 +116,36 @@ function goToWebView(url) {
     wx.navigateTo({
       url: '/pages/auth/auth?url=' + escape(url)
     })
+  }
+}
+
+export function latestUsed(e) {
+  let globalLatestUsed = app.globalData.latestUsed;
+  if (e.currentTarget.dataset.index != undefined && e.currentTarget.dataset.itemsindex != undefined) {
+    var latest = [e.currentTarget.dataset.index, e.currentTarget.dataset.itemsindex]
+    let flag = 0;
+    let index = 0;
+    for (let i = 0; i < globalLatestUsed.length; i++) {
+      if (globalLatestUsed[i].toString() == latest.toString()) {
+        flag = 1;
+        index = i;
+        break;
+      }
+    }
+    if (flag == 1) {
+      console.log(globalLatestUsed[index])
+      globalLatestUsed.unshift(globalLatestUsed[index]);
+      globalLatestUsed.splice(index + 1, 1);
+      console.log(globalLatestUsed)
+    } else if (flag == 0) {
+      globalLatestUsed.unshift(latest);
+      globalLatestUsed.pop();
+    }
+  }
+
+  if (e.currentTarget.dataset.latest != undefined) {
+    let index = e.currentTarget.dataset.latest;
+    globalLatestUsed.unshift(globalLatestUsed[index]);
+    globalLatestUsed.splice(e.currentTarget.dataset.latest + 1, 1);
   }
 }

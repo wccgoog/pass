@@ -1,5 +1,6 @@
 <!-- <web-view src='/pages/homePage/homePage'></web-view> -->
 <movable-area>
+  <!-- 办事一张图 -->
   <movable-view x="{{x}}" y="{{y}}" direction="all" bindtap='onePic'>
     <view class="pic">办事</view>
     <view class="pic">一张图</view>
@@ -17,7 +18,18 @@
     </view>
     <!-- 首页轮播图 -->
   </view>
-  <apply/>
+   <view class="recommend-service-container">
+    <view class="title">
+      <view class="left-title">最近使用</view>
+      <!-- <view wx:if="{{moreShow}}" class="right-title" bindtap='toApply'>更多</view> -->
+    </view>
+    <view class="service-list">
+      <view wx:for="{{items}}" wx:key="*this" bindtap='toWebView' class="service-item" data-id="{{item.dataId}}" data-latest="{{index}}">
+        <image class="service-icon" mode="aspectFit" src="{{item.src}}" />
+        <view class="service-name">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
   <view class="swiper-tab">
     <view class="swiper-tab-list" data-current="0" data-id='0' bindtap="swichNav" style="border-right:1px solid #eee;box-sizing:border-box">
       <text data-id='0' class="b-border {{currentTab==0 ? 'on' : ''}}" data-current="0">个人服务</text>
@@ -28,13 +40,13 @@
   </view>
 
   <view class="recommend-service-container2">
-    <view wx:for="{{itemList}}" wx:key="{{index}}" wx:if="{{dataId==item.bOrC}}" class="service-list2">
+    <view wx:for="{{itemList1}}" wx:key="{{index}}" wx:if="{{dataId==item.bOrC}}" class="service-list2">
       <view class='service-title2'>{{item.title}}</view>
-      <view wx:for="{{item.items}}" wx:key="{{index}}" bindtap='toWebView' class="service-item2" data-id="{{item.dataId}}">
-        <image class="service-icon2" mode="aspectFit" src="{{item.src}}" />
+      <view wx:for="{{item.items}}" wx:for-item="items" wx:for-index="itemsIndex" wx:key="{{itemsIndex}}" bindtap='toWebView' class="service-item2" data-id="{{items.dataId}}" data-index="{{index}}" data-itemsindex="{{itemsIndex}}">
+        <image class="service-icon2" mode="aspectFit" src="{{items.src}}" />
         <view>
-          <view class="service-name2">{{item.name}}</view>
-          <view class="service-detail2">{{item.detail}}</view>
+          <view class="service-name2">{{items.name}}</view>
+          <view class="service-detail2">{{items.detail}}</view>
         </view>
         <image class="service-arrow2" mode="aspectFit" src="https://jbxqalipay.nanjingdata.cn/m/image/arrow.png" />
       </view>
