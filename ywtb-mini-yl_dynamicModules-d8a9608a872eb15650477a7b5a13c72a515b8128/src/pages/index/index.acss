@@ -1,68 +1,69 @@
-/* required by usingComponents */
-
-@import "/templates/credentials/index.acss";
-@import "/templates/information/index.acss";
-@import "/templates/service-card/index.acss";
-@import "/templates/my-service/index.acss";
-.head {}
-
-.top {
-  top: 300rpx;
-  position: absolute;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0) !important;
-  width: 100%;
-}
-
-.header-container {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
-}
-
-.city-text {
-  color: white;
-  font-weight: bolder;
-}
-
-.map-icon {
-  height: 40rpx;
-  width: 40rpx;
-}
 
 .simage {
   height: 400rpx;
   width: 100%;
 }
-
-.page-container {
-  width: 100%;
-  background: #f9f9f9;
+.recommend-service-container {
+  padding: 20rpx 32rpx 10rpx;
+  background: white;
+  border-bottom: 1px solid #eee;
 }
 
-.top {
-  background: #fff;
+.recommend-service-container .title {
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
-.information-container {
-  background: #fff;
+.recommend-service-container .title .left-title {
+  font-size: 30rpx;
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  color: #666;
 }
 
-.credentials-container, .service-card-container, .service-market-container {
-  margin-top: 16rpx;
-  background: #fff;
+.recommend-service-container .title .right-title {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 28rpx;
+  color: #999;
 }
 
-.service-item {
-  /* margin-top: 40rpx !important; */
+.recommend-service-container .service-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
-.service-market-container {
-  /* padding-bottom: 30rpx !important; */
+.recommend-service-container .service-list .service-item {
+  margin-bottom: 5px;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recommend-service-container .service-list .service-item .service-icon {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 14rpx;
+}
+
+.recommend-service-container .service-list .service-item .service-name {
+  color: #333;
+  font-size: 24rpx;
 }
 
 .recommend-service-container2 {
   padding: 20rpx 32rpx 10rpx;
   background: white;
-  border-bottom: 10px solid #eee;
 }
 
 .title2 {
@@ -94,30 +95,35 @@
 }
 
 .service-icon2 {
-  padding: 10px;
-  margin: 10px 10px 10px 0;
+  padding: 20px 20px 20px 0;
   width: 30px;
   height: 30px;
+}
+
+.service-name2 {
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .service-title2 {
   border-bottom: 1px solid #eee;
   padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #666;
+  font-size: 14px;
+  /* font-weight: 600; */
+  color: #aaa;
 }
 
 .service-item2 {
   display: flex;
   align-items: center;
   margin: 0 20px;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  /* padding: 10px 0; */
+  border-bottom: 1px solid rgb(245, 245, 245);
 }
 
 .title-item-detail2 {
   display: inline-block;
+  font-size: 10px;
 }
 
 .service-item2:last-of-type {
@@ -132,75 +138,121 @@
 
 .service-list2 {
   border: 1px solid #eee;
-  /* margin: 10px 10px; */
   margin-bottom: 10px;
 }
 
 .service-detail2 {
-  font-size: 14px;
+  font-size: 12px;
   color: #999;
   padding-top: 5px;
 }
 
-.recommend-service-container {
-  padding: 20rpx 32rpx 10rpx;
-  background: white;
-  border-bottom: 10px solid #eee;
+.newTitle {
+  margin: 20px 10px 10px 20px;
+  font-size: 22px;
+  font-weight: 600;
 }
 
-.recommend-service-container .title {
+movable-area {
+  height: 100vh;
+  width: 100%;
+}
+
+.title3 {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin: 20px 10px 0 20px;
+}
+
+.isChosen {
+  font-weight: 900;
+  font-size: 18px;
+  padding-bottom: 5px;
+  border-bottom: 3px solid green;
+}
+
+
+movable-view {
+  height: 52px;
+  width: 52px;
+  background: url("https://jbxqalipay.nanjingdata.cn/image/picBackground.jpg");
+  background-size: cover;
+  z-index: 2;
+  border-radius: 30px;
+}
+
+.movable-view {
+  height: 52px;
+  width: 52px;
+  background: url("https://jbxqalipay.nanjingdata.cn/image/picBackground.jpg");
+  background-size: cover;
+  z-index: 2;
+  border-radius: 30px;
+}
+
+.pic {
+  margin-top: 2.5px;
+  text-align: center;
+  text-shadow: 1px 3px 5px #000;
+  color: white;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.homepageWrap {
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.headerImg {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.swiper-tab {
+  width: 100%;
+  text-align: center;
+  line-height: 80rpx;
+  background-color: #fff;
   border-bottom: 1px solid #eee;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
 }
 
-.recommend-service-container .title .left-title {
+.swiper-tab-list {
   font-size: 30rpx;
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
+  display: inline-block;
+  width: 50%;
   color: #666;
 }
 
-.recommend-service-container .title .right-title {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  font-size: 28rpx;
-  color: #999;
-}
-
-.recommend-service-container .service-list {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
-.recommend-service-container .service-list .service-item {
-  margin-bottom: 20px;
-  width: 25%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.recommend-service-container .service-list .service-item .service-icon {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 14rpx;
-}
-
-.recommend-service-container .service-list .service-item .service-name {
+.on {
   color: #333;
-  font-size: 24rpx;
+  border-bottom: 5rpx solid #079a41;
 }
 
-.themeWrap {}
+.swiper-box {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.swiper-box {
+  margin-top: 10rpx;
+  background-color: #fff;
+}
+
+.b-border {
+  display: inline-block;
+  height: 80rpx;
+}
+
+/* 主题部分 */
+
+.themeWrap {
+}
 
 .themeTitle {
   color: #666;
@@ -255,14 +307,15 @@
 
 .left {
   flex: 4;
-  font-size: 28rpx;
+  font-size: 26rpx;
   color: #666;
 }
 
-.leftTitle {}
+.leftTitle {
+}
 
 .leftDetail {
-  font-size: 22rpx;
+  font-size: 20rpx;
 }
 
 .right {
@@ -298,7 +351,7 @@
 
 .departmentSingle {
   text-align: center;
-  font-size: 24rpx;
+  font-size: 28rpx;
   height: 100rpx;
   line-height: 100rpx;
   width: 25%;
@@ -315,4 +368,110 @@
 
 .scrollItemHeight {
   height: 60%;
+}
+
+/* 轮播图 */
+
+.page-section {
+  width: 100%;
+}
+
+.page-section-spacing {
+  box-sizing: border-box;
+}
+
+.swiper-item {
+  display: block;
+  height: 150px;
+}
+
+.swiperHeight {
+  height: 375rpx;
+}
+
+.apply {
+  margin-bottom: 10px;
+}
+
+.x {
+  color: #999;
+  font-size: 12px;
+  text-align: center;
+  background: white;
+  padding-bottom: 10px;
+}
+
+.iWanna {
+  background: white;
+  /* border-bottom: 1px solid #eee; */
+  border-left: 4px solid #079a41;
+  padding: 5px;
+  font-size: 24px;
+  color: #444;
+}
+
+.avatar {
+  height: 35px;
+  width: 35px;
+  margin: 10px 20px;
+  border-radius: 50%;
+}
+
+.nickName {
+  font-size: 16px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+  border: 1px solid #eee;
+  padding: 10px;
+  font-size: 40rpx;
+  font-weight: 300;
+}
+
+.background {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background-image: url('https://jbxqalipay.nanjingdata.cn/image/logo_background.jpg');
+  background-position: 50% 30%;
+  background-size: cover;
+}
+
+.logo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 40px;
+  width: 120px;
+}
+
+.weather {
+  font-size: 12px;
+  color: white;
+  text-shadow: 1px 1px 2px #000;
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+}
+
+.weather view {
+  font-size: 14px;
 }

@@ -23,7 +23,7 @@
     "nboffline": "sync",
     "tinyPubRes": "YES",
     "showDomain": "NO",
-    "defaultTitle": "小程序名称"
+    "defaultTitle": "新区e办事"
   },
   "tabBar": {
     "textColor": "#999999",
@@ -43,10 +43,10 @@
         "name": "扫码导航"
       },
       {
-        "pagePath": "pages/personal-center/index",
+        "pagePath": "pages/home/home",
         "icon": "images/3-n.png",
         "activeIcon": "images/3-a.png",
-        "name": "我的"
+        "name": "办事指南"
       }
     ]
   },

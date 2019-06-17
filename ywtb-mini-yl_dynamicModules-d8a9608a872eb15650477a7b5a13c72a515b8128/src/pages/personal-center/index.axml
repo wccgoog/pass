@@ -1,34 +1,28 @@
-<import src="/templates/information/index.axml"/>
-<import src="/templates/credentials/index.axml"/>
-<import src="/templates/service-card/index.axml"/>
-<import src="/templates/my-service/index.axml"/>
-<import src="/templates/none/index.axml"/>
-<import src="/templates/recommend-service/index.axml"/>
-
-
-
-<view class="page-container personal-center">
-  <user />
-  <view class="personal-center-list" a:for="{{list}}" a:for-item="item" a:for-index="i">
-    <personal-center-card cardInfo="{{item}}" />
-  </view>
-    <!-- <layout>
-    <view a:if="{{$global.homeBlockList && $global.homeBlockList.length>0}}" a:for="{{$global.homeBlockList}}" slot="{{item.blockKey}}">
-      <template a:if="{{item.title=='我的办件'}}" is="{{item.blockKey}}" data="{{item}}" />
+  
+<view class='header' onTap='login'>
+  <view class='user'>
+    <image class='avatar' src="{{avatar}}">
+    </image>
+    <view class='nickName'>{{nickName}}        
     </view>
-  </layout> -->
-  <view class="recommend-service-container">
+  </view>
+  <view class='login'>
+  </view>
+</view>
+<view class="recommend-service-container">
   <view class="title">
-    <view class="left-title">我的办件</view>
-    <view a:if="{{moreShow}}" class="right-title" bindtap='toApply'>更多</view>
+    <view class="left-title">我的办件        
+    </view>
+    <view a:if="{{moreShow}}" class="right-title" onTap='toApply'>更多        
+    </view>
   </view>
   <view class="service-list">
     <view a:for="{{items}}" onTap='toWebView' class="service-item" data-id="{{item.dataId}}">
       <image class="service-icon" mode="aspectFit" src="{{item.src}}" />
-      <view class="service-name">{{item.name}}</view>
+      <view class="service-name">{{item.name}}            
+      </view>
     </view>
   </view>
 </view>
-  <logout />
-  <!-- <view onTap="toFaceVerify" class="text">人脸识别</view> -->
+<view a:if="{{isLogin}}" class='logout' onTap='logout'>退出登录
 </view>

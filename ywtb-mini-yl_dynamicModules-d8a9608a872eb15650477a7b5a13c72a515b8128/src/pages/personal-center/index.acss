@@ -1,76 +1,57 @@
-.page-container {
-    width: 100%;
-    background: #F5F5F5;
-}
+/* pages/numSearch/numSearch.wxss */
 
-.card-container {
-    margin-bottom: 16rpx;
-    background: #ffffff;
-}
-
-.personal-center-list {
-    margin-top: 16rpx;
-}
-
-.service-market-container {
-  padding: 20rpx 32rpx 80rpx;
-}
-
-.service-market-container .title {
-  font-size: 36rpx;
-}
-
-.service-market-container .service-list {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.service-market-container .service-list .service-item {
-  margin-top: 82rpx;
-  width: 33%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.service-market-container .service-list .service-item .service-icon {
-  width: 80rpx;
-  height: 80rpx;
-  margin-bottom: 14rpx;
-}
-
-.service-market-container .service-list .service-item .service-name {
-  color: #333333;
-  font-size: 24rpx;
-  width: 85%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: center;
-  font-family: "Microsoft YaHei","黑体","宋体",sans-serif;
-}
-
-.service-market-container .service-list:last-child {
-  margin-bottom: 0;
-}
-
-.service-market-container{
+page {
   background: white;
-  margin-top: 10px;
 }
 
-.service-item{
-  /* margin-top: 40rpx !important; */
+.searchWrap {
+  margin-top: 20%;
 }
 
-.service-market-container{
-  /* padding-bottom: 30rpx !important; */
-}
-.text{
+.searchTip {
+  color: #333;
   text-align: center;
-  margin:300px auto;
+  padding: 50rpx 0;
+  font-size: 35rpx;
+}
+
+.inputWrap {
+  background-color: #fff;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20rpx 100rpx 20rpx 20rpx;
+  border-radius: 5px;
+  box-sizing: border-box;
+  position: relative;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.magnifier {
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  transform: translateY(-50%);
+  width: 60rpx;
+}
+
+/* 开发中 */
+
+.develop {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.develop image {
+  width: 170rpx;
+}
+
+.develop view {
+  margin-top: 50rpx;
+  font-size: 40rpx;
+  color: #777;
 }
 
 .recommend-service-container {
@@ -81,7 +62,6 @@
 
 .recommend-service-container .title {
   border-bottom: 1px solid #eee;
-
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
@@ -105,7 +85,6 @@
 }
 
 .recommend-service-container .service-list {
-  
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -128,6 +107,35 @@
 }
 
 .recommend-service-container .service-list .service-item .service-name {
-  color: #333333;
+  color: #333;
   font-size: 24rpx;
+}
+
+.avatar {
+  height: 50px;
+  width: 50px;
+  margin: 20px 0 5px 0;
+  border-radius: 50%;
+}
+.user{
+  text-align: center;
+  /* display: flex;
+  align-items: center; */
+}
+.nickName{
+  margin-bottom: 10px;
+}
+.header{
+  border-bottom: 1px solid #eee;
+}
+.logout{
+  position: absolute;
+  bottom: 0;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+  border: 1px solid #eee;
+  padding: 10px;
+  font-size: 40rpx;
+  font-weight: 300;
 }

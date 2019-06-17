@@ -11,14 +11,17 @@ const app = getApp();
 
 Page(store.register({
   data: {
+    avatar: app.globalData.avatar,
+    nickName: app.globalData.nickName,
+    isLogin: app.globalData.isLogin,
     items: [
       {
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=S",
+        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=S",
         src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
         name: "在办件"
       },
       {
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=O",
+        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=O",
         src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png",
         name: "办结件"
       },

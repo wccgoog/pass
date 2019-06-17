@@ -1,10 +1,27 @@
 import getCityTabs from './services/city-service';
 import getPageInstanceBlocks from './services/page-service';
-import {getUid} from './utils/index';
+import { getUid } from './utils/index';
 
 App({
   qrCode: '',
-  test:':18081',
+  globalData: {
+    test: ':18081',
+    latestUsed: [[0, 0], [0, 1], [0, 2], [2, 0]],
+    //初始头像
+    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/OEpRddJBTljCwxpcwDXQ.png',
+    //初始姓名栏
+    nickName: '请点击此处登录',
+    //默认未登录,获取到用户昵称和头像后才会变为true
+    isLogin: false,
+    //只有在用户未授权的时候,点击登录,才会进入auth界面,在auth界面变为true,跳转回首页时,会获取用户信息,获取后消耗,变回false
+    isAuth: false,
+    //退出登录后姓名栏,务必与nickName同步修改
+    constNickName: '请点击此处登录',
+    //退出登录后头像,务必与avatar同步修改
+    constAvatar: 'https://gw.alipayobjects.com/zos/rmsportal/OEpRddJBTljCwxpcwDXQ.png',
+    //是否从homePage跳转登录
+    isJump: 0,
+  },
   uid: '',
   faceVerifyUrl: '',
   async onLaunch(options) {
