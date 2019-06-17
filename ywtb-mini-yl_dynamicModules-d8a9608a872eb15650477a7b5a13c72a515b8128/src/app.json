@@ -12,7 +12,8 @@
     "pages/message-list/message-list",
     "pages/scan/scan",
     "pages/listOfItems/listOfItems",
-    "pages/faceVerify/faceVerify"
+    "pages/faceVerify/faceVerify",
+    "pages/home/home"
   ],
   "window": {
     "enableDSL": "YES",

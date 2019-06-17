@@ -6,8 +6,11 @@ import {
 } from '../../utils/webView.js'
 
 const app = getApp()
+var bmap = require('../../utils/bmap-wx.js');
+
 Page({
   data: {
+    weatherData: '',
     avatar: app.globalData.avatar,
     nickName: app.globalData.nickName,
     isLogin: app.globalData.isLogin,
@@ -145,6 +148,45 @@ Page({
     })
   },
   onLoad: function(options) {
+    wx.getLocation({
+      success: function(res) {
+        console.log(res)
+      },
+    })
+    wx.request({
+      url: 'https://api.map.baidu.com/telematics/v3/weather',
+      header: {
+        "content-type": "application/json"
+      },
+      data:{
+        ak:"ZBKaew3iyYiRj2vIls067x0PrLhxtjNd",
+        location:'118.79647,32.05838',
+        output:'json',
+      },
+      success:(res)=>{
+        console.log(res)
+      }
+    })
+    var that = this;
+    // 新建百度地图对象 
+    var BMap = new bmap.BMapWX({
+      ak: 'ZBKaew3iyYiRj2vIls067x0PrLhxtjNd'
+    });
+    var fail = function (data) {
+      console.log(data)
+    };
+    var success = function (data) {
+      var weatherData = data.currentWeather[0];
+      that.setData({
+        weatherData: weatherData
+      });
+      console.log(that.data.weatherData)
+    }
+    // 发起weather请求 
+    BMap.weather({
+      fail: fail,
+      success: success
+    }); 
     // wx.login({
     //   success(res) {
     //     app.globalData.code = res.code;
@@ -250,10 +292,10 @@ Page({
     this.setData({
       items: latestUsedItems
     });
-    console.log("onshow",app.globalData.latestUsed)
     this.setData({
       nickName: app.globalData.nickName,
-      avatar: app.globalData.avatar
+      avatar: app.globalData.avatar,
+      isLogin:app.globalData.isLogin
     })
     console.log("homePage2-onShow,app.globalData", app.globalData)
     if (app.globalData.nickName == app.globalData.constNickName && app.globalData.avatar == app.globalData.constAvatar && app.globalData.isAuth == true) {
@@ -417,15 +459,18 @@ Page({
 
     latestUsed(e);
     webView(e);
-    var latestUsedItems = [];
-    app.globalData.latestUsed.forEach(
-      (value, index) => {
-        latestUsedItems[index] = _this.data.itemList[value[0]].items[value[1]];
-      }
-    )
-    this.setData({
-      items: latestUsedItems
-    })
+    setTimeout(() => {
+      var latestUsedItems = [];
+      app.globalData.latestUsed.forEach(
+        (value, index) => {
+          latestUsedItems[index] = _this.data.itemList[value[0]].items[value[1]];
+        }
+      )
+      this.setData({
+        items: latestUsedItems
+      })
+    }, 2000)
+
   },
   toApply() {
     wx.navigateTo({

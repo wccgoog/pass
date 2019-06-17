@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/homePage/homePage",
+    "pages/homePage2/homePage2",
     "pages/navigation/navigation",
     "pages/listOfItems/listOfItems",
     "pages/more/more",
@@ -25,9 +25,14 @@
     "pages/auth/auth",
     "pages/recommend/recommend",
     "pages/home2/home2",
-    "pages/homePage2/homePage2",
+    "pages/homePage/homePage",
     "pages/numSearch2/numSearch2"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于展示小程序天气信息"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#3dccb4",
@@ -37,16 +42,10 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/homePage/homePage",
-        "text": "首页1",
+        "pagePath": "pages/homePage2/homePage2",
+        "text": "首页",
         "iconPath": "images/ScanNavigation.png",
         "selectedIconPath": "images/ScanNavigation-selected.png"
-      },
-      {
-        "pagePath": "pages/numSearch2/numSearch2",
-        "text": "我的1",
-        "iconPath": "images/office.png",
-        "selectedIconPath": "images/office-selected.png"
       },
       {
         "pagePath": "pages/scan/scan",
@@ -55,14 +54,8 @@
         "selectedIconPath": "images/scan-selected.png"
       },
       {
-        "pagePath": "pages/homePage2/homePage2",
-        "text": "首页2",
-        "iconPath": "images/ScanNavigation.png",
-        "selectedIconPath": "images/ScanNavigation-selected.png"
-      },
-      {
         "pagePath": "pages/home2/home2",
-        "text": "事项查询2",
+        "text": "事项查询",
         "iconPath": "images/material.png",
         "selectedIconPath": "images/material-selected.png"
       }

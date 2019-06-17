@@ -35,7 +35,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 12,
 			"list": [
 				{
 					"id": 0,
@@ -119,6 +119,12 @@
 					"name": "homePage2",
 					"pathName": "pages/homePage2/homePage2",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "homePage2",
+					"pathName": "pages/homePage2/homePage2",
 					"scene": null
 				}
 			]
