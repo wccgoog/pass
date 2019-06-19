@@ -1,3 +1,5 @@
+import {getAuthUserInfo} from '../services/my';
+
 const app = getApp();
 
 export function authLogin() {

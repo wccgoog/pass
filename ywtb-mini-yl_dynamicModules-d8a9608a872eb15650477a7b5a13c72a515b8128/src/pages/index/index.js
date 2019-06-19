@@ -13,6 +13,7 @@ const app = getApp();
 
 Page(store.register({
   data: {
+    weatherData: {},
     avatar: app.globalData.avatar,
     nickName: app.globalData.nickName,
     isLogin: app.globalData.isLogin,
@@ -178,6 +179,30 @@ Page(store.register({
    * 页面加载时，初始化请求
    */
   async onLoad(options) {
+    var _this = this;
+
+    //和天气
+    var nowLocation = '';
+    my.getLocation({
+      success: (res) => {
+        nowLocation = res.latitude + ',' + res.longitude;
+        my.request({
+          url: 'https://free-api.heweather.net/s6/weather',
+          data: {
+            location: nowLocation,
+            key: 'a02cd8e3c22e4ea489b79d6c80b27b9e'
+          },
+          success: (res) => {
+            console.log(res);
+            _this.setData({
+              weatherData: res.data.HeWeather6[0]
+            })
+          }
+        });
+      }
+    });
+
+
     // this.dispatch('updateCityTabs');
     this.dispatch('updateLocalAuthCode');
     // this.dispatch('getPageBlocks');

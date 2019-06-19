@@ -1,3 +1,7 @@
+page {
+  background: white;
+}
+
 .recommend-service-container {
   padding: 20rpx 32rpx 10rpx;
   background: white;
@@ -141,11 +145,13 @@
   color: #999;
   padding-top: 5px;
 }
+
 .goTo3 {
   display: block;
   width: 90%;
   margin: 20px auto 20px auto;
 }
+
 .newTitle {
   margin: 20px 10px 10px 20px;
   font-size: 22px;
@@ -160,15 +166,26 @@ movable-area {
 .title3 {
   display: flex;
   align-items: center;
-  font-size: 18px;
+  font-size: 20px;
   margin: 20px 10px 0 20px;
+}
+
+.unChosen {
+  padding-bottom: 8px;
+  font-size: 20px;
+  font-weight: 900;
+  color: #666;
 }
 
 .isChosen {
   font-weight: 900;
-  font-size: 18px;
+  font-size: 22px;
   padding-bottom: 5px;
   border-bottom: 3px solid green;
+}
+
+.title3 view {
+  margin-right: 10px;
 }
 
 movable-view {
@@ -470,10 +487,11 @@ movable-view {
 }
 
 .city {
-  font-size:18px;
+  font-size: 18px;
   font-weight: 900;
 }
-.temperature{
+
+.temperature {
   font-size: 11px;
   font-weight: 900;
 }

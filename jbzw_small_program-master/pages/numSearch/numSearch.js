@@ -16,17 +16,17 @@ Page({
     items: [
       {
         dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=S",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
+        src: "https://jbxqalipay.nanjingdata.cn/image/doing.png",
         name: "在办件"
       },
       {
         dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=O",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png",
+        src: "https://jbxqalipay.nanjingdata.cn/image/done.png",
         name: "办结件"
       },
       {
         dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/pickup.html",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png",
+        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
         name: "我的待取"
       },
       {

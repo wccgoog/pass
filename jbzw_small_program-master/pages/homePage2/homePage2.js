@@ -148,45 +148,29 @@ Page({
     })
   },
   onLoad: function(options) {
+    var _this = this;
+
+    //和天气
+    var nowLocation = '';
     wx.getLocation({
-      success: function(res) {
-        console.log(res)
-      },
-    })
-    wx.request({
-      url: 'https://api.map.baidu.com/telematics/v3/weather',
-      header: {
-        "content-type": "application/json"
-      },
-      data:{
-        ak:"ZBKaew3iyYiRj2vIls067x0PrLhxtjNd",
-        location:'118.79647,32.05838',
-        output:'json',
-      },
-      success:(res)=>{
-        console.log(res)
+      success: (res) => {
+        nowLocation = res.latitude + ',' + res.longitude;
+        wx.request({
+          url: 'https://free-api.heweather.net/s6/weather',
+          data: {
+            location: nowLocation,
+            key: 'a02cd8e3c22e4ea489b79d6c80b27b9e'
+          },
+          success: (res) => {
+            console.log(res);
+            _this.setData({
+              weatherData: res.data.HeWeather6[0]
+            })
+          }
+        });
       }
-    })
-    var that = this;
-    // 新建百度地图对象 
-    var BMap = new bmap.BMapWX({
-      ak: 'ZBKaew3iyYiRj2vIls067x0PrLhxtjNd'
     });
-    var fail = function (data) {
-      console.log(data)
-    };
-    var success = function (data) {
-      var weatherData = data.currentWeather[0];
-      that.setData({
-        weatherData: weatherData
-      });
-      console.log(that.data.weatherData)
-    }
-    // 发起weather请求 
-    BMap.weather({
-      fail: fail,
-      success: success
-    }); 
+
     // wx.login({
     //   success(res) {
     //     app.globalData.code = res.code;

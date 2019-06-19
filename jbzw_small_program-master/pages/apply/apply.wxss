@@ -152,14 +152,18 @@ page {
 }
 
 .title3 {
-  font-size: 20px;
   display: flex;
   align-items: center;
+  font-size: 20px;
+  margin: 20px 10px 0 20px;
 }
-
+.unChosen{
+  padding-bottom: 8px;
+  font-size: 18px;
+}
 .isChosen {
   font-weight: 900;
-  font-size: 18px;
+  font-size: 20px;
   padding-bottom: 5px;
   border-bottom: 3px solid green;
 }

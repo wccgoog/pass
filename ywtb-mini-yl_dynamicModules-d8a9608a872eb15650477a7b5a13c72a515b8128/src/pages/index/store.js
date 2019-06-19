@@ -105,8 +105,8 @@ export default new Store({
           userInfo,
           isLogin: true,
         });
-        dispatch('getPageBlocks');
-        dispatch('updateHasReadMessage'); // 是否有未读消息
+        // dispatch('getPageBlocks');
+        // dispatch('updateHasReadMessage'); // 是否有未读消息
         // my.hideLoading();
       } catch (error) {
         my.hideLoading();
@@ -126,8 +126,8 @@ export default new Store({
             authCode,
             userInfo,
           });
-          dispatch('getPageBlocks');
-          dispatch('updateHasReadMessage');// 是否有未读消息
+          // dispatch('getPageBlocks');
+          // dispatch('updateHasReadMessage');// 是否有未读消息
         } catch (err) {
           console.log(err);
         }

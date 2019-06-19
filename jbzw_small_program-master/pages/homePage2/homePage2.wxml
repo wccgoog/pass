@@ -1,7 +1,9 @@
 <view class='background'>
   <view class='weather'>
-  <view class='city'>{{weatherData.currentCity}}</view>
-  <view class='temperature'>{{weatherData.weatherDesc}} {{weatherData.temperature}}</view>
+    <view class='city'>{{weatherData.basic.parent_city}}市
+    </view>
+    <view class='temperature'>{{weatherData.now.cond_txt}} {{weatherData.daily_forecast[0].tmp_max}} ~ {{weatherData.daily_forecast[0].tmp_min}}℃
+    </view>
   </view>
   <image class='logo' src='https://jbxqalipay.nanjingdata.cn/image/jblogo3.png' mode="aspectFit"></image>
 </view>
@@ -29,8 +31,8 @@
   </view>
 </view>
 <view class='title3'>
-  <view data-id='0' class='{{dataId==0?"isChosen":""}}' bindtap='choose'>新区通办</view>
-  <view data-id='1' class='{{dataId==1?"isChosen":""}}' bindtap='choose'>服务专区</view>
+  <view data-id='0' class='{{dataId==0?"isChosen":"unChosen"}}' bindtap='choose'>新区通办</view>
+  <view data-id='1' class='{{dataId==1?"isChosen":"unChosen"}}' bindtap='choose'>服务专区</view>
 </view>
 <view wx:if="{{dataId==0}}" class="recommend-service-container2">
   <view wx:for="{{itemList}}" wx:key="{{index}}" class="service-list2">
@@ -49,6 +51,3 @@
   <image wx:for="{{specificZone}}" wx:key="{{index}}" bindtap='toWebView' data-id="{{item.dataId}}" wx:if="{{dataId==1}}" class='goTo3' mode="widthFix" src='{{item.src}}'></image>
 </view>
 <view class='x'>南京市江北新区管理委员会行政审批局主办</view>
-
-
-
