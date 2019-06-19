@@ -28,7 +28,14 @@ Page(store.register({
     ]
   },
   onReady() { },
-  onShow() { },
+  onShow() {
+    this.dispatch('onLoginSetUserInfo');
+    this.setData({
+      nickName: app.globalData.nickName,
+      avatar: app.globalData.avatar,
+      isLogin: app.globalData.isLogin
+    })
+  },
   onLoad() {
     this.dispatch('loadPageData');
   },
@@ -48,8 +55,13 @@ Page(store.register({
     })
   },
   toWebView(e) {
-    this.dispatch('onLoginSetUserInfo');
     webView(e);
+  },
+  logout(){
+    app.globalData.isLogin=false;
+    app.globalData.avatar=app.globalData.constAvatar;
+    app.globalData.nickName=app.globalData.constNickName;
+    this.dispatch('onLogout')
   }
 }));
 

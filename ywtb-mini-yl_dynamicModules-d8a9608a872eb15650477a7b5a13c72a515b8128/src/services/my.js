@@ -15,6 +15,7 @@ export async function getAuthUserInfo() {
     authCode: authObj.authCode,
   };
   const userInfo = await Http.post('/proxy-user/userauth/info', data);
+  console.log('!!!!!!!!!!!!!!!',userInfo)
   // 获取消息列表参数
   // const requestData = {
   //   channelType: 'OWNER_MSG',

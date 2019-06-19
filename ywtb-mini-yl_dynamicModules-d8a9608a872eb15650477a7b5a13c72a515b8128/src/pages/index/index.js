@@ -6,6 +6,7 @@ import myservice from '/templates/my-service/';
 import { getAreaList, navigateToRightUrl, getUid } from '../../utils/index';
 import { faceVerify } from '../../utils/faceVerify';
 import { webView, latestUsed } from '../../utils/webView';
+import { authLogin } from '../../utils/login';
 
 // 获取应用实例
 const app = getApp();
@@ -137,6 +138,11 @@ Page(store.register({
   },
   onShow() {
     var _this = this;
+    _this.setData({
+      nickName: app.globalData.nickName,
+      avatar: app.globalData.avatar,
+      isLogin: app.globalData.isLogin
+    })
     var latestUsedItems = [];
     app.globalData.latestUsed.forEach(
       (value, index) => {
@@ -162,8 +168,8 @@ Page(store.register({
     //     console.log('success');
     //   },
     // });
-    this.dispatch('updateHasReadMessage');
-    this.dispatch('getPageBlocks');
+    // this.dispatch('updateHasReadMessage');
+    // this.dispatch('getPageBlocks');
 
     //   city.changed = false;
     // }
@@ -172,9 +178,9 @@ Page(store.register({
    * 页面加载时，初始化请求
    */
   async onLoad(options) {
-    this.dispatch('updateCityTabs');
+    // this.dispatch('updateCityTabs');
     this.dispatch('updateLocalAuthCode');
-    this.dispatch('getPageBlocks');
+    // this.dispatch('getPageBlocks');
     console.log("index.js---onLoad");
     if (options.url) {
       this.setData({
@@ -270,28 +276,11 @@ Page(store.register({
     })
   },
   login() {
-    my.getAuthCode({
-      success: (resAuth) => {
-        my.getAuthUserInfo({
-          success: (res) => {
-            console.log(res)
-            app.globalData.nickName=res.nickName;
-            app.globalData.avatar=res.avatar;
-            app.globalData.isLogin=true;
-            console.log(app.globalData);
-          },
-        });
-      },
-    });
-    let that = this;
-    app.globalData.isJump = 1;
-    my.navigateTo({
-      url: '/pages/personal-center/index'
-    })
+    authLogin();
   },
-  ...information,
-  ...credentials,
-  ...serviceCard,
-  ...myservice,
+  // ...information,
+  // ...credentials,
+  // ...serviceCard,
+  // ...myservice,
 }));
 

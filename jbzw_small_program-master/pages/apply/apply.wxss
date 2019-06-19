@@ -63,7 +63,6 @@ page {
 .recommend-service-container2 {
   padding: 20rpx 32rpx 10rpx;
   background: white;
-  border-bottom: 10px solid #eee;
 }
 
 .title2 {
@@ -240,7 +239,7 @@ page {
 .goTo3 {
   display: block;
   width: 90%;
-  margin: 20px auto 0 auto;
+  margin: 20px auto 20px auto;
 }
 
 .imageContainer{

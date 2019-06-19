@@ -141,7 +141,11 @@
   color: #999;
   padding-top: 5px;
 }
-
+.goTo3 {
+  display: block;
+  width: 90%;
+  margin: 20px auto 20px auto;
+}
 .newTitle {
   margin: 20px 10px 10px 20px;
   font-size: 22px;

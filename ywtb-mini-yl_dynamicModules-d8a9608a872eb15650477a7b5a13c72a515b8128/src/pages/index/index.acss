@@ -1,8 +1,8 @@
-
 .simage {
   height: 400rpx;
   width: 100%;
 }
+
 .recommend-service-container {
   padding: 20rpx 32rpx 10rpx;
   background: white;
@@ -95,7 +95,7 @@
 }
 
 .service-icon2 {
-  padding: 20px 20px 20px 0;
+  margin: 20px 20px 20px 0;
   width: 30px;
   height: 30px;
 }
@@ -147,6 +147,12 @@
   padding-top: 5px;
 }
 
+.goTo3 {
+  display: block;
+  width: 90%;
+  margin: 20px auto 20px auto;
+}
+
 .newTitle {
   margin: 20px 10px 10px 20px;
   font-size: 22px;
@@ -165,13 +171,16 @@ movable-area {
   margin: 20px 10px 0 20px;
 }
 
+.title3 view {
+  margin-right: 10px;
+}
+
 .isChosen {
   font-weight: 900;
   font-size: 18px;
   padding-bottom: 5px;
   border-bottom: 3px solid green;
 }
-
 
 movable-view {
   height: 52px;
@@ -251,8 +260,7 @@ movable-view {
 
 /* 主题部分 */
 
-.themeWrap {
-}
+.themeWrap {}
 
 .themeTitle {
   color: #666;
@@ -311,8 +319,7 @@ movable-view {
   color: #666;
 }
 
-.leftTitle {
-}
+.leftTitle {}
 
 .leftDetail {
   font-size: 20rpx;
