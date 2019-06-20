@@ -1,6 +1,6 @@
 const app = getApp()
 
-export function webView(e) {
+export function webView(e,isNumSearch) {
   console.log("webview=====", app.globalData.isLogin);
   if (app.globalData.isLogin == false) {
     //未登录状态
@@ -9,38 +9,23 @@ export function webView(e) {
       content: '登录后即可网上申报和查询办件',
       confirmText: '登录',
       success: (res) => {
-        console.log(res)
         if (res.confirm) {
-          app.globalData.isJump = 1;
-          wx.navigateTo({
-            url: '/pages/numSearch/numSearch'
-          })
+          if(isNumSearch){
+            if (app.globalData.isLogin == false) {
+              wx.navigateTo({
+                url: '/pages/auth/auth?url=homePage'
+              })
+            }
+          }else{
+            app.globalData.isJump = 1;
+            wx.switchTab({
+              url: '/pages/numSearch/numSearch'
+            })
+          }
         }
       }
     })
-    // wx.login({
-    //   success(res) {
-    //     app.globalData.code = res.code;
-    //     wx.getUserInfo({
-    //       success(resuserinfo) {
-    //         let userInfo = JSON.parse(resuserinfo.rawData)
-    //         console.log(userInfo)
-    //         //登录第三方系统返回用户已留存的信息
-    //         app.globalData.nickName = userInfo.nickName;
-    //         app.globalData.avatar = userInfo.avatarUrl;
-    //         if (app.globalData.nickName != app.globalData.constNickName && app.globalData.avatar != app.globalData.constAvatar) {
-    //           app.globalData.isLogin = true;
-    //         } else {
-    //           app.globalData.isLogin = false;
-    //         }
-    //       }
-    //     })
-    //   }
-    // });
   } else {
-
-
-
     var url = e.currentTarget.dataset.id;
     wx.request({
       url: 'https://jbzw.qimixi.net/api/user/getUserInfo',
@@ -96,7 +81,6 @@ export function webView(e) {
         }
       }
     })
-
   }
 }
 

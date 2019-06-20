@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/homePage2/homePage2",
+    "pages/homePage/homePage",
     "pages/navigation/navigation",
     "pages/listOfItems/listOfItems",
     "pages/more/more",
@@ -25,7 +25,7 @@
     "pages/auth/auth",
     "pages/recommend/recommend",
     "pages/home2/home2",
-    "pages/homePage/homePage",
+    "pages/homePage2/homePage2",
     "pages/numSearch2/numSearch2"
   ],
   "permission": {
@@ -42,10 +42,16 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/homePage2/homePage2",
+        "pagePath": "pages/homePage/homePage",
         "text": "首页",
         "iconPath": "images/ScanNavigation.png",
         "selectedIconPath": "images/ScanNavigation-selected.png"
+      },
+      {
+        "pagePath": "pages/home2/home2",
+        "text": "办事指南",
+        "iconPath": "images/material.png",
+        "selectedIconPath": "images/material-selected.png"
       },
       {
         "pagePath": "pages/scan/scan",
@@ -54,10 +60,10 @@
         "selectedIconPath": "images/scan-selected.png"
       },
       {
-        "pagePath": "pages/home2/home2",
-        "text": "事项查询",
-        "iconPath": "images/material.png",
-        "selectedIconPath": "images/material-selected.png"
+        "pagePath": "pages/numSearch/numSearch",
+        "text": "我的",
+        "iconPath": "images/office.png",
+        "selectedIconPath": "images/office-selected.png"
       }
     ]
   },

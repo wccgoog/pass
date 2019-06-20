@@ -118,9 +118,9 @@ page {
   border-radius: 50%;
 }
 .user{
+  margin: auto;
   text-align: center;
-  /* display: flex;
-  align-items: center; */
+  width:50%;
 }
 .nickName{
   margin-bottom: 10px;

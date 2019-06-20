@@ -5,6 +5,7 @@ import serviceCard from '/templates/service-card/';
 import myservice from '/templates/my-service/';
 import { getAreaList, navigateToRightUrl, getUid } from '../../utils/index';
 import { webView } from '../../utils/webView';
+import { authLogin } from '../../utils/login';
 
 // 获取应用实例
 const app = getApp();
@@ -42,27 +43,71 @@ Page(store.register({
   },
   wcc() {
     my.navigateTo({
-      // url: '/pages/web-view/index?requestUrl=' + "https://jbxqalipay.nanjingdata.cn/m/",
       url: '/pages/faceVerify/faceVerify',
     });
   },
-  // ...information,
-  // ...credentials,
-  // ...serviceCard,
-  // ...myservice,
   toFaceVerify() {
     my.navigateTo({
       url: '/pages/faceVerify/faceVerify'
     })
   },
   toWebView(e) {
-    webView(e);
+    if (!app.globalData.isLogin) {
+      let _this = this;
+      my.confirm({
+        title: "请登录",
+        content: "登录后即可网上申报和查询办件",
+        confirmButtonText: "登录",
+        success: (res) => {
+          if (res.confirm) {
+            my.showLoading({
+              content: '加载中...',
+            });
+            let callback = () => {
+              _this.setData({
+                nickName: app.globalData.nickName,
+                avatar: app.globalData.avatar,
+                isLogin: app.globalData.isLogin
+              })
+            }
+            authLogin(callback);
+          }
+        },
+      });
+    } else {
+      webView(e);
+    }
   },
-  logout(){
-    app.globalData.isLogin=false;
-    app.globalData.avatar=app.globalData.constAvatar;
-    app.globalData.nickName=app.globalData.constNickName;
+  logout() {
+    app.globalData.isLogin = false;
+    app.globalData.avatar = app.globalData.constAvatar;
+    app.globalData.nickName = app.globalData.constNickName;
     this.dispatch('onLogout')
+  },
+  login() {
+    if (!app.globalData.isLogin) {
+      let _this = this;
+      my.confirm({
+        title: "请登录",
+        content: "登录后即可网上申报和查询办件",
+        confirmButtonText: "登录",
+        success: (res) => {
+          if (res.confirm) {
+            my.showLoading({
+              content: '加载中...',
+            });
+            let callback = () => {
+              _this.setData({
+                nickName: app.globalData.nickName,
+                avatar: app.globalData.avatar,
+                isLogin: app.globalData.isLogin
+              })
+            }
+            authLogin(callback);
+          }
+        },
+      });
+    }
   }
 }));
 

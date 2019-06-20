@@ -1,8 +1,8 @@
-import {getAuthUserInfo} from '../services/my';
+import { getAuthUserInfo } from '../services/my';
 
 const app = getApp();
 
-export function authLogin() {
+export function authLogin(callback) {
   let _this = this;
   my.getAuthCode({
     scopes: 'auth_user',
@@ -12,9 +12,17 @@ export function authLogin() {
           app.globalData.nickName = res.nickName;
           app.globalData.avatar = res.avatar;
           app.globalData.isLogin = true;
-          my.navigateTo({
-            url: '/pages/personal-center/index'
-          })
+          // my.navigateTo({
+          //   url: '/pages/personal-center/index'
+          // })
+          if (callback) {
+            callback();
+            my.hideLoading();
+          } else {
+            my.switchTab({
+              url: '/pages/personal-center/index'
+            });
+          }
         },
         fail: (e) => {
           console.log(e)

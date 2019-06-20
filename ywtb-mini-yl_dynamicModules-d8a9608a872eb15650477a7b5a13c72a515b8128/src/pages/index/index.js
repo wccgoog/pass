@@ -88,7 +88,7 @@ Page(store.register({
         bOrC: 1,
         items: [
           {
-            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/movehandleItem.html?siteId=1&id=JFJ00001&types=c&isOne=A",
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=L",
             src: "https://jbxqalipay.nanjingdata.cn/image/animal.png",
             name: "兽医师注册",
             detail: "兽医师注册、助理执业兽医师备案"
@@ -138,6 +138,7 @@ Page(store.register({
     ]
   },
   onShow() {
+    console.log("onShow")
     var _this = this;
     _this.setData({
       nickName: app.globalData.nickName,
@@ -301,11 +302,22 @@ Page(store.register({
     })
   },
   login() {
-    authLogin();
+    if (!app.globalData.isLogin) {
+      my.confirm({
+        title: "请登录",
+        content: "登录后即可网上申报和查询办件",
+        confirmButtonText: "登录",
+        success: (res) => {
+          if (res.confirm) {
+            authLogin();
+          }
+        },
+      });
+    } else {
+      my.switchTab({
+        url: '/pages/personal-center/index',
+      });
+    }
   },
-  // ...information,
-  // ...credentials,
-  // ...serviceCard,
-  // ...myservice,
 }));
 

@@ -37,16 +37,22 @@
         "name": "首页"
       },
       {
+        "pagePath": "pages/home/home",
+        "icon": "images/material.png",
+        "activeIcon": "images/material-selected.png",
+        "name": "办事指南"
+      },
+      {
         "pagePath": "pages/scan/scan",
         "icon": "images/2-n.png",
         "activeIcon": "images/2-a.png",
         "name": "扫码导航"
       },
       {
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/personal-center/index",
         "icon": "images/3-n.png",
         "activeIcon": "images/3-a.png",
-        "name": "办事指南"
+        "name": "我的"
       }
     ]
   },
