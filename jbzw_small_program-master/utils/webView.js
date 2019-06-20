@@ -96,6 +96,7 @@ function goToWebView(url) {
       url: '/pages/webview/webview?url=' + toUrl
     })
   } else {
+    console.log(app.globalData)
     //在auth页面重新拼接session3rd
     wx.navigateTo({
       url: '/pages/auth/auth?url=' + escape(url)
