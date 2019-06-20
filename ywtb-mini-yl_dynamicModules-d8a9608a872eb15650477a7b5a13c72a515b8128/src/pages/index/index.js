@@ -6,12 +6,14 @@ import myservice from '/templates/my-service/';
 import { getAreaList, navigateToRightUrl, getUid } from '../../utils/index';
 import { faceVerify } from '../../utils/faceVerify';
 import { webView, latestUsed } from '../../utils/webView';
+import { authLogin } from '../../utils/login';
 
 // 获取应用实例
 const app = getApp();
 
 Page(store.register({
   data: {
+    weatherData: {},
     avatar: app.globalData.avatar,
     nickName: app.globalData.nickName,
     isLogin: app.globalData.isLogin,
@@ -86,7 +88,7 @@ Page(store.register({
         bOrC: 1,
         items: [
           {
-            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/movehandleItem.html?siteId=1&id=JFJ00001&types=c&isOne=A",
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=L",
             src: "https://jbxqalipay.nanjingdata.cn/image/animal.png",
             name: "兽医师注册",
             detail: "兽医师注册、助理执业兽医师备案"
@@ -136,7 +138,13 @@ Page(store.register({
     ]
   },
   onShow() {
+    console.log("onShow")
     var _this = this;
+    _this.setData({
+      nickName: app.globalData.nickName,
+      avatar: app.globalData.avatar,
+      isLogin: app.globalData.isLogin
+    })
     var latestUsedItems = [];
     app.globalData.latestUsed.forEach(
       (value, index) => {
@@ -162,8 +170,8 @@ Page(store.register({
     //     console.log('success');
     //   },
     // });
-    this.dispatch('updateHasReadMessage');
-    this.dispatch('getPageBlocks');
+    // this.dispatch('updateHasReadMessage');
+    // this.dispatch('getPageBlocks');
 
     //   city.changed = false;
     // }
@@ -172,9 +180,33 @@ Page(store.register({
    * 页面加载时，初始化请求
    */
   async onLoad(options) {
-    this.dispatch('updateCityTabs');
+    var _this = this;
+
+    //和天气
+    var nowLocation = '';
+    my.getLocation({
+      success: (res) => {
+        nowLocation = res.latitude + ',' + res.longitude;
+        my.request({
+          url: 'https://free-api.heweather.net/s6/weather',
+          data: {
+            location: nowLocation,
+            key: 'a02cd8e3c22e4ea489b79d6c80b27b9e'
+          },
+          success: (res) => {
+            console.log(res);
+            _this.setData({
+              weatherData: res.data.HeWeather6[0]
+            })
+          }
+        });
+      }
+    });
+
+
+    // this.dispatch('updateCityTabs');
     this.dispatch('updateLocalAuthCode');
-    this.dispatch('getPageBlocks');
+    // this.dispatch('getPageBlocks');
     console.log("index.js---onLoad");
     if (options.url) {
       this.setData({
@@ -270,28 +302,22 @@ Page(store.register({
     })
   },
   login() {
-    my.getAuthCode({
-      success: (resAuth) => {
-        my.getAuthUserInfo({
-          success: (res) => {
-            console.log(res)
-            app.globalData.nickName=res.nickName;
-            app.globalData.avatar=res.avatar;
-            app.globalData.isLogin=true;
-            console.log(app.globalData);
-          },
-        });
-      },
-    });
-    let that = this;
-    app.globalData.isJump = 1;
-    my.navigateTo({
-      url: '/pages/personal-center/index'
-    })
+    if (!app.globalData.isLogin) {
+      my.confirm({
+        title: "请登录",
+        content: "登录后即可网上申报和查询办件",
+        confirmButtonText: "登录",
+        success: (res) => {
+          if (res.confirm) {
+            authLogin();
+          }
+        },
+      });
+    } else {
+      my.switchTab({
+        url: '/pages/personal-center/index',
+      });
+    }
   },
-  ...information,
-  ...credentials,
-  ...serviceCard,
-  ...myservice,
 }));
 

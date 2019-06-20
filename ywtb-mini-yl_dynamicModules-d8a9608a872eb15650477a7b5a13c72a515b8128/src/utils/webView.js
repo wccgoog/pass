@@ -1,9 +1,10 @@
 import { getUid } from './uid'
+import { authLogin } from './login'
 const app = getApp();
 
 export function webView(e) {
   latestUsed(e);
-  try {
+  if (app.globalData.isLogin) {
     let uid = getUid();
     let toUrl = '';
     let url = e.currentTarget.dataset.id;
@@ -15,24 +16,23 @@ export function webView(e) {
     my.navigateTo({
       url: '/pages/web-view/index?requestUrl=' + toUrl,
     });
-  } catch (e) {
-    if (e.toString() == "TypeError: Cannot read property 'uid' of null") {
-      my.confirm({
-        title: "请登录",
-        content: "登录后即可网上申报和查询办件",
-        confirmButtonText: "登录",
-        success: (res) => {
-
-        },
-      });
-    }
+  } else {
+    my.confirm({
+      title: "请登录",
+      content: "登录后即可网上申报和查询办件",
+      confirmButtonText: "登录",
+      success: (res) => {
+        if (res.confirm) {
+          authLogin();
+        }
+      },
+    });
   }
 }
 
 //最近使用
 export function latestUsed(e) {
   let globalLatestUsed = app.globalData.latestUsed;
-  console.log(globalLatestUsed)
   if (e.currentTarget.dataset.index != undefined && e.currentTarget.dataset.itemsindex != undefined) {
     var latest = [e.currentTarget.dataset.index, e.currentTarget.dataset.itemsindex]
     let flag = 0;
@@ -45,7 +45,6 @@ export function latestUsed(e) {
       }
     }
     if (flag == 1) {
-      console.log(globalLatestUsed[index])
       globalLatestUsed.unshift(globalLatestUsed[index]);
       globalLatestUsed.splice(index + 1, 1);
       console.log(globalLatestUsed)
@@ -58,6 +57,6 @@ export function latestUsed(e) {
   if (e.currentTarget.dataset.latest != undefined) {
     let index = e.currentTarget.dataset.latest;
     globalLatestUsed.unshift(globalLatestUsed[index]);
-    globalLatestUsed.splice(e.currentTarget.dataset.latest + 1, 1);
+    globalLatestUsed.splice(parseInt(index) + 1, 1);
   }
 }
