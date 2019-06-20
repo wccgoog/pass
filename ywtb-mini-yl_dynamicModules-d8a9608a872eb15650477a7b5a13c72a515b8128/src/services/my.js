@@ -22,6 +22,7 @@ export async function getAuthUserInfo() {
   //   receiverAccount: userInfo.uid,
   // };
   // 将uid存到本地内存中
+  debugger
   setUid(userInfo.uid);
   // my.setStorageSync()
   // 获取消息列表接口

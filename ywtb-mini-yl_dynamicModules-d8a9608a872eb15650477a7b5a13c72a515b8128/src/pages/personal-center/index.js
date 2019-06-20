@@ -28,7 +28,9 @@ Page(store.register({
     ]
   },
   onReady() { },
-  onShow() { },
+  onShow() { 
+    this.dispatch('onLoginSetUserInfo')
+  },
   onLoad() {
     this.dispatch('loadPageData');
   },
