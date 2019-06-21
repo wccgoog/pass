@@ -7,13 +7,12 @@
   </view>
 </view>
 
-<view class="recommend-service-container">
+<view wx:for="{{itemList}}" class="recommend-service-container">
   <view class="title">
-    <view class="left-title">我的办件</view>
-    <view wx:if="{{moreShow}}" class="right-title" bindtap='toApply'>更多</view>
+    <view class="left-title">{{item.title}}</view>
   </view>
   <view class="service-list">
-    <view wx:for="{{items}}" wx:key="{{index}}" bindtap='toWebView' class="service-item" data-id="{{item.dataId}}">
+    <view wx:for="{{item.items}}" wx:key="{{index}}" bindtap='toWebView' class="service-item" data-id="{{item.dataId}}">
       <image class="service-icon" mode="aspectFit" src="{{item.src}}" />
       <view class="service-name">{{item.name}}</view>
     </view>

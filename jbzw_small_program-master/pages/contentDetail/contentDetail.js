@@ -13,51 +13,51 @@ Page({
     //scroll-view跳转
     'toView': '',
     data: '',
-    isFold0:true,
-    isFold1:true,
-    isFold2:true,
-    isFold3:true,
-    isFold4:true,
-    isFold5:true,
-    isFold6:true,
+    isFold0: true,
+    isFold1: true,
+    isFold2: true,
+    isFold3: true,
+    isFold4: true,
+    isFold5: true,
+    isFold6: true,
     // 下载文件
-    table_down_server:null,
-    entrust_letter:null,
-    result_type:null,
+    table_down_server: null,
+    entrust_letter: null,
+    result_type: null,
     //流程图
-    treeImg:null,
+    treeImg: null,
     //办理材料
-    material:null
+    material: null
   },
   //点击查看流程图
-  priviewImg(){
-    var _this=this;
+  priviewImg() {
+    var _this = this;
     wx.previewImage({
       current: _this.data.treeImg.file_path, // 当前显示图片的http链接
       urls: [_this.data.treeImg.file_path] // 需要预览的图片http链接列表
     })
   },
   //点击下载文件
-  download(e){
+  download(e) {
     var _this = this;
     wx.showLoading({
       title: '加载中...',
     })
-    if (_this.judgmentType(e.currentTarget.dataset.filepath)==".jpg"){
-        wx.previewImage({
-          current: e.currentTarget.dataset.filepath, // 当前显示图片的http链接
-          urls: [e.currentTarget.dataset.filepath] // 需要预览的图片http链接列表
-        })
-        return;
-      }
-    if (_this.judgmentType(e.currentTarget.dataset.filepath) == ".pdf" || _this.judgmentType(e.currentTarget.dataset.filepath) == ".doc" || _this.judgmentType(e.currentTarget.dataset.filepath) == ".ppt" ) {
+    if (_this.judgmentType(e.currentTarget.dataset.filepath) == ".jpg") {
+      wx.previewImage({
+        current: e.currentTarget.dataset.filepath, // 当前显示图片的http链接
+        urls: [e.currentTarget.dataset.filepath] // 需要预览的图片http链接列表
+      })
+      return;
+    }
+    if (_this.judgmentType(e.currentTarget.dataset.filepath) == ".pdf" || _this.judgmentType(e.currentTarget.dataset.filepath) == ".doc" || _this.judgmentType(e.currentTarget.dataset.filepath) == ".ppt") {
       wx.downloadFile({
         url: e.currentTarget.dataset.filepath,
-        success: function (res) {
+        success: function(res) {
           var filePath = res.tempFilePath
           wx.openDocument({
             filePath: filePath,
-            success: function (res) {
+            success: function(res) {
               wx.hideLoading();
               console.log('打开文档成功')
             }
@@ -67,17 +67,17 @@ Page({
     }
   },
   //下载的公共方法
-  publicDownload(url){
+  publicDownload(url) {
     wx.showLoading({
       title: '下载中...',
     })
     wx.downloadFile({
       url: url,
-      success: function (res) {
+      success: function(res) {
         var filePath = res.tempFilePath
         wx.openDocument({
           filePath: filePath,
-          success: function (res) {
+          success: function(res) {
             wx.hideLoading();
           }
         })
@@ -87,11 +87,11 @@ Page({
   //展开查看更多
   down(e) {
     var a = e.currentTarget.dataset.id
-    if(a == 0){
+    if (a == 0) {
       this.setData({
         isFold0: !this.data.isFold0
       })
-    }else if(a == 1){
+    } else if (a == 1) {
       this.setData({
         isFold1: !this.data.isFold1
       })
@@ -107,10 +107,18 @@ Page({
       this.setData({
         isFold4: !this.data.isFold4
       })
+    } else if (a == 5) {
+      this.setData({
+        isFold5: !this.data.isFold5
+      })
+    } else if (a == 6) {
+      this.setData({
+        isFold6: !this.data.isFold6
+      })
     }
   },
   //判断文件类型
-  judgmentType(str){
+  judgmentType(str) {
     var ext = null;
     var name = str.toLowerCase();
     var i = name.lastIndexOf(".");
@@ -120,9 +128,9 @@ Page({
     return ext;
   },
   /** 
- * 点击tab切换 
- */
-  swichNav: function (e) {
+   * 点击tab切换 
+   */
+  swichNav: function(e) {
     var that = this;
     if (this.data.currentTab === e.target.dataset.current) {
       return false;
@@ -140,7 +148,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     //显示加载效果
     wx.showLoading({
       title: '加载中',
@@ -153,7 +161,7 @@ Page({
         'id': options.id
       },
       method: 'GET',
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           data: res.data.data,
           // material: res.data.data.material,
@@ -163,10 +171,10 @@ Page({
           treeImg: res.data.data.tree_img,
         })
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log("fail");
       },
-      complete: function (res) {
+      complete: function(res) {
         wx.hideLoading()
       }
     })

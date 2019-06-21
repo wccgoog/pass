@@ -13,27 +13,34 @@ Page({
     avatar: app.globalData.avatar,
     nickName: app.globalData.nickName,
     isLogin: app.globalData.isLogin,
-    items: [
-      {
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=S",
-        src: "https://jbxqalipay.nanjingdata.cn/image/doing.png",
-        name: "在办件"
+    itemList: [{
+        title: '我的办件',
+        items: [{
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=S",
+            src: "https://jbxqalipay.nanjingdata.cn/image/doing.png",
+            name: "在办件"
+          },
+          {
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=O",
+            src: "https://jbxqalipay.nanjingdata.cn/image/done.png",
+            name: "办结件"
+          }
+        ]
       },
       {
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=O",
-        src: "https://jbxqalipay.nanjingdata.cn/image/done.png",
-        name: "办结件"
-      },
-      {
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/pickup.html",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
-        name: "我的待取"
-      },
-      {
-        dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/saveup.html",
-        src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png",
-        name: "我的待存"
-      },
+        title: '我的二维码',
+        items: [{
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/pickup.html",
+            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
+            name: "取件码"
+          },
+          {
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/saveup.html",
+            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png",
+            name: "存件码"
+          }
+        ]
+      }
     ]
   },
   goOfficeList() {
@@ -107,7 +114,7 @@ Page({
 
   },
   toWebView(e) {
-    webView(e,true)
+    webView(e, true)
   },
   login() {
     if (app.globalData.isLogin == false) {
