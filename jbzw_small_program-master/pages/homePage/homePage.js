@@ -10,6 +10,7 @@ var bmap = require('../../utils/bmap-wx.js');
 
 Page({
   data: {
+    weatherShow: false,
     weatherData: '',
     avatar: app.globalData.avatar,
     nickName: app.globalData.nickName,
@@ -92,7 +93,7 @@ Page({
         title: "农业发展",
         bOrC: 1,
         items: [{
-          dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=L",
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=L",
             src: "https://jbxqalipay.nanjingdata.cn/image/animal.png",
             name: "兽医师注册",
             detail: "兽医师注册、助理执业兽医师备案"
@@ -143,9 +144,6 @@ Page({
   },
   // loading显示方法
   loading: function() {
-    wx.showLoading({
-      title: 'XXX',
-    })
   },
   onLoad: function(options) {
     var _this = this;
@@ -164,107 +162,32 @@ Page({
           success: (res) => {
             console.log(res);
             _this.setData({
-              weatherData: res.data.HeWeather6[0]
+              weatherData: res.data.HeWeather6[0],
+              weatherShow: true
             })
           }
         });
       }
     });
-
-    // wx.login({
-    //   success(res) {
-    //     app.globalData.code = res.code;
-    //     wx.getUserInfo({
-    //       success(resuserinfo) {
-    //         console.log(JSON.parse(resuserinfo.rawData))
-    //         let userInfo = JSON.parse(resuserinfo.rawData)
-    //         //登录第三方系统返回用户已留存的信息
-
-    //         // 获取用户昵称和头像,如果
-    //         app.globalData.nickName = userInfo.nickName;
-    //         app.globalData.avatar = userInfo.avatarUrl;
-    //         if (app.globalData.nickName == app.globalData.constNickName && app.globalData.avatar == app.globalData.constAvatar) {
-    //           app.globalData.isLogin = false;
-    //         } else {
-    //           app.globalData.isLogin = true;
-    //         }
-    //         //登录第三方系统返回用户已留存的信息
-    //         wx.request({
-    //           url: 'https://jbzw.qimixi.net/api/wechat',
-    //           data: {
-    //             code: res.code,
-    //             encryptedData: resuserinfo.encryptedData,
-    //             rawData: resuserinfo.rawData,
-    //             iv: resuserinfo.iv,
-    //             signature: resuserinfo.signature,
-    //           },
-    //           success: function(result) {
-    //             //记录session3rd到app.globalData
-    //             app.globalData.session3rd = result.data.data.session3rd;
-    //             app.globalData.realname = result.data.data.user_info.realname;
-    //             app.globalData.mobile = result.data.data.user_info.mobile;
-    //             app.globalData.credential_id = result.data.data.user_info.credential_id;
-    //             wx.setStorage({
-    //               key: 'session3rd',
-    //               data: result.data.data.session3rd,
-    //             })
-    //           }
-    //         })
-    //       }
-    //     })
-    //   }
-    // });
-
-    wx.showLoading({
-      title: '加载中',
-    })
-    var that = this;
     /** 
      * 获取系统信息 
      */
     wx.getSystemInfo({
       success: function(res) {
-        that.setData({
+        _this.setData({
           winWidth: res.windowWidth,
           winHeight: res.windowHeight
         });
       }
     });
-    var _this = this;
-    //初始加载获取个人服务下方主题和部门数据
-    wx.request({
-      url: 'https://jbzw.qimixi.net/api/Index/index?type=1',
-      data: "",
-      method: 'GET',
-      success: function(res) {
-        _this.setData({
-          personal_topic: res.data.data.topic,
-          personal_department: res.data.data.department
-        })
-      },
-      fail: function(res) {},
-      complete: function(res) {
-        wx.hideLoading()
-      }
-    })
-    //请求首页banner图
-    wx.request({
-      url: 'https://jbzw.qimixi.net/api/banner/bannerList',
-      data: "",
-      method: 'POST',
-      success: function(res) {
-        let list = res.data.data.list;
-        let listArr = [];
-        for (var i in list) {
-          listArr.push(list[i].image)
-        }
-        _this.setData({
-          background: listArr
-        })
-      }
-    })
   },
   onShow(e) {
+    wx.request({
+      url: 'https://jbzwnew.qimixi.net/api/department/totalList?dep_id=11&page_num=1&limit=100',
+      success:(res)=>{
+        console.log(res.data)
+      }
+    })
     var _this = this;
     //最近使用
     var latestUsedItems = [];
@@ -279,7 +202,7 @@ Page({
     this.setData({
       nickName: app.globalData.nickName,
       avatar: app.globalData.avatar,
-      isLogin:app.globalData.isLogin
+      isLogin: app.globalData.isLogin
     })
     if (app.globalData.nickName == app.globalData.constNickName && app.globalData.avatar == app.globalData.constAvatar && app.globalData.isAuth == true) {
       //从auth页面跳转回homePage,isAuth状态消耗掉,变回false
@@ -304,39 +227,6 @@ Page({
         }
       });
     }
-    var _this = this;
-    //本来想用animation做办事一张图的圆形图标的飘动效果,但是有一些问题
-    // let animation = wx.createAnimation({
-    //   duration:20000,
-    //   timingFunction:'linear'
-    // });
-    // animation.translate(100,100).step();
-    // this.setData({
-    //   picAnimation:animation.export()
-    // });
-    // console.log(this.data.picAnimation)
-
-    //首页小圆圈漂浮,setData性能消耗过多
-
-    // console.log(wx.getSystemInfoSync().windowWidth)
-    // var n = setInterval(() => {
-    //   if (_this.data.x == wx.getSystemInfoSync().windowWidth - 52) {
-    //     _this.setData({
-    //       delta: -_this.data.delta
-    //     })
-    //   } else if (_this.data.x == 0) {
-    //     _this.setData({
-    //       delta: -_this.data.delta
-    //     })
-    //   }
-    //   _this.setData({
-    //     x: _this.data.x + _this.data.delta,
-    //     y: _this.data.y + _this.data.delta,
-    //   })
-    // }, 100);
-    // this.setData({
-    //   intervalNum: n
-    // })
   },
   onHide() {
     // clearInterval(this.data.intervalNum);
@@ -357,84 +247,6 @@ Page({
       this.company(1);
     }
   },
-  //点击tab切换
-  swichNav: function(e) {
-    this.setData({
-      dataId: e.target.dataset.id
-    });
-    var that = this;
-    if (this.data.currentTab === e.target.dataset.current) {
-      return false;
-    } else {
-      that.setData({
-        currentTab: e.target.dataset.current
-      })
-    }
-    // if (e.detail.current == 1) {
-    //   this.company(2);
-    // } else {
-    //   this.company(1);
-    // }
-  },
-  //点击企业服务，获取企业服务下方主题和部门数据
-  company(type) {
-    var _this = this;
-    _this.currentFirstCatalog = type
-    wx.request({
-      url: 'https://jbzw.qimixi.net/api/Index/index?type=' + type,
-      data: "",
-      method: 'GET',
-      success: function(res) {
-        _this.setData({
-          business_topic: res.data.data.topic,
-          business_department: res.data.data.department
-        })
-      },
-      fail: function(res) {},
-      complete: function(res) {
-        wx.hideLoading()
-      }
-    })
-  },
-  //点击进入列表
-  goListDetail(e) {
-    if (this.data.currentTab == 0) {
-      this.setData({
-        firstCatalog: 1,
-        secondCatalog: e.currentTarget.dataset.id,
-      })
-    } else if (this.data.currentTab == 1) {
-      this.setData({
-        firstCatalog: 2,
-        secondCatalog: e.currentTarget.dataset.id,
-      })
-    }
-    wx.navigateTo({
-      url: '../listDetail/listDetail?firstCatalog=' + this.data.firstCatalog + '&secondCatalog=' + this.data.secondCatalog
-    });
-  },
-  // 更多
-  goMore(e) {
-    if (this.data.currentTab == 0) {
-      wx.navigateTo({
-        url: '../more/more?currentId=' + this.data.currentTab + '&typeId=' + e.currentTarget.dataset.type + "&firstCatalog=1"
-      })
-    } else if (this.data.currentTab == 1) {
-      wx.navigateTo({
-        url: '../more/more?currentId=' + this.data.currentTab + '&typeId=' + e.currentTarget.dataset.type + "&firstCatalog=0"
-      })
-    }
-  },
-  onePic() {
-    wx.navigateTo({
-      url: '/pages/onePic/onePic',
-    })
-  },
-  toApplyPage() {
-    wx.navigateTo({
-      url: '/pages/apply/apply',
-    })
-  },
   toWebView(e) {
     var _this = this;
     //最近使用
@@ -453,14 +265,6 @@ Page({
       })
     }, 2000)
 
-  },
-  toApply() {
-    wx.navigateTo({
-      url: '/pages/apply/apply'
-    })
-  },
-  log() {
-    console.log(this.data)
   },
   login() {
     let that = this;

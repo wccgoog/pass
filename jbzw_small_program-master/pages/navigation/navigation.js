@@ -31,7 +31,7 @@ Page({
     var _this = this;
 
     wx.request({
-      url: 'https://jbzw.qimixi.net/api/search/affairList',
+      url: 'https://jbzwnew.qimixi.net/api/search/affairList',
       data: {
         keywords: e.detail.value
       },
@@ -61,7 +61,7 @@ Page({
       })
     }
     wx.navigateTo({
-      url: '../listDetail/listDetail?firstCatalog=' + this.data.firstCatalog + '&secondCatalog=' + this.data.secondCatalog + '&scanEnter=1'
+      url: '../listDetail/listDetail?firstCatalog=' + this.data.firstCatalog + '&secondCatalog=' + e.currentTarget.dataset.id + '&scanEnter=1'
     });
   },
   //进入办事指南
@@ -94,7 +94,7 @@ Page({
 
     });
     wx.request({
-      url: 'https://jbzw.qimixi.net/api/search/searchIndex?type=1',
+      url: 'https://jbzwnew.qimixi.net/api/search/searchIndex?type=1',
       data: {
       },
       header: {
@@ -114,7 +114,7 @@ Page({
   bindChange: function (e) {
     var typeId = e.detail.current + 1;
     wx.request({
-      url: 'https://jbzw.qimixi.net/api/search/searchIndex',
+      url: 'https://jbzwnew.qimixi.net/api/search/searchIndex',
       data: {
         type: typeId
       },

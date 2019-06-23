@@ -44,41 +44,79 @@ Page({
       firstCatalog: options.firstCatalog,
       secondCatalog: options.secondCatalog,
     })
+
+    var url = options.secondCatalog.includes('d') ? 'https://jbzwnew.qimixi.net/api/department/totalList' :'https://jbzwnew.qimixi.net/api/topic/totalList';
     //显示加载效果
     wx.showLoading({
       title: '加载中',
     })
     var _this = this;
-    wx.request({
-      url: 'https://jbzw.qimixi.net/api/Index/affList',
-      data: {
-        'type': this.data.firstCatalog,
-        'sid': this.data.secondCatalog
-      },
-      method: 'GET',
-      success: function (res) {
-        console.log("listDetail.js",res.data.data)
-        if (res.data.data.list == "" || res.data.data.list==null){
+    if (options.secondCatalog.includes('d')){
+      wx.request({
+        url: 'https://jbzwnew.qimixi.net/api/department/totalList',
+        data: {
+          dep_id: this.data.secondCatalog.slice(1),
+          page_num: 1,
+          limit:100,
+        },
+        method: 'GET',
+        success: function (res) {
+          if (res.data.data.total_list == "" || res.data.data.total_list == null) {
+            _this.setData({
+              imgHide: false
+            })
+          } else {
+            _this.setData({
+              imgHide: true
+            })
+          }
           _this.setData({
-            imgHide:false
+            title: res.data.data.title,
+            list: res.data.data.total_list
           })
-        }else{
-          _this.setData({
-            imgHide: true
-          })
+        },
+        fail: function (res) {
+          console.log("fail");
+        },
+        complete: function (res) {
+          wx.hideLoading()
+          console.log('submit complete');
         }
-        _this.setData({
-          title: res.data.data.title,
-          list: res.data.data.list
-        })
-      },
-      fail: function (res) {
-        console.log("fail");
-      },
-      complete: function (res) {
-        wx.hideLoading()
-        console.log('submit complete');
-      }
-    }) 
+      }) 
+    }else{
+      wx.request({
+        url: 'https://jbzwnew.qimixi.net/api/topic/totalList',
+        data: {
+          topic_id: this.data.secondCatalog.slice(1),
+          page_num: 1,
+          limit: 100,
+        },
+        method: 'GET',
+        success: function (res) {
+          console.log("listDetail.js", res.data.data)
+          if (res.data.data.total_list == "" || res.data.data.total_list == null) {
+            _this.setData({
+              imgHide: false
+            })
+          } else {
+            _this.setData({
+              imgHide: true
+            })
+          }
+          _this.setData({
+            title: res.data.data.title,
+            list: res.data.data.total_list
+          })
+        },
+        fail: function (res) {
+          console.log("fail");
+        },
+        complete: function (res) {
+          wx.hideLoading()
+          console.log('submit complete');
+        }
+      }) 
+    }
+
   },
 })

@@ -1,92 +1,71 @@
 Page({
   data: {
-    title: true,
     typeDepart: "",
     list: "",
-    firstCatalog: ""
+    //1个人，2法人
+    firstCatalog: "",
+    //theme主题department部门
+    type:'',
   },
   onLoad: function(options) {
+    //page的title
+    if (options.firstCatalog == 1) {
+      wx.setNavigationBarTitle({
+        title: '个人服务'
+      })
+    } else if (options.firstCatalog == 2) {
+      wx.setNavigationBarTitle({
+        title: '企业服务'
+      })
+    }
     console.log("进入更多页面：", options)
     var _this = this;
     this.setData({
       firstCatalog: options.firstCatalog
     })
-    //一级判断
-    if (options.currentId == 0) {
-      this.setData({
-        title: true
-      })
-      wx.setNavigationBarTitle({
-        title: '个人服务'
-      })
-      if (options.typeId == 0) {
-        wx.request({
-          url: 'https://jbzw.qimixi.net/api/index/topicList',
-          data: {
-            'type': 1
-          },
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          success: function(res) {
-            console.log(res.data)
-            _this.setData({
-              list: res.data.data
-            })
-          }
-        })
-      }
-    } else if (options.currentId == 1) {
-      this.setData({
-        title: false
-      })
-      wx.setNavigationBarTitle({
-        title: '企业服务'
-      })
-      if (options.typeId == 0) {
-        wx.request({
-          url: 'https://jbzw.qimixi.net/api/index/topicList',
-          data: {
-            'type': 2
-          },
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          success: function(res) {
-            console.log(res.data)
-            _this.setData({
-              list: res.data.data
-            })
-          }
-        })
-      }
-    }
-    //二级判断
     if (options.typeId == 0) {
       this.setData({
-        typeDepart: "主 题"
+        typeDepart: "主 题",
+        type:'theme',
+      })
+
+      wx.request({
+        url: 'https://jbzwnew.qimixi.net/api/index/topicList',
+        data: {
+          'type': options.firstCatalog
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function(res) {
+          console.log(res.data)
+          _this.setData({
+            list: res.data.data
+          })
+        }
       })
     } else if (options.typeId == 1) {
       this.setData({
-        typeDepart: "部 门"
+        typeDepart: "部 门",
+        type:'department',
       })
       wx.request({
-        url: 'https://jbzw.qimixi.net/api/index/departmentList',
-        data: {},
+        url: 'https://jbzwnew.qimixi.net/api/index/departmentList',
+        data: {
+          'type': options.firstCatalog
+        },
         header: {
           'content-type': 'application/json' // 默认值
         },
         success: function(res) {
           console.log("more.js", res.data.data);
-          // res.data.data.forEach((item)=>{
-          //   console.log(item.name);
-          // })
           _this.setData({
             list: res.data.data
           })
         }
       })
     }
+
   },
   //点击进入列表
   goListDetail(e) {

@@ -42,7 +42,7 @@ Page({
       let id = str.substring(p+1, str.length);
       var _this = this;
       wx.request({
-        url: 'https://jbzw.qimixi.net/api/window/affairList',
+        url: 'https://jbzwnew.qimixi.net/api/window/affairList',
         data: {
           window_id: id
         },
@@ -61,7 +61,7 @@ Page({
     }else{
       var _this = this;
       wx.request({
-        url: 'https://jbzw.qimixi.net/api/window/affairList',
+        url: 'https://jbzwnew.qimixi.net/api/window/affairList',
         data: {
           window_id: options.window_id
         },

@@ -90,7 +90,7 @@ Page({
       key: 'session3rd',
       success: function(storageres) {
         wx.request({
-          url: 'https://jbzw.qimixi.net/api/wechat_pay/getPhoneNumber',
+          url: 'https://' + app.globalData.thirdDomain + '/api/wechat_pay/getPhoneNumber',
           data: {
             encryptedData: res.detail.encryptedData,
             iv: res.detail.iv,
@@ -152,12 +152,13 @@ Page({
       success: function(storageres) {
         console.log(storageres);
         wx.request({
-          url: 'https://jbzw.qimixi.net/api/wechat_pay/getCredentialInfo',
+          url: 'https://' + app.globalData.thirdDomain + '/api/wechat_pay/getCredentialInfo',
           data: {
             auth_token: res.detail.auth_token,
             session3rd: storageres.data
           },
           success: function(result) {
+            console.log(result);
             app.globalData.realname = result.data.data.realname;
             app.globalData.credential_id = result.data.data.credential_id;
             that.setData({
@@ -181,7 +182,7 @@ Page({
     wx.login({
       success: (res) => {
         wx.request({
-          url: 'https://jbzw.qimixi.net/api/wechat',
+          url: 'https://' + app.globalData.thirdDomain + '/api/wechat',
           method: 'GET',
           data: {
             code: res.code,

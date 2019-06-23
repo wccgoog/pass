@@ -28,7 +28,7 @@ export function webView(e,isNumSearch) {
   } else {
     var url = e.currentTarget.dataset.id;
     wx.request({
-      url: 'https://jbzw.qimixi.net/api/user/getUserInfo',
+      url: 'https://' + app.globalData.thirdDomain + '/api/user/getUserInfo',
       data: {
         session3rd: app.globalData.session3rd
       },
@@ -45,7 +45,7 @@ export function webView(e,isNumSearch) {
                 success(resuserinfo) {
                   //登录第三方系统返回用户已留存的信息
                   wx.request({
-                    url: 'https://jbzw.qimixi.net/api/wechat',
+                    url: 'https://' + app.globalData.thirdDomain + '/api/wechat',
                     data: {
                       code: res.code,
                       encryptedData: resuserinfo.encryptedData,

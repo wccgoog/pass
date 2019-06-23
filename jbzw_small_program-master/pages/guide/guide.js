@@ -47,15 +47,14 @@ Page({
     //发送请求
     var _this = this;
     wx.request({
-      url: 'https://jbzw.qimixi.net/api/Index/total',
+      url: 'https://jbzwnew.qimixi.net/api/total/affairList',
       data: {
-        'id': options.id
+        total_id: options.id
       },
-      method: 'GET',
       success: function (res) {
         _this.setData({
-          detailList: res.data.data,
-          detailListTwo: res.data.data.second_list
+          detailList: res.data.data.total_info,
+          detailListTwo: res.data.data.affair_list
         })
       },
       fail: function (res) {

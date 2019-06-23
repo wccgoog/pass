@@ -1,15 +1,11 @@
 <view class="moreWrap">
   <view class="head">
-    <view class="title1" wx:if="{{false}}">
-      <image src="../../images/personalServe.png" mode="widthFix" class="titleImg" wx:if="{{title}}"></image>
-      <image src="../../images/companyServe.png" mode="widthFix" class="titleImg" wx:else></image>
-    </view>
     <view class="slice"></view>
     <view class="title2">{{typeDepart}}</view>
   </view>
   <view class="body">
     <view class="single" wx:for="{{list}}" wx:key="{{item.index}}" data-id="{{item.id}}" bindtap="goListDetail">
-      <image src="{{item.logo}}" class="right" mode="widthFix" wx:if="{{item.logo}}"></image>
+      <image src="{{'https://jbzwnew.qimixi.net'+item.logo}}" class="right" mode="widthFix" wx:if="{{item.logo}}"></image>
       <view class="inner left">{{item.name}}</view>
     </view>
   </view>

@@ -14,10 +14,10 @@ Page({
     // tab切换  
     currentTab: 0,
     //二级目录所用
-    firstCatalog: '',
+    //1个人，2法人
+    firstCatalog: 1,
     secondCatalog: '',
     //当前1、个人  2、企业
-    currentFirstCatalog: 1,
     // 首页获取数据
     personal_topic: '',
     personal_department: '',
@@ -35,39 +35,39 @@ Page({
     duration: 500,
     picAnimation: {},
     intervalNum: 0,
-    
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var _this = this;
     //初始加载获取个人服务下方主题和部门数据
     wx.request({
-      url: 'https://jbzw.qimixi.net/api/Index/index?type=1',
+      url: 'https://jbzwnew.qimixi.net/api/index/index?type=1',
       data: "",
       method: 'GET',
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           personal_topic: res.data.data.topic,
           personal_department: res.data.data.department
         })
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log("fail");
         console.log(res);
       },
-      complete: function (res) {
+      complete: function(res) {
         console.log('submit complete');
         wx.hideLoading()
       }
     });
     wx.request({
-      url: 'https://jbzw.qimixi.net/api/banner/bannerList',
+      url: 'https://jbzwnew.qimixi.net/api/banner/bannerList',
       data: "",
       method: 'POST',
-      success: function (res) {
+      success: function(res) {
         let list = res.data.data.list;
         let listArr = [];
         for (var i in list) {
@@ -83,58 +83,59 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
-  bindChange: function (e) {
+  bindChange: function(e) {
     wx.showLoading({
       title: '加载中',
     })
-    var that = this;
-    that.setData({
-      currentTab: e.detail.current
+    let first = e.detail.current + 1;
+    this.setData({
+      currentTab: e.detail.current,
+      firstCatalog: first
     });
     if (e.detail.current == 1) {
       this.company(2);
@@ -143,40 +144,42 @@ Page({
     }
   },
   //点击tab切换
-  swichNav: function (e) {
+  swichNav: function(e) {
     var that = this;
     if (this.data.currentTab === e.target.dataset.current) {
       return false;
     } else {
-      that.setData({
-        currentTab: e.target.dataset.current
-      })
+      if (this.data.currentTab == 0) {
+        this.setData({
+          firstCatalog: 1,
+          currentTab: e.target.dataset.current
+        })
+      } else if (this.data.currentTab == 1) {
+        this.setData({
+          firstCatalog: 2,
+          currentTab: e.target.dataset.current
+        })
+      }
     }
-    // if (e.detail.current == 1) {
-    //   this.company(2);
-    // } else {
-    //   this.company(1);
-    // }
   },
   //点击企业服务，获取企业服务下方主题和部门数据
   company(type) {
     var _this = this;
-    _this.currentFirstCatalog = type
     wx.request({
-      url: 'https://jbzw.qimixi.net/api/Index/index?type=' + type,
+      url: 'https://jbzwnew.qimixi.net/api/index/index?type=' + type,
       data: "",
       method: 'GET',
-      success: function (res) {
+      success: function(res) {
         _this.setData({
           business_topic: res.data.data.topic,
           business_department: res.data.data.department
         })
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log("fail");
         console.log(res);
       },
-      complete: function (res) {
+      complete: function(res) {
         console.log('submit complete');
         wx.hideLoading()
       }
@@ -184,26 +187,15 @@ Page({
   },
   //点击进入列表
   goListDetail(e) {
-    if (this.data.currentTab == 0) {
-      this.setData({
-        firstCatalog: 1,
-        secondCatalog: e.currentTarget.dataset.id,
-      })
-    } else if (this.data.currentTab == 1) {
-      this.setData({
-        firstCatalog: 2,
-        secondCatalog: e.currentTarget.dataset.id,
-      })
-    }
     wx.navigateTo({
-      url: '../listDetail/listDetail?firstCatalog=' + this.data.firstCatalog + '&secondCatalog=' + this.data.secondCatalog
+      url: '../listDetail/listDetail?firstCatalog=' + this.data.firstCatalog + '&secondCatalog=' + e.currentTarget.dataset.id
     });
   },
   // 更多
   goMore(e) {
     console.log(e.currentTarget.dataset.first)
     wx.navigateTo({
-      url: '../more/more?currentId=' + this.data.currentTab + '&typeId=' + e.currentTarget.dataset.type + "&firstCatalog=" + e.currentTarget.dataset.first
+      url: '../more/more?typeId=' + e.currentTarget.dataset.type + "&firstCatalog=" + this.data.firstCatalog
     })
   },
   onePic() {

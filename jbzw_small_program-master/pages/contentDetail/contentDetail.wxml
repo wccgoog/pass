@@ -122,7 +122,7 @@
       <text class="headerText">流程图</text>
     </view>
     <view class="bodyList flowTree {{isFold2 ?'flod':'extend' }}" bindtap="priviewImg">
-      <image src="{{treeImg.file_path}}" class="flowTreeImg" mode="widthFix"></image>
+      <image src="{{'https://jbzwnew.qimixi.net'+treeImg.file_path}}" class="flowTreeImg" mode="widthFix"></image>
       <view>流程图详情</view>
     </view>
     <view class="bottomButton" bindtap="down" data-id="2">

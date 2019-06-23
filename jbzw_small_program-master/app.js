@@ -100,5 +100,6 @@ App({
     isJump:0,
     //最近使用
     latestUsed:[[0,0],[0,1],[0,2],[2,0]],
+    thirdDomain:'jbzw.qimixi.net'
   }
 })

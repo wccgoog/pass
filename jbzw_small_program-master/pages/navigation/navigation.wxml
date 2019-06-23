@@ -28,7 +28,7 @@
         <view class="head_title">主题</view>
         <view class="list">
           <view class="single" wx:for="{{topic}}" wx:key="{{item.index}}" data-id="{{item.sid}}" bindtap="goListDetail">
-            <image src="{{item.logo}}" class="right" mode="widthFix" wx:if="{{item.logo}}"></image>
+            <image src="{{'https://jbzwnew.qimixi.net'+item.logo}}" class="right" mode="widthFix" wx:if="{{item.logo}}"></image>
             <view class="inner left">{{item.name}}</view>
           </view>
         </view>
@@ -46,7 +46,7 @@
         <view class="head_title">主题</view>
         <view class="list">
           <view class="single" wx:for="{{topic}}" wx:key="{{item.index}}" data-id="{{item.sid}}" bindtap="goListDetail">
-            <image src="{{item.logo}}" class="right" mode="widthFix" wx:if="{{item.logo}}"></image>
+            <image src="{{'https://jbzwnew.qimixi.net'+item.logo}}" class="right" mode="widthFix" wx:if="{{item.logo}}"></image>
             <view class="inner left">{{item.name}}</view>
           </view>
         </view>
