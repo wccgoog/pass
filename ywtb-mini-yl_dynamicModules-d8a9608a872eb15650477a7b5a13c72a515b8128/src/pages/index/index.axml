@@ -1,5 +1,5 @@
 <view class='background'>
-  <view class='weather'>
+  <view class='weather' a:if="{{weatherShow}}">
     <view class='city'>{{weatherData.basic.parent_city}}市
     </view>
     <view class='temperature'>{{weatherData.now.cond_txt}} {{weatherData.daily_forecast[0].tmp_max}} ~ {{weatherData.daily_forecast[0].tmp_min}}℃

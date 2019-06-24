@@ -13,6 +13,7 @@ const app = getApp();
 
 Page(store.register({
   data: {
+    weatherShow: false,
     weatherData: {},
     avatar: app.globalData.avatar,
     nickName: app.globalData.nickName,
@@ -196,7 +197,8 @@ Page(store.register({
           success: (res) => {
             console.log(res);
             _this.setData({
-              weatherData: res.data.HeWeather6[0]
+              weatherData: res.data.HeWeather6[0],
+              weatherShow: true
             })
           }
         });
