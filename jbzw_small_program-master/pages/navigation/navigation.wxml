@@ -22,7 +22,7 @@
       <view class="short_border {{currentTab==1 ? 'on' : ''}}">企业服务</view>
     </view>
   </view>
-  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight}}px" bindchange="bindChange">
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight-50}}px" bindchange="bindChange">
     <swiper-item class="bodyWrap">
       <scroll-view scroll-y="true" style="height:80%">
         <view class="head_title">主题</view>

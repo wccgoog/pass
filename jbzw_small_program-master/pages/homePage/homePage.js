@@ -183,7 +183,7 @@ Page({
   },
   onShow(e) {
     wx.request({
-      url: 'https://jbzwnew.qimixi.net/api/department/totalList?dep_id=11&page_num=1&limit=100',
+      url: 'https://jbzwnew.qimixi.net/api/department/totalList?dep_id=12&page_num=1&limit=100',
       success:(res)=>{
         console.log(res.data)
       }

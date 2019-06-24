@@ -197,31 +197,35 @@
 }
 
 /* tabbar栏 */
-.tabbar{
+
+.tabbar {
   position: fixed;
-  bottom:0;
-  left:0;
-  height:100rpx;
-  width:100%;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
   background-color: #fff;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-top:1px solid #ddd;
-}
-.tabbarSingle{
-  text-align: center;
-  margin-top:10rpx;
-}
-.tabbarSingle image{
-  width:50rpx;
-}
-.tabbarSingle view{
-  font-size: 23rpx;
-  color:#7b7b7b;
+  border-top: 1px solid #ddd;
 }
 
-.cancel{
-  width:40rpx !important;
-  height:40rpx !important;
+.tabbarSingle {
+  text-align: center;
+  margin-top: 10rpx;
+}
+
+.tabbarSingle image {
+  width: 50rpx;
+}
+
+.tabbarSingle view {
+  font-size: 23rpx;
+  color: #7b7b7b;
+}
+
+.cancel {
+  width: 40rpx !important;
+  height: 40rpx !important;
 }
