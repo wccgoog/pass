@@ -48,6 +48,7 @@ Page({
         current: e.currentTarget.dataset.filepath, // 当前显示图片的http链接
         urls: [e.currentTarget.dataset.filepath] // 需要预览的图片http链接列表
       })
+      wx.hideLoading();
       return;
     }
     if (_this.judgmentType(e.currentTarget.dataset.filepath) == ".pdf" || _this.judgmentType(e.currentTarget.dataset.filepath) == ".doc" || _this.judgmentType(e.currentTarget.dataset.filepath) == ".ppt") {

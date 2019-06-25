@@ -27,20 +27,20 @@ Page({
           }
         ]
       },
-      {
-        title: '我的二维码',
-        items: [{
-            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/pickup.html",
-            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
-            name: "取件码"
-          },
-          {
-            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/saveup.html",
-            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png",
-            name: "存件码"
-          }
-        ]
-      }
+      // {
+      //   title: '我的二维码',
+      //   items: [{
+      //       dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/pickup.html",
+      //       src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
+      //       name: "取件码"
+      //     },
+      //     {
+      //       dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/saveup.html",
+      //       src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png",
+      //       name: "存件码"
+      //     }
+      //   ]
+      // }
     ]
   },
   goOfficeList() {

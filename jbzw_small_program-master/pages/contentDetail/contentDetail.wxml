@@ -76,7 +76,7 @@
         <view class="wrapWrap">
           <view class="bodyListSingleValueWrap" wx:for="{{data.table_down_srver_list}}" wx:key="{{item.index}}">
             <view class="bodyListSingleValue downloadRight">{{item.name}}</view>
-            <view class="download" bindtap="download" data-id="1" data-filePath="{{item.file_path}}">查 看</view>
+            <view class="download" bindtap="download" data-id="1" data-filePath="{{'https://jbzwnew.qimixi.net'+item.file_path}}">查 看</view>
           </view>
         </view>
 
@@ -84,14 +84,14 @@
       <view class="bodyListSingle" wx:if="{{data.entrust_letter}}">
         <view class="bodyListSingleKey">委托书：</view>
         <view class="bodyListSingleValue downloadRight">{{data.entrust_letter}}</view>
-        <view class="download" bindtap="download" data-id="2" data-filePath="{{item.file_path}}">查 看</view>
+        <view class="download" bindtap="download" data-id="2" data-filePath="{{'https://jbzwnew.qimixi.net'+item.file_path}}">查 看</view>
       </view>
       <view class="bodyListSingle" wx:if="{{data.result_type_list.length!=0}}">
         <view class="bodyListSingleKey">结果返回形式：</view>
         <view class="wrapWrap">
           <view class="bodyListSingleValueWrap" wx:for="{{data.result_type_list}}" wx:key="{{item.index}}">
             <view class="bodyListSingleValue downloadRight">{{item.name}}</view>
-            <view class="download" bindtap="download" data-id="3" data-filePath="{{item.file_path}}">查 看</view>
+            <view class="download" bindtap="download" data-id="3" data-filePath="{{'https://jbzwnew.qimixi.net'+item.file_path}}">查 看</view>
           </view>
         </view>
       </view>
@@ -152,7 +152,7 @@
           <block wx:for="{{data.affair_material_list}}" wx:key="{{item.index}}">
             <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
               <view class="td width1">{{item.name}}</view>
-              <view class="td width1" bindtap="download" data-filePath="{{item.file_path}}">{{item.material_sample}}</view>
+              <view class="td width1" bindtap="download" data-filePath="{{'https://jbzwnew.qimixi.net'+item.file_path}}">{{item.material_sample}}</view>
               <view class="td">{{item.source_channel}}</view>
               <view class="td">{{item.paper_material}}</view>
               <view class="td">{{item.is_need_electronic}}</view>
