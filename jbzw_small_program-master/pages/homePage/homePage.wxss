@@ -334,8 +334,12 @@ movable-view {
 }
 
 .right {
-  flex: 1;
-  width: 30rpx;
+
+}
+
+.themeSingle .right {
+  height: 20px;
+  width: 20px;
 }
 
 /* 部门 */

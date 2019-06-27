@@ -135,7 +135,12 @@ Page(store.register({
       title: '低保',
       dataId: 'https://jbxqalipay.nanjingdata.cn' + app.globalData.test + '/web/wechat/modules/lowSecurity/templates/index.html',
       src: 'https://jbxqalipay.nanjingdata.cn/image/live.png'
-    }
+    },
+    {
+      title: '婚姻',
+      dataId: 'https://jbxqalipay.nanjingdata.cn' + app.globalData.test + '/web/wechat/modules/married/templates/marriedIndex.html',
+      src: 'https://jbxqalipay.nanjingdata.cn/image/marriage.png'
+    },
     ]
   },
   onShow() {

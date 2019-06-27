@@ -57,7 +57,6 @@ page {
 .recommend-service-container {
   padding: 20rpx 32rpx 10rpx;
   background: white;
-  /* border-bottom: 10px solid #eee; */
 }
 
 .recommend-service-container .title {
@@ -109,6 +108,11 @@ page {
 .recommend-service-container .service-list .service-item .service-name {
   color: #333;
   font-size: 24rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: center;
 }
 
 .avatar {
@@ -117,25 +121,26 @@ page {
   margin: 20px 0 5px 0;
   border-radius: 50%;
 }
-.user{
+
+.user {
   text-align: center;
-  /* display: flex;
-  align-items: center; */
 }
-.nickName{
+
+.nickName {
   margin-bottom: 10px;
 }
-.header{
+
+.header {
   border-bottom: 1px solid #eee;
 }
-.logout{
-  position: absolute;
-  bottom: 0;
+
+.logout {
   vertical-align: middle;
   text-align: center;
   width: 100%;
-  border: 1px solid #eee;
-  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
   font-size: 40rpx;
   font-weight: 300;
 }

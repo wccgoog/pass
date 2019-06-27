@@ -9,15 +9,13 @@
   <view class='login'>
   </view>
 </view>
-<view class="recommend-service-container">
+<view a:for="{{itemList}}" class="recommend-service-container">
   <view class="title">
-    <view class="left-title">我的办件        
-    </view>
-    <view a:if="{{moreShow}}" class="right-title" onTap='toApply'>更多        
+    <view class="left-title">{{item.title}}        
     </view>
   </view>
   <view class="service-list">
-    <view a:for="{{items}}" onTap='toWebView' class="service-item" data-id="{{item.dataId}}">
+    <view a:for="{{item.items}}" onTap="{{item.bindType}}" class="service-item" data-id="{{item.dataId}}">
       <image class="service-icon" mode="aspectFit" src="{{item.src}}" />
       <view class="service-name">{{item.name}}            
       </view>

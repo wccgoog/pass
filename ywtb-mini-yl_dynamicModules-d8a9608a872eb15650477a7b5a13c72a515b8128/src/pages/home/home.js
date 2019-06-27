@@ -1,5 +1,7 @@
 Page({
   data: {
+    x: 400,
+    y: 20,
     dataId: 0,
     // tab切换  
     currentTab: 0,
@@ -83,5 +85,11 @@ Page({
     my.navigateTo({
       url: '/pages/web-view/index?requestUrl=' + toUrl,
     });
+  },
+  onePic() {
+    console.log('onePic')
+    my.navigateTo({
+      url: '/pages/onePic/onePic',
+    })
   },
 });

@@ -13,7 +13,11 @@
     "pages/scan/scan",
     "pages/listOfItems/listOfItems",
     "pages/faceVerify/faceVerify",
-    "pages/home/home"
+    "pages/home/home",
+    "pages/suggestion/suggestion",
+    "pages/showPic/showPic",
+    "pages/picList/picList",
+    "pages/onePic/onePic"
   ],
   "window": {
     "enableDSL": "YES",

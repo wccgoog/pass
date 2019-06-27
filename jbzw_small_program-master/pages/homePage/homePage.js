@@ -48,30 +48,12 @@ Page({
     intervalNum: 0,
     items: [],
     itemList: [
-      //   {
-      //   title: "社会保障",
-      //   bOrC: 0,
-      //   items: [{
-      //     dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/handicapped/index.html",
-      //     src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289496383.png",
-      //     name: "智慧残联",
-      //     detail: "残疾人政策、助残、就业服务"
-      //   },
-      //   {
-      //     dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/lowSecurity/templates/index.html",
-      //     src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993197712.jpg",
-      //     name: "低保申请",
-      //     detail: "江北新区本地户籍低保在线申请"
-      //   }
-      //   ]
-      // },
-
       {
         title: "城市环保",
         bOrC: 1,
         items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H",
-            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png",
+          src: "https://jbxqalipay.nanjingdata.cn/image/city.png",
             name: "城市道路绿化",
             detail: "建设单位占道挖掘、修复补偿征收"
           },
@@ -117,7 +99,7 @@ Page({
         bOrC: 1,
         items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D",
-            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289514896.png",
+          src: "https://jbxqalipay.nanjingdata.cn/image/film.png",
             name: "电影放映",
             detail: "电影单位设立、变更及注销审批"
           },

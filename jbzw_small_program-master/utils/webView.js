@@ -134,3 +134,35 @@ export function latestUsed(e) {
     globalLatestUsed.splice(e.currentTarget.dataset.latest + 1, 1);
   }
 }
+
+export function navTo(e,isNumSearch){
+  console.log("webview=====", app.globalData.isLogin);
+  if (app.globalData.isLogin == false) {
+    //未登录状态
+    wx.showModal({
+      title: '请登录',
+      content: '登录后即可网上申报和查询办件',
+      confirmText: '登录',
+      success: (res) => {
+        if (res.confirm) {
+          if (isNumSearch) {
+            if (app.globalData.isLogin == false) {
+              wx.navigateTo({
+                url: '/pages/auth/auth?url=homePage'
+              })
+            }
+          } else {
+            app.globalData.isJump = 1;
+            wx.switchTab({
+              url: '/pages/numSearch/numSearch'
+            })
+          }
+        }
+      }
+    })
+  } else {
+    wx.navigateTo({
+      url: e.currentTarget.dataset.id,
+    })
+  }
+}

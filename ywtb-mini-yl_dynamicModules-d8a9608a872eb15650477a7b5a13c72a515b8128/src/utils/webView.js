@@ -60,3 +60,25 @@ export function latestUsed(e) {
     globalLatestUsed.splice(parseInt(index) + 1, 1);
   }
 }
+
+export function navTo(e, callback) {
+  if (app.globalData.isLogin) {
+    my.navigateTo({
+      url: e.currentTarget.dataset.id
+    })
+  } else {
+    my.confirm({
+      title: "请登录",
+      content: "登录后即可网上申报和查询办件",
+      confirmButtonText: "登录",
+      success: (res) => {
+        if (res.confirm) {
+          my.showLoading({
+            content: '加载中...',
+          });
+          authLogin(callback);
+        }
+      },
+    });
+  }
+}

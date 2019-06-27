@@ -1,6 +1,7 @@
 // pages/numSearch/numSearch.js
 import {
-  webView
+  webView,
+  navTo
 } from '../../utils/webView.js'
 
 const app = getApp()
@@ -18,30 +19,43 @@ Page({
         items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=S",
             src: "https://jbxqalipay.nanjingdata.cn/image/doing.png",
-            name: "在办件"
+            name: "在办件",
+            bindType: 'toWebView'
           },
           {
             dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=O",
             src: "https://jbxqalipay.nanjingdata.cn/image/done.png",
-            name: "办结件"
+            name: "办结件",
+            bindType: 'toWebView'
           }
         ]
       },
-      // {
-      //   title: '我的二维码',
-      //   items: [{
-      //       dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/pickup.html",
-      //       src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
-      //       name: "取件码"
-      //     },
-      //     {
-      //       dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/saveup.html",
-      //       src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png",
-      //       name: "存件码"
-      //     }
-      //   ]
-      // }
-    ]
+      {
+        title: '我的二维码',
+        items: [{
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/pickup.html",
+            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
+            name: "取件码",
+            bindType: 'toWebView'
+          },
+          {
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/saveup.html",
+            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png",
+            name: "存件码",
+            bindType: 'toWebView'
+          }
+        ]
+      },
+      {
+        title: '帮助与反馈',
+        items: [{
+          dataId: "/pages/suggestion/suggestion?a=123&b=321",
+          src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
+          name: "意见反馈",
+          bindType: 'navTo'
+        }, ]
+      }
+    ],
   },
   goOfficeList() {
     wx.navigateTo({
@@ -133,5 +147,8 @@ Page({
       app.globalData.avatar = app.globalData.constAvatar,
       app.globalData.isLogin = false
     console.log("logout:", app.globalData)
+  },
+  navTo(e) {
+    navTo(e, true);
   }
 })

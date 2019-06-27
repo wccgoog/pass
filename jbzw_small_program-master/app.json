@@ -26,7 +26,10 @@
     "pages/recommend/recommend",
     "pages/home2/home2",
     "pages/homePage2/homePage2",
-    "pages/numSearch2/numSearch2"
+    "pages/numSearch2/numSearch2",
+    "pages/suggestion/suggestion",
+    "pages/showPic/showPic",
+    "pages/picList/picList"
   ],
   "permission": {
     "scope.userLocation": {

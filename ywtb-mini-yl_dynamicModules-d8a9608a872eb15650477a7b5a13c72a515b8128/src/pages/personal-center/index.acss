@@ -129,13 +129,11 @@ page {
   border-bottom: 1px solid #eee;
 }
 .logout{
-  position: absolute;
-  bottom: 0;
   vertical-align: middle;
   text-align: center;
   width: 100%;
   border: 1px solid #eee;
-  padding: 10px;
+  padding: 10px 0;
   font-size: 40rpx;
   font-weight: 300;
 }

@@ -73,10 +73,9 @@ Page({
 
   },
   previewPic(e){
-    let num = parseInt(e.currentTarget.id) + 1;
-    console.log(num)
-    wx.previewImage({
-      current: "https://jbxqalipay.nanjingdata.cn/image/onePic" + num + ".jpg",
+    let num = parseInt(e.currentTarget.id);
+    my.previewImage({
+      current: num,
       urls: this.data.pic,
     })
   }
