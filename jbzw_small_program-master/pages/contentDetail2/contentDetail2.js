@@ -115,9 +115,9 @@ Page({
     //发送请求
     var _this = this;
     wx.request({
-      url: 'https://jbzw.qimixi.net/api/Index/detail',
+      url: 'https://jbzwnew.qimixi.net/api/affair/getInfo',
       data: {
-        'id': options.id
+        affair_id: options.id
       },
       method: 'GET',
       success: function (res) {

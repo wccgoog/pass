@@ -165,13 +165,13 @@ Page({
   },
   onShow(e) {
     wx.request({
-      url: 'https://jbzwnew.qimixi.net/api/department/totalList?dep_id=25&page_num=1&limit=100',
+      url: 'https://jbzwnew.qimixi.net/api/department/totalList?dep_id=20&page_num=1&limit=100',
       success:(res)=>{
         console.log(res.data.data)
       }
     })
     wx.request({
-      url: 'https://jbzwnew.qimixi.net/api/topic/totalList?topic_id=33&page_num=1&limit=100',
+      url: 'https://jbzwnew.qimixi.net/api/topic/totalList?topic_id=7&page_num=1&limit=100',
       success:(res)=>{
         console.log(res.data.data)
       }

@@ -1,6 +1,6 @@
 <view class="hallWrap">
 <view class="getInfo" wx:if="{{data}}">
-  <image src="{{data.img}}" mode="widthFix" class="hallImg" bindtap="previewImg" data-imgPath="{{data.img}}"></image>
+  <image src="{{'https://jbzwnew.qimixi.net'+data.img}}" mode="widthFix" class="hallImg" bindtap="previewImg" data-imgPath="{{data.img}}"></image>
   <view class="introInfo">
     <view>
       <view class="windowAdd"><text class="overstriking" decode="{{true}}">&nbsp;&nbsp;请到：</text>{{data.name}}</view>

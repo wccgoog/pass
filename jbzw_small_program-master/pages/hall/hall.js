@@ -4,10 +4,11 @@ Page({
     data:null
   },
   onLoad: function (options) {
+    console.log(options);
     var _this=this;
     let inParam = wx.getStorageSync("in")
     wx.request({
-      url: 'https://jbzw.qimixi.net/Api/Map/getMap',
+      url: 'https://jbzwnew.qimixi.net/api/map/getMap',
       data: {
         in: inParam,
         affair_id: options.id

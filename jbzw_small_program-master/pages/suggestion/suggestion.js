@@ -39,13 +39,13 @@ Page({
         {
           dataId: "/pages/showPic/showPic?path=51-52.jpg",
           src: "https://jbxqalipay.nanjingdata.cn/image/done.png",
-          name: "审批职能简介",
+          name: "审批职能",
           bindType: 'navTo'
         },
         {
           dataId: "/pages/showPic/showPic?path=53.jpg",
           src: "https://jbxqalipay.nanjingdata.cn/image/done.png",
-          name: "部门职能介绍",
+          name: "部门职能",
           bindType: 'navTo'
         },
         {
@@ -57,7 +57,7 @@ Page({
         {
           dataId: "/pages/showPic/showPic?path=59-60.jpg",
           src: "https://jbxqalipay.nanjingdata.cn/image/done.png",
-          name: "联系方式",
+          name: "资讯电话",
           bindType: 'navTo'
         },
       ]

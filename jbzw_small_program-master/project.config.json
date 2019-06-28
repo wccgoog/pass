@@ -113,13 +113,6 @@
 					"pathName": "pages/suggestion/suggestion",
 					"query": "",
 					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "suggestion",
-					"pathName": "pages/suggestion/suggestion",
-					"query": "",
-					"scene": null
 				}
 			]
 		}
