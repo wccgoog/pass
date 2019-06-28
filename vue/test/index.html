@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../vue.js"></script>
     <title>Document</title>
 </head>
 
@@ -49,7 +49,11 @@
             </todo-item>
         </ol>
     </div>
-
+    <div id="wcc">
+        <span v-once>{{message}}</span>
+        <button v-bind:disabled="isButtonDisabled">Button</button>
+        <p v-bind:class="w +' x'">123</p>
+    </div>
     <script src="js/index.js"></script>
 
 

@@ -59,3 +59,12 @@ var app7 = new Vue({
         ]
     }
 })
+
+var wcc = new Vue({
+    el: '#wcc',
+    data: {
+        message: 'wcc',
+        isButtonDisabled: true,
+        w: 'ccc'
+    }
+})
