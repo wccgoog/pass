@@ -45,7 +45,6 @@ Page({
       secondCatalog: options.secondCatalog,
     })
 
-    var url = options.secondCatalog.includes('d') ? 'https://jbzwnew.qimixi.net/api/department/totalList' :'https://jbzwnew.qimixi.net/api/topic/totalList';
     //显示加载效果
     wx.showLoading({
       title: '加载中',

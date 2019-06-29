@@ -65,6 +65,43 @@ var wcc = new Vue({
     data: {
         message: 'wcc',
         isButtonDisabled: true,
-        w: 'ccc'
+        w: 'ccc',
+        s: '',
+        firstName: 'w',
+        lastName: 'cc',
+        isActive: true,
+        hasError: true,
+        baseStyles: {
+            'color': 'red'
+        },
+        overridingStyles: {
+            'font-weight': 'bold'
+        }
+    },
+    computed: {
+        reversedMessage: function () {
+            return this.message.split('').reverse().join('')
+        },
+        fullName: {
+            // getter
+            get: function () {
+                return this.firstName + ' ' + this.lastName
+            },
+            // setter
+            set: function (newValue) {
+                var names = newValue.split(' ')
+                this.firstName = names[0]
+                this.lastName = names[names.length - 1]
+            }
+        }
+    },
+    methods: {
+        reversedMessage: function () {
+            return this.message.split('').reverse().join('')
+        }
     }
+})
+
+Vue.component('my-component', {
+    template: '<p class="foo bar">Hi</p>'
 })
