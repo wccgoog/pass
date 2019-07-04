@@ -52,6 +52,7 @@ Page({
         total_id: options.id
       },
       success: function (res) {
+        console.log(res)
         _this.setData({
           detailList: res.data.data.total_info,
           detailListTwo: res.data.data.affair_list

@@ -6,24 +6,6 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // wx.checkSession({
-    //   success:function(){
-
-    //   },
-    //   fail:function(){
-    //     wx.login({
-    //       success:function(res){
-
-    //         var code = res.code;
-    //         wx.getUserInfo({
-    //           wx.request({
-    //             url: '服务器地址',
-    //           })
-    //         })
-    //       }
-    //     })
-    //   }
-    // })
     var that = this
     // 登录
     wx.login({
@@ -100,6 +82,6 @@ App({
     isJump:0,
     //最近使用
     latestUsed:[[0,0],[0,1],[0,2],[2,0]],
-    thirdDomain:'jbzw.qimixi.net'
+    thirdDomain:'jbzwnew.qimixi.net'
   }
 })

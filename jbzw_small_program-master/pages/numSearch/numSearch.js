@@ -34,13 +34,13 @@ Page({
         title: '我的二维码',
         items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/pickup.html",
-            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
+            src: "https://jbxqalipay.nanjingdata.cn/image/suggestion.png",
             name: "取件码",
             bindType: 'toWebView'
           },
           {
             dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/fileCabinet/templates/saveup.html",
-            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397481205.png",
+            src: "https://jbxqalipay.nanjingdata.cn/image/QrCode.png",
             name: "存件码",
             bindType: 'toWebView'
           }
@@ -50,7 +50,7 @@ Page({
         title: '帮助与反馈',
         items: [{
           dataId: "/pages/suggestion/suggestion?a=123&b=321",
-          src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1552397437091.png",
+          src: "https://jbxqalipay.nanjingdata.cn/image/suggestion.png",
           name: "意见反馈",
           bindType: 'navTo'
         }, ]

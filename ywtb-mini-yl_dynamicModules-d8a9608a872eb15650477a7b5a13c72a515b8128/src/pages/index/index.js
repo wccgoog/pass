@@ -66,7 +66,7 @@ Page(store.register({
         items: [
           {
             dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H",
-            src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993078676.png",
+            src: "https://jbxqalipay.nanjingdata.cn/image/city.png",
             name: "城市道路绿化",
             detail: "建设单位占道挖掘、修复补偿征收"
           },
@@ -113,7 +113,7 @@ Page(store.register({
         bOrC: 1,
         items: [{
           dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D",
-          src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289514896.png",
+          src: "https://jbxqalipay.nanjingdata.cn/image/film.png",
           name: "电影放映",
           detail: "电影单位设立、变更及注销审批"
         },
