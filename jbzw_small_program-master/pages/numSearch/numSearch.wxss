@@ -100,8 +100,8 @@ page {
 }
 
 .recommend-service-container .service-list .service-item .service-icon {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin-bottom: 14rpx;
 }
 

@@ -5,7 +5,7 @@ import { getUid } from './utils/index';
 App({
   qrCode: '',
   globalData: {
-    test: ':18081',
+    test: '',
     latestUsed: [[0, 0], [0, 1], [0, 2], [2, 0]],
     //初始头像
     avatar: 'https://gw.alipayobjects.com/zos/rmsportal/OEpRddJBTljCwxpcwDXQ.png',
