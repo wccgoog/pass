@@ -23,6 +23,7 @@
         </text>
       </view>
     </view>
+    <!-- 个人 -->
     <view a:if="{{dataId == 0}}" class="themeWrap">
       <view class="themeTitle">
         <text class="themeTitleWords">主题                                                                
@@ -42,11 +43,12 @@
             <view class="leftDetail">{{item.intro}}                                                                                                            
             </view>
           </view>
-          <image src="{{item.logo}}" class="right" mode="widthFix">
+          <image src="https://jbzwnew.qimixi.net{{item.logo}}" class="right" mode="widthFix">
           </image>
         </view>
       </view>
     </view>
+    <!-- 法人 -->
     <view a:if="{{dataId == 1}}" class="themeWrap">
       <view class="themeTitle">
         <text class="themeTitleWords">主题                                                                  
@@ -66,12 +68,12 @@
             <view class="leftDetail">{{item.intro}}                                                                                                              
             </view>
           </view>
-          <image src="{{item.logo}}" class="right" mode="widthFix">
+          <image src="https://jbzwnew.qimixi.net{{item.logo}}" class="right" mode="widthFix">
           </image>
         </view>
       </view>
     </view>
-    <view class="departmentWrap">
+    <view a:if="{{dataId == 0}}" class="departmentWrap">
       <view class="departmentTitle">
         <text class="departmentTitleWords">部门                                                      
         </text>
@@ -84,6 +86,23 @@
       </view>
       <view class="departmentClassify">
         <view class="departmentSingle" a:for="{{personal_department}}" a:key="{{index}}" onTap="goListDetail" data-id="{{item.sid}}">{{item.name}}                                                      
+        </view>
+      </view>
+    </view>
+  </view>
+    <view a:if="{{dataId == 1}}" class="departmentWrap">
+      <view class="departmentTitle">
+        <text class="departmentTitleWords">部门                                                      
+        </text>
+        <view class="more" onTap="goDepartment" data-type="1" data-first="2">
+          <text>更多                                                                        
+          </text>
+          <image src="../../images/rightArrow.png" class="rightArrow">
+          </image>
+        </view>
+      </view>
+      <view class="departmentClassify">
+        <view class="departmentSingle" a:for="{{business_department}}" a:key="{{index}}" onTap="goListDetail" data-id="{{item.sid}}">{{item.name}}                                                      
         </view>
       </view>
     </view>

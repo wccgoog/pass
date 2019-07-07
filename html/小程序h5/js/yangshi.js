@@ -1,5 +1,3 @@
-
-
 //获取url中"?"符后的字串  
 function getRequest() {
     var url = location.search;
@@ -19,14 +17,16 @@ function goListDetail(e) {
     window.location.href = 'listDetail.html?type=' + webData.type + '&sid=' + e.getAttribute("data-id");
 }
 
-var webData = new Object();
+var webData = getRequest();
 
 $(function () {
     $.ajax({
         type: "get",
-        url: "/mini/api/index/departmentList",
+        url: "/mininew/api/index/departmentList",
         dataType: "json",
-        data: {},
+        data: {
+            type: webData.type
+        },
         success: function (data) {
             console.log(data.data);
             addBox(data.data);

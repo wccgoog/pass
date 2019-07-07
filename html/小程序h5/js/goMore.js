@@ -14,7 +14,7 @@ function getRequest() {
 
 //跳转详情页
 function goListDetail(e) {
-    window.location.href = "listDetail.html?type=" + webData.type + "&sid=t" + e.getAttribute("data-id");
+    window.location.href = "listDetail.html?type=" + webData.type + "&sid=" + e.getAttribute("data-id");
 }
 
 var webData = new Object();
@@ -26,13 +26,13 @@ $(function () {
         var theme = '';
         $.ajax({
             type: "get",
-            url: "/mini/api/Index/topicList?type=" + type,
+            url: "/mininew/api/index/topicList?type=" + type,
             success: function (res) {
                 console.log(res);
                 len = res.data.length
                 for (i = 0; i < len; i++) {
-                    theme += '<div class="single" data-id=' + res.data[i].id + ' onclick="goListDetail(this)">'
-                        + '<img class="left" src="' + res.data[i].logo + '"/><div class="right">'
+                    theme += '<div class="single" data-id=t' + res.data[i].id + ' onclick="goListDetail(this)">'
+                        + '<img class="left" src="https://jbzwnew.qimixi.net' + res.data[i].logo + '"/><div class="right">'
                         + res.data[i].name
                         + '</div></div>'
                 }

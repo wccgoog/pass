@@ -28,7 +28,7 @@ Page({
   onLoad() {
     var _this = this;
     my.request({
-      url: 'https://jbzw.qimixi.net/api/Index/index',
+      url: 'https://jbzwnew.qimixi.net/api/index/index',
       method: "GET",
       data: {
         type: 1
@@ -42,7 +42,7 @@ Page({
       }
     })
     my.request({
-      url: 'https://jbzw.qimixi.net/api/Index/index',
+      url: 'https://jbzwnew.qimixi.net/api/index/index',
       method: "GET",
       data: {
         type: 2

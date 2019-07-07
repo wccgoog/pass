@@ -83,7 +83,6 @@ a{
 .departmentClassify{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
 }
 .departmentSingle{
     display: flex;
