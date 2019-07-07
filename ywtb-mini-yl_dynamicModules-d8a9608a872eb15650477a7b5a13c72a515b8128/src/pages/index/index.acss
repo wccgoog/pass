@@ -340,7 +340,8 @@ movable-view {
 
 .right {
   flex: 1;
-  width: 30rpx;
+  /* width: 10px !important;
+  height: 30px !important; */
 }
 
 /* 部门 */
