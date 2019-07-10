@@ -58,6 +58,11 @@ page {
 .recommend-service-container .service-list .service-item .service-name {
   color: #333;
   font-size: 24rpx;
+  text-overflow:ellipsis;
+  white-space:nowrap; 
+  overflow:hidden; 
+  width: 100%;
+  text-align: center;
 }
 
 .recommend-service-container2 {

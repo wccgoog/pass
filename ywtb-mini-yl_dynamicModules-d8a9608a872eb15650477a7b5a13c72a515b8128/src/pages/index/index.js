@@ -42,23 +42,24 @@ Page(store.register({
       // "https://jbxqalipay.nanjingdata.cn/image/tb6.jpg"
     ],
     itemList: [
-      //   {
-      //   title: "社会保障",
-      //   bOrC: 0,
-      //   items: [{
-      //     dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/handicapped/index.html",
-      //     src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1559289496383.png",
-      //     name: "智慧残联",
-      //     detail: "残疾人政策、助残、就业服务"
-      //   },
-      //   {
-      //     dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/lowSecurity/templates/index.html",
-      //     src: "https://jbxqalipay.nanjingdata.cn/appCenter/upload/image/1557993197712.jpg",
-      //     name: "低保申请",
-      //     detail: "江北新区本地户籍低保在线申请"
-      //   }
-      //   ]
-      // },
+       {
+        title: "综合执法",
+        bOrC: 1,
+        items: [
+          {
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/movehandleItem.html?siteId=1&id=ZHXZZF002&types=c&isOne=A",
+            src: "https://jbxqalipay.nanjingdata.cn/image/shop.png",
+            name: "店招标牌备案",
+            detail: "对门店的店招标牌备案"
+          },
+          {
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/movehandleItem.html?siteId=1&id=ZHXZZF001&types=c&isOne=A",
+            src: "https://jbxqalipay.nanjingdata.cn/image/road.png",
+            name: "道路损失调查",
+            detail: "对道路造成损害（如事故）的损失调查"
+          },
+        ]
+      },
 
       {
         title: "城市环保",
@@ -220,34 +221,6 @@ Page(store.register({
         url: options.url
       });
     }
-    var _this = this;
-    //初始加载获取个人服务下方主题和部门数据
-    my.request({
-      url: 'https://jbzw.qimixi.net/api/Index/index',
-      method: "GET",
-      data: {
-        type: 1
-      },
-      success: function (res) {
-        _this.setData({
-          personal_topic: res.data.data.topic,
-          personal_department: res.data.data.department
-        })
-      }
-    })
-    my.request({
-      url: 'https://jbzw.qimixi.net/api/Index/index',
-      method: "GET",
-      data: {
-        type: 2
-      },
-      success: function (res) {
-        _this.setData({
-          business_topic: res.data.data.topic,
-          business_department: res.data.data.department
-        })
-      }
-    })
 
     // this.dispatch('loadServiceMarketInfo', {
     //   'pageInstanceId': '201811231110002121111222',

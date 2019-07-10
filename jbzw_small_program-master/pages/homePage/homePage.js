@@ -49,11 +49,29 @@ Page({
     items: [],
     itemList: [
       {
+        title: "综合执法",
+        bOrC: 1,
+        items: [
+          {
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/movehandleItem.html?siteId=1&id=ZHXZZF002&types=c&isOne=A",
+            src: "https://jbxqalipay.nanjingdata.cn/image/shop.png",
+            name: "店招标牌备案",
+            detail: "对门店的店招标牌备案"
+          },
+          {
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/movehandleItem.html?siteId=1&id=ZHXZZF001&types=c&isOne=A",
+            src: "https://jbxqalipay.nanjingdata.cn/image/road.png",
+            name: "道路损失调查",
+            detail: "对道路造成损害（如事故）的损失调查"
+          },
+        ]
+      },
+      {
         title: "城市环保",
         bOrC: 1,
         items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=H",
-          src: "https://jbxqalipay.nanjingdata.cn/image/city.png",
+            src: "https://jbxqalipay.nanjingdata.cn/image/city.png",
             name: "城市道路绿化",
             detail: "建设单位占道挖掘、修复补偿征收"
           },
@@ -99,7 +117,7 @@ Page({
         bOrC: 1,
         items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/alipayItemList.html?siteId=1&types=c&alipay=1&itemKey=2&itemSource=A&showTerrace=D",
-          src: "https://jbxqalipay.nanjingdata.cn/image/film.png",
+            src: "https://jbxqalipay.nanjingdata.cn/image/film.png",
             name: "电影放映",
             detail: "电影单位设立、变更及注销审批"
           },
@@ -111,6 +129,7 @@ Page({
           // }
         ]
       },
+
     ],
     specificZone: [{
         title: '残联',
@@ -125,8 +144,7 @@ Page({
     ]
   },
   // loading显示方法
-  loading: function() {
-  },
+  loading: function() {},
   onLoad: function(options) {
     var _this = this;
 
