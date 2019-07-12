@@ -2,11 +2,11 @@
 //获取应用实例  
 import {
   webView,
-  latestUsed
+  latestUsed,
+  navTo
 } from '../../utils/webView.js'
 
 const app = getApp()
-var bmap = require('../../utils/bmap-wx.js');
 
 Page({
   data: {
@@ -47,12 +47,10 @@ Page({
     picAnimation: {},
     intervalNum: 0,
     items: [],
-    itemList: [
-      {
+    itemList: [{
         title: "综合执法",
         bOrC: 1,
-        items: [
-          {
+        items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/movehandleItem.html?siteId=1&id=ZHXZZF002&types=c&isOne=A",
             src: "https://jbxqalipay.nanjingdata.cn/image/shop.png",
             name: "店招标牌备案",
@@ -131,7 +129,8 @@ Page({
       },
 
     ],
-    specificZone: [{
+    specificZone: [
+      {
         title: '残联',
         dataId: 'https://jbxqalipay.nanjingdata.cn' + app.globalData.test + '/web/wechat/modules/handicapped/index.html',
         src: 'https://jbxqalipay.nanjingdata.cn/image/disabled.png'
@@ -140,6 +139,16 @@ Page({
         title: '低保',
         dataId: 'https://jbxqalipay.nanjingdata.cn' + app.globalData.test + '/web/wechat/modules/lowSecurity/templates/index.html',
         src: 'https://jbxqalipay.nanjingdata.cn/image/live.png'
+      },
+      {
+        title: '低保',
+        dataId: 'https://jbxqalipay.nanjingdata.cn' + app.globalData.test + '/web/wechat/modules/creditApply/templates/index.html',
+        src: 'https://jbxqalipay.nanjingdata.cn/image/credit.png'
+      },
+      {
+        title: '低保',
+        dataId: 'https://www.jlwater.com/bizHandInfo',
+        src: 'https://jbxqalipay.nanjingdata.cn/image/water.jpg'
       }
     ]
   },
@@ -147,7 +156,25 @@ Page({
   loading: function() {},
   onLoad: function(options) {
     var _this = this;
-
+    wx.request({
+      url: 'https://jbzwnew.qimixi.net/api/banner/bannerList',
+      data: "",
+      method: 'POST',
+      success: function (res) {
+        let images=[];
+        let callback=function(element){
+          if(element.name.indexOf('/') > -1){
+            element.name = '/pages' + element.name + element.name
+            images.push(element)
+          }
+        }
+        res.data.data.list.forEach(callback);
+        console.log(res)
+        _this.setData({
+          background: images
+        })
+      }
+    })
     //和天气
     var nowLocation = '';
     wx.getLocation({
@@ -261,11 +288,7 @@ Page({
 
   },
   login() {
-    let that = this;
     app.globalData.isJump = 1;
-    // wx.navigateTo({
-    //   url: '/pages/numSearch/numSearch'
-    // })
     wx.switchTab({
       url: '/pages/numSearch/numSearch'
     })
@@ -275,4 +298,9 @@ Page({
       dataId: e.target.dataset.id
     })
   },
+  navigateTo(e) {
+    wx.navigateTo({
+      url: e.target.dataset.id,
+    })
+  }
 })

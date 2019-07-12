@@ -139,6 +139,7 @@ Page({
   authinfo(res) {
     console.log("支付密码", res)
     if (res.detail.errMsg == "openRealnameAuth:cancel") {
+    // 取消输入支付密码
       app.globalData.isLogin = false;
       app.globalData.nickName = app.globalData.constNickName;
       app.globalData.avatar = app.globalData.constAvatar;
@@ -175,9 +176,6 @@ Page({
   userInfo(resuserinfo) {
     var that = this;
     console.log(resuserinfo.detail.userInfo);
-    // app.globalData.avatar = resuserinfo.detail.userInfo.avatarUrl;
-    // app.globalData.nickName = resuserinfo.detail.userInfo.nickName;
-    // app.globalData.isLogin = true;
     console.log(app.globalData)
     wx.login({
       success: (res) => {

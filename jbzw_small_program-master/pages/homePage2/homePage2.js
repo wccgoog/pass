@@ -211,50 +211,6 @@ Page({
     })
   },
   onLoad: function(options) {
-    // wx.login({
-    //   success(res) {
-    //     app.globalData.code = res.code;
-    //     wx.getUserInfo({
-    //       success(resuserinfo) {
-    //         console.log(JSON.parse(resuserinfo.rawData))
-    //         let userInfo = JSON.parse(resuserinfo.rawData)
-    //         //登录第三方系统返回用户已留存的信息
-
-    //         // 获取用户昵称和头像,如果
-    //         app.globalData.nickName = userInfo.nickName;
-    //         app.globalData.avatar = userInfo.avatarUrl;
-    //         if (app.globalData.nickName == app.globalData.constNickName && app.globalData.avatar == app.globalData.constAvatar) {
-    //           app.globalData.isLogin = false;
-    //         } else {
-    //           app.globalData.isLogin = true;
-    //         }
-    //         //登录第三方系统返回用户已留存的信息
-    //         wx.request({
-    //           url: 'https://jbzw.qimixi.net/api/wechat',
-    //           data: {
-    //             code: res.code,
-    //             encryptedData: resuserinfo.encryptedData,
-    //             rawData: resuserinfo.rawData,
-    //             iv: resuserinfo.iv,
-    //             signature: resuserinfo.signature,
-    //           },
-    //           success: function(result) {
-    //             //记录session3rd到app.globalData
-    //             app.globalData.session3rd = result.data.data.session3rd;
-    //             app.globalData.realname = result.data.data.user_info.realname;
-    //             app.globalData.mobile = result.data.data.user_info.mobile;
-    //             app.globalData.credential_id = result.data.data.user_info.credential_id;
-    //             wx.setStorage({
-    //               key: 'session3rd',
-    //               data: result.data.data.session3rd,
-    //             })
-    //           }
-    //         })
-    //       }
-    //     })
-    //   }
-    // });
-
     wx.showLoading({
       title: '加载中',
     })

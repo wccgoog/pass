@@ -416,6 +416,10 @@ movable-view {
   height: 375rpx;
 }
 
+.swiperHeight2 {
+  height: 175rpx;
+}
+
 .apply {
   margin-bottom: 10px;
 }

@@ -14,7 +14,8 @@ Page({
     avatar: app.globalData.avatar,
     nickName: app.globalData.nickName,
     isLogin: app.globalData.isLogin,
-    itemList: [{
+    itemList: [
+      {
         title: '我的办件',
         items: [{
             dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/workGuide/templates/newOffice.html?workType=S",
@@ -49,7 +50,7 @@ Page({
       {
         title: '帮助与反馈',
         items: [{
-          dataId: "/pages/suggestion/suggestion?a=123&b=321",
+          dataId: "/pages/suggestion/suggestion",
           src: "https://jbxqalipay.nanjingdata.cn/image/suggestion.png",
           name: "意见反馈",
           bindType: 'navTo'

@@ -71,7 +71,9 @@ Page({
         let list = res.data.data.list;
         let listArr = [];
         for (var i in list) {
-          listArr.push(list[i].image)
+          if (i.indexOf('\\') == -1) {
+            listArr.push(list[i].image)
+          }
         }
         _this.setData({
           background: listArr

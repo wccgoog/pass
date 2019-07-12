@@ -1,6 +1,7 @@
 const app = getApp()
 
 export function webView(e,isNumSearch) {
+  // 如果是从numSearch页面点击, isNumSearch为true
   console.log("webview=====", app.globalData.isLogin);
   if (app.globalData.isLogin == false) {
     //未登录状态
