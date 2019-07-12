@@ -68,15 +68,16 @@ Page({
       data: "",
       method: 'POST',
       success: function(res) {
-        let list = res.data.data.list;
-        let listArr = [];
-        for (var i in list) {
-          if (i.indexOf('\\') == -1) {
-            listArr.push(list[i].image)
+        let images = [];
+        let callback = function(element) {
+          if (element.name.indexOf('/') == -1) {
+            element.name = '/pages' + element.name + element.name
+            images.push(element)
           }
         }
+        res.data.data.list.forEach(callback);
         _this.setData({
-          background: listArr
+          background: images
         })
       }
     });

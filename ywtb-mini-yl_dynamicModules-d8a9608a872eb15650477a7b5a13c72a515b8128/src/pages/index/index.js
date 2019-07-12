@@ -295,5 +295,10 @@ Page(store.register({
       });
     }
   },
+  navigateTo(e){
+    my.navigateTo({
+      url:e.target.dataset.id
+    })
+  }
 }));
 

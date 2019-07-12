@@ -18,8 +18,8 @@ export function setUid(uid) {
  * 入参 type:String
  */
 export function getUid() {
-  console.log('-----getUid', my.getStorageSync({ key: 'uid' }));
   let uid = (my.getStorageSync({ key: 'uid' }).APDataStorage || my.getStorageSync({ key: 'uid' }).data).uid;
+  console.log('-----getUid', uid);
   return uid;
 }
 

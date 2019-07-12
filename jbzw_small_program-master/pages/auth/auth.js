@@ -16,12 +16,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // if (app.globalData.realname && app.globalData.credential_id) {
-    //   this.setData({
-    //     authShow: false
-    //   })
-    // }
-
     //消耗掉isJump状态
     app.globalData.isJump = 0;
     if (options) {

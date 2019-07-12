@@ -11,7 +11,7 @@
       <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}" interval="{{interval}}" duration="{{duration}}" class="swiperHeight">
         <block wx:for="{{background}}" wx:key="*this">
           <swiper-item>
-            <image mode="widthFix" src="{{'https://jbzwnew.qimixi.net'+item}}" class="headerImg"></image>
+            <image mode="widthFix" src="{{'https://jbzwnew.qimixi.net'+item.image}}" class="headerImg"></image>
           </swiper-item>
         </block>
       </swiper>
