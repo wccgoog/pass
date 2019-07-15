@@ -5,7 +5,9 @@ import { getUid } from './utils/index';
 App({
   qrCode: '',
   globalData: {
+    // 域名加18081端口是因为服务器端nginx做了这个端口的监听,会跳转到测试环境,发布正式版前,需要把这个test字段改为空字符串
     test: ':18081',
+    //首页的最近使用功能,使用到的初始数组
     latestUsed: [[1, 0], [1, 1], [1, 2], [3, 0]],
     //初始头像
     avatar: 'https://gw.alipayobjects.com/zos/rmsportal/OEpRddJBTljCwxpcwDXQ.png',
@@ -33,12 +35,6 @@ App({
       this.shareData.pagetype = query.pagetype;
     }
     console.log('app onLaunch: options: ', options);
-    // if(options.path !== 'pages/index/index'){
-    //   my.reLaunch({
-    //     url: '/pages/index/index', // 页面路径。如果页面不为 tabbar 页面则路径后可以带参数。参数规则如下：路径与参数之间使用
-    //   });
-    // }
-
     // 获取城市列表
     await getCityTabs();
   },
@@ -47,7 +43,6 @@ App({
       this.qrCode = options.query.qrCode;
     }
     console.log('app onShow option-------------' + JSON.stringify(options));
-    // this.uid = getUid();
   },
   onHide() {
     console.log('app onHide');

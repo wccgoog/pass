@@ -62,23 +62,25 @@ Page({
       },
       ]
     },],
-    itemListWebView: [{
-      title: '意见反馈',
-      items: [
-        {
-          dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/feedback/templates/historyRecord.html",
-          src: "https://jbxqalipay.nanjingdata.cn/image/QrCode.png",
-          name: "反馈列表",
-          bindType: 'toWebView'
-        },
-        {
-          dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/feedback/templates/feedback.html",
-          src: "https://jbxqalipay.nanjingdata.cn/image/QrCode.png",
-          name: "我要反馈",
-          bindType: 'toWebView'
-        },
-      ]
-    }]
+    itemListWebView: [
+      {
+        title: '意见反馈',
+        items: [
+          {
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/feedback/templates/historyRecord.html",
+            src: "https://jbxqalipay.nanjingdata.cn/image/QrCode.png",
+            name: "反馈列表",
+            bindType: 'toWebView'
+          },
+          {
+            dataId: "https://jbxqalipay.nanjingdata.cn" + app.globalData.test + "/web/wechat/modules/feedback/templates/feedback.html",
+            src: "https://jbxqalipay.nanjingdata.cn/image/QrCode.png",
+            name: "我要反馈",
+            bindType: 'toWebView'
+          },
+        ]
+      }
+    ]
   },
 
   /**

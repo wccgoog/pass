@@ -136,11 +136,11 @@ Page(store.register({
       dataId: 'https://jbxqalipay.nanjingdata.cn' + app.globalData.test + '/web/wechat/modules/lowSecurity/templates/index.html',
       src: 'https://jbxqalipay.nanjingdata.cn/image/live.png'
     },
-    {
-      title: '婚姻',
-      dataId: 'https://jbxqalipay.nanjingdata.cn' + app.globalData.test + '/web/wechat/modules/married/templates/marriedIndex.html',
-      src: 'https://jbxqalipay.nanjingdata.cn/image/marriage.png'
-    },
+    // {
+    //   title: '婚姻',
+    //   dataId: 'https://jbxqalipay.nanjingdata.cn' + app.globalData.test + '/web/wechat/modules/married/templates/marriedIndex.html',
+    //   src: 'https://jbxqalipay.nanjingdata.cn/image/marriage.png'
+    // },
     ]
   },
   onShow() {
@@ -168,8 +168,6 @@ Page(store.register({
     var _this = this;
     my.request({
       url: 'https://jbzwnew.qimixi.net/api/banner/bannerList',
-      data: "",
-      method: 'POST',
       success: function (res) {
         let images = [];
         let callback = function (element) {
