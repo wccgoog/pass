@@ -66,7 +66,7 @@ var wcc = new Vue({
         message: 'wcc',
         isButtonDisabled: true,
         w: 'ccc',
-        s: '',
+        s: 'class',
         firstName: 'w',
         lastName: 'cc',
         isActive: true,
@@ -76,6 +76,14 @@ var wcc = new Vue({
         },
         overridingStyles: {
             'font-weight': 'bold'
+        },
+        classObject: {
+            active: true,
+            'text-danger': false
+        },
+        items: {
+            message: 'Foo',
+            answer: 'Bar'
         }
     },
     computed: {

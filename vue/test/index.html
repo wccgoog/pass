@@ -56,11 +56,29 @@
         <!-- 单引号无用 -->
         <div class="static" v-bind:class="{ active: isActive, 'message': hasError }">666</div>
 
-        <div v-bind:class='message'></div>
+        <div v-bind:class="{ active: isActive }"></div>
         <p v-bind:[s]="w +' x'">123</p>
         <p>{{reversedMessage()}}</p>
         <p>{{fullName}}</p>
         <div v-bind:style="[baseStyles, overridingStyles]">3213123123</div>
+        <div v-bind:class="classObject"></div>
+        <div v-if="Math.random() > 0.5">
+            Now you see me
+        </div>
+        <div v-else>
+            Now you don't
+        </div>
+
+        <ul>
+            <li v-for="(value,key,index) in items" v-bind:key="index">
+                {{index}}--{{ key }}--{{value}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="value in items">
+                {{value}}
+            </li>
+        </ul>
 
     </div>
 
