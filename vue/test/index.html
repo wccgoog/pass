@@ -80,9 +80,45 @@
             </li>
         </ul>
 
+        <button v-on:click="warn('Form cannot be submitted yet.', $event)">
+            Submit
+        </button>
+
     </div>
 
     <my-component class="baz boo">333</my-component>
+
+
+    <div id="todo-list-example">
+        <input v-model="newTodoText" id="new-todo" placeholder="E.g. Feed the cat">
+        <button v-on:click="addNewTodo">Add</button>
+        <button>Add2</button>
+        <ul>
+            <li is="todo-item" v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title"
+                v-on:remove="todos.splice(index, 1)"></li>
+        </ul>
+        <div @contextmenu.prevent="addNewTodo">Do something</div>
+        <input @keyup.alt.67="addNewTodo">
+        <input @input="addNewTodo">
+    </div>
+
+    <div id="example-4">
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+        <span>Picked: {{ picked }}</span>
+        <div>
+            <input type="checkbox" v-model="toggle" true-value="yes" false-value="no">
+            <div>{{toggle}}</div>
+        </div>
+        <input v-model.trim="age">
+        <div>{{age}}</div>
+    </div>
+
+
 
 
     <script src="js/index.js"></script>
