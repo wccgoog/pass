@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="watch-example">
+        <p>{{ answer }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+    <script>
+        var watchExampleVM = new Vue({
+            el: '#watch-example',
+            data: {
+                answer: [1]
+            },
+            mounted: function () {
+                this.getAnswer();
+            },
+            methods: {
+                getAnswer: function () {
+                    var vm = this
+                    axios.get('http://localhost/726/08.crm/customer/Allinkman.action')
+                        .then(function (response) {
+                            console.log(1)
+                            vm.answer = response.data
+                        })
+                        .catch(function (error) {
+                            vm.answer = 'Error! Could not reach the API. ' + error
+                        })
+                },
+            }
+        })
+    </script>
+    <!-- [{"id":1,"name":"周意","sex":"女","iphone":"12345678901","address":"江苏省南京市"},{"id":2,"name":"李小明","sex":"男","iphone":"13514611589","address":"浙江省金华"}] -->
+</body>
+
+</html>
