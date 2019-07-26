@@ -73,14 +73,13 @@
                 ]
             },
             mounted: function () {
-                // this.getuser();
+                this.getuser();
             },
             methods: {
                 getuser: function () {
                     var vm = this
                     axios.get('http://localhost/726/08.crm/customer/Allinkman.action')
                         .then(function (response) {
-                            console.log(1)
                             vm.tableData = response.data
                         })
                         .catch(function (error) {
