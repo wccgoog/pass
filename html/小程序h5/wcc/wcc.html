@@ -42,7 +42,6 @@
 
                     // 参数根据业务场景随意构造
                     let params = { type: 'edit', index: this.index, rowData: this.rowData };
-                    console.log(params)
                     this.$emit('on-custom-comp', params);
                 },
 
@@ -50,7 +49,6 @@
 
                     // 参数根据业务场景随意构造
                     let params = { type: 'delete', index: this.index, rowData: this.rowData };
-                    console.log(params)
                     this.$emit('on-custom-comp', params);
 
                 }
@@ -78,7 +76,7 @@
             methods: {
                 getuser: function () {
                     var vm = this
-                    axios.get('http://localhost/726/08.crm/customer/Allinkman.action')
+                    axios.get('http://localhost/api/08.crm/customer/Allinkman.action')
                         .then(function (response) {
                             vm.tableData = response.data
                         })
@@ -91,7 +89,9 @@
                     console.log(params);
 
                     if (params.type === 'delete') { // do delete operation
-
+                        axios.post('http://localhost/api/08.crm/customer/del.action', {
+                            id: params.rowData.id
+                        })
                     } else if (params.type === 'edit') { // do edit operation
 
                     }
