@@ -75,22 +75,28 @@
             },
             methods: {
                 getuser: function () {
-                    var vm = this
+                    var vm = this;
                     axios.get('http://localhost/api/08.crm/customer/Allinkman.action')
                         .then(function (response) {
-                            vm.tableData = response.data
+                            console.log(response);
+                            vm.tableData = response.data;
                         })
                         .catch(function (error) {
                             vm.tableData = 'Error! Could not reach the API. ' + error
                         })
                 },
                 customCompFunc(params) {
-
+                    var vm = this;
                     console.log(params);
 
                     if (params.type === 'delete') { // do delete operation
-                        axios.post('http://localhost/api/08.crm/customer/del.action', {
-                            id: params.rowData.id
+                        axios.get('http://localhost/api/08.crm/customer/del.action', {
+                            params: {
+                                id: params.rowData.id
+                            }
+                        }).then(function (response) {
+                            console.log(response);
+                            vm.getuser();
                         })
                     } else if (params.type === 'edit') { // do edit operation
 
