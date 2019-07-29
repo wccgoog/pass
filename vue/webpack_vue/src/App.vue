@@ -25,6 +25,10 @@ export default {
       selection: [
         { text: "One", value: "A" },
         { text: "Two", value: "B" },
+        { text: "Two", value: "B" },
+        { text: "Two", value: "B" },
+        { text: "Two", value: "B" },
+        { text: "Two", value: "B" },
         { text: "Three", value: "C" }
       ],
       selected: ""
@@ -48,7 +52,7 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
 
   h1 {
-    color: green;
+    color: blue;
   }
 }
 </style>
