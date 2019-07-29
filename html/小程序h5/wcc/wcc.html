@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./umd/css/index.css">
+    <script src="./vue.js"></script>
+    <script src="./umd/js/index.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="watch-example">
+        <v-table is-horizontal-resize style="width:100%" :columns="columns" :table-data="tableData"
+            row-hover-color="#eee" row-click-color="#edf7ff" @on-custom-comp="customCompFunc" column-width-drag>
+        </v-table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+    <script>
+
+        Vue.component('table-operation', {
+            template: `<span>
+        <a href="" @click.stop.prevent="update(rowData,index)">编辑</a>&nbsp;
+        <a href="" @click.stop.prevent="deleteRow(rowData,index)">删除</a>
+        </span>`,
+            props: {
+                rowData: {
+                    type: Object
+                },
+                field: {
+                    type: String
+                },
+                index: {
+                    type: Number
+                }
+            },
+            methods: {
+                update() {
+
+                    // 参数根据业务场景随意构造
+                    let params = { type: 'edit', index: this.index, rowData: this.rowData };
+                    this.$emit('on-custom-comp', params);
+                },
+
+                deleteRow() {
+
+                    // 参数根据业务场景随意构造
+                    let params = { type: 'delete', index: this.index, rowData: this.rowData };
+                    this.$emit('on-custom-comp', params);
+
+                }
+            }
+        })
+
+        var watchExampleVM = new Vue({
+            el: '#watch-example',
+            data: {
+                tableData: [
+                    { "id": 1, "name": "周意", "sex": "女", "iphone": "12345678901", "address": "江苏省南京市" },
+                    { "id": 2, "name": "李小明", "sex": "男", "iphone": "13514611589", "address": "浙江省金华" }
+                ],
+                columns: [
+                    { field: 'name', title: '姓名', width: 100, titleAlign: 'center', columnAlign: 'center', isResize: true },
+                    { field: 'sex', title: '性别', width: 100, titleAlign: 'center', columnAlign: 'center', isResize: true },
+                    { field: 'iphone', title: '手机号码', width: 260, titleAlign: 'center', columnAlign: 'center', isResize: true },
+                    { field: 'address', title: '地址', width: 460, titleAlign: 'center', columnAlign: 'center', isResize: true },
+                    { field: 'custome-adv', title: '操作', width: 200, titleAlign: 'center', columnAlign: 'center', componentName: 'table-operation', isResize: true }
+                ]
+            },
+            mounted: function () {
+                this.getuser();
+            },
+            methods: {
+                getuser: function () {
+                    var vm = this
+                    axios.get('http://localhost/api/08.crm/customer/Allinkman.action')
+                        .then(function (response) {
+                            vm.tableData = response.data
+                        })
+                        .catch(function (error) {
+                            vm.tableData = 'Error! Could not reach the API. ' + error
+                        })
+                },
+                customCompFunc(params) {
+
+                    console.log(params);
+
+                    if (params.type === 'delete') { // do delete operation
+                        axios.post('http://localhost/api/08.crm/customer/del.action', {
+                            id: params.rowData.id
+                        })
+                    } else if (params.type === 'edit') { // do edit operation
+
+                    }
+
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
