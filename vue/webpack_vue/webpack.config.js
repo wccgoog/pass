@@ -12,7 +12,8 @@ module.exports = {
     devServer: {
         compress: true,
         historyApiFallback: true,
-        overlay: true
+        overlay: true,
+        hotOnly: true
     },
     resolve: {
         alias: {
@@ -20,7 +21,9 @@ module.exports = {
         }
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new webpack.NamedModulesPlugin(), //用于启动HMR时可以显示模块的相对路径
+        new webpack.HotModuleReplacementPlugin(),   //hot module replacement 启动模块热替换的插件
     ],
     devtool: '#eval-source-map',
     module: {

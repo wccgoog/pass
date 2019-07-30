@@ -25,8 +25,6 @@ export default {
       selection: [
         { text: "One", value: "A" },
         { text: "Two", value: "B" },
-        { text: "Two", value: "B" },
-        { text: "Two", value: "B" },
         { text: "Three", value: "C" }
       ],
       selected: ""

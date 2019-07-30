@@ -16,6 +16,8 @@
         <v-table is-horizontal-resize style="width:100%" :columns="columns" :table-data="tableData"
             row-hover-color="#eee" row-click-color="#edf7ff" @on-custom-comp="customCompFunc" column-width-drag>
         </v-table>
+        <a :style="addStyle" @click="add">新增</a>
+        <a @click="update">{{updateText}}</a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
@@ -23,7 +25,6 @@
 
         Vue.component('table-operation', {
             template: `<span>
-        <a href="" @click.stop.prevent="update(rowData,index)">编辑</a>&nbsp;
         <a href="" @click.stop.prevent="deleteRow(rowData,index)">删除</a>
         </span>`,
             props: {
@@ -58,22 +59,46 @@
         var watchExampleVM = new Vue({
             el: '#watch-example',
             data: {
+                addStyle: {
+                    display: true
+                },
+                updateText: "编辑",
                 tableData: [
-                    { "id": 1, "name": "周意", "sex": "女", "iphone": "12345678901", "address": "江苏省南京市" },
-                    { "id": 2, "name": "李小明", "sex": "男", "iphone": "13514611589", "address": "浙江省金华" }
+                    { "name": "周意", "sex": "女", "iphone": "12345678901", "address": "江苏省南京市" },
+                    { "name": "李小明", "sex": "男", "iphone": "13514611589", "address": "浙江省金华" },
                 ],
                 columns: [
-                    { field: 'name', title: '姓名', width: 100, titleAlign: 'center', columnAlign: 'center', isResize: true },
-                    { field: 'sex', title: '性别', width: 100, titleAlign: 'center', columnAlign: 'center', isResize: true },
-                    { field: 'iphone', title: '手机号码', width: 260, titleAlign: 'center', columnAlign: 'center', isResize: true },
-                    { field: 'address', title: '地址', width: 460, titleAlign: 'center', columnAlign: 'center', isResize: true },
-                    { field: 'custome-adv', title: '操作', width: 200, titleAlign: 'center', columnAlign: 'center', componentName: 'table-operation', isResize: true }
+                    { field: 'name', title: '姓名', width: 100, titleAlign: 'center', columnAlign: 'center', isResize: true, isEdit: false },
+                    { field: 'sex', title: '性别', width: 100, titleAlign: 'center', columnAlign: 'center', isResize: true, isEdit: false },
+                    { field: 'iphone', title: '手机号码', width: 260, titleAlign: 'center', columnAlign: 'center', isResize: true, isEdit: false },
+                    { field: 'address', title: '地址', width: 460, titleAlign: 'center', columnAlign: 'center', isResize: true, isEdit: false },
+                    { field: 'custome-adv', title: '操作', width: 200, titleAlign: 'center', columnAlign: 'center', componentName: 'table-operation', isResize: true, isEdit: false }
                 ]
             },
             mounted: function () {
-                this.getuser();
+                // this.getuser();
             },
             methods: {
+                add: function () {
+                    this.addStyle.display = "none";
+                    console.log(this.addStyle.display)
+                    this.tableData.push({ "name": "", "sex": "", "iphone": "", "address": "" });
+                    this.update();
+                },
+                update: function () {
+                    if (this.updateText == "完成") {
+                        this.addStyle.display = "";
+                        this.columns.forEach(element => {
+                            element.isEdit = false;
+                        })
+                        this.updateText = "编辑";
+                    } else {
+                        this.columns.forEach(element => {
+                            element.isEdit = true;
+                        })
+                        this.updateText = "完成";
+                    }
+                },
                 getuser: function () {
                     var vm = this;
                     axios.get('http://localhost/api/08.crm/customer/Allinkman.action')
