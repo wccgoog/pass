@@ -18,14 +18,12 @@
 import getData from "./util";
 
 export default {
-  name: "app",
+  name: "App",
   data() {
     return {
       msg: "hello",
       selection: [
         { text: "One", value: "A" },
-        { text: "Two", value: "B" },
-        { text: "Two", value: "B" },
         { text: "Two", value: "B" },
         { text: "Two", value: "B" },
         { text: "Two", value: "B" },
