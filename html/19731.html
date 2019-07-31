@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div {
+            background-image: url("./images/Background.jpg");
+            height: 900px;
+            width: 900px;
+            background-position: 0 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div"></div>
+    <script>
+        var name = "The Window";
+        var object = {
+            name: "My Object",
+            getNameFunc: function () {
+                return function () {
+                    console.log(this.name)
+                }
+            }
+        };
+        var div = document.getElementById("div");
+        var flag = 1, pos = 0;
+        var bg = function () {
+            div.style.backgroundPosition = "-" + pos + "px" + " -" + pos + "px";
+            pos = pos + 1 * flag;
+        }
+        setInterval(bg, 100);
+        object.getNameFunc()();
+
+        document.getElementById("div").onclick = function (oEvent) {
+            console.log(oEvent)
+            document.getElementById("div").innerHTML = oEvent
+            document.getElementById("div").style.color = 'white';
+            var A = oEvent.type.B = oEvent.target;
+            console.log(A)
+            console.log(B)
+        }
+
+    </script>
+</body>
+
+</html>
