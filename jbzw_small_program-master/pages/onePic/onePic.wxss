@@ -1,4 +1,0 @@
-/* pages/onePic/onePic.wxss */
-image{
-  width:100%;
-}
