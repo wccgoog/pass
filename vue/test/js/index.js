@@ -1,7 +1,9 @@
 var app = new Vue({
     el: '#app',
     data: {
-        message: 'Hello Vue!'
+        message: `
+        <h1>Hello Vue!</h1>
+            `
     }
 });
 var app2 = new Vue({
@@ -180,4 +182,70 @@ Vue.component('button-counter', {
     template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
 })
 
+Vue.component('blog-post', {
+    props: ['post'],
+    template: `
+        <div class="blog-post">
+        <h3>{{ post.title }}</h3>
+        <h3>{{ post.postFontSize.toFixed(1) }}</h3>
+        <h3>{{ post.postFontSize }}</h3>
+        <button @click="enlargeFont(0.1)">
+            Enlarge text
+        </button>
+        <div v-html="post.content"></div>
+        </div>
+    `,
+    methods: {
+        enlargeFont(enlargeNum) {
+            this.post.postFontSize += enlargeNum
+        }
+    }
+})
+
+
+
+
 new Vue({ el: '#components-demo' })
+
+Vue.component('custom-input', {
+    props: ['value'],
+    template: `
+        <input
+            v-bind:value="value"
+            v-on:input="$emit('input',$event.target.value)"
+        >
+    `
+})
+
+var alertBox = {
+    template: `
+        <div class="demo-alert-box">
+        <strong>Error!</strong>
+        <slot></slot>
+        <slot></slot>
+        <slot></slot>
+        </div>
+    `
+}
+
+new Vue({
+    el: '#blog-post-demo',
+    components: {
+        'alert-box': alertBox
+    },
+    data: {
+        posts: [
+            { id: 1, title: '1My journey with Vue', postFontSize: 1 },
+            { id: 2, title: '2Blogging with Vue', postFontSize: 1 },
+            { id: 3, title: '3Why Vue is so fun', postFontSize: 1 }
+        ],
+        event: 'wcc',
+        searchText: 'input'
+    },
+    methods: {
+        onEnlargeText: function (e) {
+            console.log(e);
+        }
+    }
+})
+

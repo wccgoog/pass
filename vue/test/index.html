@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" v-html="message">
         {{ message }}
     </div>
     <div id="app-2">
@@ -120,7 +120,22 @@
 
     <div id="components-demo">
         <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter>
     </div>
+
+    <div id="blog-post-demo">
+        <blog-post :style="{ fontSize: post.postFontSize + 'em' }" v-for="post in posts" v-bind:key="post.id"
+            v-bind:post="post" @enlarge-text="onEnlargeText"></blog-post>
+        <custom-input v-model="searchText"></custom-input>
+        <div>{{searchText}}</div>
+        <alert-box>
+            Something bad happened
+        </alert-box>
+    </div>
+
+
+
 
 
     <script src="js/index.js"></script>
