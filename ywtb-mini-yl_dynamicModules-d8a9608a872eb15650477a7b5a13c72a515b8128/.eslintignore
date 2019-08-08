@@ -1,5 +1,0 @@
-node_modules
-.entry
-.tea
-src/common/http.js
-src/components/favorite-modal/index.js

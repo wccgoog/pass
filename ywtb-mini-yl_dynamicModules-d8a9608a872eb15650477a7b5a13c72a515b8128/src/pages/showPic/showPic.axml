@@ -1,1 +1,0 @@
-<image src="{{path}}" mode='widthFix' onTap='previewPic'></image>

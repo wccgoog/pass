@@ -1,7 +1,0 @@
-{
-  "defaultTitle": "消息中心",
-  "usingComponents": {
-    "msg-item": "../../module/message-item/message-item"
-  },
-  "pullRefresh": true
-}
