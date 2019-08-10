@@ -24,16 +24,28 @@ layui.use('table', function () {
 
     table.on('tool(demo)', function (obj) {
         var data = obj.data;
+        var html = 'add.html?args=' + encodeURI(JSON.stringify(data)) + '&type=' + obj.event;
         if (obj.event === 'detail') {
-            layer.msg('ID：' + data.id + ' 的查看操作');
+            layer.open({
+                type: 2,
+                content: [html, 'no'],
+                area: ['700px', '700px'],
+            });
         } else if (obj.event === 'del') {
-            layer.confirm('真的删除行么', function (index) {
-                obj.del();
+            layer.confirm('确认删除吗？', function (index) {
+                var $ = layui.$;
+                $.ajax({
+                    method: 'post',
+                    url: '',
+                    data: obj.data,
+                    success: function (res) {
+                        console.log(res);
+                        parent.layui.table.reload('test'); //重载表格
+                    }
+                });
                 layer.close(index);
             });
         } else if (obj.event === 'edit') {
-            var html = 'add.html?args=' + encodeURI(JSON.stringify(data))
-            // layer.alert('编辑行：<br>' + JSON.stringify(data))
             layer.open({
                 type: 2,
                 content: [html, 'no'],
@@ -45,7 +57,6 @@ layui.use('table', function () {
                     submit.click();
                 }
             });
-            table.reload('test')
         }
     });
 

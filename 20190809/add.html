@@ -35,39 +35,6 @@
                     autocomplete="off" class="layui-textarea"></textarea>
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">标签</label>
-            <div class="layui-input-inline">
-                <select name="label" lay-verify="required">
-                    <option value="">请选择标签</option>
-                    <option value="美食">美食</option>
-                    <option value="新闻">新闻</option>
-                    <option value="八卦">八卦</option>
-                    <option value="体育">体育</option>
-                    <option value="音乐">音乐</option>
-                </select>
-                <div class="layui-unselect layui-form-select">
-                    <div class="layui-select-title"><input type="text" placeholder="请选择标签" value="" readonly=""
-                            class="layui-input layui-unselect"><i class="layui-edge"></i></div>
-                    <dl class="layui-anim layui-anim-upbit">
-                        <dd lay-value="" class="layui-select-tips">请选择标签</dd>
-                        <dd lay-value="美食" class="">美食</dd>
-                        <dd lay-value="新闻" class="">新闻</dd>
-                        <dd lay-value="八卦" class="">八卦</dd>
-                        <dd lay-value="体育" class="">体育</dd>
-                        <dd lay-value="音乐" class="">音乐</dd>
-                    </dl>
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">发布状态</label>
-            <div class="layui-input-inline">
-                <input type="checkbox" lay-verify="required" lay-filter="status" name="status" lay-skin="switch"
-                    lay-text="已发布|待修改">
-                <div class="layui-unselect layui-form-switch" lay-skin="_switch"><em>待修改</em><i></i></div>
-            </div>
-        </div>
         <div class="layui-form-item layui-hide">
             <input type="button" lay-submit="" lay-filter="layuiadmin-app-form-submit" id="layuiadmin-app-form-submit"
                 value="确认添加">
@@ -90,9 +57,13 @@
             document.getElementById("username").value = data.username;
             document.getElementById("city").value = data.city;
             document.getElementById("sign").value = data.sign;
+            //如果点击的按钮是查看，则不能修改
+            if (theRequest.type == 'detail') {
+                document.getElementById("username").disabled = true;
+                document.getElementById("city").disabled = true;
+                document.getElementById("sign").disabled = true;
+            }
         }
-        console.log(theRequest.args)
-
 
         layui.use('form', function () {
             var $ = layui.$
