@@ -1,7 +1,7 @@
 {
     "code": 0,
     "msg": "",
-    "count": 11,
+    "count": 10,
     "data": [
         {
             "id": 10000,
@@ -113,18 +113,6 @@
         },
         {
             "id": 10009,
-            "username": "user-9",
-            "sex": "女",
-            "city": "城市-9",
-            "sign": "签名-9",
-            "experience": 484,
-            "logins": 25,
-            "wealth": 86801934,
-            "classify": "词人",
-            "score": 75
-        },
-        {
-            "id": 10010,
             "username": "user-9",
             "sex": "女",
             "city": "城市-9",

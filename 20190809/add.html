@@ -46,6 +46,7 @@
     <script src="./layui/layui.js"></script>
     <script>
         var url = decodeURI(location.search);
+        var id = '';
         if (url.indexOf("?") != -1) {
             var theRequest = new Object();
             var str = url.substr(1);
@@ -54,6 +55,7 @@
                 theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
             }
             var data = JSON.parse(theRequest.args);
+            id = data.id;
             document.getElementById("username").value = data.username;
             document.getElementById("city").value = data.city;
             document.getElementById("sign").value = data.sign;
@@ -83,15 +85,15 @@
                         parent.layui.table.reload('test'); //重载表格
                     }
                 });
-
+                debugger
                 parent.layer.close(index); //再执行关闭 
             });
 
             //监听编辑
             form.on('submit(layuiadmin-app-form-edit)', function (data) {
                 var field = data.field; //获取提交的字段
+                field.id = id; //跳转带入的id加入field中
                 var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引  
-                debugger
                 //提交 Ajax 成功后，关闭当前弹层并重载表格
                 $.ajax({
                     method: 'post',
@@ -102,6 +104,7 @@
                         parent.layui.table.reload('test'); //重载表格
                     }
                 });
+                debugger
                 parent.layer.close(index); //再执行关闭 
             });
         })

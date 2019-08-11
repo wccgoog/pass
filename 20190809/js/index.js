@@ -6,8 +6,8 @@ layui.use('table', function () {
         , url: './js/data.json'
         , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
         , page: true
-        , limit: 5
-        , limits: [3, 5, 10]
+        , limit: 10
+        , limits: [10, 20, 30]
         , cols: [[
             { field: 'id', width: 80, title: 'ID', sort: true }
             , { field: 'username', width: 80, title: '用户名' }
@@ -43,6 +43,7 @@ layui.use('table', function () {
                         parent.layui.table.reload('test'); //重载表格
                     }
                 });
+                debugger
                 layer.close(index);
             });
         } else if (obj.event === 'edit') {
