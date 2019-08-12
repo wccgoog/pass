@@ -7,9 +7,11 @@ layui.use('table', function () {
         , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
         , page: true
         , limit: 10
+        , toolbar: 'default'
         , limits: [10, 20, 30]
         , cols: [[
-            { field: 'id', width: 80, title: 'ID', sort: true }
+            { type: 'checkbox' }
+            , { field: 'id', width: 80, title: 'ID', sort: true }
             , { field: 'username', width: 80, title: '用户名' }
             , { field: 'sex', width: 80, title: '性别', sort: true }
             , { field: 'city', width: 80, title: '城市' }
@@ -61,25 +63,67 @@ layui.use('table', function () {
         }
     });
 
-    var $ = layui.$, active = {
-        addData: function () {
-            layer.open({
-                type: 2,
-                content: ['add.html', 'no'],
-                area: ['700px', '700px'],
-                btn: ['确定', '取消']
-                , yes: function (index, layero) {
-                    //点击确认触发 iframe 内容中的按钮提交
-                    var submit = layero.find('iframe').contents().find("#layuiadmin-app-form-submit");
-                    submit.click();
+    table.on('toolbar(demo)', function (obj) {
+        var checkStatus = table.checkStatus(obj.config.id);
+        var data = checkStatus.data;
+        switch (obj.event) {
+            case 'add':
+                layer.msg('添加');
+                layer.open({
+                    type: 2,
+                    content: ['add.html', 'no'],
+                    area: ['700px', '700px'],
+                    btn: ['确定', '取消']
+                    , yes: function (index, layero) {
+                        //点击确认触发 iframe 内容中的按钮提交
+                        var submit = layero.find('iframe').contents().find("#layuiadmin-app-form-submit");
+                        submit.click();
+                    }
+                });
+                table.reload('test')
+                break;
+            case 'delete':
+                if (data.length == 0) {
+                    layer.msg('请选择一行');
+                } else {
+                    console.log(data);
+                    layer.confirm('确认删除吗？', function (index) {
+                        var $ = layui.$;
+                        $.ajax({
+                            method: 'post',
+                            url: '',
+                            data: data,
+                            success: function (res) {
+                                console.log(res);
+                                parent.layui.table.reload('test'); //重载表格
+                            }
+                        });
+                        layer.close(index);
+                        debugger
+                    })
                 }
-            });
-            table.reload('test')
-        }
-    };
-
-    $('.layui-card-body .layui-btn').on('click', function () {
-        var type = $(this).data('type');
-        active[type] ? active[type].call(this) : '';
+                break;
+            case 'update':
+                if (data.length == 0) {
+                    layer.msg('请选择一行');
+                } else if (data.length > 1) {
+                    layer.msg('只能同时编辑一个');
+                } else {
+                    var html = 'add.html?args=' + encodeURI(JSON.stringify(data[0])) + '&type=' + obj.event;
+                    layer.open({
+                        type: 2,
+                        content: [html, 'no'],
+                        area: ['700px', '700px'],
+                        btn: ['确定', '取消']
+                        , yes: function (index, layero) {
+                            //点击确认触发 iframe 内容中的按钮提交
+                            var submit = layero.find('iframe').contents().find("#layuiadmin-app-form-edit");
+                            submit.click();
+                        }
+                    });
+                }
+                break;
+        };
     });
+
 });
