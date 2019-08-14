@@ -1,0 +1,18 @@
+@font-face{
+    font-family: ds;
+    src: url('./DS-Digital/DS-DIGIB-2.ttf');
+}
+body{
+    width: 100%;
+}
+.title{
+    width: 100%;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+}
+.title-number{
+    font-size: 80px;
+    color: rgb(0, 201, 27);
+    font-family: ds;
+}

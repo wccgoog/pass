@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/bmap.js"></script>
+    <script type="text/javascript"
+        src="http://api.map.baidu.com/api?v=3.0&ak=HQZVXDiOe5I0fVjfIcaaZsNkvMt4u8pH"></script>
+    <link rel="stylesheet" href="./css/elevator.css">
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all">
+    <title>elevator</title>
+</head>
+
+<body>
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">电梯管理平台</div>
+
+        </div>
+    </div>
+    <div class="layui-tab layui-tab-card">
+        <ul class="layui-tab-title">
+            <li class="layui-this">电梯总览</li>
+            <li>使用单位</li>
+            <li>维保单位</li>
+            <li>电梯品牌</li>
+        </ul>
+        <div class="layui-tab-content" style="height: 100%;">
+            <div class="layui-tab-item layui-show">
+                <div id="elevator1-1" class="echarts-narrow"></div>
+                <div id="elevator1-2" class="echarts-narrow"></div>
+                <div id="elevator1-3" class="echarts"></div>
+            </div>
+            <div class="layui-tab-item">
+                <div id="elevator2-1" style="width: 600px;height:400px;margin:auto;"></div>
+            </div>
+            <div class="layui-tab-item">
+                <div id="elevator3-1" style="width: 600px;height:400px;margin:auto;"></div>
+            </div>
+            <div class="layui-tab-item">
+                <div id="elevator4-1" class="echarts-narrow"></div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/elevator.js"></script>
+    <script src="./layui/layui.js" charset="utf-8"></script>
+    <script>
+        layui.use('element', function () {
+            var $ = layui.jquery
+                , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+            $('.site-demo-active').on('click', function () {
+                var othis = $(this), type = othis.data('type');
+                active[type] ? active[type].call(this, othis) : '';
+            });
+
+            //Hash地址的定位
+            var layid = location.hash.replace(/^#test=/, '');
+            element.tabChange('test', layid);
+
+            element.on('tab(test)', function (elem) {
+                location.hash = 'test=' + $(this).attr('lay-id');
+            });
+
+        });
+    </script>
+</body>
+
+</html>

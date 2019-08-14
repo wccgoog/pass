@@ -1,0 +1,12 @@
+.echarts-narrow{
+    width: 600px;
+    height: 400px;
+    margin: 50px auto;
+}
+
+.echarts{
+    width: 80%;
+    height: 900px;
+    margin: 50px auto;
+}
+
