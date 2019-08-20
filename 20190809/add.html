@@ -12,27 +12,20 @@
 
 <body layadmin-themealias="default">
 
-    <div class="layui-form" lay-filter="layuiadmin-app-form-list" id="layuiadmin-app-form-list"
-        style="padding: 20px 30px 0 0;">
-        <div class="layui-form-item">
+    <div class="layui-form layui-row layui-col-space20" lay-filter="layuiadmin-app-form-list"
+        id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
             <label class="layui-form-label">用户名</label>
             <div class="layui-input-inline">
                 <input type="text" id="username" name="username" lay-verify="required" placeholder="请输入用户名"
                     autocomplete="off" class="layui-input layui-form-danger">
             </div>
         </div>
-        <div class="layui-form-item">
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
             <label class="layui-form-label">城市</label>
             <div class="layui-input-inline">
                 <input type="text" id="city" name="city" lay-verify="required" placeholder="请输入城市" autocomplete="off"
                     class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">签名</label>
-            <div class="layui-input-inline">
-                <textarea name="sign" id="sign" lay-verify="required" style="width: 400px; height: 150px;"
-                    autocomplete="off" class="layui-textarea"></textarea>
             </div>
         </div>
         <div class="layui-form-item layui-hide">

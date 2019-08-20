@@ -1,7 +1,6 @@
 layui.use('table', function () {
     var table = layui.table;
     var documentHeight = document.body.clientHeight;
-    debugger
     table.render({
         elem: '#test'
         , url: './js/data.json'
