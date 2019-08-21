@@ -1,4 +1,21 @@
-layui.use('table', function () {
+layui.use(['table', 'laydate'], function () {
+    var $ = layui.$;
+    var laydate = layui.laydate;
+    var ins = laydate.render({
+        elem: '#dateDemo'
+        , type: 'datetime'
+        , min: '2019-8-11 12:30:00'
+        , max: '2019-8-18 12:30:00'
+        , theme: 'molv'
+        , calendar: true
+        , mark: {
+            '0-8-16': '生日'
+        }
+        , change: function (value, date, endDate) {
+            ins.hint(value); //在控件上弹出value值
+        }
+    });
+
     var table = layui.table;
     var documentHeight = document.body.clientHeight;
     table.render({
@@ -16,7 +33,7 @@ layui.use('table', function () {
             , { field: 'username', width: 80, title: '用户名' }
             , { field: 'sex', width: 80, title: '性别', sort: true }
             , { field: 'city', width: 80, title: '城市' }
-            , { field: 'sign', title: '签名', width: '30%', minWidth: 100 } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+            , { field: 'sign', title: '签名', width: '30%', minWidth: 200 } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
             , { field: 'experience', title: '积分', sort: true }
             , { field: 'score', title: '评分', sort: true }
             , { field: 'classify', title: '职业' }
@@ -32,7 +49,7 @@ layui.use('table', function () {
             layer.open({
                 type: 2,
                 content: [html, 'no'],
-                area: ['700px', '700px'],
+                area: ['1000px', '700px'],
             });
         } else if (obj.event === 'del') {
             layer.confirm('确认删除吗？', function (index) {
@@ -53,7 +70,7 @@ layui.use('table', function () {
             layer.open({
                 type: 2,
                 content: [html, 'no'],
-                area: ['700px', '700px'],
+                area: ['1000px', '700px'],
                 btn: ['确定', '取消']
                 , yes: function (index, layero) {
                     //点击确认触发 iframe 内容中的按钮提交
@@ -73,7 +90,7 @@ layui.use('table', function () {
                 layer.open({
                     type: 2,
                     content: ['add.html', 'no'],
-                    area: ['700px', '700px'],
+                    area: ['1000px', '700px'],
                     btn: ['确定', '取消']
                     , yes: function (index, layero) {
                         //点击确认触发 iframe 内容中的按钮提交
@@ -114,7 +131,7 @@ layui.use('table', function () {
                     layer.open({
                         type: 2,
                         content: [html, 'no'],
-                        area: ['700px', '700px'],
+                        area: ['1000px', '700px'],
                         btn: ['确定', '取消']
                         , yes: function (index, layero) {
                             //点击确认触发 iframe 内容中的按钮提交
@@ -126,5 +143,14 @@ layui.use('table', function () {
                 break;
         };
     });
-
+    $("#searchDeviceUser").click(function () {
+        installAdd = $("#installAdd").val();
+        dateDemo = $("#dateDemo").val();
+        table.reload('test', {
+            where: {
+                installAdd: installAdd,
+                dateDemo: dateDemo
+            }
+        })
+    })
 });

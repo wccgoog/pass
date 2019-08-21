@@ -8,24 +8,52 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="./layui/css/layui.css" media="all">
+    <style>
+        .text-right-align {
+            text-align: right;
+            margin-top: 10px;
+        }
+    </style>
+
 </head>
 
 <body layadmin-themealias="default">
-
     <div class="layui-form layui-row layui-col-space20" lay-filter="layuiadmin-app-form-list"
         id="layuiadmin-app-form-list" style="padding: 20px 30px 0 0;">
-        <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
-            <label class="layui-form-label">用户名</label>
-            <div class="layui-input-inline">
-                <input type="text" id="username" name="username" lay-verify="required" placeholder="请输入用户名"
-                    autocomplete="off" class="layui-input layui-form-danger">
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+            <div class="layui-row">
+                <label class="layui-col-xs4 layui-col-sm4 layui-col-md4 text-right-align">用户名用户名用户名：</label>
+                <div class="layui-col-xs8 layui-col-sm8 layui-col-md8">
+                    <input type="text" id="username" name="username" lay-verify="required" placeholder="请输入用户名"
+                        autocomplete="off" class="layui-input layui-form-danger">
+                </div>
             </div>
         </div>
-        <div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
-            <label class="layui-form-label">城市</label>
-            <div class="layui-input-inline">
-                <input type="text" id="city" name="city" lay-verify="required" placeholder="请输入城市" autocomplete="off"
-                    class="layui-input">
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+            <div class="layui-row">
+                <label class="layui-col-xs4 layui-col-sm4 layui-col-md4 text-right-align">城市城市城市城市城市：</label>
+                <div class="layui-col-xs8 layui-col-sm8 layui-col-md8">
+                    <input type="text" id="city" name="city" lay-verify="required" placeholder="请输入城市"
+                        autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+            <div class="layui-row">
+                <label class="layui-col-xs4 layui-col-sm4 layui-col-md4 text-right-align">用户名用户名用户名：</label>
+                <div class="layui-col-xs8 layui-col-sm8 layui-col-md8">
+                    <input type="text" id="username2" name="username2" lay-verify="required" placeholder="请输入用户名"
+                        autocomplete="off" class="layui-input layui-form-danger">
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
+            <div class="layui-row">
+                <label class="layui-col-xs4 layui-col-sm4 layui-col-md4 text-right-align">城市城市城市城市城市：</label>
+                <div class="layui-col-xs8 layui-col-sm8 layui-col-md8">
+                    <input type="text" id="city2" name="city2" lay-verify="required" placeholder="请输入城市"
+                        autocomplete="off" class="layui-input">
+                </div>
             </div>
         </div>
         <div class="layui-form-item layui-hide">
@@ -38,32 +66,56 @@
 
     <script src="./layui/layui.js"></script>
     <script>
-        var url = decodeURI(location.search);
-        var id = '';
-        if (url.indexOf("?") != -1) {
-            var theRequest = new Object();
-            var str = url.substr(1);
-            strs = str.split("&");
-            for (var i = 0; i < strs.length; i++) {
-                theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
-            }
-            var data = JSON.parse(theRequest.args);
-            id = data.id;
-            document.getElementById("username").value = data.username;
-            document.getElementById("city").value = data.city;
-            document.getElementById("sign").value = data.sign;
-            //如果点击的按钮是查看，则不能修改
-            if (theRequest.type == 'detail') {
-                document.getElementById("username").disabled = true;
-                document.getElementById("city").disabled = true;
-                document.getElementById("sign").disabled = true;
-            }
-        }
+
 
         layui.use('form', function () {
             var $ = layui.$
                 , form = layui.form;
-
+            var colsHtml = '';
+            var cols = [
+                { name: 'liftNo', title: '档案号' },
+                { name: 'idCode', title: '电梯救援识别码' },
+                { name: 'regCode', title: '设备代码' },
+                { name: 'uName', title: '使用单位' },
+                { name: 'mName', title: '维保单位' },
+                { name: 'installAdd', title: '电梯安装地址' },
+                { name: 'areaCode', title: '区域编码' },
+                { name: 'factoryId', title: 'factoryId' },
+                { name: 'manufacturer', title: '制造单位' },
+                { name: 'brand', title: '电梯品牌' }
+            ];
+            cols.forEach(function (value) {
+                colsHtml += '<div class="layui-col-xs6 layui-col-sm6 layui-col-md4">' +
+                    '            <label class="layui-form-label">' + value.title + '</label>' +
+                    '            <div class="layui-input-inline">' +
+                    '                <input type="text" id="' + value.name + '" name="' + value.name + '" lay-verify="required" autocomplete="off" class="layui-input layui-form-danger">' +
+                    '            </div>' +
+                    '        </div>';
+            });
+            $("#layuiadmin-app-form-list").append(colsHtml);
+            var url = decodeURI(location.search);
+            var id = '';
+            if (url.indexOf("?") != -1) {
+                var theRequest = new Object();
+                var str = url.substr(1);
+                strs = str.split("&");
+                for (var i = 0; i < strs.length; i++) {
+                    theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
+                }
+                var data = JSON.parse(theRequest.args);
+                id = data.id;
+                cols.forEach(function (v) {
+                    console.log(v.name);
+                    document.getElementById(v.name).value = data[v.name];
+                });
+                debugger
+                //如果点击的按钮是查看，则不能修改
+                if (theRequest.type == 'detail') {
+                    cols.forEach(function (value) {
+                        document.getElementById(value.name).disabled = true;
+                    });
+                }
+            }
             //监听提交
             form.on('submit(layuiadmin-app-form-submit)', function (data) {
                 var field = data.field; //获取提交的字段
