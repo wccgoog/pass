@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>822</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <style>
+        #button,
+        #button2 {
+            margin: 20px;
+        }
+
+        body {
+            height: 100%;
+            background: #f2f2f2;
+        }
+
+        #left,
+        #right {
+            background: white;
+            margin-right: 20px;
+        }
+
+        .layui-row {
+            margin: 20px;
+        }
+
+        img {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-row">
+        <div id="left" class="layui-col-md3 layui-tab-card layui-tab">
+            123
+        </div>
+        <div id="right" class="layui-tab layui-tab-card layui-col-md8">
+            <ul class="layui-tab-title">
+                <li class="layui-this">网站设置</li>
+                <li>用户管理</li>
+                <li>权限分配</li>
+                <li>商品管理</li>
+                <li>订单管理</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <div id="test1"></div>
+                    <button type="button" class="layui-btn" id="button">按钮</button>
+                </div>
+                <div class="layui-tab-item">
+                    <div id="tree"></div>
+                    <button type="button" class="layui-btn" id="button2">按钮</button>
+                </div>
+                <div class="layui-tab-item">
+                    <table id="table" lay-filter="test"></table>
+                </div>
+                <div class="layui-tab-item">内容4</div>
+                <div class="layui-tab-item">内容5</div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="layui-btn" id="upload">
+        <i class="layui-icon">&#xe67c;</i>上传图片
+    </button>
+    <button type="button" class="layui-btn" id="upload2">
+        <i class="layui-icon">&#xe67c;</i>选择图片
+    </button>
+    <button type="button" class="layui-btn" id="upload3">
+        <i class="layui-icon">&#xe67c;</i>上传图片
+    </button>
+    <div id="img"></div>
+    <script src="./layui/layui.js"></script>
+    <script>
+        layui.use(['transfer', 'layer', 'element', 'tree', 'table', 'upload'], function () {
+            var element = layui.element;
+            var $ = layui.$;
+            var transfer = layui.transfer;
+            var layer = layui.layer;
+            var tree = layui.tree;
+            var table = layui.table;
+            var upload = layui.upload;
+            //渲染
+            $("#right").css("height", $(window).height() - 208);
+            $("#left").css("height", $(window).height() - 208);
+            var uploadInst = upload.render({
+                elem: '#upload' //绑定元素
+                , url: '/upload/' //上传接口
+                , accept: 'image'
+                , acceptMime: 'image/*'
+                , multiple: true
+                , done: function (res) {
+                    //上传完毕回调
+                }
+                , error: function () {
+                    //请求异常回调
+                }
+            });
+
+            upload.render({
+                elem: '#upload2'
+                , url: '/api/upload/'
+                , auto: false //选择文件后不自动上传
+                , bindAction: '#upload3' //指向一个按钮触发上传
+                , choose: function (obj) {
+                    //将每次选择的文件追加到文件队列
+                    var files = obj.pushFile();
+
+                    //预读本地文件，如果是多文件，则会遍历。(不支持ie8/9)
+                    obj.preview(function (index, file, result) {
+                        console.log(index); //得到文件索引
+                        console.log(file); //得到文件对象
+                        console.log(result); //得到文件base64编码，比如图片
+                        //obj.resetFile(index, file, '123.jpg'); //重命名文件名，layui 2.3.0 开始新增
+
+                        //这里还可以做一些 append 文件列表 DOM 的操作
+                        $('#img').append('<img src="' + result + '"/>');
+                        //obj.upload(index, file); //对上传失败的单个文件重新上传，一般在某个事件中使用
+                        //delete files[index]; //删除列表中对应的文件，一般在某个事件中使用
+                    });
+                }
+            });
+            table.render({
+                elem: '#table'
+                , height: 600
+                , url: './js/data.json' //数据接口
+                , page: true //开启分页
+                , cols: [[ //表头
+                    { field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left' }
+                    , { field: 'username', title: '用户名', width: 80 }
+                    , { field: 'sex', title: '性别', width: 80, sort: true }
+                    , { field: 'city', title: '城市', width: 80 }
+                    , { field: 'sign', title: '签名', width: 177 }
+                    , { field: 'experience', title: '积分', width: 80, sort: true }
+                    , { field: 'score', title: '评分', width: 80, sort: true }
+                    , { field: 'classify', title: '职业', width: 80 }
+                    , { field: 'wealth', title: '财富', width: 135, sort: true }
+                ]]
+            });
+            transfer.render({
+                elem: '#test1'  //绑定元素
+                , data: [
+                    { "id": "1", "name": "李白" }
+                    , { "id": "2", "name": "杜甫" }
+                    , { "id": "3", "name": "贤心" }
+                ]
+                , parseData: function (res) {
+                    return {
+                        "value": res.id //数据值
+                        , "title": res.name //数据标题
+                        , "disabled": res.disabled  //是否禁用
+                        , "checked": res.checked //是否选中
+                    }
+                }
+                , onchange: function (data, index) {
+                    debugger
+                }
+                , id: 'test1'
+            });
+            $("#button").click(function () {
+                var getData = transfer.getData('test1');
+                debugger
+            })
+
+            tree.render({
+                elem: '#tree'  //绑定元素
+                , showCheckbox: true
+                , edit: ['add', 'update', 'del']
+                , data: [{
+                    title: '江西' //一级菜单
+                    , spread: true
+                    , id: 0
+                    , children: [{
+                        title: '南昌' //二级菜单
+                        , id: 1
+                        , spread: true
+                        , children: [{
+                            title: '高新区' //三级菜单
+                            , id: 2
+                            //…… //以此类推，可无限层级
+
+                        }]
+                    }]
+                }, {
+                    title: '陕西' //一级菜单
+                    , spread: true
+                    , id: 3
+                    , children: [{
+                        title: '西安' //二级菜单
+                        , id: 4
+                    }]
+                }]
+                , operate: function (obj) {
+                    var type = obj.type; //得到操作类型：add、edit、del
+                    var data = obj.data; //得到当前节点的数据
+                    var elem = obj.elem; //得到当前节点元素
+                    //Ajax 操作
+                    var id = data.id; //得到节点索引
+                    if (type === 'add') { //增加节点
+                        //返回 key 值
+                        return 123;
+                    } else if (type === 'update') { //修改节点
+                        console.log(elem.find('.layui-tree-txt').html()); //得到修改后的内容
+                        debugger
+
+                    } else if (type === 'del') { //删除节点
+
+                    };
+                }
+                , id: 'demoId'
+                , oncheck: function (obj) {
+                    console.log(obj.data); //得到当前点击的节点数据
+                    console.log(obj.checked); //得到当前节点的展开状态：open、close、normal
+                    console.log(obj.elem); //得到当前节点元素
+                }
+            })
+            $('#button2').click(function () {
+                tree.setChecked('demoId', 1);
+
+                // 必须有id,否则无法获取数据
+                var checkData = tree.getChecked('demoId');
+                debugger
+                console.log(checkData);
+            })
+
+        });
+    </script>
+</body>
+
+</html>
