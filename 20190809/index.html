@@ -12,6 +12,16 @@
         body {
             height: 100%;
         }
+
+        .search-div {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        .position-relative {
+            position: relative;
+        }
     </style>
 </head>
 
@@ -23,7 +33,7 @@
         <a><cite>正文</cite></a>
     </span>
     <div class="layui-card-body" style="background: white;">
-        <div class="layui-row layui-col-space20">
+        <div class="layui-row layui-col-space20 position-relative">
             <div class="layui-col-md3">
                 <div class="layui-row">
                     <div class="layui-col-md3" style="margin-top: 5px;">电梯安装地址:</div>
@@ -46,10 +56,34 @@
                     </div>
                 </div>
             </div>
-            <span class="layui-col-md3 layui-col-md-offset3" style="text-align: right">
+            <div class="layui-col-md3">
+                <div class="layui-row">
+                    <div class="layui-col-md3" style="margin-top: 5px;">电梯安装地址:</div>
+                    <div class="layui-col-md9">
+                        <input type="text" name="dateDemo" id="dateDemo" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md3">
+                <div class="layui-row">
+                    <div class="layui-col-md3" style="margin-top: 5px;">电梯安装地址:</div>
+                    <div class="layui-col-md9">
+                        <input type="text" name="dateDemo" id="dateDemo" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md3">
+                <div class="layui-row">
+                    <div class="layui-col-md3" style="margin-top: 5px;">电梯安装地址:</div>
+                    <div class="layui-col-md9">
+                        <input type="text" name="dateDemo" id="dateDemo" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="search-div">
                 <button type="button" id="searchDeviceUser" class="layui-btn layui-btn-normal">查询</button>
                 <button type="button" class="layui-btn layui-btn-primary">重置</button>
-            </span>
+            </div>
         </div>
 
         <table class="layui-table" id="test" lay-filter="demo"></table>
