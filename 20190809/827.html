@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="#" />
+    <title>echarts</title>
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/CreateEchartsCalendar.js"></script>
+    <style>
+        div {
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" style="width: 600px;height:500px;"></div>
+    <hr>
+    <div id="main2" style="width: 600px;height:500px;"></div>
+    <hr>
+    <div id="main3" style="width: 600px;height:500px;"></div>
+    <script>
+        var graphData = [
+            [
+                1485878400000,
+                560
+            ],
+            [
+                1486137600000,
+                200
+            ],
+            [
+                1487779200000,
+                411
+            ],
+            [
+                1488124800000,
+                985
+            ]
+        ];
+        var main = new CreateEchartCalendar('main', ['2019-8', '2019-9-30']);
+        var main2 = new CreateEchartCalendar('main2', '2017-2', '标题');
+        var main3 = new CreateEchartCalendar('main3', '2017-2', '标题main3', graphData);
+        main.graphData = [[1565884800000, 300]]
+
+
+        main.init();
+        main2.init();
+        main3.init();
+    </script>
+</body>
+
+</html>
