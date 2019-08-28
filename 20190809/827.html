@@ -12,16 +12,17 @@
     <style>
         div {
             margin: auto;
+            padding: 200px
         }
     </style>
 </head>
 
 <body>
-    <div id="main" style="width: 600px;height:500px;"></div>
+    <div id="main" style="width: 400px;height:800px;"></div>
     <hr>
-    <div id="main2" style="width: 600px;height:500px;"></div>
+    <div id="main2" style="width: 400px;height:500px;"></div>
     <hr>
-    <div id="main3" style="width: 600px;height:500px;"></div>
+    <div id="main3" style="width: 400px;height:500px;"></div>
     <script>
         var graphData = [
             [
@@ -42,14 +43,29 @@
             ]
         ];
         var main = new CreateEchartCalendar('main', ['2019-8', '2019-9-30']);
-        var main2 = new CreateEchartCalendar('main2', '2017-2', '标题');
-        var main3 = new CreateEchartCalendar('main3', '2017-2', '标题main3', graphData);
-        main.graphData = [[1565884800000, 300]]
+        // var main2 = new CreateEchartCalendar('main2', '2017-2', '标题');
+        // var main3 = new CreateEchartCalendar('main3', '2017-2', '标题main3', graphData);
 
 
         main.init();
-        main2.init();
-        main3.init();
+
+
+
+
+        // 修改标题并重载图表
+        main.setTitle('测试标题');
+        // 修改数值并重载图表,数值以时间戳毫秒格式显示在日历中
+        main.setData([[1566983752000, 400]]);
+        // 修改背景并重载图表
+        main.setBackground('#f9f1f1');
+        // 修改年月并重载图表
+        main.setRange('2019-10');
+        // 修改标题位置并重载图表
+        main.setTitleX('start');
+        // 修改标题左边距并重载图表
+        main.setTitleLeft(150);
+
+
     </script>
 </body>
 
