@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/echarts.min.js"></script>
+    <title>Document</title>
+    <style>
+        #main {
+            height: 400px;
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main"></div>
+    <script>
+        var mychartsale = echarts.init(document.getElementById('main'));
+        var option = {
+            title: {
+                text: 'this.title',
+                x: 'center'
+            },
+            calendar: {
+                orient: 'vertical',
+                yearLabel: {
+                    margin: 40,
+                    position: 'bottom'
+                },
+                monthLabel: {
+                    nameMap: 'cn',
+                    margin: 20
+                },
+                dayLabel: {
+                    firstDay: 1,
+                    nameMap: 'cn',
+                    margin: 10
+                },
+                cellSize: 40,
+                range: '2019-1',
+                // width: 400,
+                // height: 400
+            },
+            series: {
+                type: 'graph',
+                coordinateSystem: 'calendar',
+            }
+        };
+
+        mychartsale.setOption(option);
+        //注释的功能，是判断点击折线图的拐点。
+        mychartsale.on('click', function (param) {
+            console.log(param);//这里根据param填写你的跳转逻辑
+        });
+        window.addEventListener("resize", function () {
+            mychartsale.resize();
+        });
+
+    </script>
+</body>
+
+</html>

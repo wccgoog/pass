@@ -41,7 +41,21 @@ CreateEchartCalendar.prototype = {
     constructor: CreateEchartCalendar,
     //初始化图表
     init: function () {
-        echarts.init(document.getElementById(this.id)).setOption(this.option);
+        var calendar = echarts.init(document.getElementById(this.id));
+
+        calendar.getZr().on('click', function (params) {
+
+            var pointInPixel = [params.offsetX, params.offsetY];
+            /*此处添加具体执行代码*/
+            alert(pointInPixel)
+            var pointInGrid = calendar.convertFromPixel({ seriesName: 0 }, pointInPixel);
+            alert(pointInGrid)
+            //X轴序号
+            var xIndex = pointInGrid;
+            //获取当前图表的option
+            var date = new Date(xIndex)
+        })
+        calendar.setOption(this.option);
     },
     // set标题并重载图表
     setTitle: function (text) {

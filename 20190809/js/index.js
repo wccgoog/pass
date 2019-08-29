@@ -1,6 +1,19 @@
-layui.use(['table', 'laydate'], function () {
+layui.use(['table', 'laydate', 'colorpicker', 'element'], function () {
     var $ = layui.$;
     var laydate = layui.laydate;
+    var element = layui.element;
+    element.progress('progress', '50%');
+    //一些事件监听
+    element.on('tab(demo)', function (data) {
+        console.log(data);
+    });
+    var colorpicker = layui.colorpicker;
+    colorpicker.render({
+        elem: '#color'  //绑定元素
+        , predefine: true
+        , colors: ['#F00', '#0F0', '#00F', 'rgb(255, 69, 0)', 'rgba(255, 69, 0, 0.5)']
+        , size: 'lg'
+    });
     var ins = laydate.render({
         elem: '#dateDemo'
         , type: 'datetime'
@@ -18,10 +31,10 @@ layui.use(['table', 'laydate'], function () {
 
     var table = layui.table;
     var documentHeight = document.body.clientHeight;
+    documentHeight = documentHeight > 530 ? documentHeight : 530;
     table.render({
         elem: '#test'
         , url: './js/data.json'
-        , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
         , page: true
         , limit: 10
         , height: documentHeight
@@ -29,16 +42,16 @@ layui.use(['table', 'laydate'], function () {
         , limits: [10, 20, 30]
         , cols: [[
             { type: 'checkbox' }
-            , { field: 'id', width: 80, title: 'ID', sort: true }
-            , { field: 'username', width: 80, title: '用户名' }
-            , { field: 'sex', width: 80, title: '性别', sort: true }
-            , { field: 'city', width: 80, title: '城市' }
-            , { field: 'sign', title: '签名', width: '30%', minWidth: 200 } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+            , { field: 'id', title: 'ID', sort: true }
+            , { field: 'username', title: '用户名' }
+            , { field: 'sex', title: '性别', sort: true }
+            , { field: 'city', title: '城市' }
+            , { field: 'sign', title: '签名', minWidth: 200 } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
             , { field: 'experience', title: '积分', sort: true }
             , { field: 'score', title: '评分', sort: true }
             , { field: 'classify', title: '职业' }
             , { field: 'wealth', width: 137, title: '财富', sort: true }
-            , { title: '操作', toolbar: '#barDemo' }
+            , { title: '操作', minWidth: 200, toolbar: '#barDemo' }
         ]]
     });
 
@@ -79,6 +92,13 @@ layui.use(['table', 'laydate'], function () {
                 }
             });
         }
+    });
+
+    table.on('row(demo)', function (obj) {
+        console.log(obj.tr) //得到当前行元素对象
+        console.log(obj.data) //得到当前行数据
+        //obj.del(); //删除当前行
+        //obj.update(fields) //修改当前行数据
     });
 
     table.on('toolbar(demo)', function (obj) {

@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/jquery-3.3.1.min.js"></script>
     <title>index</title>
     <link rel="stylesheet" href="./layui/css/layui.css">
     <style>
         html,
         body {
             height: 100%;
+            margin: 0;
+            padding: 0;
         }
 
         .search-div {
@@ -97,6 +100,23 @@
         </div>
 
         <table class="layui-table" id="test" lay-filter="demo"></table>
+    </div>
+    <div id="color"></div>
+    <div class="layui-tab" lay-filter="demo">
+        <ul class="layui-tab-title">
+            <li class="layui-this">网站设置</li>
+            <li>商品管理</li>
+            <li>订单管理</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">内容1</div>
+            <div class="layui-tab-item">内容2</div>
+            <div class="layui-tab-item">内容3</div>
+        </div>
+    </div>
+    <span class="layui-breadcrumb" lay-separator="|"></span>
+    <div class="layui-progress layui-progress-big" lay-filter="progress">
+        <div class="layui-progress-bar" lay-percent="0%"></div>
     </div>
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
