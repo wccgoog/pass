@@ -9,8 +9,8 @@
     <title>Document</title>
     <style>
         #main {
-            height: 400px;
-            width: 400px;
+            height: 1400px;
+            width: 1400px;
         }
     </style>
 </head>
@@ -18,8 +18,34 @@
 <body>
     <div id="main"></div>
     <script>
+        function formatDate(date) {
+            var myyear = date.getFullYear();
+            var mymonth = date.getMonth() + 1;
+            var myweekday = date.getDate();
+            if (mymonth < 10) {
+                mymonth = "0" + mymonth;
+            }
+            if (myweekday < 10) {
+                myweekday = "0" + myweekday;
+            }
+            return (myyear + "-" + mymonth + "-" + myweekday);
+        }
+        var list = [];
+        var startDate = 1548950400000;
+        for (var i = 0; i < 365; i++) {
+            list.push([startDate + i * 3600 * 24 * 1000, Math.random() * 300])
+        }
         var mychartsale = echarts.init(document.getElementById('main'));
         var option = {
+            tooltip: {
+                formatter: function (params) {
+                    return params.value[1].toFixed(2);
+                }
+            },
+            axisPointer: {
+                show: true,
+                type: 'shadow'
+            },
             title: {
                 text: 'this.title',
                 x: 'center'
@@ -39,25 +65,67 @@
                     nameMap: 'cn',
                     margin: 10
                 },
-                cellSize: 40,
-                range: '2019-1',
+                cellSize: [70, 70],
+                range: '2019-8',
                 // width: 400,
                 // height: 400
             },
-            series: {
-                type: 'graph',
+
+            visualMap: {
+                show: true,
+                min: 0,
+                max: 300,
+                calculable: true,
+                seriesIndex: [1],
+                dimension: 1,
+                orient: 'horizontal',
+                left: 'center',
+                bottom: 20,
+                inRange: {
+                    color: ['#e0ffff', '#006edd'],
+                    opacity: 0.3
+                },
+                controller: {
+                    inRange: {
+                        opacity: 0.5
+                    }
+                }
+            },
+            series: [{
+                type: 'scatter',
                 coordinateSystem: 'calendar',
+                symbolSize: 1,
+                itemStyle: {
+                    color: 'rgba(128, 128, 128, 0)'
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        formatter: function (params) {
+                            var d = echarts.number.parseDate(params.value[0]);
+                            return d.getDate();
+                        },
+                        textStyle: {
+                            color: '#000'
+                        }
+                    }
+                },
+                data: list
+            },
+            {
+                type: 'heatmap',
+                coordinateSystem: 'calendar',
+                data: list
             }
+            ]
         };
 
         mychartsale.setOption(option);
         //注释的功能，是判断点击折线图的拐点。
         mychartsale.on('click', function (param) {
-            console.log(param);//这里根据param填写你的跳转逻辑
+            alert(formatDate(new Date(param.data[0])));//这里根据param填写你的跳转逻辑
         });
-        window.addEventListener("resize", function () {
-            mychartsale.resize();
-        });
+
 
     </script>
 </body>
