@@ -21,10 +21,13 @@ function CreateEchartCalendar(id, range, title, graphData) {
             },
             dayLabel: {
                 firstDay: 1,
-                nameMap: 'cn'
+                nameMap: 'cn',
+                margin: 10
             },
             cellSize: 40,
-            range: this.range
+            range: this.range,
+            // width: 400,
+            // height: 400
         },
         series: {
             type: this.type,
@@ -68,6 +71,16 @@ CreateEchartCalendar.prototype = {
     // set标题左边距并重载set
     setTitleLeft: function (left) {
         this.option.title.left = left;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 修改图表宽度
+    setWidth: function (width) {
+        this.option.calendar.width = width;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 修改图表高度
+    setHeight: function (height) {
+        this.option.calendar.height = height;
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     }
 }
