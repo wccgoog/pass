@@ -30,75 +30,101 @@ function CreateEchartCalendar(id, range, [title, graphData, callback]) {
             cellSize: [70, 70],
             range: this.range,
         },
-
-        visualMap: {
-            show: true,
-            min: 0,
-            max: 300,
-            calculable: true,
-            seriesIndex: [2],
-            dimension: 1,
-            orient: 'horizontal',
-            left: 'center',
-            bottom: 20,
-            inRange: {
-                color: ['#e0ffff', '#006edd'],
-                opacity: 0.3
-            },
-            controller: {
+        visualMap: [
+            {
+                show: false,
+                min: 0,
+                max: 300,
+                calculable: true,
+                seriesIndex: [0],
+                dimension: 1,
+                orient: 'horizontal',
+                left: 'center',
+                bottom: 20,
                 inRange: {
-                    opacity: 0.5
+                    color: ['#fff', '#006edd'],
+                    opacity: 1
+                },
+                controller: {
+                    inRange: {
+                        opacity: 0.5
+                    }
+                }
+            },
+            // 如果有数据,则覆盖上方的heatmap
+            {
+                show: false,
+                min: 0,
+                max: 300,
+                calculable: true,
+                seriesIndex: [2],
+                dimension: 1,
+                orient: 'horizontal',
+                left: 'center',
+                bottom: 20,
+                inRange: {
+                    color: ['#e0ffff', '#006edd'],
+                    opacity: 0.3
+                },
+                controller: {
+                    inRange: {
+                        opacity: 0.5
+                    }
                 }
             }
-        },
-        series: [{
-            type: 'scatter',
-            coordinateSystem: 'calendar',
-            symbolSize: 60,
-            itemStyle: {
-                color: 'rgba(128, 128, 128, 0)'
-            },
-            label: {
-                normal: {
-                    show: true,
-                    formatter: function (params) {
-                        var d = echarts.number.parseDate(params.value[0]);
-                        return d.getDate();
-                    },
-                    textStyle: {
-                        color: '#000'
+        ],
+        series: [
+            // 使用heatmap是为了方便点击
+            {
+                type: 'heatmap',
+                coordinateSystem: 'calendar',
+                symbolSize: 60,
+                itemStyle: {
+                    color: 'rgba(128, 128, 128, 0)'
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        formatter: function (params) {
+                            var d = echarts.number.parseDate(params.value[0]);
+                            return d.getDate();
+                        },
+                        textStyle: {
+                            color: '#000'
+                        }
                     }
-                }
+                },
+                data: this.list
             },
-            data: this.list
-        },
-        {
-            type: 'scatter',
-            coordinateSystem: 'calendar',
-            symbolSize: 60,
-            itemStyle: {
-                color: 'rgba(128, 128, 128, 0)'
-            },
-            label: {
-                normal: {
-                    show: true,
-                    formatter: function (params) {
-                        return '\n\n\n' + (params.value[1] || '');
-                    },
-                    textStyle: {
-                        fontSize: 14,
-                        fontWeight: 700,
-                        color: '#a00'
+            // 当日数据显示为红字
+            {
+                type: 'scatter',
+                coordinateSystem: 'calendar',
+                symbolSize: 1,
+                itemStyle: {
+                    color: 'rgba(128, 128, 128, 0)'
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        formatter: function (params) {
+                            return '\n\n\n' + (params.value[1] || '');
+                        },
+                        textStyle: {
+                            fontSize: 14,
+                            fontWeight: 700,
+                            color: '#a00'
+                        }
                     }
-                }
+                },
+                data: this.graphData
             },
-            data: this.graphData
-        },
-        {
-            type: 'heatmap',
-            coordinateSystem: 'calendar',
-            data: this.graphData,
-        }
+            // 背景色根据当日数据改变
+            {
+                type: 'heatmap',
+                coordinateSystem: 'calendar',
+                data: this.graphData,
+            }
         ]
     };
 
@@ -110,6 +136,8 @@ CreateEchartCalendar.prototype = {
     init: function () {
         var calendar = echarts.init(document.getElementById(this.id));
         calendar.setOption(this.option);
+
+        // 点击日历事件绑定callback
         var callback = this.callback;
         if (!calendar._$handlers.click) {
             calendar.on('click', function (param) {
@@ -158,7 +186,7 @@ CreateEchartCalendar.prototype = {
         this.option.calendar.height = height;
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
-    // 修改回调函数
+    // 修改点击日历的回调函数
     setCallBack: function (callback) {
         var calendar = echarts.init(document.getElementById(this.id));
         calendar._$handlers.click[0].h = function (param) {

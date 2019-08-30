@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="#" />
     <title>echarts</title>
+    <script src="./js/jquery-3.3.1.min.js"></script>
     <script src="./js/echarts.min.js"></script>
     <script src="./js/CreateEchartsCalendar.js"></script>
     <style>
@@ -42,6 +43,9 @@
         function callback(param) {
             console.log(param);
             alert('callback1:!!!!!!!' + formatDate(new Date(param.data[0])));
+            $.ajax({
+                url: '/'
+            })
         }
         function callback2(param) {
             console.log(param);
@@ -66,8 +70,8 @@
             ]
         ];
         var main = new CreateEchartCalendar('main', ['2019-8', '2019-9-30'], [, [['2019-9-1', 100]], callback]);
-        var main2 = new CreateEchartCalendar('main2', '2019-8', ['修改数值,数值以时间戳毫秒格式显示在日历中:setData', , callback2]);
-        var main3 = new CreateEchartCalendar('main3', '2017-2', ['修改背景:setBackground', graphData,]);
+        var main2 = new CreateEchartCalendar('main2', '2019-8', ['修改数值:setData', , callback2]);
+        var main3 = new CreateEchartCalendar('main3', '2017-2', ['修改背景:setBackground,修改回调函数:setCallBack', graphData,]);
         var main4 = new CreateEchartCalendar('main4', '2019-8', ['修改年月:setRange'])
         var main5 = new CreateEchartCalendar('main5', '2019-8', ['修改标题位置:setTitleX'])
         var main6 = new CreateEchartCalendar('main6', '2019-8', ['修改标题左边距:setTitleLeft'])
