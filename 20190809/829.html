@@ -22,18 +22,6 @@
             [
                 '2019-2-2',
                 560
-            ],
-            [
-                1486137600000,
-                200
-            ],
-            [
-                1487779200000,
-                411
-            ],
-            [
-                1488124800000,
-                985
             ]
         ];
         function formatDate(date) {
@@ -55,9 +43,6 @@
         }
         var mychartsale = echarts.init(document.getElementById('main'));
         var option = {
-            tooltip: {
-                show: false
-            },
             title: {
                 text: 'this.title',
                 x: 'center'
@@ -86,7 +71,7 @@
                 min: 0,
                 max: 300,
                 calculable: true,
-                seriesIndex: [1],
+                seriesIndex: [2],
                 dimension: 1,
                 orient: 'horizontal',
                 left: 'center',
@@ -101,33 +86,55 @@
                     }
                 }
             },
-            series: [{
-                type: 'scatter',
-                coordinateSystem: 'calendar',
-                symbolSize: 1,
-                itemStyle: {
-                    color: 'rgba(128, 128, 128, 0)'
-                },
-                label: {
-                    normal: {
-                        show: true,
-                        formatter: function (params) {
-                            var d = echarts.number.parseDate(params.value[0]);
-                            return d.getDate();
-                        },
-                        textStyle: {
-                            color: '#000'
+            series: [
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 100,
+                    itemStyle: {
+                        color: 'rgba(128, 128, 128, 0)'
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                var d = echarts.number.parseDate(params.value[0]);
+                                return d.getDate();
+                            },
+                            textStyle: {
+                                color: '#000'
+                            }
                         }
-                    }
+                    },
+                    data: list
                 },
-                data: list
-            },
-            {
-                type: 'heatmap',
-                tooltip: { show: true },
-                coordinateSystem: 'calendar',
-                data: graphData
-            }
+                {
+                    type: 'scatter',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 100,
+                    itemStyle: {
+                        color: 'rgba(128, 128, 128, 0)'
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return '\n\n\n' + (params.value[1] || '');
+                            },
+                            textStyle: {
+                                fontSize: 14,
+                                fontWeight: 700,
+                                color: '#a00'
+                            }
+                        }
+                    },
+                    data: graphData
+                },
+                {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    data: graphData
+                }
             ]
         };
 

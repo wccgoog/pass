@@ -1,21 +1,16 @@
 //一般日历
-function CreateEchartCalendar(id, range, title, graphData) {
+function CreateEchartCalendar(id, range, [title, graphData, callback]) {
     this.id = id || '';
     this.range = range || '2019-1';
     this.title = title || '';
     this.graphData = graphData || [['2019-8-3', 300]];
     this.type = 'graph';
     this.list = getDateListFromRange(this.range);
-
-
-
+    this.callback = callback || function () { return; };
     this.option = {
         title: {
             text: this.title,
             x: 'center'
-        },
-        tooltip: {
-            show: false
         },
         calendar: {
             orient: 'vertical',
@@ -41,7 +36,7 @@ function CreateEchartCalendar(id, range, title, graphData) {
             min: 0,
             max: 300,
             calculable: true,
-            seriesIndex: [1],
+            seriesIndex: [2],
             dimension: 1,
             orient: 'horizontal',
             left: 'center',
@@ -59,7 +54,7 @@ function CreateEchartCalendar(id, range, title, graphData) {
         series: [{
             type: 'scatter',
             coordinateSystem: 'calendar',
-            symbolSize: 1,
+            symbolSize: 60,
             itemStyle: {
                 color: 'rgba(128, 128, 128, 0)'
             },
@@ -67,7 +62,7 @@ function CreateEchartCalendar(id, range, title, graphData) {
                 normal: {
                     show: true,
                     formatter: function (params) {
-                        var d = echarts.number.parseDate(params.value);
+                        var d = echarts.number.parseDate(params.value[0]);
                         return d.getDate();
                     },
                     textStyle: {
@@ -78,23 +73,49 @@ function CreateEchartCalendar(id, range, title, graphData) {
             data: this.list
         },
         {
-            type: 'heatmap',
-            tooltip: {
-                show: true
-            },
+            type: 'scatter',
             coordinateSystem: 'calendar',
+            symbolSize: 60,
+            itemStyle: {
+                color: 'rgba(128, 128, 128, 0)'
+            },
+            label: {
+                normal: {
+                    show: true,
+                    formatter: function (params) {
+                        return '\n\n\n' + (params.value[1] || '');
+                    },
+                    textStyle: {
+                        fontSize: 14,
+                        fontWeight: 700,
+                        color: '#a00'
+                    }
+                }
+            },
             data: this.graphData
+        },
+        {
+            type: 'heatmap',
+            coordinateSystem: 'calendar',
+            data: this.graphData,
         }
         ]
     };
+
 }
 
 CreateEchartCalendar.prototype = {
     constructor: CreateEchartCalendar,
-    //初始化图表
+    // 初始化图表
     init: function () {
         var calendar = echarts.init(document.getElementById(this.id));
         calendar.setOption(this.option);
+        var callback = this.callback;
+        if (!calendar._$handlers.click) {
+            calendar.on('click', function (param) {
+                callback(param);
+            });
+        }
     },
     // set标题并重载图表
     setTitle: function (text) {
@@ -103,7 +124,8 @@ CreateEchartCalendar.prototype = {
     },
     // set数值并重载图表,数值以时间戳毫秒格式显示在日历中
     setData: function (data) {
-        this.option.series.data = data;
+        this.option.series[1].data = data;
+        this.option.series[2].data = data;
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
     // set背景并重载图表
@@ -136,20 +158,26 @@ CreateEchartCalendar.prototype = {
         this.option.calendar.height = height;
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
-    test: function () {
-        alert('test')
+    // 修改回调函数
+    setCallBack: function (callback) {
+        var calendar = echarts.init(document.getElementById(this.id));
+        calendar._$handlers.click[0].h = function (param) {
+            callback(param)
+        };
     }
 }
 
+// 获取时间戳list
 function createDateList(startTime, endTime) {
     var list = [];
     while (startTime < endTime) {
-        list.push(startTime);
+        list.push([startTime, 0]);
         startTime += 3600 * 24 * 1000;
     }
     return list;
 }
 
+// 根据传入的range获取日期
 function getDateListFromRange(range) {
     if (typeof (range) == 'string') {
         var year = range.split('-')[0];
@@ -163,4 +191,18 @@ function getDateListFromRange(range) {
         var endTime = Date.parse(parseInt(endYear) + 1);
         return createDateList(startTime, endTime);
     }
+}
+
+// 返回年月日
+function formatDate(date) {
+    var myyear = date.getFullYear();
+    var mymonth = date.getMonth() + 1;
+    var myweekday = date.getDate();
+    if (mymonth < 10) {
+        mymonth = "0" + mymonth;
+    }
+    if (myweekday < 10) {
+        myweekday = "0" + myweekday;
+    }
+    return (myyear + "-" + mymonth + "-" + myweekday);
 }
