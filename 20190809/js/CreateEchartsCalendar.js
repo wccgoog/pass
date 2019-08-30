@@ -32,7 +32,7 @@ function CreateEchartCalendar(id, range, title, graphData) {
                 nameMap: 'cn',
                 margin: 10
             },
-            cellSize: 40,
+            cellSize: [70, 70],
             range: this.range,
         },
 
