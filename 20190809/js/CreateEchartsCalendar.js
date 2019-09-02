@@ -1,22 +1,44 @@
 //一般日历
-function CreateEchartCalendar(id, range, [title, graphData, callback]) {
+function CreateEchartCalendar(id, range, title, graphData) {
     this.id = id || '';
     this.range = range || '2019-1';
     this.title = title || '';
     this.graphData = graphData || [['2019-8-3', 300]];
     this.type = 'graph';
+    // series[0]使用的data,既日期
     this.list = getDateListFromRange(this.range);
-    this.callback = callback || function () { return; };
+    // 大中小,对应size为big,normal,small
+    this.width = [1200, 600, 450];
+    this.height = [800, 400, 300];
+    this.fontSize = [24, 16, 12];
+    this.titleFontSize = [30, 24, 18]
+
     this.option = {
+        textStyle: {
+            fontSize: this.fontSize[1]
+        },
+        tooltip: {
+            formatter: function (params) {
+                if (params.data[1] > 0) {
+                    return params.data[1];
+                } else {
+                    return;
+                }
+            }
+        },
         title: {
             text: this.title,
-            x: 'center'
+            x: 'center',
+            textStyle: {
+                fontSize: this.titleFontSize[1]
+            }
         },
         calendar: {
             orient: 'vertical',
             yearLabel: {
                 margin: 40,
-                position: 'bottom'
+                position: 'bottom',
+                fontSize: this.titleFontSize[1]
             },
             monthLabel: {
                 nameMap: 'cn',
@@ -25,10 +47,13 @@ function CreateEchartCalendar(id, range, [title, graphData, callback]) {
             dayLabel: {
                 firstDay: 1,
                 nameMap: 'cn',
-                margin: 10
+                margin: 10,
             },
-            cellSize: [70, 70],
             range: this.range,
+            // height: this.height[1],
+            // width: this.width[1]
+            cellSize: [70, 70],
+            top: 100,
         },
         visualMap: [
             {
@@ -83,16 +108,12 @@ function CreateEchartCalendar(id, range, [title, graphData, callback]) {
                     color: 'rgba(128, 128, 128, 0)'
                 },
                 label: {
-                    normal: {
-                        show: true,
-                        formatter: function (params) {
-                            var d = echarts.number.parseDate(params.value[0]);
-                            return d.getDate();
-                        },
-                        textStyle: {
-                            color: '#000'
-                        }
-                    }
+                    show: true,
+                    formatter: function (params) {
+                        var d = echarts.number.parseDate(params.value[0]);
+                        return d.getDate();
+                    },
+                    color: '#000',
                 },
                 data: this.list
             },
@@ -105,17 +126,12 @@ function CreateEchartCalendar(id, range, [title, graphData, callback]) {
                     color: 'rgba(128, 128, 128, 0)'
                 },
                 label: {
-                    normal: {
-                        show: true,
-                        formatter: function (params) {
-                            return '\n\n\n' + (params.value[1] || '');
-                        },
-                        textStyle: {
-                            fontSize: 14,
-                            fontWeight: 700,
-                            color: '#a00'
-                        }
-                    }
+                    show: true,
+                    formatter: function (params) {
+                        return '\n\n\n' + (params.value[1] || '');
+                    },
+                    fontWeight: 700,
+                    color: '#a00'
                 },
                 data: this.graphData
             },
@@ -136,14 +152,6 @@ CreateEchartCalendar.prototype = {
     init: function () {
         var calendar = echarts.init(document.getElementById(this.id));
         calendar.setOption(this.option);
-
-        // 点击日历事件绑定callback
-        var callback = this.callback;
-        if (!calendar._$handlers.click) {
-            calendar.on('click', function (param) {
-                callback(param);
-            });
-        }
     },
     // set标题并重载图表
     setTitle: function (text) {
@@ -164,6 +172,7 @@ CreateEchartCalendar.prototype = {
     // set年月并重载图表
     setRange: function (range) {
         this.option.calendar.range = range;
+        this.option.series[0].data = getDateListFromRange(range);
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
     // set标题位置并重载图表
@@ -187,11 +196,46 @@ CreateEchartCalendar.prototype = {
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
     // 修改点击日历的回调函数
-    setCallBack: function (callback) {
+    setCallBackClick: function (callback) {
         var calendar = echarts.init(document.getElementById(this.id));
-        calendar._$handlers.click[0].h = function (param) {
-            callback(param)
-        };
+        if (!calendar._$handlers.click) {
+            calendar.on('click', function (param) {
+                callback(param);
+            });
+        } else {
+            calendar._$handlers.click[0].h = function (param) {
+                callback(param)
+            };
+        }
+    },
+    // 修改图表大小
+    setSize: function (size) {
+        switch (size) {
+            case 'big':
+                this.option.calendar.width = this.width[0];
+                this.option.calendar.height = this.height[0];
+                this.option.calendar.yearLabel.fontSize = this.titleFontSize[0];
+                this.option.textStyle.fontSize = this.fontSize[0];
+                this.option.title.textStyle.fontSize = this.titleFontSize[0];
+                echarts.init(document.getElementById(this.id)).setOption(this.option);
+                break;
+            case 'normal':
+                this.option.calendar.width = this.width[1];
+                this.option.calendar.height = this.height[1];
+                this.option.calendar.yearLabel.fontSize = this.titleFontSize[1];
+                this.option.textStyle.fontSize = this.fontSize[1];
+                this.option.title.textStyle.fontSize = this.titleFontSize[1];
+                echarts.init(document.getElementById(this.id)).setOption(this.option);
+                break;
+            case 'small':
+                this.option.calendar.width = this.width[2];
+                this.option.calendar.height = this.height[2];
+                this.option.calendar.yearLabel.fontSize = this.titleFontSize[2];
+                this.option.textStyle.fontSize = this.fontSize[2];
+                this.option.title.textStyle.fontSize = this.titleFontSize[2];
+                echarts.init(document.getElementById(this.id)).setOption(this.option);
+                break;
+        }
     }
 }
 

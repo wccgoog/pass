@@ -15,45 +15,75 @@
             height: 100%;
         }
 
-        div {
+        .demo {
             margin: auto;
             width: 800px;
             height: 1000px;
+        }
+
+        #main9-1 {
+            height: 1000px;
+            width: 100%;
+        }
+
+        #main9-2 {
+            height: 1000px;
+            width: 100%;
+        }
+
+        #main9-3 {
+            height: 1000px;
+            width: 100%;
         }
     </style>
 </head>
 
 <body>
-    <div id="main"></div>
+    <input type="text" list="month" id="monthInput">
+    <datalist id="month">
+        <option>&nbsp;</option>
+        <option>1</option>
+    </datalist>
+    <div id="main9-1"></div>
     <hr>
-    <div id="main2"></div>
+    <div id="main9-2"></div>
     <hr>
-    <div id="main3"></div>
+    <div id="main9-3"></div>
     <hr>
-    <div id="main4"></div>
+    <div id="main" class="demo"></div>
     <hr>
-    <div id="main5"></div>
+    <div id="main2" class="demo"></div>
     <hr>
-    <div id="main6"></div>
+    <div id="main3" class="demo"></div>
     <hr>
-    <div id="main7"></div>
+    <div id="main4" class="demo"></div>
     <hr>
-    <div id="main8"></div>
+    <div id="main5" class="demo"></div>
+    <hr>
+    <div id="main6" class="demo"></div>
+    <hr>
+    <div id="main7" class="demo"></div>
+    <hr>
+    <div id="main8" class="demo"></div>
     <script>
+        $('#monthInput').change(function (data) {
+            console.log(data.currentTarget.value);
+        })
+
         function callback(param) {
             console.log(param);
-            alert('callback1:!!!!!!!' + formatDate(new Date(param.data[0])));
-            $.ajax({
-                url: '/'
-            })
+            alert('第一个回调函数callback1:' + formatDate(new Date(param.data[0])));
+            // $.ajax({
+            //     url: '/'
+            // })
         }
         function callback2(param) {
             console.log(param);
-            alert('callback2:--------' + formatDate(new Date(param.data[0])));
+            alert('第二个回调函数callback2:' + formatDate(new Date(param.data[0])));
         }
         var graphData = [
             [
-                '2017-2-2',
+                '2017-02-02',
                 560
             ],
             [
@@ -69,14 +99,17 @@
                 985
             ]
         ];
-        var main = new CreateEchartCalendar('main', ['2019-8', '2019-9-30'], [, [['2019-9-1', 100]], callback]);
-        var main2 = new CreateEchartCalendar('main2', '2019-8', ['修改数值:setData', , callback2]);
-        var main3 = new CreateEchartCalendar('main3', '2017-2', ['修改背景:setBackground,修改回调函数:setCallBack', graphData,]);
-        var main4 = new CreateEchartCalendar('main4', '2019-8', ['修改年月:setRange'])
-        var main5 = new CreateEchartCalendar('main5', '2019-8', ['修改标题位置:setTitleX'])
-        var main6 = new CreateEchartCalendar('main6', '2019-8', ['修改标题左边距:setTitleLeft'])
-        var main7 = new CreateEchartCalendar('main7', '2019-8', ['修改图表宽度:setWidth'])
-        var main8 = new CreateEchartCalendar('main8', '2019-8', ['修改图表高度:setHeight'])
+        var main = new CreateEchartCalendar('main', ['2019-8', '2019-10-30'], '', [['2019-9-1', 100]]);
+        var main2 = new CreateEchartCalendar('main2', '2019-8', '修改数值:setData');
+        var main3 = new CreateEchartCalendar('main3', '2017-2', '修改背景:setBackground,修改回调函数:setCallBack', graphData);
+        var main4 = new CreateEchartCalendar('main4', '2019-8', '修改年月:setRange');
+        var main5 = new CreateEchartCalendar('main5', '2019-8', '修改标题位置:setTitleX');
+        var main6 = new CreateEchartCalendar('main6', '2019-8', '修改标题左边距:setTitleLeft');
+        var main7 = new CreateEchartCalendar('main7', '2019-8', '修改图表宽度:setWidth');
+        var main8 = new CreateEchartCalendar('main8', '2019-8', '修改图表高度:setHeight');
+        var main9_1 = new CreateEchartCalendar('main9-1', '2019-8', "setSize('big')");
+        var main9_2 = new CreateEchartCalendar('main9-2', '2019-8', "setSize('normal')");
+        var main9_3 = new CreateEchartCalendar('main9-3', '2019-8', "setSize('small')");
 
         main.init();
         main2.init();
@@ -86,19 +119,23 @@
         main6.init();
         main7.init();
         main8.init();
-
+        main9_1.init();
+        main9_2.init();
+        main9_3.init();
 
 
 
         // 修改标题并重载图表
         main.setTitle('main修改标题:setTitle');
+        main.setCallBackClick(callback);
         // 修改数值并重载图表,数值以时间戳毫秒格式显示在日历中
         main2.setData([[1566983752000, 400]]);
+        main2.setCallBackClick(callback2);
         // 修改背景并重载图表
         main3.setBackground('#f9f1f1');
         //修改回调函数
-        main3.setCallBack(function (param) {
-            alert('callback3:~~~~~' + formatDate(new Date(param.data[0])));
+        main3.setCallBackClick(function (param) {
+            alert('第三个回调函数callback3:' + formatDate(new Date(param.data[0])));
         })
         // 修改年月并重载图表
         main4.setRange('2019-10');
@@ -110,6 +147,10 @@
         main7.setWidth(800);
         // 修改图表高度
         main8.setHeight(800);
+
+        main9_1.setSize('big');
+        main9_2.setSize('normal');
+        main9_3.setSize('small');
     </script>
 </body>
 
