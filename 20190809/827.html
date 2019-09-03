@@ -111,6 +111,7 @@
         var main9_2 = new CreateEchartCalendar('main9-2', '2019-8', "setSize('normal')");
         var main9_3 = new CreateEchartCalendar('main9-3', '2019-8', "setSize('small')");
 
+
         main.init();
         main2.init();
         main3.init();
@@ -122,8 +123,6 @@
         main9_1.init();
         main9_2.init();
         main9_3.init();
-
-
 
         // 修改标题并重载图表
         main.setTitle('main修改标题:setTitle');
@@ -149,6 +148,9 @@
         main8.setHeight(800);
 
         main9_1.setSize('big');
+        $('#main9-1').resize(function () {
+            main9_1.resize();
+        });
         main9_2.setSize('normal');
         main9_3.setSize('small');
     </script>

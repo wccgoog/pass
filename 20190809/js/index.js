@@ -17,16 +17,15 @@ layui.use(['table', 'laydate', 'colorpicker', 'element'], function () {
     var ins = laydate.render({
         elem: '#dateDemo'
         , type: 'datetime'
-        , min: '2019-8-11 12:30:00'
-        , max: '2019-8-18 12:30:00'
         , theme: 'molv'
         , calendar: true
+        , value: '2019-09-03'
         , mark: {
             '0-8-16': '生日'
         }
-        , change: function (value, date, endDate) {
-            ins.hint(value); //在控件上弹出value值
-        }
+        // , change: function (value, date, endDate) {
+        //     ins.hint(value); //在控件上弹出value值
+        // }
     });
 
     var table = layui.table;
@@ -42,7 +41,12 @@ layui.use(['table', 'laydate', 'colorpicker', 'element'], function () {
         , limits: [10, 20, 30]
         , cols: [[
             { type: 'checkbox' }
-            , { field: 'id', title: 'ID', sort: true }
+            , {
+                field: 'id', title: 'ID', sort: true, templet: function (data) {
+                    console.log(data)
+                    return data.id.x;
+                }
+            }
             , { field: 'username', title: '用户名' }
             , { field: 'sex', title: '性别', sort: true }
             , { field: 'city', title: '城市' }
@@ -174,3 +178,14 @@ layui.use(['table', 'laydate', 'colorpicker', 'element'], function () {
         })
     })
 });
+
+function wcc1() {
+    for (var i = 0; i < 100; i++) {
+        console.log(i)
+    }
+}
+function wcc2() {
+    for (var i = 200; i < 300; i++) {
+        console.log(i)
+    }
+}

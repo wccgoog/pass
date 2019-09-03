@@ -50,8 +50,6 @@ function CreateEchartCalendar(id, range, title, graphData) {
                 margin: 10,
             },
             range: this.range,
-            // height: this.height[1],
-            // width: this.width[1]
             cellSize: [70, 70],
             top: 100,
         },

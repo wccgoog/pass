@@ -67,10 +67,21 @@
     <script>
 
 
-        layui.use(['form', 'layer'], function () {
+        layui.use(['form', 'layer', 'laydate'], function () {
             var $ = layui.$
                 , form = layui.form;
             var layer = layui.layer;
+            var laydate = layui.laydate;
+            var ins = laydate.render({
+                elem: '#username2'
+                , type: 'datetime'
+                , theme: 'molv'
+                , calendar: true
+                , value: '2019-09-03'
+                , change: function (value, date, endDate) {
+                    ins.hint(value); //在控件上弹出value值
+                }
+            });
             var colsHtml = '';
             var cols = [
                 { name: 'liftNo', title: '档案号' },
