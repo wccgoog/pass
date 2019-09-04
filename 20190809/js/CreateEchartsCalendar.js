@@ -28,7 +28,7 @@ function CreateEchartCalendar(id, range, title, graphData) {
         },
         title: {
             text: this.title,
-            x: 'center',
+            left: '30%',
             textStyle: {
                 fontSize: this.titleFontSize[1]
             }
@@ -194,7 +194,7 @@ CreateEchartCalendar.prototype = {
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
     // 修改点击日历的回调函数
-    setCallBackClick: function (callback) {
+    setCallbackClick: function (callback) {
         var calendar = echarts.init(document.getElementById(this.id));
         if (!calendar._$handlers.click) {
             calendar.on('click', function (param) {
@@ -209,7 +209,7 @@ CreateEchartCalendar.prototype = {
     // 修改图表大小
     setSize: function (size) {
         switch (size) {
-            case 'big':
+            case 'large':
                 this.option.calendar.width = this.width[0];
                 this.option.calendar.height = this.height[0];
                 this.option.calendar.yearLabel.fontSize = this.titleFontSize[0];
