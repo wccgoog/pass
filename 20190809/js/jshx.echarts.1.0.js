@@ -1,13 +1,16 @@
 //一般日历
-function CreateEchartCalendar(id, range, title, graphData) {
+function HxChartCalendar(id, range, title) {
     this.id = id || '';
-    this.range = range || '2019-1';
+    if (typeof (range) == 'object') {
+        this.range = range[0];
+    } else {
+        this.range = range;
+    }
     this.title = title || '';
-    this.graphData = graphData || [['2019-8-3', 300]];
-    this.type = 'graph';
+    this.graphData = [[]];
     // series[0]使用的data,既日期
     this.list = getDateListFromRange(this.range);
-    // 大中小,对应size为big,normal,small
+    // 大中小,对应size为l,m,s
     this.width = [1200, 600, 450];
     this.height = [800, 400, 300];
     this.fontSize = [24, 16, 12];
@@ -28,7 +31,7 @@ function CreateEchartCalendar(id, range, title, graphData) {
         },
         title: {
             text: this.title,
-            left: '30%',
+            left: 'center',
             textStyle: {
                 fontSize: this.titleFontSize[1]
             }
@@ -52,6 +55,9 @@ function CreateEchartCalendar(id, range, title, graphData) {
             range: this.range,
             cellSize: [70, 70],
             top: 100,
+            bottom: 100,
+            left: '10%',
+            right: '10%'
         },
         visualMap: [
             {
@@ -144,12 +150,11 @@ function CreateEchartCalendar(id, range, title, graphData) {
 
 }
 
-CreateEchartCalendar.prototype = {
-    constructor: CreateEchartCalendar,
+HxChartCalendar.prototype = {
+    constructor: HxChartCalendar,
     // 初始化图表
     init: function () {
-        var calendar = echarts.init(document.getElementById(this.id));
-        calendar.setOption(this.option);
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
     // set标题并重载图表
     setTitle: function (text) {
@@ -157,9 +162,17 @@ CreateEchartCalendar.prototype = {
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
     // set数值并重载图表,数值以时间戳毫秒格式显示在日历中
-    setData: function (data) {
-        this.option.series[1].data = data;
-        this.option.series[2].data = data;
+    putData: function (data) {
+        var lastData = this.option.series[1].data;
+        lastData = lastData.concat(data);
+        this.option.series[1].data = lastData;
+        this.option.series[2].data = lastData;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 清楚图表中的数据
+    clearData: function () {
+        this.option.series[1].data = [[]];
+        this.option.series[2].data = [[]];
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
     // set背景并重载图表
@@ -169,18 +182,26 @@ CreateEchartCalendar.prototype = {
     },
     // set年月并重载图表
     setRange: function (range) {
+        if (typeof (range) == 'object') {
+            return "请出入yyyy-mm格式的字符串"
+        }
         this.option.calendar.range = range;
         this.option.series[0].data = getDateListFromRange(range);
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
     // set标题位置并重载图表
-    setTitleX: function (x) {
-        this.option.title.x = x;
-        echarts.init(document.getElementById(this.id)).setOption(this.option);
-    },
-    // set标题左边距并重载set
-    setTitleLeft: function (left) {
-        this.option.title.left = left;
+    setTitleLocation: function (x) {
+        switch (x) {
+            case 'l':
+                this.option.title.left = 'left';
+                break;
+            case 'c':
+                this.option.title.left = 'center';
+                break;
+            case 'r':
+                this.option.title.left = 'right';
+                break;
+        }
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
     // 修改图表宽度
@@ -194,7 +215,7 @@ CreateEchartCalendar.prototype = {
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
     // 修改点击日历的回调函数
-    setCallbackClick: function (callback) {
+    setCbClick: function (callback) {
         var calendar = echarts.init(document.getElementById(this.id));
         if (!calendar._$handlers.click) {
             calendar.on('click', function (param) {
@@ -209,31 +230,29 @@ CreateEchartCalendar.prototype = {
     // 修改图表大小
     setSize: function (size) {
         switch (size) {
-            case 'large':
-                this.option.calendar.width = this.width[0];
-                this.option.calendar.height = this.height[0];
+            case 'l':
+                // this.option.calendar.width = this.width[0];
+                // this.option.calendar.height = this.height[0];
                 this.option.calendar.yearLabel.fontSize = this.titleFontSize[0];
                 this.option.textStyle.fontSize = this.fontSize[0];
                 this.option.title.textStyle.fontSize = this.titleFontSize[0];
-                echarts.init(document.getElementById(this.id)).setOption(this.option);
                 break;
-            case 'normal':
-                this.option.calendar.width = this.width[1];
-                this.option.calendar.height = this.height[1];
+            case 'm':
+                // this.option.calendar.width = this.width[1];
+                // this.option.calendar.height = this.height[1];
                 this.option.calendar.yearLabel.fontSize = this.titleFontSize[1];
                 this.option.textStyle.fontSize = this.fontSize[1];
                 this.option.title.textStyle.fontSize = this.titleFontSize[1];
-                echarts.init(document.getElementById(this.id)).setOption(this.option);
                 break;
-            case 'small':
-                this.option.calendar.width = this.width[2];
-                this.option.calendar.height = this.height[2];
+            case 's':
+                // this.option.calendar.width = this.width[2];
+                // this.option.calendar.height = this.height[2];
                 this.option.calendar.yearLabel.fontSize = this.titleFontSize[2];
                 this.option.textStyle.fontSize = this.fontSize[2];
                 this.option.title.textStyle.fontSize = this.titleFontSize[2];
-                echarts.init(document.getElementById(this.id)).setOption(this.option);
                 break;
         }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
     }
 }
 
@@ -275,4 +294,62 @@ function formatDate(date) {
         myweekday = "0" + myweekday;
     }
     return (myyear + "-" + mymonth + "-" + myweekday);
+}
+
+function HxChartLine(id, category) {
+    this.id = id;
+    this.category = category;
+    this.series = [];
+    for (var i = 0; i < this.category[0].length; i++) {
+        this.series[i] = {
+            name: this.category[0][i],
+            type: 'line',
+            data: []
+        }
+    }
+
+    this.option = {
+        title: {
+            text: '折线图堆叠'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {},
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: this.category[1]
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: this.series
+    };
+}
+
+HxChartLine.prototype = {
+    constructor: HxChartLine,
+    init: function () {
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    putData: function (data) {
+        var lastData = this.option.series;
+        for (var i = 0; i < lastData.length; i++) {
+            lastData[i].data = lastData[i].data.concat(data[i]);
+        }
+        this.option.series = lastData;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);;
+    }
 }

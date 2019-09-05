@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/jshx.echarts.1.0.js"></script>
+    <title>折线图demo</title>
+    <style>
+        .demo {
+            margin: auto;
+            width: 80%;
+            height: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" class="demo"></div>
+    <script>
+        var category = [
+            ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎'],
+            ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        ];
+        var main = new HxChartLine('main', category);
+        main.init();
+        data = [
+            [1, 2],
+            [2, 3],
+            [3, 4],
+            [4, 7],
+            [5, 9]
+        ];
+        main.putData(data);
+        main.putData(data);
+    </script>
+</body>
+
+</html>
