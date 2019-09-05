@@ -29,6 +29,10 @@
             margin-left: 40%;
             margin-top: 50px;
         }
+
+        #button2 {
+            margin-top: 50px;
+        }
     </style>
 </head>
 
@@ -36,6 +40,7 @@
     <div id="main" class="demo"></div>
     <hr>
     <button id="button">点此新增随机数据</button>
+    <button id="button2">点此清除数据</button>
     <div id="main1" class="demo"></div>
     <hr>
     <div id="main2" class="demo"></div>
@@ -75,7 +80,9 @@
             var data = [Math.ceil(Math.random() * 10), Math.ceil(Math.random() * 10), Math.ceil(Math.random() * 10), Math.ceil(Math.random() * 10), Math.ceil(Math.random() * 10)]
             main1.putData(data);
         })
-
+        document.getElementById('button2').addEventListener("click", function () {
+            main1.clearData();
+        })
         var main2 = new HxChartBar('main2', [['类目一', '类目二'], ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']], '显示极值:showExtreme');
         main2.init();
         main2.putData([[3, 2, 4, 6, 3, 2], [6, 8, 7, 9, 7, 6]]);
@@ -105,12 +112,12 @@
         main6.showAvarage();
         main6.showExtreme();
 
-        var main7 = new HxChartLine('main7', [['类目一'], ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']]);
+        var main7 = new HxChartBar('main7', [['类目一'], ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']]);
         main7.init();
         main7.putData([[50, 100, 70, 90, 120, 110]])
         main7.setTitle('修改标题:setTitle')
 
-        var main8 = new HxChartLine('main8', [['类目一'], ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']], '修改标题位置:setTitleLocation');
+        var main8 = new HxChartBar('main8', [['类目一'], ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']], '修改标题位置:setTitleLocation');
         main8.init();
         main8.putData([[50, 100, 70, 90, 120, 110]])
         main8.setTitleLocation('l')

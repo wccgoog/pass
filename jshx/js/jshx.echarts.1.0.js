@@ -372,19 +372,19 @@ HxChartLine.prototype = {
     },
     // 新增数据
     putData: function (data) {
-        var lastData = this.option.series;
-        for (var i = 0; i < lastData.length; i++) {
+        for (var i = 0; i < this.option.series.length; i++) {
             if (data[i] == undefined) {
                 return '传入的data数量不足'
             }
-            lastData[i].data = lastData[i].data.concat(data[i]);
+            this.option.series[i].data = this.option.series[i].data.concat(data[i]);
         }
-        this.option.series = lastData;
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
     // 清空数据
     clearData: function () {
-        this.option.series = [];
+        for (var i = 0; i < this.option.series.length; i++) {
+            this.option.series[i].data = [];
+        }
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
     // 显示每条线的极值
@@ -516,19 +516,19 @@ HxChartBar.prototype = {
     },
     // 新增数据
     putData: function (data) {
-        var lastData = this.option.series;
-        for (var i = 0; i < lastData.length; i++) {
+        for (var i = 0; i < this.option.series.length; i++) {
             if (data[i] == undefined) {
                 return '传入的data数量不足'
             }
-            lastData[i].data = lastData[i].data.concat(data[i]);
+            this.option.series[i].data = this.option.series[i].data.concat(data[i]);
         }
-        this.option.series = lastData;
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
     // 清空数据
     clearData: function () {
-        this.option.series = [];
+        for (var i = 0; i < this.option.series.length; i++) {
+            this.option.series[i].data = [];
+        }
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
     // 显示每条线的极值
