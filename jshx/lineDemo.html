@@ -26,7 +26,11 @@
         }
 
         #button {
-            margin-left: 40%;
+            margin-left: 20%;
+            margin-top: 50px;
+        }
+
+        #button1 {
             margin-top: 50px;
         }
 
@@ -39,8 +43,10 @@
 <body>
     <div id="main" class="demo"></div>
     <hr>
-    <button id="button">点此新增随机数据</button>
-    <button id="button2">点此清除数据</button>
+    <button id="button">点此新增随机数据putData</button>
+    <button id="button1">点此新增一条新类目putData</button>
+    <button id="button2">点此清除数据clearData</button>
+    <button id="button3">点此增加x轴范围putCategory</button>
     <div id="main1" class="demo"></div>
     <hr>
     <div id="main2" class="demo"></div>
@@ -56,70 +62,82 @@
     <div id="main8" class="demo"></div>
     <script>
 
-        var main = new HxChartLine('main', [['类目一'], ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']], '单数据展示');
+        var main = new HxChartLine('main', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '单数据展示');
         main.init();
-        main.putData([[50, 100, 70, 90, 120, 110]])
+        main.putData([['类目一', 50, 100, 70, 90, 120, 110]])
 
 
 
-        var category = [
-            ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎'],
-            ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-        ];
-        var main1 = new HxChartLine('main1', category, '多数据展示,并新增数据:putData');
+        var category = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+        var main1 = new HxChartLine('main1', category, '点击上方按钮新增数据:putData');
         main1.init();
         data = [
-            [1, 2, 3],
-            [2, 3, 2],
-            [3, 4, 4],
-            [4, 7, 5],
-            [5, 9, 6]
+            ['邮件营销', 1, 2, 3],
+            ['联盟广告', 2, 3, 2],
+            ['视频广告', 3, 4, 4],
+            ['直接访问', 4, 7, 5],
+            ['搜索引擎', 5, 9, 6]
         ];
         main1.putData(data);
         document.getElementById('button').addEventListener("click", function () {
-            var data = [Math.ceil(Math.random() * 10), Math.ceil(Math.random() * 10), Math.ceil(Math.random() * 10), Math.ceil(Math.random() * 10), Math.ceil(Math.random() * 10)]
+            var data = [
+                ['邮件营销', Math.ceil(Math.random() * 10)],
+                ['联盟广告', Math.ceil(Math.random() * 10)],
+                ['视频广告', Math.ceil(Math.random() * 10)],
+                ['直接访问', Math.ceil(Math.random() * 10)],
+                ['搜索引擎', Math.ceil(Math.random() * 10)]
+            ];
             main1.putData(data);
+        })
+        document.getElementById('button1').addEventListener("click", function () {
+            main1.putData([['新类目', Math.ceil(Math.random() * 10)]]);
         })
         document.getElementById('button2').addEventListener("click", function () {
             main1.clearData();
         })
-        var main2 = new HxChartLine('main2', [['类目一', '类目二'], ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']], '显示极值:showExtreme');
+        document.getElementById('button3').addEventListener("click", function () {
+            main1.putCategory(['新增']);
+        })
+        var main2 = new HxChartLine('main2', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '显示极值:showExtreme');
         main2.init();
-        main2.putData([[3, 2, 4, 6, 3, 2], [6, 8, 7, 9, 7, 6]]);
+        main2.putData([
+            ['类目一', 3, 2, 4, 6, 3, 2],
+            ['类目二', 6, 8, 7, 9, 7, 6]
+        ]);
         main2.showExtreme();
 
-        var main3 = new HxChartLine('main3', [['类目一', '类目二'], ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']], '显示极值:showAvarage');
+        var main3 = new HxChartLine('main3', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '显示极值:showAvarage');
         main3.init();
-        main3.putData([[3, 2, 4, 6, 3, 2], [6, 8, 7, 9, 7, 6]]);
+        main3.putData([['类目一', 3, 2, 4, 6, 3, 2], ['类目二', 6, 8, 7, 9, 7, 6]]);
         main3.showAvarage();
 
-        var main4 = new HxChartLine('main4', [['类目一'], ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']], '修改字体:setSize');
+        var main4 = new HxChartLine('main4', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改字体:setSize');
         main4.init();
-        main4.putData([[50, 100, 70, 90, 120, 110]])
+        main4.putData([['类目一', 50, 100, 70, 90, 120, 110]])
         main4.setSize('l');
         main4.showAvarage();
         main4.showExtreme();
-        var main5 = new HxChartLine('main5', [['类目一'], ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']], '修改字体:setSize');
+        var main5 = new HxChartLine('main5', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改字体:setSize');
         main5.init();
-        main5.putData([[50, 100, 70, 90, 120, 110]])
+        main5.putData([['类目一', 50, 100, 70, 90, 120, 110]])
         main5.setSize('m');
         main5.showAvarage();
         main5.showExtreme();
-        var main6 = new HxChartLine('main6', [['类目一'], ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']], '修改字体:setSize');
+        var main6 = new HxChartLine('main6', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改字体:setSize');
         main6.init();
-        main6.putData([[50, 100, 70, 90, 120, 110]])
+        main6.putData([['类目一', 50, 100, 70, 90, 120, 110]])
         main6.setSize('s');
         main6.showAvarage();
         main6.showExtreme();
 
-        var main7 = new HxChartLine('main7', [['类目一'], ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']]);
+        var main7 = new HxChartLine('main7', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']);
         main7.init();
-        main7.putData([[50, 100, 70, 90, 120, 110]])
+        main7.putData([['类目一', 50, 100, 70, 90, 120, 110]])
         main7.setTitle('修改标题:setTitle')
 
-        var main8 = new HxChartLine('main8', [['类目一'], ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']], '修改标题位置:setTitleLocation');
+        var main8 = new HxChartLine('main8', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改标题位置:setTitleLocation');
         main8.init();
-        main8.putData([[50, 100, 70, 90, 120, 110]])
+        main8.putData([['类目一', 50, 100, 70, 90, 120, 110]])
         main8.setTitleLocation('l')
     </script>
 </body>

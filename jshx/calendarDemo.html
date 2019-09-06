@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="#" />
-    <title>echarts</title>
-    <script src="./js/jquery-3.3.1.min.js"></script>
+    <title>日历Demo</title>
     <script src="./js/echarts.min.js"></script>
     <script src="./js/jshx.echarts.1.0.js"></script>
     <style>
@@ -66,9 +65,6 @@
     <hr>
     <div id="main8" class="demo"></div>
     <script>
-        $('#monthInput').change(function (data) {
-            console.log(data.currentTarget.value);
-        })
 
         function clickFunction(param) {
             console.log(param);
@@ -76,9 +72,6 @@
         function callback(param) {
             console.log(param);
             alert('第一个回调函数callback1:' + formatDate(new Date(param.data[0])));
-            // $.ajax({
-            //     url: '/'
-            // })
         }
         function callback2(param) {
             console.log(param);
