@@ -7,22 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./js/echarts.min.js"></script>
     <script src="./js/jshx.echarts.1.0.js"></script>
-    <title>饼状图demo</title>
+    <title>雷达图demo</title>
     <style>
         .demo {
             margin: 50px auto;
             width: 80%;
-            height: 600px;
+            height: 800px;
+        }
+
+        #main5 {
+            width: 100%;
+            height: 1000px;
         }
 
         #main6 {
             width: 60%;
-            height: 450px;
+            height: 600px;
         }
 
         #main7 {
             width: 40%;
-            height: 300px;
+            height: 500px;
         }
 
         #button {
@@ -48,8 +53,8 @@
     <button id="button2">点此清除数据clearData</button>
     <div id="main1" class="demo"></div>
     <hr>
-    <div id="main2" class="demo"></div>
-    <hr>
+    <!-- <div id="main2" class="demo"></div>
+    <hr> -->
     <div id="main3" class="demo"></div>
     <hr>
     <div id="main4" class="demo"></div>
@@ -57,33 +62,42 @@
     <div id="main5" class="demo"></div>
     <div id="main6" class="demo"></div>
     <div id="main7" class="demo"></div>
+    <div id="main8" class="demo"></div>
     <script>
-        var data = [
-            { value: 335, name: '直接访问' },
-            { value: 310, name: '邮件营销' },
-            { value: 234, name: '联盟广告' },
-            { value: 135, name: '视频广告' },
-            { value: 1548, name: '搜索引擎' }
+        var indicator = [
+            { name: '销售（sales）', max: 6500 },
+            { name: '管理（Administration）', max: 16000 },
+            { name: '信息技术（Information Techology）', max: 30000 },
+            { name: '客服（Customer Support）', max: 38000 },
+            { name: '研发（Development）', max: 52000 },
+            { name: '市场（Marketing）', max: 25000 }
         ];
-        var main = new HxChartPie('main', '普通饼状图');
+        var main = new HxChartRadar('main', indicator, '雷达图');
         main.init();
+        var data = [
+            {
+                value: [4300, 10000, 28000, 35000, 50000, 19000],
+                name: '预算分配（Allocated Budget）'
+            },
+            {
+                value: [5000, 14000, 28000, 31000, 42000, 21000],
+                name: '实际开销（Actual Spending）'
+            }
+        ];
         main.putData(data);
 
-        var main1 = new HxChartPie('main1', '点击上方按钮新增数据:putData');
+        var main1 = new HxChartRadar('main1', indicator, '点击上方按钮新增数据:putData');
         main1.init();
-        main1.putData([
-            { value: 335, name: '初始数据1' },
-            { value: 310, name: '初始数据2' },
-        ]);
+        main1.putData([{
+            value: [5000, 14000, 28000, 31000, 42000, 21000],
+            name: '初始数据'
+        }])
+
         document.getElementById('button').addEventListener("click", function () {
             var data = [
                 {
-                    value: Math.ceil(Math.random() * 1000),
-                    name: '初始数据1'
-                },
-                {
-                    value: Math.ceil(Math.random() * 1000),
-                    name: '初始数据2'
+                    value: [Math.ceil(Math.random() * 6500), Math.ceil(Math.random() * 16000), Math.ceil(Math.random() * 30000), Math.ceil(Math.random() * 38000), Math.ceil(Math.random() * 52000), Math.ceil(Math.random() * 25000),],
+                    name: '初始数据'
                 }
             ]
             main1.putData(data);
@@ -93,7 +107,7 @@
         document.getElementById('button1').addEventListener("click", function () {
             var data = [
                 {
-                    value: Math.ceil(Math.random() * 1000),
+                    value: [Math.ceil(Math.random() * 6500), Math.ceil(Math.random() * 16000), Math.ceil(Math.random() * 30000), Math.ceil(Math.random() * 38000), Math.ceil(Math.random() * 52000), Math.ceil(Math.random() * 25000),],
                     name: '第' + num + '次点击'
                 }
             ]
@@ -106,34 +120,32 @@
             num = 1;
         })
 
-        var main2 = new HxChartPie('main2');
-        main2.init();
-        main2.putData(data);
-        main2.setCircular();
-
-        var main3 = new HxChartPie('main3', '修改标题位置:setTitleLocation');
+        var main3 = new HxChartRadar('main3', indicator, '修改标题位置:setTitleLocation');
         main3.init();
         main3.putData(data);
         main3.setTitleLocation('l');
 
-        var main4 = new HxChartPie('main4');
+        var main4 = new HxChartRadar('main4', indicator);
         main4.init();
         main4.putData(data);
         main4.setTitle('修改标题:setTitle');
 
-        var main5 = new HxChartPie('main5', '修改字体:setSize');
+        var main5 = new HxChartRadar('main5', indicator, '修改字体:setSize');
         main5.init();
         main5.putData(data);
         main5.setSize('l');
-        var main6 = new HxChartPie('main6', '修改字体:setSize');
+        var main6 = new HxChartRadar('main6', indicator, '修改字体:setSize');
         main6.init();
         main6.putData(data);
         main6.setSize('m');
-        var main7 = new HxChartPie('main7', '修改字体:setSize');
+        var main7 = new HxChartRadar('main7', indicator, '修改字体:setSize');
         main7.init();
         main7.putData(data);
-        main7.setCircular();
         main7.setSize('s');
+        var main8 = new HxChartRadar('main8', indicator, '修改背景:setBackground');
+        main8.init();
+        main8.putData(data);
+        main8.setBackground('#eee');
     </script>
 </body>
 
