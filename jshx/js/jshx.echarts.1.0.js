@@ -1585,7 +1585,7 @@ HxChartCrossBar.prototype = {
             }
         }
         var newData = this.option.series.data.concat(data);
-        if (newData.length <= 10) {
+        if (newData.length <= this.option.yAxis.data.length) {
             this.option.series.data = newData;
             echarts.init(document.getElementById(this.id)).setOption(this.option);
         }
