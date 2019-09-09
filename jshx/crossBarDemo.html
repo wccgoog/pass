@@ -48,9 +48,10 @@
 <body>
     <div id="main" class="demo"></div>
     <hr>
-    <button id="button">点此更新已有数据putData</button>
-    <button id="button1">点此新增数据putData</button>
+    <button id="button">点此新增数据putData</button>
+    <!-- <button id="button1">点此新增数据putData</button> -->
     <button id="button2">点此清除数据clearData</button>
+    <button id="button3">点此增加x轴范围putCategory</button>
     <div id="main1" class="demo"></div>
     <hr>
     <div id="main3" class="demo"></div>
@@ -62,48 +63,51 @@
     <div id="main7" class="demo"></div>
     <div id="main8" class="demo"></div>
     <script>
-        // var data = [{ value: 50, name: '完成率', min: 0, max: 100 }];
-        // var main = new HxChartGauge('main', '仪表盘HxChartGauge');
-        // main.init();
-        // main.putData(data);
+        var data = [-0.07, -0.09, 0.01, 0.44, -0.23, 0.08, -0.17, 0.47, -0.36, 0.18];
+        var main = new HxChartCrossBar('main', '交错正负轴HxChartCrossBar');
+        main.init();
+        main.putData(data);
 
 
-        // var main1 = new HxChartGauge('main1', '点击上方按钮更新数据:putData');
-        // main1.init();
-        // main1.putData(data);
-
-        // document.getElementById('button').addEventListener("click", function () {
-        //     var data = [{ value: Math.ceil(Math.random() * 100), name: '完成率', min: 0, max: 100 }];
-        //     main1.putData(data);
+        var main1 = new HxChartCrossBar('main1', '点击上方按钮更新数据:putData');
+        main1.init();
+        main1.putData(data.slice(0, 5));
+        document.getElementById('button').addEventListener("click", function () {
+            var data = [Math.random().toFixed(2)];
+            main1.putData(data);
+        })
+        // document.getElementById('button1').addEventListener("click", function () {
+        //     main1.putData([['新类目', Math.ceil(Math.random() * 10)]]);
         // })
-
-        // document.getElementById('button2').addEventListener("click", function () {
-        //     main1.clearData();
-        // })
-
-        // var main3 = new HxChartGauge('main3', '修改标题位置:setTitleLocation');
+        document.getElementById('button2').addEventListener("click", function () {
+            main1.clearData();
+        })
+        document.getElementById('button3').addEventListener("click", function () {
+            main1.putCategory(['新增']);
+        })
+        // var main3 = new HxChartCrossBar('main3', '修改标题位置:setTitleLocation');
         // main3.init();
         // main3.putData(data);
         // main3.setTitleLocation('l');
 
-        // var main4 = new HxChartGauge('main4');
+        // var main4 = new HxChartCrossBar('main4');
         // main4.init();
         // main4.putData(data);
         // main4.setTitle('修改标题:setTitle');
 
-        // var main5 = new HxChartGauge('main5', '修改字体:setSize');
+        // var main5 = new HxChartCrossBar('main5', '修改字体:setSize');
         // main5.init();
         // main5.putData(data);
         // main5.setSize('l');
-        // var main6 = new HxChartGauge('main6', '修改字体:setSize');
+        // var main6 = new HxChartCrossBar('main6', '修改字体:setSize');
         // main6.init();
         // main6.putData(data);
         // main6.setSize('m');
-        // var main7 = new HxChartGauge('main7', '修改字体:setSize');
+        // var main7 = new HxChartCrossBar('main7', '修改字体:setSize');
         // main7.init();
         // main7.putData(data);
         // main7.setSize('s');
-        // var main8 = new HxChartGauge('main8', '修改背景:setBackground');
+        // var main8 = new HxChartCrossBar('main8', '修改背景:setBackground');
         // main8.init();
         // main8.putData(data);
         // main8.setBackground('#eee');

@@ -1470,28 +1470,13 @@ function HxChartCrossBar(id, title) {
     this.titleFontSize = [30, 24, 18];
     this.id = id;
     this.title = title || '';
-    this.series = {
-        name: '生活费',
-        type: 'bar',
-        stack: '总量',
-        label: {
-            normal: {
-                show: true,
-                formatter: '{b}'
-            }
-        },
-        data: [
-            { value: -0.07, label: labelRight },
-            { value: -0.09, label: labelRight },
-            0.2, 0.44,
-            { value: -0.23, label: labelRight },
-            0.08,
-            { value: -0.17, label: labelRight },
-            0.47,
-            { value: -0.36, label: labelRight },
-            0.18
-        ]
+    this.labelRight = {
+        normal: {
+            position: 'right'
+        }
     };
+    this.data = [];
+    this.category = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
     this.option = {
         title: {
             text: this.title,
@@ -1521,9 +1506,18 @@ function HxChartCrossBar(id, title) {
             axisLabel: { show: false },
             axisTick: { show: false },
             splitLine: { show: false },
-            data: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+            data: this.category
         },
-        series: this.series
+        series: {
+            type: 'bar',
+            label: {
+                normal: {
+                    show: true,
+                    formatter: '{b}'
+                }
+            },
+            data: this.data
+        }
     };
 }
 
@@ -1580,6 +1574,30 @@ HxChartCrossBar.prototype = {
     },
     // 新增修改数据
     putData: function (data) {
-
-    }
+        var labelRight = {
+            normal: {
+                position: 'right'
+            }
+        };
+        for (var i = 0; i < data.length; i++) {
+            if (data[i] < 0) {
+                data[i] = { value: data[i], label: labelRight }
+            }
+        }
+        var newData = this.option.series.data.concat(data);
+        if (newData.length <= 10) {
+            this.option.series.data = newData;
+            echarts.init(document.getElementById(this.id)).setOption(this.option);
+        }
+    },
+    // 新增x轴数据
+    putCategory: function (data) {
+        this.option.yAxis.data = this.option.yAxis.data.concat(data);
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 清空数据
+    clearData: function () {
+        this.option.series.data = [];
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
 }
