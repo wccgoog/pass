@@ -774,7 +774,7 @@ function HxChartScatter(id, title) {
             offset: 1,
             color: 'rgb(25, 183, 207)'
         }]
-    ]
+    ];
     this.id = id;
     this.title = title || '';
     this.series = [];
@@ -786,7 +786,10 @@ function HxChartScatter(id, title) {
         },
         textStyle: {},
         tooltip: {
-            textStyle: {}
+            textStyle: {},
+            formatter: function (params) {
+                return '横轴:' + params.value[0] + ',纵轴:' + params.value[1] + ',值:' + params.value[2]
+            }
         },
         legend: {
             right: 10,
@@ -1259,7 +1262,7 @@ HxChartMultiGauge.prototype = {
                     z: 3,
                     min: data[i][0].min,
                     max: data[i][0].max,
-                    radius: '50%',
+                    radius: '70%',
                     axisLine: {            // 坐标轴线
                         lineStyle: {       // 属性lineStyle控制线条样式
                             width: 10
@@ -1318,7 +1321,7 @@ HxChartMultiGauge.prototype = {
                     name: data[i][0].name,
                     type: 'gauge',
                     center: ['20%', '55%'],    // 默认全局居中
-                    radius: '35%',
+                    radius: '50%',
                     min: data[i][0].min,
                     max: data[i][0].max,
                     endAngle: 45,
@@ -1359,7 +1362,7 @@ HxChartMultiGauge.prototype = {
                     name: data[i][0].name,
                     type: 'gauge',
                     center: ['77%', '50%'],    // 默认全局居中
-                    radius: '25%',
+                    radius: '35%',
                     min: data[i][0].min,
                     max: data[i][0].max,
                     startAngle: 135,
@@ -1410,7 +1413,7 @@ HxChartMultiGauge.prototype = {
                     name: data[i][0].name,
                     type: 'gauge',
                     center: ['77%', '50%'],    // 默认全局居中
-                    radius: '25%',
+                    radius: '35%',
                     min: data[i][0].min,
                     max: data[i][0].max,
                     startAngle: 315,
@@ -1464,19 +1467,19 @@ HxChartMultiGauge.prototype = {
 }
 
 // 交错正负轴封装
-function HxChartCrossBar(id, title) {
+function HxChartCrossBar(id, category, title) {
     // 大中小字体,对应size为l,m,s
     this.fontSize = [24, 16, 12];
     this.titleFontSize = [30, 24, 18];
     this.id = id;
     this.title = title || '';
+    this.category = category;
     this.labelRight = {
         normal: {
             position: 'right'
         }
     };
     this.data = [];
-    this.category = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
     this.option = {
         title: {
             text: this.title,
@@ -1499,6 +1502,7 @@ function HxChartCrossBar(id, title) {
             type: 'value',
             position: 'top',
             splitLine: { lineStyle: { type: 'dashed' } },
+            axisLabel: {}
         },
         yAxis: {
             type: 'category',
@@ -1552,16 +1556,19 @@ HxChartCrossBar.prototype = {
             case 'l':
                 this.option.textStyle.fontSize = this.fontSize[0];
                 this.option.tooltip.textStyle.fontSize = this.fontSize[0];
+                this.option.xAxis.axisLabel.fontSize = this.fontSize[0];
                 this.option.title.textStyle.fontSize = this.titleFontSize[0];
                 break;
             case 'm':
                 this.option.textStyle.fontSize = this.fontSize[1];
                 this.option.tooltip.textStyle.fontSize = this.fontSize[1];
+                this.option.xAxis.axisLabel.fontSize = this.fontSize[1];
                 this.option.title.textStyle.fontSize = this.titleFontSize[1];
                 break;
             case 's':
                 this.option.textStyle.fontSize = this.fontSize[2];
                 this.option.tooltip.textStyle.fontSize = this.fontSize[2];
+                this.option.xAxis.axisLabel.fontSize = this.fontSize[2];
                 this.option.title.textStyle.fontSize = this.titleFontSize[2];
                 break;
         }

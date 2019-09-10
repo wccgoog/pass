@@ -10,16 +10,12 @@
 <body>
     <div id="instance" style="height: 700px; width: 1300px;"></div>
     <script>
-        var instance = new HxChartScatter('instance');
+        var instance = new HxChartMultiGauge('instance');
         instance.init();
         instance.setBackground('#f9f1f1');
-        instance.putData([
-            ['类目一', [4, 66, 888, '数据1'], [7, 33, 553, '数据2']],
-            ['类目二', [8, 34, 645, '数据1'], [2, 48, 393, '数据2']],
-        ]);
+        instance.putData([[{ value: 50, name: '完成率', min: 0, max: 100 }], [{ value: 1.5, name: '数据2', max: 7, min: 0 }], [{ value: 1.5, name: '数据3', max: 7, min: 1 }], [{ value: 0.5, name: '数据4', max: 2, min: 0 }]]);
         instance.setSize('m');
         instance.setTitle('示例');
-        instance.putData([['类目二', [5, 24, 145, '数据3']]]);
     </script>
 </body>
 
