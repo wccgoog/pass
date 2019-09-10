@@ -11,14 +11,17 @@
 </head>
 
 <body>
-    <div id="instance" style="height: 1800px; width: 100%;"></div>
+    <div id="instance" style="height: 900px; width: 100%;"></div>
     <script>
-        var instance = new HxChartCalendar('instance', '2019-09');
+        var instance = new HxChartLine('instance', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']);
         instance.init();
         instance.setBackground('#f9f1f1');
-        instance.putData([['2019-09-01', 100], ['2019-09-03', 200]]);
-        instance.setSize('l');
-        instance.setTitle('示例')
+        instance.putData([['类目一', 50, 100, 70, 90, 120, 110], ['类目二', 60, 80, 70, 100, 70, 60]]);
+        instance.setSize('m');
+        instance.setTitle('示例');
+        instance.showAvarage();
+        instance.showExtreme();
+        instance.putCategory(['第七天']);
     </script>
 </body>
 

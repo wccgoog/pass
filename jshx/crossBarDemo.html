@@ -49,7 +49,6 @@
     <div id="main" class="demo"></div>
     <hr>
     <button id="button">点此新增数据putData</button>
-    <!-- <button id="button1">点此新增数据putData</button> -->
     <button id="button2">点此清除数据clearData</button>
     <button id="button3">点此增加x轴范围putCategory</button>
     <div id="main1" class="demo"></div>
@@ -73,12 +72,9 @@
         main1.init();
         main1.putData(data.slice(0, 5));
         document.getElementById('button').addEventListener("click", function () {
-            var data = [Math.random().toFixed(2)];
+            var data = [Math.random() > 0.5 ? Math.random().toFixed(2) : -Math.random().toFixed(2)];
             main1.putData(data);
         })
-        // document.getElementById('button1').addEventListener("click", function () {
-        //     main1.putData([['新类目', Math.ceil(Math.random() * 10)]]);
-        // })
         document.getElementById('button2').addEventListener("click", function () {
             main1.clearData();
         })

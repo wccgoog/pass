@@ -1,4 +1,4 @@
-//一般日历
+//日历封装
 function HxChartCalendar(id, range, title) {
     this.id = id || '';
     if (typeof (range) == 'object') {
@@ -10,11 +10,9 @@ function HxChartCalendar(id, range, title) {
     this.graphData = [[]];
     // series[0]使用的data,既日期
     this.list = getDateListFromRange(this.range);
-    // 大中小,对应size为l,m,s
-    this.width = [1200, 600, 450];
-    this.height = [800, 400, 300];
+    // 大中小字体,对应size为l,m,s
     this.fontSize = [24, 16, 12];
-    this.titleFontSize = [30, 24, 18]
+    this.titleFontSize = [30, 24, 18];
 
     this.option = {
         textStyle: {
@@ -227,7 +225,7 @@ HxChartCalendar.prototype = {
             };
         }
     },
-    // 修改图表大小
+    // 修改图表字体大小
     setSize: function (size) {
         switch (size) {
             case 'l':
@@ -296,44 +294,45 @@ function formatDate(date) {
     return (myyear + "-" + mymonth + "-" + myweekday);
 }
 
-function HxChartLine(id, category) {
+// 折线图封装
+function HxChartLine(id, category, title) {
     this.id = id;
     this.category = category;
+    this.title = title || '';
     this.series = [];
-    for (var i = 0; i < this.category[0].length; i++) {
-        this.series[i] = {
-            name: this.category[0][i],
-            type: 'line',
-            data: []
-        }
-    }
+    // 大中小字体,对应size为l,m,s
+    this.fontSize = [24, 16, 12];
+    this.titleFontSize = [30, 24, 18];
 
     this.option = {
         title: {
-            text: '折线图堆叠'
+            text: this.title,
+            left: 'center',
+            textStyle: {}
         },
+        textStyle: {},
         tooltip: {
-            trigger: 'axis'
+            trigger: 'axis',
+            textStyle: {}
         },
-        legend: {},
+        legend: {
+            bottom: 0
+        },
         grid: {
             left: '3%',
             right: '4%',
-            bottom: '3%',
+            bottom: 50,
             containLabel: true
-        },
-        toolbox: {
-            feature: {
-                saveAsImage: {}
-            }
         },
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: this.category[1]
+            data: this.category,
+            axisLabel: {}
         },
         yAxis: {
-            type: 'value'
+            type: 'value',
+            axisLabel: {}
         },
         series: this.series
     };
@@ -344,12 +343,1261 @@ HxChartLine.prototype = {
     init: function () {
         echarts.init(document.getElementById(this.id)).setOption(this.option);
     },
-    putData: function (data) {
-        var lastData = this.option.series;
-        for (var i = 0; i < lastData.length; i++) {
-            lastData[i].data = lastData[i].data.concat(data[i]);
+    // set标题并重载图表
+    setTitle: function (text) {
+        this.option.title.text = text;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题位置并重载图表
+    setTitleLocation: function (x) {
+        switch (x) {
+            case 'l':
+                this.option.title.left = 'left';
+                break;
+            case 'c':
+                this.option.title.left = 'center';
+                break;
+            case 'r':
+                this.option.title.left = 'right';
+                break;
         }
-        this.option.series = lastData;
-        echarts.init(document.getElementById(this.id)).setOption(this.option);;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 新增修改数据
+    putData: function (data) {
+        for (var i = 0; i < data.length; i++) {
+            // 判断是否已经有这个类目
+            var flag = 0;
+            for (var j = 0; j < this.option.series.length; j++) {
+                if (data[i][0] == this.option.series[j].name) {
+                    this.option.series[j].data = this.option.series[j].data.concat(data[i].slice(1));
+                    flag = 1;
+                }
+            }
+            // 若没有这个类目,则新增类目
+            if (flag == 0) {
+                this.option.series.push({
+                    name: data[i][0],
+                    type: 'line',
+                    data: data[i].slice(1)
+                })
+            }
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 新增x轴数据
+    putCategory: function (data) {
+        this.option.xAxis.data = this.option.xAxis.data.concat(data);
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 清空数据
+    clearData: function () {
+        for (var i = 0; i < this.option.series.length; i++) {
+            this.option.series[i].data = [];
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 显示每条线的极值
+    showExtreme: function () {
+        for (var i = 0; i < this.option.series.length; i++) {
+            this.option.series[i].markPoint = {
+                data: [
+                    { type: 'max', name: '最大值' },
+                    { type: 'min', name: '最小值' }
+                ]
+            }
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 显示每条线的均线
+    showAvarage: function () {
+        for (var i = 0; i < this.option.series.length; i++) {
+            this.option.series[i].markLine = {
+                data: [
+                    { type: 'average', name: '平均值' }
+                ]
+            }
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 修改图表字体大小
+    setSize: function (size) {
+        switch (size) {
+            case 'l':
+                this.option.xAxis.axisLabel.fontSize = this.fontSize[0];
+                this.option.yAxis.axisLabel.fontSize = this.fontSize[0];
+                this.option.textStyle.fontSize = this.fontSize[0];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[0];
+                this.option.title.textStyle.fontSize = this.titleFontSize[0];
+                break;
+            case 'm':
+                this.option.xAxis.axisLabel.fontSize = this.fontSize[1];
+                this.option.yAxis.axisLabel.fontSize = this.fontSize[1];
+                this.option.textStyle.fontSize = this.fontSize[1];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[1];
+                this.option.title.textStyle.fontSize = this.titleFontSize[1];
+                break;
+            case 's':
+                this.option.xAxis.axisLabel.fontSize = this.fontSize[2];
+                this.option.yAxis.axisLabel.fontSize = this.fontSize[2];
+                this.option.textStyle.fontSize = this.fontSize[2];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[2];
+                this.option.title.textStyle.fontSize = this.titleFontSize[2];
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set背景并重载图表
+    setBackground: function (color) {
+        this.option.backgroundColor = color;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+}
+
+// 柱状图封装
+function HxChartBar(id, category, title) {
+    this.id = id;
+    this.category = category;
+    this.title = title || '';
+    this.series = [];
+    // 大中小字体,对应size为l,m,s
+    this.fontSize = [24, 16, 12];
+    this.titleFontSize = [30, 24, 18];
+
+    this.option = {
+        title: {
+            text: this.title,
+            left: 'center',
+            textStyle: {}
+        },
+        textStyle: {},
+        tooltip: {
+            trigger: 'axis',
+            textStyle: {}
+        },
+        legend: {
+            bottom: 0
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: 50,
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            data: this.category,
+            axisLabel: {}
+        },
+        yAxis: {
+            type: 'value',
+            axisLabel: {}
+        },
+        series: this.series
+    };
+}
+
+HxChartBar.prototype = {
+    constructor: HxChartBar,
+    init: function () {
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题并重载图表
+    setTitle: function (text) {
+        this.option.title.text = text;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题位置并重载图表
+    setTitleLocation: function (x) {
+        switch (x) {
+            case 'l':
+                this.option.title.left = 'left';
+                break;
+            case 'c':
+                this.option.title.left = 'center';
+                break;
+            case 'r':
+                this.option.title.left = 'right';
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 新增修改数据
+    putData: function (data) {
+        for (var i = 0; i < data.length; i++) {
+            // 判断是否已经有这个类目
+            var flag = 0;
+            for (var j = 0; j < this.option.series.length; j++) {
+                if (data[i][0] == this.option.series[j].name) {
+                    this.option.series[j].data = this.option.series[j].data.concat(data[i].slice(1));
+                    flag = 1;
+                }
+            }
+            // 若没有这个类目,则新增类目
+            if (flag == 0) {
+                this.option.series.push({
+                    name: data[i][0],
+                    type: 'bar',
+                    data: data[i].slice(1)
+                })
+            }
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 新增x轴数据
+    putCategory: function (data) {
+        this.option.xAxis.data = this.option.xAxis.data.concat(data);
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 清空数据
+    clearData: function () {
+        for (var i = 0; i < this.option.series.length; i++) {
+            this.option.series[i].data = [];
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 显示每条线的极值
+    showExtreme: function () {
+        for (var i = 0; i < this.option.series.length; i++) {
+            this.option.series[i].markPoint = {
+                data: [
+                    { type: 'max', name: '最大值' },
+                    { type: 'min', name: '最小值' }
+                ]
+            }
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 显示每条线的均线
+    showAvarage: function () {
+        for (var i = 0; i < this.option.series.length; i++) {
+            this.option.series[i].markLine = {
+                data: [
+                    { type: 'average', name: '平均值' }
+                ]
+            }
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 修改图表字体大小
+    setSize: function (size) {
+        switch (size) {
+            case 'l':
+                this.option.xAxis.axisLabel.fontSize = this.fontSize[0];
+                this.option.yAxis.axisLabel.fontSize = this.fontSize[0];
+                this.option.textStyle.fontSize = this.fontSize[0];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[0];
+                this.option.title.textStyle.fontSize = this.titleFontSize[0];
+                break;
+            case 'm':
+                this.option.xAxis.axisLabel.fontSize = this.fontSize[1];
+                this.option.yAxis.axisLabel.fontSize = this.fontSize[1];
+                this.option.textStyle.fontSize = this.fontSize[1];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[1];
+                this.option.title.textStyle.fontSize = this.titleFontSize[1];
+                break;
+            case 's':
+                this.option.xAxis.axisLabel.fontSize = this.fontSize[2];
+                this.option.yAxis.axisLabel.fontSize = this.fontSize[2];
+                this.option.textStyle.fontSize = this.fontSize[2];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[2];
+                this.option.title.textStyle.fontSize = this.titleFontSize[2];
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set背景并重载图表
+    setBackground: function (color) {
+        this.option.backgroundColor = color;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+}
+
+// 饼状图封装
+function HxChartPie(id, title) {
+    // 大中小字体,对应size为l,m,s
+    this.fontSize = [24, 16, 12];
+    this.titleFontSize = [30, 24, 18];
+    this.id = id;
+    this.data = [];
+    this.radius = [0, '70%'];
+    this.circular = ['55%', '70%'];
+    this.title = title || '';
+    this.option = {
+        title: {
+            text: this.title,
+            left: 'center',
+            textStyle: {}
+        },
+        textStyle: {},
+        tooltip: {
+            trigger: 'item',
+            formatter: "{b} : {c} ({d}%)",
+            textStyle: {}
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            top: '10%'
+        },
+        series: {
+            type: 'pie',
+            radius: this.radius,
+            data: this.data,
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
     }
+}
+HxChartPie.prototype = {
+    constructor: HxChartPie,
+    init: function () {
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题并重载图表
+    setTitle: function (text) {
+        this.option.title.text = text;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题位置并重载图表
+    setTitleLocation: function (x) {
+        switch (x) {
+            case 'l':
+                this.option.title.left = 'left';
+                break;
+            case 'c':
+                this.option.title.left = 'center';
+                break;
+            case 'r':
+                this.option.title.left = 'right';
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 新增修改数据
+    putData: function (data) {
+        for (var i = 0; i < data.length; i++) {
+            var flag = 0;
+            for (var j = 0; j < this.option.series.data.length; j++) {
+                if (data[i].name == this.option.series.data[j].name) {
+                    this.option.series.data[j].value = data[i].value;
+                    flag = 1;
+                }
+            }
+            if (flag == 0) {
+                this.option.series.data = this.option.series.data.concat(data[i])
+            }
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 清空数据
+    clearData: function () {
+        this.option.series.data = [];
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 变成圆环
+    setCircular: function () {
+        this.option.series.radius = this.circular;
+        this.option.series.label = {
+            show: false,
+            position: 'center',
+            emphasis: {
+                show: true,
+                textStyle: {
+                    fontSize: '30',
+                    fontWeight: 'bold'
+                }
+            }
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 修改图表字体大小
+    setSize: function (size) {
+        switch (size) {
+            case 'l':
+                this.option.textStyle.fontSize = this.fontSize[0];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[0];
+                this.option.title.textStyle.fontSize = this.titleFontSize[0];
+                if (this.option.series.label) {
+                    this.option.series.label.emphasis.textStyle.fontSize = this.titleFontSize[0];
+                }
+                break;
+            case 'm':
+                this.option.textStyle.fontSize = this.fontSize[1];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[1];
+                this.option.title.textStyle.fontSize = this.titleFontSize[1];
+                if (this.option.series.label) {
+                    this.option.series.label.emphasis.textStyle.fontSize = this.titleFontSize[1];
+                }
+                break;
+            case 's':
+                this.option.textStyle.fontSize = this.fontSize[2];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[2];
+                this.option.title.textStyle.fontSize = this.titleFontSize[2];
+                if (this.option.series.label) {
+                    this.option.series.label.emphasis.textStyle.fontSize = this.titleFontSize[2];
+                }
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set背景并重载图表
+    setBackground: function (color) {
+        this.option.backgroundColor = color;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+}
+
+// 气泡图封装
+function HxChartScatter(id, title) {
+    // 大中小字体,对应size为l,m,s
+    this.fontSize = [24, 16, 12];
+    this.titleFontSize = [30, 24, 18];
+    this.symbolSize = [50, 40, 30];
+    this.itemColor = [
+        [{
+            offset: 0,
+            color: 'rgb(251, 118, 123)'
+        }, {
+            offset: 1,
+            color: 'rgb(204, 46, 72)'
+        }],
+        [{
+            offset: 0,
+            color: 'rgb(129, 227, 238)'
+        }, {
+            offset: 1,
+            color: 'rgb(25, 183, 207)'
+        }]
+    ]
+    this.id = id;
+    this.title = title || '';
+    this.series = [];
+    this.option = {
+        title: {
+            text: this.title,
+            left: 'center',
+            textStyle: {}
+        },
+        textStyle: {},
+        tooltip: {
+            textStyle: {}
+        },
+        legend: {
+            right: 10,
+        },
+        xAxis: {
+            splitLine: {
+                lineStyle: {
+                    type: 'dashed'
+                }
+            },
+            axisLabel: {}
+        },
+        yAxis: {
+            splitLine: {
+                lineStyle: {
+                    type: 'dashed'
+                }
+            },
+            scale: true,
+            axisLabel: {}
+        },
+        series: this.series
+    };
+}
+
+HxChartScatter.prototype = {
+    constructor: HxChartScatter,
+    init: function () {
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题并重载图表
+    setTitle: function (text) {
+        this.option.title.text = text;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题位置并重载图表
+    setTitleLocation: function (x) {
+        switch (x) {
+            case 'l':
+                this.option.title.left = 'left';
+                break;
+            case 'c':
+                this.option.title.left = 'center';
+                break;
+            case 'r':
+                this.option.title.left = 'right';
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 新增修改数据
+    putData: function (data) {
+        for (var i = 0; i < data.length; i++) {
+            var flag = 0;
+            for (var j = 0; j < this.option.series.length; j++) {
+                if (data[i][0] == this.option.series[j].name) {
+                    this.option.series[j].data = this.option.series[j].data.concat(data[i].slice(1));
+                    flag = 1;
+                }
+            }
+            if (flag == 0) {
+                this.option.series.push({
+                    name: data[i][0],
+                    data: data[i].slice(1),
+                    type: 'scatter',
+                    symbolSize: 50,
+                    label: {
+                        emphasis: {
+                            show: true,
+                            formatter: function (param) {
+                                return param.data[3];
+                            },
+                            position: 'top'
+                        }
+                    },
+                    itemStyle: {
+                        normal: {
+                            shadowBlur: 10,
+                            shadowColor: 'rgba(120, 36, 50, 0.5)',
+                            shadowOffsetY: 5,
+                            color: createRandomRGB()
+                        }
+                    }
+                })
+            }
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 清空数据
+    clearData: function () {
+        for (var i = 0; i < this.option.series.length; i++) {
+            this.option.series[i].data = [];
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 修改影响图形大小的最大值
+    setCompareNum: function (compareNum) {
+        for (var i = 0; i < this.option.series.length; i++) {
+            this.option.series[i].symbolSize = function (data) {
+                return data[2] / compareNum * 50 > 50 ? 50 : data[2] / compareNum * 50;
+            }
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 修改图表字体大小
+    setSize: function (size) {
+        switch (size) {
+            case 'l':
+                this.option.xAxis.axisLabel.fontSize = this.fontSize[0];
+                this.option.yAxis.axisLabel.fontSize = this.fontSize[0];
+                this.option.textStyle.fontSize = this.fontSize[0];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[0];
+                this.option.title.textStyle.fontSize = this.titleFontSize[0];
+                for (var i = 0; i < this.option.series.length; i++) {
+                    this.option.series[i].label.emphasis.fontSize = this.fontSize[0];
+                    this.option.series[i].symbolSize = this.symbolSize[0];
+                }
+                break;
+            case 'm':
+                this.option.xAxis.axisLabel.fontSize = this.fontSize[1];
+                this.option.yAxis.axisLabel.fontSize = this.fontSize[1];
+                this.option.textStyle.fontSize = this.fontSize[1];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[1];
+                this.option.title.textStyle.fontSize = this.titleFontSize[1];
+                for (var i = 0; i < this.option.series.length; i++) {
+                    this.option.series[i].label.emphasis.fontSize = this.fontSize[1];
+                    this.option.series[i].symbolSize = this.symbolSize[1];
+                }
+                break;
+            case 's':
+                this.option.xAxis.axisLabel.fontSize = this.fontSize[2];
+                this.option.yAxis.axisLabel.fontSize = this.fontSize[2];
+                this.option.textStyle.fontSize = this.fontSize[2];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[2];
+                this.option.title.textStyle.fontSize = this.titleFontSize[2];
+                for (var i = 0; i < this.option.series.length; i++) {
+                    this.option.series[i].label.emphasis.fontSize = this.fontSize[2];
+                    this.option.series[i].symbolSize = this.symbolSize[2];
+                }
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set背景并重载图表
+    setBackground: function (color) {
+        this.option.backgroundColor = color;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+}
+
+// 随机生成rgb颜色字符串
+function createRandomRGB() {
+    return 'rgb(' + Math.ceil(Math.random() * 255) + ',' + Math.ceil(Math.random() * 255) + ',' + Math.ceil(Math.random() * 255) + ')';
+}
+
+// 雷达图封装
+function HxChartRadar(id, indicator, title) {
+    // 大中小字体,对应size为l,m,s
+    this.fontSize = [24, 16, 12];
+    this.titleFontSize = [30, 24, 18];
+    this.id = id;
+    this.title = title || '';
+    this.indicator = indicator;
+    this.series = {
+        type: 'radar',
+        data: []
+    };
+    this.option = {
+        title: {
+            text: this.title,
+            left: 'center',
+            textStyle: {}
+        },
+        textStyle: {},
+        tooltip: {
+            textStyle: {}
+        },
+        legend: {
+            bottom: 0
+        },
+        radar: {
+            name: {
+                textStyle: {
+                    color: '#fff',
+                    backgroundColor: '#999',
+                    borderRadius: 3,
+                    padding: [3, 5]
+                }
+            },
+            indicator: this.indicator
+        },
+        series: this.series
+    };
+}
+
+HxChartRadar.prototype = {
+    constructor: HxChartRadar,
+    init: function () {
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题并重载图表
+    setTitle: function (text) {
+        this.option.title.text = text;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题位置并重载图表
+    setTitleLocation: function (x) {
+        switch (x) {
+            case 'l':
+                this.option.title.left = 'left';
+                break;
+            case 'c':
+                this.option.title.left = 'center';
+                break;
+            case 'r':
+                this.option.title.left = 'right';
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 修改图表字体大小
+    setSize: function (size) {
+        switch (size) {
+            case 'l':
+                this.option.textStyle.fontSize = this.fontSize[0];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[0];
+                this.option.title.textStyle.fontSize = this.titleFontSize[0];
+                break;
+            case 'm':
+                this.option.textStyle.fontSize = this.fontSize[1];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[1];
+                this.option.title.textStyle.fontSize = this.titleFontSize[1];
+                break;
+            case 's':
+                this.option.textStyle.fontSize = this.fontSize[2];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[2];
+                this.option.title.textStyle.fontSize = this.titleFontSize[2];
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set背景并重载图表
+    setBackground: function (color) {
+        this.option.backgroundColor = color;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 新增修改数据
+    putData: function (data) {
+        for (var i = 0; i < data.length; i++) {
+            var flag = 0;
+            for (var j = 0; j < this.option.series.data.length; j++) {
+                if (data[i].name == this.option.series.data[j].name) {
+                    this.option.series.data[j].value = data[i].value;
+                    flag = 1;
+                }
+            }
+            if (flag == 0) {
+                this.option.series.data = this.option.series.data.concat(data[i])
+            }
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 清空数据
+    clearData: function () {
+        this.option.series.data = [];
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    }
+}
+
+// 仪表盘封装
+function HxChartGauge(id, title) {
+    // 大中小字体,对应size为l,m,s
+    this.fontSize = [24, 16, 12];
+    this.titleFontSize = [30, 24, 18];
+    this.id = id;
+    this.title = title || '';
+    this.series = []
+    this.option = {
+        title: {
+            text: this.title,
+            left: 'center',
+            textStyle: {}
+        },
+        textStyle: {},
+        tooltip: {
+            textStyle: {},
+            formatter: "{b}:{c}"
+        },
+        series: this.series
+    }
+}
+
+HxChartGauge.prototype = {
+    constructor: HxChartGauge,
+    init: function () {
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题并重载图表
+    setTitle: function (text) {
+        this.option.title.text = text;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题位置并重载图表
+    setTitleLocation: function (x) {
+        switch (x) {
+            case 'l':
+                this.option.title.left = 'left';
+                break;
+            case 'c':
+                this.option.title.left = 'center';
+                break;
+            case 'r':
+                this.option.title.left = 'right';
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 修改图表字体大小
+    setSize: function (size) {
+        switch (size) {
+            case 'l':
+                this.option.textStyle.fontSize = this.fontSize[0];
+                this.option.series.title.fontSize = this.fontSize[0];
+                this.option.series.detail.fontSize = this.titleFontSize[0];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[0];
+                this.option.title.textStyle.fontSize = this.titleFontSize[0];
+                break;
+            case 'm':
+                this.option.textStyle.fontSize = this.fontSize[1];
+                this.option.series.title.fontSize = this.fontSize[1];
+                this.option.series.detail.fontSize = this.titleFontSize[1];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[1];
+                this.option.title.textStyle.fontSize = this.titleFontSize[1];
+                break;
+            case 's':
+                this.option.textStyle.fontSize = this.fontSize[2];
+                this.option.series.title.fontSize = this.fontSize[2];
+                this.option.series.detail.fontSize = this.titleFontSize[2];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[2];
+                this.option.title.textStyle.fontSize = this.titleFontSize[2];
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set背景并重载图表
+    setBackground: function (color) {
+        this.option.backgroundColor = color;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 新增修改数据
+    putData: function (data) {
+        this.option.series = {
+            name: data[0].name,
+            type: 'gauge',
+            title: {},
+            detail: {},
+            min: data[0].min,
+            max: data[0].max,
+            data: data
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 清空数据
+    clearData: function () {
+        this.option.series.data = [];
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    }
+}
+
+
+function HxChartMultiGauge(id, title) {
+    // 大中小字体,对应size为l,m,s
+    this.fontSize = [24, 16, 12];
+    this.titleFontSize = [30, 24, 18];
+    this.id = id;
+    this.title = title || '';
+    this.series = []
+    this.option = {
+        title: {
+            text: this.title,
+            left: 'center',
+            textStyle: {}
+        },
+        textStyle: {},
+        tooltip: {
+            textStyle: {},
+            formatter: "{b}:{c}"
+        },
+        series: this.series
+    }
+}
+
+HxChartMultiGauge.prototype = {
+    constructor: HxChartMultiGauge,
+    init: function () {
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题并重载图表
+    setTitle: function (text) {
+        this.option.title.text = text;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题位置并重载图表
+    setTitleLocation: function (x) {
+        switch (x) {
+            case 'l':
+                this.option.title.left = 'left';
+                break;
+            case 'c':
+                this.option.title.left = 'center';
+                break;
+            case 'r':
+                this.option.title.left = 'right';
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 修改图表字体大小
+    setSize: function (size) {
+        switch (size) {
+            case 'l':
+                this.option.textStyle.fontSize = this.fontSize[0];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[0];
+                this.option.title.textStyle.fontSize = this.titleFontSize[0];
+                this.option.series[0].title.fontSize = this.fontSize[0];
+                this.option.series[0].detail.fontSize = this.titleFontSize[0];
+                this.option.series[1].title.fontSize = this.fontSize[0];
+                this.option.series[1].detail.fontSize = this.titleFontSize[0];
+                break;
+            case 'm':
+                this.option.textStyle.fontSize = this.fontSize[1];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[1];
+                this.option.title.textStyle.fontSize = this.titleFontSize[1];
+                this.option.series[0].title.fontSize = this.fontSize[1];
+                this.option.series[0].detail.fontSize = this.titleFontSize[1];
+                this.option.series[1].title.fontSize = this.fontSize[1];
+                this.option.series[1].detail.fontSize = this.titleFontSize[1];
+                break;
+            case 's':
+                this.option.textStyle.fontSize = this.fontSize[2];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[2];
+                this.option.title.textStyle.fontSize = this.titleFontSize[2];
+                this.option.series[0].title.fontSize = this.fontSize[2];
+                this.option.series[0].detail.fontSize = this.titleFontSize[2];
+                this.option.series[1].title.fontSize = this.fontSize[2];
+                this.option.series[1].detail.fontSize = this.titleFontSize[2];
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set背景并重载图表
+    setBackground: function (color) {
+        this.option.backgroundColor = color;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 新增修改数据
+    putData: function (data) {
+        for (var i = 0; i < data.length; i++) {
+            var flag = 0;
+            for (var j = 0; j < this.option.series.length; j++) {
+                if (data[i][0].name == this.option.series[j].name) {
+                    flag = 1;
+                    this.option.series[j].data = data[i];
+                }
+            }
+            if (flag == 0 && this.option.series.length == 0) {
+                this.option.series[0] = {
+                    name: data[i][0].name,
+                    type: 'gauge',
+                    z: 3,
+                    min: data[i][0].min,
+                    max: data[i][0].max,
+                    radius: '50%',
+                    axisLine: {            // 坐标轴线
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            width: 10
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        length: 15,        // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    splitLine: {           // 分隔线
+                        length: 20,         // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    axisLabel: {
+                        backgroundColor: 'auto',
+                        borderRadius: 2,
+                        color: '#eee',
+                        padding: 3,
+                        textShadowBlur: 2,
+                        textShadowOffsetX: 1,
+                        textShadowOffsetY: 1,
+                        textShadowColor: '#222'
+                    },
+                    title: {
+                        fontWeight: 'bolder',
+                        fontSize: 20,
+                        fontStyle: 'italic'
+                    },
+                    detail: {
+                        fontWeight: 'bolder',
+                        borderRadius: 3,
+                        backgroundColor: '#444',
+                        borderColor: '#aaa',
+                        shadowBlur: 5,
+                        shadowColor: '#333',
+                        shadowOffsetX: 0,
+                        shadowOffsetY: 3,
+                        borderWidth: 2,
+                        textBorderColor: '#000',
+                        textBorderWidth: 2,
+                        textShadowBlur: 2,
+                        textShadowColor: '#fff',
+                        textShadowOffsetX: 0,
+                        textShadowOffsetY: 0,
+                        fontFamily: 'Arial',
+                        color: '#eee',
+                    },
+                    data: data[i]
+                };
+            } else if (flag == 0 && this.option.series.length == 1) {
+                this.option.series[1] = {
+                    name: data[i][0].name,
+                    type: 'gauge',
+                    center: ['20%', '55%'],    // 默认全局居中
+                    radius: '35%',
+                    min: data[i][0].min,
+                    max: data[i][0].max,
+                    endAngle: 45,
+                    splitNumber: 5,
+                    axisLine: {            // 坐标轴线
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            width: 8
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        length: 12,        // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    splitLine: {           // 分隔线
+                        length: 20,         // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    pointer: {
+                        width: 5
+                    },
+                    title: {
+                        offsetCenter: [0, '-30%'],       // x, y，单位px
+                    },
+                    detail: {
+                        // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder'
+                    },
+                    data: data[i]
+                };
+            } else if (flag == 0 && this.option.series.length == 2) {
+                var num = 0;
+                var name = data[i][0].name;
+                this.option.series[2] = {
+                    name: data[i][0].name,
+                    type: 'gauge',
+                    center: ['77%', '50%'],    // 默认全局居中
+                    radius: '25%',
+                    min: data[i][0].min,
+                    max: data[i][0].max,
+                    startAngle: 135,
+                    endAngle: 45,
+                    splitNumber: 2,
+                    axisLine: {            // 坐标轴线
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            width: 8
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        splitNumber: 5,
+                        length: 10,        // 属性length控制线长
+                        lineStyle: {        // 属性lineStyle控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    axisLabel: {
+                        formatter: function (v) {
+                            num++;
+                            if (num % 3 == 2) {
+                                return name;
+                            }
+                            return v;
+                        }
+                    },
+                    splitLine: {           // 分隔线
+                        length: 15,         // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    pointer: {
+                        width: 2
+                    },
+                    title: {
+                        show: false
+                    },
+                    detail: {
+                        show: false
+                    },
+                    data: data[i]
+                };
+            } else if (flag == 0 && this.option.series.length == 3) {
+                var num2 = 0;
+                var name2 = data[i][0].name;
+                this.option.series[3] = {
+                    name: data[i][0].name,
+                    type: 'gauge',
+                    center: ['77%', '50%'],    // 默认全局居中
+                    radius: '25%',
+                    min: data[i][0].min,
+                    max: data[i][0].max,
+                    startAngle: 315,
+                    endAngle: 225,
+                    splitNumber: 2,
+                    axisLine: {            // 坐标轴线
+                        lineStyle: {       // 属性lineStyle控制线条样式
+                            width: 8
+                        }
+                    },
+                    axisTick: {            // 坐标轴小标记
+                        show: false
+                    },
+                    axisLabel: {
+                        formatter: function (v) {
+                            num2++;
+                            if (num2 % 3 == 2) {
+                                return name2;
+                            }
+                            return v;
+                        }
+                    },
+                    splitLine: {           // 分隔线
+                        length: 15,         // 属性length控制线长
+                        lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                            color: 'auto'
+                        }
+                    },
+                    pointer: {
+                        width: 2
+                    },
+                    title: {
+                        show: false
+                    },
+                    detail: {
+                        show: false
+                    },
+                    data: data[i]
+                }
+            }
+            echarts.init(document.getElementById(this.id)).setOption(this.option);
+        }
+    },
+    // 清空数据
+    clearData: function () {
+        for (var i = 0; i < this.option.series.length; i++) {
+            this.option.series[i].data = [];
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+}
+
+// 交错正负轴封装
+function HxChartCrossBar(id, title) {
+    // 大中小字体,对应size为l,m,s
+    this.fontSize = [24, 16, 12];
+    this.titleFontSize = [30, 24, 18];
+    this.id = id;
+    this.title = title || '';
+    this.labelRight = {
+        normal: {
+            position: 'right'
+        }
+    };
+    this.data = [];
+    this.category = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+    this.option = {
+        title: {
+            text: this.title,
+            left: 'center',
+            textStyle: {}
+        },
+        textStyle: {},
+        tooltip: {
+            trigger: 'axis',
+            textStyle: {},
+            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            top: 80,
+            bottom: 30
+        },
+        xAxis: {
+            type: 'value',
+            position: 'top',
+            splitLine: { lineStyle: { type: 'dashed' } },
+        },
+        yAxis: {
+            type: 'category',
+            axisLine: { show: false },
+            axisLabel: { show: false },
+            axisTick: { show: false },
+            splitLine: { show: false },
+            data: this.category
+        },
+        series: {
+            type: 'bar',
+            label: {
+                normal: {
+                    show: true,
+                    formatter: '{b}'
+                }
+            },
+            data: this.data
+        }
+    };
+}
+
+HxChartCrossBar.prototype = {
+    constructor: HxChartCrossBar,
+    init: function () {
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题并重载图表
+    setTitle: function (text) {
+        this.option.title.text = text;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set标题位置并重载图表
+    setTitleLocation: function (x) {
+        switch (x) {
+            case 'l':
+                this.option.title.left = 'left';
+                break;
+            case 'c':
+                this.option.title.left = 'center';
+                break;
+            case 'r':
+                this.option.title.left = 'right';
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 修改图表字体大小
+    setSize: function (size) {
+        switch (size) {
+            case 'l':
+                this.option.textStyle.fontSize = this.fontSize[0];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[0];
+                this.option.title.textStyle.fontSize = this.titleFontSize[0];
+                break;
+            case 'm':
+                this.option.textStyle.fontSize = this.fontSize[1];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[1];
+                this.option.title.textStyle.fontSize = this.titleFontSize[1];
+                break;
+            case 's':
+                this.option.textStyle.fontSize = this.fontSize[2];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[2];
+                this.option.title.textStyle.fontSize = this.titleFontSize[2];
+                break;
+        }
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // set背景并重载图表
+    setBackground: function (color) {
+        this.option.backgroundColor = color;
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 新增修改数据
+    putData: function (data) {
+        var labelRight = {
+            normal: {
+                position: 'right'
+            }
+        };
+        for (var i = 0; i < data.length; i++) {
+            if (data[i] < 0) {
+                data[i] = { value: data[i], label: labelRight }
+            }
+        }
+        var newData = this.option.series.data.concat(data);
+        if (newData.length <= this.option.yAxis.data.length) {
+            this.option.series.data = newData;
+            echarts.init(document.getElementById(this.id)).setOption(this.option);
+        }
+    },
+    // 新增x轴数据
+    putCategory: function (data) {
+        this.option.yAxis.data = this.option.yAxis.data.concat(data);
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 清空数据
+    clearData: function () {
+        this.option.series.data = [];
+        echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
 }
