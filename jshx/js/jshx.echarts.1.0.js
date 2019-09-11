@@ -229,22 +229,16 @@ HxChartCalendar.prototype = {
     setSize: function (size) {
         switch (size) {
             case 'l':
-                // this.option.calendar.width = this.width[0];
-                // this.option.calendar.height = this.height[0];
                 this.option.calendar.yearLabel.fontSize = this.titleFontSize[0];
                 this.option.textStyle.fontSize = this.fontSize[0];
                 this.option.title.textStyle.fontSize = this.titleFontSize[0];
                 break;
             case 'm':
-                // this.option.calendar.width = this.width[1];
-                // this.option.calendar.height = this.height[1];
                 this.option.calendar.yearLabel.fontSize = this.titleFontSize[1];
                 this.option.textStyle.fontSize = this.fontSize[1];
                 this.option.title.textStyle.fontSize = this.titleFontSize[1];
                 break;
             case 's':
-                // this.option.calendar.width = this.width[2];
-                // this.option.calendar.height = this.height[2];
                 this.option.calendar.yearLabel.fontSize = this.titleFontSize[2];
                 this.option.textStyle.fontSize = this.fontSize[2];
                 this.option.title.textStyle.fontSize = this.titleFontSize[2];

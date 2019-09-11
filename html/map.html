@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/jiangsu.js"></script>
+    <script src="./js/echarts.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body style="background: black">
+    <div style="height: 1400px;width:1400px;" id="map"></div>
+    <script>
+        echarts.registerMap('jiangsu', jiangsu);
+        option = {
+            tooltip: {
+                formatter: function (param) {
+                    if (param.data) {
+                        return param.data.name + ":" + param.data.value;
+                    }
+                    return;
+                }
+            },
+            series:
+            {
+                type: 'map',
+                mapType: 'jiangsu',
+                label: {
+                    show: true,
+                    color: '#fff',
+                    fontSize: 22,
+                    fontWeight: 900,
+                    formatter: function (param) {
+                        return '{img|}\n' + param.name
+                    },
+                    rich: {
+                        img: {
+                            fontSize: 30,
+                            lineHeight: 45,
+                            backgroundColor: {
+                                image: "./images/github.png"
+                            }
+                        }
+                    }
+                },
+                itemStyle: {
+                    areaColor: '#2a7adc',
+                    borderWidth: 9,
+                    borderColor: 'rgba(0,0,0,0.8)',
+                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+                    shadowBlur: 10
+                },
+                emphasis: {
+                    itemStyle: {
+                        areaColor: '#2b9709'
+                    }
+                },
+                data: [
+                    { name: '南京市', value: 133 },
+                    { name: '镇江市', value: 100 },
+                    { name: '无锡市', value: 90 },
+                ]
+            }
+        };
+        var map = echarts.init(document.getElementById("map"));
+        map.setOption(option);
+        map.on('click', function (param) {
+            console.log(param);
+            alert(param.name)
+        });
+    </script>
+</body>
+
+</html>
