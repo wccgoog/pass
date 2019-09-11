@@ -1,0 +1,103 @@
+{
+    "code": 0,
+    "msg": "",
+    "count": 8,
+    "data": [
+        {
+            "liftNo": "KN414",
+            "idCode": "001807",
+            "regCode": "31103201142009050014",
+            "uName": "江苏舜天碧波物业管理有限公司",
+            "mName": "蒂森电梯有限公司南京分公司",
+            "installAdd": "共青团路66号",
+            "areaCode": 24,
+            "factoryId": 82830700,
+            "manufacturer": "蒂森克虏伯电梯（上海）有限公司",
+            "brand": "蒂森"
+        },
+        {
+            "liftNo": "KN415",
+            "idCode": "001808",
+            "regCode": "31103201142009050015",
+            "uName": "江苏舜天碧波物业管理有限公司",
+            "mName": "蒂森电梯有限公司南京分公司",
+            "installAdd": "共青团路66号",
+            "areaCode": 58,
+            "factoryId": 64928690,
+            "manufacturer": "蒂森克虏伯电梯（上海）有限公司",
+            "brand": "蒂森"
+        },
+        {
+            "liftNo": "KN416",
+            "idCode": "001809",
+            "regCode": "31103201142010040015",
+            "uName": "南京通孚轻纺有限公司",
+            "mName": "江苏省元菱电梯有限公司",
+            "installAdd": "铁心桥大周路39#客梯",
+            "areaCode": 77,
+            "factoryId": 6298078,
+            "manufacturer": "上海三菱电梯有限公司",
+            "brand": "三菱"
+        },
+        {
+            "liftNo": "KS704",
+            "idCode": "029628",
+            "regCode": "31103201142011080001",
+            "uName": "南京通孚轻纺有限公司",
+            "mName": "江苏省元菱电梯有限公司",
+            "installAdd": "铁心桥大周路",
+            "areaCode": 157,
+            "factoryId": 37117017,
+            "manufacturer": "上海三菱电梯有限公司",
+            "brand": "三菱"
+        },
+        {
+            "liftNo": "KN414",
+            "idCode": "001807",
+            "regCode": "31103201142009050014",
+            "uName": "江苏舜天碧波物业管理有限公司",
+            "mName": "蒂森电梯有限公司南京分公司",
+            "installAdd": "共青团路66号",
+            "areaCode": 24,
+            "factoryId": 82830700,
+            "manufacturer": "蒂森克虏伯电梯（上海）有限公司",
+            "brand": "蒂森"
+        },
+        {
+            "liftNo": "KN415",
+            "idCode": "001808",
+            "regCode": "31103201142009050015",
+            "uName": "江苏舜天碧波物业管理有限公司",
+            "mName": "蒂森电梯有限公司南京分公司",
+            "installAdd": "共青团路66号",
+            "areaCode": 58,
+            "factoryId": 64928690,
+            "manufacturer": "蒂森克虏伯电梯（上海）有限公司",
+            "brand": "蒂森"
+        },
+        {
+            "liftNo": "KN416",
+            "idCode": "001809",
+            "regCode": "31103201142010040015",
+            "uName": "南京通孚轻纺有限公司",
+            "mName": "江苏省元菱电梯有限公司",
+            "installAdd": "铁心桥大周路39#客梯",
+            "areaCode": 77,
+            "factoryId": 6298078,
+            "manufacturer": "上海三菱电梯有限公司",
+            "brand": "三菱"
+        },
+        {
+            "liftNo": "KS704",
+            "idCode": "029628",
+            "regCode": "31103201142011080001",
+            "uName": "南京通孚轻纺有限公司",
+            "mName": "江苏省元菱电梯有限公司",
+            "installAdd": "铁心桥大周路",
+            "areaCode": 157,
+            "factoryId": 37117017,
+            "manufacturer": "上海三菱电梯有限公司",
+            "brand": "三菱"
+        }
+    ]
+}

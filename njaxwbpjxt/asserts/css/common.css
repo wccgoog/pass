@@ -1,0 +1,206 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background-color: #f2f2f2;
+    color: #666;
+}
+
+.layui-nav * * {
+    font-size: 16px;
+}
+
+/*body{*/
+/*margin:0px 0px;padding: 0;*/
+/*background-color: #f8f8f8;*/
+/*}*/
+
+.jshx-wrapper::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.jshx-card {
+    margin-left: 2%;
+    margin-right: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(255, 255, 255);
+    width: 22.5%;
+    float: left;
+}
+
+.jshx-left-content {
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    margin-left: 2%;
+    width: 48%;
+}
+
+.jshx-right-content {
+    background-color: rgb(255, 255, 255);
+    margin-left: 50%;
+    margin-right: 2%;
+}
+
+.jshx-logo {
+    position: absolute;
+    width: 366px;
+    background-color: #001529;
+    height: 64px;
+    line-height: 64px;
+}
+
+.jshx-logo-content::before {
+    content: "";
+    display: inline-block;
+    width: 23px;
+    height: 36px;
+    background-image: url("../img/elevatorLogo.png");
+    background-size: 100% 100%;
+    margin: 0 5px 3px 0;
+    vertical-align: -11px;
+}
+
+.jshx-logo-content {
+    color: rgb(255, 255, 255);
+    margin-left: 15%;
+    font-size: 20px;
+}
+
+.jshx-nav {
+    margin-left: 366px;
+    height: 64px;
+    line-height: 64px;
+    background-color: #001529;
+    border-radius: 0;
+}
+
+.jshx-footer {
+    left: 0px;
+    position: fixed;
+    bottom: 0;
+}
+
+.jshx-card-header {
+    margin: 10px 10px;
+    line-height: 40px;
+}
+
+.jshx-card-body {
+    margin-left: 10px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 30px;
+    color: #0C0C0C;
+}
+
+.jshx-center-content {
+    background-color: rgb(255, 255, 255);
+    /*background-color: #00F7DE;*/
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.jshx-breadcrumb {
+    padding-left: 16px;
+    padding-top: 16px;
+    margin-bottom: 20px;
+    height: 60px;
+    background-color: rgb(255, 255, 255);
+}
+
+.layui-table-view {
+    margin-top: 0;
+    border-width: 0;
+}
+
+.jshx-rolenav {
+    width: 100%;
+    height: 53.33px;
+    line-height: 53.33px;
+    font-size: 130%;
+    /*background-color: #f2f2f2;*/
+}
+
+.jshx-rolenav:hover {
+    width: 100%;
+    height: 53.33px;
+    background-color: #FF5722;
+    -webkit-transition-property: background-color;
+    -webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: linear;
+}
+
+.jshx-rolenav-text {
+    margin-left: 15px;
+    margin-right: 15px;
+    border-bottom: solid 1px #e2e2e2;
+    height: 53.33px;
+!important;
+}
+
+.jshx-rolenav-text:hover {
+    color: rgb(255, 255, 255);
+    border-bottom: solid 0px #e2e2e2;
+    -webkit-transition-property: color;
+    -webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: linear;
+}
+
+.jshx-role-click {
+    background-color: #FF7748;
+    color: rgb(255, 255, 255);
+    -webkit-transition-property: background-color;
+    -webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: linear;
+}
+
+/*.layui-transfer-box{*/
+/*height: 1063px!important;*/
+/*}*/
+
+.layui-transfer-data {
+    height: 90% !important;
+}
+
+.layui-card-list {
+    padding: 15px
+}
+
+.layui-card-list p.layui-big-font {
+    font-size: 36px;
+    color: #666;
+    line-height: 36px;
+    padding: 5px 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap
+}
+
+.layui-card-list p.layui-normal-font {
+    padding-bottom: 10px;
+    font-size: 20px;
+    color: #666;
+    line-height: 24px
+}
+
+.layui-span-color {
+    position: absolute;
+    right: 15px;
+    font-size: 14px;
+}
+
+.jshx-position-relative {
+    position: relative;
+}
+
+.jshx-search-div {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
