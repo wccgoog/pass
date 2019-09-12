@@ -14,6 +14,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            background: rgb(15, 149, 176);
         }
 
         .search-div {
@@ -25,6 +26,36 @@
         .position-relative {
             position: relative;
         }
+
+        .transparentDataTable .layui-table {
+            background-color: transparent;
+            color: black;
+        }
+
+        tr:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .transparentDataTable .layui-table-tool {
+            background-color: transparent !important;
+        }
+
+        .transparentDataTable .layui-table-tool .layui-icon {
+            color: white;
+        }
+
+        .transparentDataTable .layui-table-header,
+        .layui-table-header thead tr {
+            background-color: transparent;
+        }
+
+        .transparentDataTable .layui-table tbody tr {
+            color: white;
+        }
+
+        .layui-table-hover {
+            background: black !important;
+        }
     </style>
 </head>
 
@@ -35,62 +66,61 @@
         <a href="">亚太地区</a>
         <a><cite>正文</cite></a>
     </span>
-    <div class="layui-card-body" style="background: white;">
-        <span class="jshx-searchTitle"><label class="layui-form-label">维保单位统一信用代码:</label>
-            <div class="layui-input-block">
-                <input type="text" name="maintUscc" id="maintUscc" lay-verify="maintUscc" autocomplete="off"
-                    placeholder="请输入" class="layui-input">
-            </div>
-        </span>
-        <div class="layui-row layui-col-space20 position-relative">
-            <div class="layui-col-md3">
-                <div class="layui-row">
-                    <div class="layui-col-md3" style="margin-top: 5px;">电梯安装地址:</div>
-                    <div class="layui-col-md9">
-                        <input type="text" name="installAdd" id="installAdd" lay-verify="installAdd" autocomplete="off"
-                            placeholder="请输入电梯安装地址" class="layui-input" list='list'>
-                        <datalist id='list'>
-                            <option>123</option>
-                            <option>223</option>
-                            <option>1234</option>
-                            <option>123</option>
-                            <option>223</option>
-                            <option>1234</option>
-                            <option>123</option>
-                            <option>223</option>
-                            <option>1234</option>
-                            <option>123</option>
-                            <option>223</option>
-                            <option>1234</option>
-                            <option>123</option>
-                            <option>223</option>
-                            <option>1234</option>
-                            <option>123</option>
-                            <option>223</option>
-                            <option>1234</option>
-                            <option>123</option>
-                            <option>223</option>
-                            <option>1234</option>
-                            <option>123</option>
-                            <option>223</option>
-                            <option>1234</option>
-                            <option>123</option>
-                            <option>223</option>
-                            <option>1234</option>
-                        </datalist>
-                    </div>
+    <span class="jshx-searchTitle"><label class="layui-form-label">维保单位统一信用代码:</label>
+        <div class="layui-input-block">
+            <input type="text" name="maintUscc" id="maintUscc" lay-verify="maintUscc" autocomplete="off"
+                placeholder="请输入" class="layui-input">
+        </div>
+    </span>
+    <div class="layui-row layui-col-space20 position-relative">
+        <div class="layui-col-md3">
+            <div class="layui-row">
+                <div class="layui-col-md3" style="margin-top: 5px;">电梯安装地址:</div>
+                <div class="layui-col-md9">
+                    <input type="text" name="installAdd" id="installAdd" lay-verify="installAdd" autocomplete="off"
+                        placeholder="请输入电梯安装地址" class="layui-input" list='list'>
+                    <datalist id='list'>
+                        <option>123</option>
+                        <option>223</option>
+                        <option>1234</option>
+                        <option>123</option>
+                        <option>223</option>
+                        <option>1234</option>
+                        <option>123</option>
+                        <option>223</option>
+                        <option>1234</option>
+                        <option>123</option>
+                        <option>223</option>
+                        <option>1234</option>
+                        <option>123</option>
+                        <option>223</option>
+                        <option>1234</option>
+                        <option>123</option>
+                        <option>223</option>
+                        <option>1234</option>
+                        <option>123</option>
+                        <option>223</option>
+                        <option>1234</option>
+                        <option>123</option>
+                        <option>223</option>
+                        <option>1234</option>
+                        <option>123</option>
+                        <option>223</option>
+                        <option>1234</option>
+                    </datalist>
                 </div>
             </div>
-            <div class="layui-col-md3">
-                <label style="margin-top: 5px;">维保单位:</label>
-                <input type="text" name="dateDemo" id="dateDemo" autocomplete="off" class="layui-input">
-            </div>
-            <div class="search-div">
-                <button type="button" id="searchDeviceUser" class="layui-btn layui-btn-normal">查询</button>
-                <button type="button" class="layui-btn layui-btn-primary">重置</button>
-            </div>
         </div>
-
+        <div class="layui-col-md3">
+            <label style="margin-top: 5px;">维保单位:</label>
+            <input type="text" name="dateDemo" id="dateDemo" autocomplete="off" class="layui-input">
+        </div>
+        <div class="search-div">
+            <button type="button" id="searchDeviceUser" class="layui-btn layui-btn-normal">查询</button>
+            <button type="button" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+    <div class="transparentDataTable">
         <table class="layui-table" id="test" lay-filter="demo"></table>
     </div>
     <div id="color"></div>
@@ -117,10 +147,7 @@
     </script>
     <script src="./layui/layui.js"></script>
     <script src="./js/index.js"></script>
-    <script>
-        wcc1();
-        wcc2();
-    </script>
+
 </body>
 
 </html>

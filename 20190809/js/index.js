@@ -37,13 +37,13 @@ layui.use(['table', 'laydate', 'colorpicker', 'element'], function () {
         , page: true
         , limit: 10
         , height: documentHeight
+        // , even: true
         , toolbar: 'default'
         , limits: [10, 20, 30]
         , cols: [[
             { type: 'checkbox' }
             , {
                 field: 'id', title: 'ID', sort: true, templet: function (data) {
-                    console.log(data)
                     return data.id.x;
                 }
             }
@@ -80,7 +80,6 @@ layui.use(['table', 'laydate', 'colorpicker', 'element'], function () {
                         parent.layui.table.reload('test'); //重载表格
                     }
                 });
-                debugger
                 layer.close(index);
             });
         } else if (obj.event === 'edit') {
@@ -99,10 +98,10 @@ layui.use(['table', 'laydate', 'colorpicker', 'element'], function () {
     });
 
     table.on('row(demo)', function (obj) {
-        console.log(obj.tr) //得到当前行元素对象
-        console.log(obj.data) //得到当前行数据
+        console.log(obj.tr); //得到当前行元素对象
+        console.log(obj.data);//得到当前行数据
         //obj.del(); //删除当前行
-        //obj.update(fields) //修改当前行数据
+        //obj.update(fields) //修改当前行数据 
     });
 
     table.on('toolbar(demo)', function (obj) {
@@ -141,8 +140,7 @@ layui.use(['table', 'laydate', 'colorpicker', 'element'], function () {
                             }
                         });
                         layer.close(index);
-                        debugger
-                    })
+                    });
                 }
                 break;
             case 'update':
@@ -165,7 +163,7 @@ layui.use(['table', 'laydate', 'colorpicker', 'element'], function () {
                     });
                 }
                 break;
-        };
+        }
     });
     $("#searchDeviceUser").click(function () {
         installAdd = $("#installAdd").val();
@@ -175,17 +173,6 @@ layui.use(['table', 'laydate', 'colorpicker', 'element'], function () {
                 installAdd: installAdd,
                 dateDemo: dateDemo
             }
-        })
-    })
+        });
+    });
 });
-
-function wcc1() {
-    for (var i = 0; i < 100; i++) {
-        console.log(i)
-    }
-}
-function wcc2() {
-    for (var i = 200; i < 300; i++) {
-        console.log(i)
-    }
-}

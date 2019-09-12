@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <title>index</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: rgb(15, 149, 176);
+        }
+
+        .search-div {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .transparentDataTable .layui-table {
+            background-color: transparent;
+            color: black;
+        }
+
+        tr:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .transparentDataTable .layui-table-tool {
+            background-color: transparent !important;
+        }
+
+        .transparentDataTable .layui-table-tool .layui-icon {
+            color: white;
+        }
+
+        .transparentDataTable .layui-table-header,
+        .layui-table-header thead tr {
+            background-color: transparent;
+        }
+
+        .transparentDataTable .layui-table tbody tr {
+            color: white;
+        }
+
+        .layui-table-hover {
+            background: black !important;
+        }
+
+        input,
+        button,
+        select {
+            background-color: transparent !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="transparentDataTable">
+        <table class="layui-table" id="test" lay-filter="demo"></table>
+    </div>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+    <script src="./layui/layui.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
