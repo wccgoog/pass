@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+var VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     entry: ['./src/main.js', 'babel-polyfill'],// 项目的入口文件，webpack会从main.js开始，把所有依赖的js都加载打包
