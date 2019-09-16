@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <Test></Test>
+    <!-- <img src="./assets/logo.png" /> -->
     <div>
       <p>
         If Element is successfully added to this project, you'll see an
@@ -9,28 +10,41 @@
       </p>
       <el-button>el-button</el-button>
     </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+    <Layout></Layout>
+    <Container style="margin-top:40px;"></Container>
+    <Button style="margin-top:40px;"></Button>
+    <Radio style="margin-top:40px;"></Radio>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
+import Test from "./components/Test";
+import Layout from "./components/Layout";
+import Container from "./components/Container";
+import Button from "./components/Button";
+import Radio from "./components/Radio";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    HelloWorld,
+    Test,
+    Layout,
+    Container,
+    Button,
+    Radio
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
