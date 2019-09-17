@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 350px;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        .control {
+            height: 100%;
+            width: 30%;
+            border: 1px solid #ddd;
+            border-right: 0px;
+            flex-grow: 1;
+        }
+
+        .control:nth-child(3n+0) {
+            border-right: 1px solid #ddd;
+        }
+
+        .control:last-child {
+            border-right: 1px solid #ddd;
+        }
+
+        .control-head {
+            width: 100%;
+            height: 30px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 100%;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .control-body {
+            width: 100%;
+            font-size: 12px;
+        }
+
+        .light-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+
+
+        .light {
+            border-radius: 50%;
+            height: 10px;
+            width: 10px;
+            margin: auto;
+        }
+
+        .local .light {
+            background: red;
+        }
+
+        .remote .light {
+            background: rgb(0, 255, 0);
+        }
+
+        .control-title {
+            width: 70px;
+            height: 70px;
+            border: 2px solid purple;
+            border-radius: 50%;
+            text-align: center;
+            margin: 10px auto;
+        }
+
+        .control-title p {
+            color: purple;
+            margin: 10px;
+            font-size: 12px;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .start-button {
+            width: 60px;
+            height: 40px;
+            background: rgb(0, 255, 0);
+        }
+
+        .stop-button {
+            width: 60px;
+            height: 40px;
+            background: grey;
+            cursor: not-allowed;
+        }
+
+        .button-name {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <div class="control">
+            <div class="control-head">
+                河岸村
+            </div>
+            <div class="control-body">
+                <div class="light-container">
+                    <div class="local">
+                        <div class="light"></div>
+                        <div class="light-name">本地</div>
+                    </div>
+                    <div class="remote">
+                        <div class="local">
+                            <div class="light"></div>
+                            <div class="light-name">远程</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-title">
+                    <p>电机</p>
+                    <p>动态指示</p>
+                </div>
+                <div class="button-container">
+                    <div class="start-button" id="startButton1"></div>
+                    <div class="button-name">起泵按钮</div>
+                    <div class="stop-button" id="stopButton1"></div>
+                    <div class="button-name">停泵按钮</div>
+                </div>
+            </div>
+        </div>
+        <div class="control">
+            <div class="control-head"></div>
+            <div class="control-body"></div>
+        </div>
+        <div class="control">
+            <div class="control-head"></div>
+            <div class="control-body"></div>
+        </div> -->
+    </div>
+
+    <script>
+        var controlList = ['河岸村', '新岸村1', '新岸村2', 123];
+        controlList.forEach(function (value, index) {
+            console.log(value, index);
+            $('.container').append('<div class="control">' +
+                '<div class="control-head">' +
+                value +
+                '</div>' +
+                '<div class="control-body">' +
+                '<div class="light-container">' +
+                '<div class="local">' +
+                '<div class="light" id="local' + index + '"></div>' +
+                '<div class="light-name">本地</div>' +
+                '</div>' +
+                '<div class="remote">' +
+                '<div class="light" id="remote' + index + '"></div>' +
+                '<div class="light-name">远程</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="control-title">' +
+                '<p>电机</p>' +
+                '<p>动态指示</p>' +
+                '</div>' +
+                '<div class="button-container">' +
+                '<button class="start-button" id="startButton' + index + '"></button>' +
+                '<div class="button-name">起泵按钮</div>' +
+                '<button class="stop-button" id="stopButton' + index + '" disabled></button>' +
+                '<div class="button-name">停泵按钮</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>');
+        });
+
+        var isStartedList = [false, false, false];
+        $('.start-button').click(function (param) {
+            var id = param.currentTarget.id.slice(11);
+            var isStarted = isStartedList[id];
+            if (!isStarted) {
+                $('#' + param.currentTarget.id).attr("disabled", true);
+                $('#' + param.currentTarget.id).css("background", "grey");
+                $('#' + param.currentTarget.id).css("cursor", "not-allowed");
+                $('#stopButton' + id).css("background", "rgb(255,0,0)");
+                $('#stopButton' + id).css("cursor", "default");
+                $('#stopButton' + id).attr("disabled", false);
+                isStartedList[id] = true;
+                console.log(isStartedList)
+            }
+        });
+
+        $('.stop-button').click(function (param) {
+            var id = param.currentTarget.id.slice(10);
+            var isStarted = isStartedList[id];
+            if (isStarted) {
+                $('#' + param.currentTarget.id).attr("disabled", true);
+                $('#' + param.currentTarget.id).css("background", "grey");
+                $('#' + param.currentTarget.id).css("cursor", "not-allowed");
+                $('#startButton' + id).css("background", "rgb(0,255,0)");
+                $('#startButton' + id).css("cursor", "default");
+                $('#startButton' + id).attr("disabled", false);
+                isStartedList[id] = false;
+                console.log(isStartedList)
+            }
+        });
+    </script>
+</body>
+
+</html>

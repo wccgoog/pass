@@ -15,6 +15,7 @@
     <Container style="margin-top:40px;"></Container>
     <Button style="margin-top:40px;"></Button>
     <Radio style="margin-top:40px;"></Radio>
+    <Inputvue></Inputvue>
   </div>
 </template>
 
@@ -25,6 +26,7 @@ import Layout from "./components/Layout";
 import Container from "./components/Container";
 import Button from "./components/Button";
 import Radio from "./components/Radio";
+import Inputvue from "./components/Input";
 
 export default {
   name: "app",
@@ -34,7 +36,8 @@ export default {
     Layout,
     Container,
     Button,
-    Radio
+    Radio,
+    Inputvue
   }
 };
 </script>
