@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <title>Document</title>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background-image: url('images/Background.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100%;
+            background-size: cover;
+            background-color: black;
+            position: relative;
+        }
+
+        .container {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: red;
+            left: 30%;
+            top: 30%;
+        }
+
+        .container2 {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: red;
+            left: 50%;
+            top: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    </div>
+    <div class="container2"></div>
+
+    <script>
+        var resizeWaiter = false;
+        // 长宽比
+        var ratio = $(window).width() / $(window).height();
+        var originRatio = 1920 / 1080;
+        $(window).resize(function () {
+            if (!resizeWaiter) {
+                resizeWaiter = true;
+                setTimeout(function () {
+                    ratio = $(window).width() / $(window).height();
+                    // setLocation(ratio)
+                    resizeWaiter = false;
+                }, 500);
+            }
+        });
+
+        function setLocation(ratio) {
+            if (ratio < originRatio) {
+                var left = 30 * ratio / originRatio + '%';
+                console.log(left)
+                $('.container').css("left", left);
+            } else {
+                $('.container').css("left", '30%');
+            }
+        }
+
+        function getMousePos(event) {
+            var e = event || window.event;
+            console.log(e.clientX, e.clientY)
+            console.log(e.clientX / e.clientY)
+            console.log($(window).width() / $(window).height())
+        }
+
+        $('body').click(function (event) {
+            getMousePos(event);
+        })
+    </script>
+</body>
+
+</html>
