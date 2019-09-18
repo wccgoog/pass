@@ -29,7 +29,7 @@ export default {
       console.log(key, keyPath);
     },
     goto() {
-      this.$router.push("/test.html");
+      this.$router.push("/about");
     }
   },
   mounted: function() {
