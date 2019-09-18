@@ -12,10 +12,13 @@
     </div>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
     <Layout></Layout>
-    <Container style="margin-top:40px;"></Container>
-    <Button style="margin-top:40px;"></Button>
-    <Radio style="margin-top:40px;"></Radio>
+    <Container></Container>
+    <Button></Button>
+    <Radio></Radio>
     <Inputvue></Inputvue>
+    <Cascader></Cascader>
+    <DateTimePicker></DateTimePicker>
+    <Upload></Upload>
   </div>
 </template>
 
@@ -27,6 +30,9 @@ import Container from "./components/Container";
 import Button from "./components/Button";
 import Radio from "./components/Radio";
 import Inputvue from "./components/Input";
+import Cascader from "./components/Cascader";
+import DateTimePicker from "./components/DateTimePicker";
+import Upload from "./components/Upload";
 
 export default {
   name: "app",
@@ -37,7 +43,10 @@ export default {
     Container,
     Button,
     Radio,
-    Inputvue
+    Inputvue,
+    Cascader,
+    DateTimePicker,
+    Upload
   }
 };
 </script>
@@ -49,5 +58,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+#app > * {
+  margin-top: 40px;
 }
 </style>

@@ -6,7 +6,7 @@
       </el-input>
     </div>
     <div style="margin-top: 15px;">
-      <el-input placeholder="请输入内容" v-model="input2">
+      <el-input placeholder="请输入内容" v-model="input2" show-password>
         <template slot="append">.com</template>
       </el-input>
     </div>
