@@ -1,17 +1,9 @@
 <template>
   <div id="app">
-    <router-link to="/about">about</router-link>
+    <router-link to="/">home</router-link>
+    <router-link :to="{name:'about',query:{id:123,num:4}}">about</router-link>
+    <router-view></router-view>
     <Test></Test>
-    <!-- <img src="./assets/logo.png" /> -->
-    <div>
-      <p>
-        If Element is successfully added to this project, you'll see an
-        <code v-text="'<el-button>'"></code>
-        below
-      </p>
-      <el-button>el-button</el-button>
-    </div>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
     <Layout></Layout>
     <Container></Container>
     <Button></Button>
@@ -19,12 +11,11 @@
     <Inputvue></Inputvue>
     <Cascader></Cascader>
     <DateTimePicker></DateTimePicker>
-    <Upload></Upload>
+    <Formvue></Formvue>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 import Test from "./components/Test";
 import Layout from "./components/Layout";
 import Container from "./components/Container";
@@ -34,11 +25,11 @@ import Inputvue from "./components/Input";
 import Cascader from "./components/Cascader";
 import DateTimePicker from "./components/DateTimePicker";
 import Upload from "./components/Upload";
+import Formvue from "./components/Form";
 
 export default {
   name: "app",
   components: {
-    HelloWorld,
     Test,
     Layout,
     Container,
@@ -47,7 +38,7 @@ export default {
     Inputvue,
     Cascader,
     DateTimePicker,
-    Upload
+    Formvue
   }
 };
 </script>
@@ -63,5 +54,10 @@ export default {
 
 #app > * {
   margin-top: 40px;
+}
+
+.el-form {
+  width: 700px;
+  margin: auto;
 }
 </style>

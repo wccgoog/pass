@@ -8,7 +8,7 @@
       </el-button>
     </el-button-group>
     <el-button-group>
-      <el-button type="success" icon="el-icon-edit" :disabled="false"></el-button>
+      <el-button type="success" icon="el-icon-edit" :disabled="false" @click="routerPush"></el-button>
       <el-button type="primary" icon="el-icon-share" :disabled="true"></el-button>
       <el-button type="primary" icon="el-icon-delete"></el-button>
     </el-button-group>
@@ -28,6 +28,11 @@ export default {
     return {
       url: "#"
     };
+  },
+  methods: {
+    routerPush() {
+      this.$router.push({ name: "about", query: { id: 123, num: 4 } });
+    }
   }
 };
 </script>
