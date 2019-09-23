@@ -229,22 +229,16 @@ HxChartCalendar.prototype = {
     setSize: function (size) {
         switch (size) {
             case 'l':
-                // this.option.calendar.width = this.width[0];
-                // this.option.calendar.height = this.height[0];
                 this.option.calendar.yearLabel.fontSize = this.titleFontSize[0];
                 this.option.textStyle.fontSize = this.fontSize[0];
                 this.option.title.textStyle.fontSize = this.titleFontSize[0];
                 break;
             case 'm':
-                // this.option.calendar.width = this.width[1];
-                // this.option.calendar.height = this.height[1];
                 this.option.calendar.yearLabel.fontSize = this.titleFontSize[1];
                 this.option.textStyle.fontSize = this.fontSize[1];
                 this.option.title.textStyle.fontSize = this.titleFontSize[1];
                 break;
             case 's':
-                // this.option.calendar.width = this.width[2];
-                // this.option.calendar.height = this.height[2];
                 this.option.calendar.yearLabel.fontSize = this.titleFontSize[2];
                 this.option.textStyle.fontSize = this.fontSize[2];
                 this.option.title.textStyle.fontSize = this.titleFontSize[2];
@@ -787,7 +781,9 @@ function HxChartScatter(id, title) {
         textStyle: {},
         tooltip: {
             textStyle: {},
-            formatter: '{a},{b},{c},{d},{e}'
+            formatter: function (params) {
+                return '横轴:' + params.value[0] + ',纵轴:' + params.value[1] + ',值:' + params.value[2]
+            }
         },
         legend: {
             right: 10,
@@ -953,6 +949,16 @@ function HxChartRadar(id, indicator, title) {
     this.indicator = indicator;
     this.series = {
         type: 'radar',
+        symbolSize: 0,
+        areaStyle: {
+            normal: {
+                shadowBlur: 13,
+                shadowColor: 'rgba(0,0,0,.2)',
+                shadowOffsetX: 0,
+                shadowOffsetY: 10,
+                opacity: 1
+            }
+        },
         data: []
     };
     this.option = {
@@ -977,7 +983,19 @@ function HxChartRadar(id, indicator, title) {
                     padding: [3, 5]
                 }
             },
+            splitNumber: 8,
             indicator: this.indicator
+        },
+
+        splitArea: {
+            areaStyle: {
+                color: 'rgba(127,95,132,.3)',
+                opacity: 1,
+                shadowBlur: 45,
+                shadowColor: 'rgba(0,0,0,.5)',
+                shadowOffsetX: 0,
+                shadowOffsetY: 15
+            }
         },
         series: this.series
     };
@@ -986,7 +1004,7 @@ function HxChartRadar(id, indicator, title) {
 HxChartRadar.prototype = {
     constructor: HxChartRadar,
     init: function () {
-        echarts.init(document.getElementById(this.id)).setOption(this.option);
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // set标题并重载图表
     setTitle: function (text) {
@@ -1260,7 +1278,7 @@ HxChartMultiGauge.prototype = {
                     z: 3,
                     min: data[i][0].min,
                     max: data[i][0].max,
-                    radius: '50%',
+                    radius: '70%',
                     axisLine: {            // 坐标轴线
                         lineStyle: {       // 属性lineStyle控制线条样式
                             width: 10
@@ -1319,7 +1337,7 @@ HxChartMultiGauge.prototype = {
                     name: data[i][0].name,
                     type: 'gauge',
                     center: ['20%', '55%'],    // 默认全局居中
-                    radius: '35%',
+                    radius: '50%',
                     min: data[i][0].min,
                     max: data[i][0].max,
                     endAngle: 45,
@@ -1360,7 +1378,7 @@ HxChartMultiGauge.prototype = {
                     name: data[i][0].name,
                     type: 'gauge',
                     center: ['77%', '50%'],    // 默认全局居中
-                    radius: '25%',
+                    radius: '35%',
                     min: data[i][0].min,
                     max: data[i][0].max,
                     startAngle: 135,
@@ -1411,7 +1429,7 @@ HxChartMultiGauge.prototype = {
                     name: data[i][0].name,
                     type: 'gauge',
                     center: ['77%', '50%'],    // 默认全局居中
-                    radius: '25%',
+                    radius: '35%',
                     min: data[i][0].min,
                     max: data[i][0].max,
                     startAngle: 315,
