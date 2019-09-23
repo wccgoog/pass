@@ -36,9 +36,9 @@ layui.use(['table', 'laydate', 'colorpicker', 'element'], function () {
         , url: './js/data.json'
         , page: true
         , limit: 10
-        , height: documentHeight
+        , height: 1100
         // , even: true
-        , toolbar: 'default'
+        , toolbar: true
         , limits: [10, 20, 30]
         , cols: [[
             { type: 'checkbox' }

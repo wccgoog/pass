@@ -8,6 +8,11 @@
     <script src="./js/jquery-3.3.1.min.js"></script>
     <title>Document</title>
     <style>
+        @font-face {
+            font-family: shishangzhonghei;
+            src: url('./fonts/shishangzhonghei.ttf');
+        }
+
         html {
             height: 100%;
         }
@@ -23,67 +28,40 @@
             position: relative;
         }
 
-        .container {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: red;
-            left: 30%;
-            top: 30%;
+        .container {}
+
+        h1 {
+            color: white;
+            font-family: shishangzhonghei;
+            font-size: 36px;
+            font-weight: 100;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .white-with-blue-shadow {
+            text-shadow: 1px 1px 2px black, 0 0 1em blue, 0 0 0.2em blue;
+            color: white;
+            font: 1.5em Georgia, "Bitstream Charter", "URW Bookman L", "Century Schoolbook L", serif;
         }
 
         .container2 {
             width: 400px;
             height: 200px;
-            background: linear-gradient(165deg, rgba(255, 255, 255, .8), rgba(0, 0, 0, 0.5) 5%, rgba(0, 0, 0, 0.5) 95%, rgba(255, 255, 255, 0.8) 100%);
-            margin: 400px auto;
+            background: linear-gradient(178deg, rgba(255, 255, 255, 0.2), rgba(31, 61, 137, 0.8) 10%, rgba(31, 61, 137, 0.8) 90%, rgba(255, 255, 255, 0.2) 100%);
+            margin: auto;
             border-radius: 10px;
         }
     </style>
 </head>
 
 <body>
+    <h1 class="">南京按需维保</h1>
+
     <div class="container">
     </div>
     <div class="container2"></div>
 
-    <script>
-        var resizeWaiter = false;
-        // 长宽比
-        var ratio = $(window).width() / $(window).height();
-        var originRatio = 1920 / 1080;
-        $(window).resize(function () {
-            if (!resizeWaiter) {
-                resizeWaiter = true;
-                setTimeout(function () {
-                    ratio = $(window).width() / $(window).height();
-                    // setLocation(ratio)
-                    resizeWaiter = false;
-                }, 500);
-            }
-        });
-
-        function setLocation(ratio) {
-            if (ratio < originRatio) {
-                var left = 30 * ratio / originRatio + '%';
-                console.log(left)
-                $('.container').css("left", left);
-            } else {
-                $('.container').css("left", '30%');
-            }
-        }
-
-        function getMousePos(event) {
-            var e = event || window.event;
-            console.log(e.clientX, e.clientY)
-            console.log(e.clientX / e.clientY)
-            console.log($(window).width() / $(window).height())
-        }
-
-        $('body').click(function (event) {
-            getMousePos(event);
-        })
-    </script>
 </body>
 
 </html>
