@@ -68,6 +68,9 @@
         var main = new HxChartPie('main', '普通饼状图');
         main.init();
         main.putData(data);
+        main.setCbClick(function (param) {
+            console.log(param)
+        })
 
         var main1 = new HxChartPie('main1', '点击上方按钮新增数据:putData');
         main1.init();

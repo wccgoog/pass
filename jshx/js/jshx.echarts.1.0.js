@@ -221,7 +221,7 @@ HxChartCalendar.prototype = {
             });
         } else {
             calendar._$handlers.click[0].h = function (param) {
-                callback(param)
+                callback(param);
             };
         }
     },
@@ -652,6 +652,19 @@ HxChartPie.prototype = {
     constructor: HxChartPie,
     init: function () {
         echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 点击回调
+    setCbClick: function (callback) {
+        var chart = echarts.init(document.getElementById(this.id));
+        if (!chart._$handlers.click) {
+            chart.on('click', function (param) {
+                callback(param);
+            });
+        } else {
+            chart._$handlers.click[0].h = function (param) {
+                callback(param);
+            };
+        }
     },
     // set标题并重载图表
     setTitle: function (text) {
@@ -1523,6 +1536,19 @@ HxChartCrossBar.prototype = {
     constructor: HxChartCrossBar,
     init: function () {
         echarts.init(document.getElementById(this.id)).setOption(this.option);
+    },
+    // 点击回调
+    setCbClick: function (callback) {
+        var chart = echarts.init(document.getElementById(this.id));
+        if (!chart._$handlers.click) {
+            chart.on('click', function (param) {
+                callback(param);
+            });
+        } else {
+            chart._$handlers.click[0].h = function (param) {
+                callback(param);
+            };
+        }
     },
     // set标题并重载图表
     setTitle: function (text) {
