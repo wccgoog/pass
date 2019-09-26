@@ -29,8 +29,8 @@ layui.use(['table', 'laydate', 'colorpicker', 'element'], function () {
     });
     laydate.render({
         elem: '#callTime'
-        , zIndex: 99999999
-        , value: new Date()
+        , range: true
+        , value: '2019-09-12 - 2019-09-22'
         , done: function (value, date, endDate) {
             console.log(value); //得到日期生成的值，如：2017-08-18
             console.log(date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
@@ -48,6 +48,11 @@ layui.use(['table', 'laydate', 'colorpicker', 'element'], function () {
         , height: 1100
         // , even: true
         , toolbar: true
+        , defaultToolbar: ['filter', 'exports', {
+            title: '提示' //标题
+            , layEvent: 'LAYTABLE_TIPS' //事件名，用于 toolbar 事件中使用
+            , icon: 'layui-icon-tips' //图标类名
+        }]
         , limits: [10, 20, 30]
         , cols: [[
             { type: 'checkbox' }
@@ -61,7 +66,6 @@ layui.use(['table', 'laydate', 'colorpicker', 'element'], function () {
             , { field: 'city', title: '城市' }
             , { field: 'sign', title: '签名', minWidth: 200 } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
             , { field: 'experience', title: '积分', sort: true }
-            , { field: 'score', title: '评分', sort: true }
             , { field: 'classify', title: '职业' }
             , { field: 'wealth', width: 137, title: '财富', sort: true }
             , { title: '操作', minWidth: 200, toolbar: '#barDemo' }

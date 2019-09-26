@@ -64,11 +64,10 @@
     <div id="main9-2"></div>
     <div id="main9-3"></div>
     <script>
-        function callback(param) {
-            alert('第一个回调函数callback1:' + formatDate(new Date(param.data[0])));
-        }
+
         function callback2(param) {
             alert('第二个回调函数callback2:' + formatDate(new Date(param.data[0])));
+            console.log(param);
         }
 
         var main = new HxChartCalendar('main', '2019-8');
@@ -95,15 +94,32 @@
         main9_2.init();
         main9_3.init();
 
-        // 修改标题并重载图表
-        main.setTitle('设置回调函数:setCbClick');
+
+
+        // 2019-09-26更新
+        // 移除年份,月份和标题
+        main.trim();
+        // 添加图片
+        main.setImg('2019-08-13', icon);
+        // 添加点击事件
+        function callback(param) {
+            main.setImg(param.value[0], icon)
+        }
         main.setCbClick(callback);
+        // 移除指定日期图标
+        main.removeImg('2019-08-13');
+
+
+
+
+
+
         // 修改数值并重载图表,数值以时间戳毫秒格式显示在日历中
         main2.putData([['2019-08-12', 400], ['2019-08-22', 300]]);
         main2.setCbClick(callback2);
         // 修改背景并重载图表
         main3.setBackground('#f9f1f1');
-        //修改回调函数
+        // 修改回调函数
         main3.setCbClick(function (param) {
             alert('第三个回调函数callback3:' + formatDate(new Date(param.data[0])));
         })
@@ -121,6 +137,7 @@
         main9_1.setSize('l');
         main9_2.setSize('m');
         main9_3.setSize('s');
+
     </script>
 </body>
 
