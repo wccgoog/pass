@@ -58,16 +58,13 @@
     <div id="main6" class="demo"></div>
     <div id="main7" class="demo"></div>
     <script>
-        var data = [
-            { value: 335, name: '直接访问' },
-            { value: 310, name: '邮件营销' },
-            { value: 234, name: '联盟广告' },
-            { value: 135, name: '视频广告' },
-            { value: 1548, name: '搜索引擎' }
-        ];
         var main = new HxChartPie('main', '普通饼状图');
         main.init();
-        main.putData(data);
+        main.putData('直接访问', 335);
+        main.putData('邮件营销', 310);
+        main.putData('联盟广告', 234);
+        main.putData('视频广告', 135);
+        main.putData('搜索引擎', 1548);
         main.setCbClick(function (param) {
             console.log(param)
         })
@@ -78,29 +75,16 @@
             { value: 335, name: '初始数据1' },
             { value: 310, name: '初始数据2' }
         ]);
+        main1.putData('初始数据1', 335);
+        main1.putData('初始数据2', 310);
         document.getElementById('button').addEventListener("click", function () {
-            var data = [
-                {
-                    value: Math.ceil(Math.random() * 1000),
-                    name: '初始数据1'
-                },
-                {
-                    value: Math.ceil(Math.random() * 1000),
-                    name: '初始数据2'
-                }
-            ]
-            main1.putData(data);
+            main1.putData('初始数据1', Math.ceil(Math.random() * 1000));
+            main1.putData('初始数据2', Math.ceil(Math.random() * 1000));
         })
 
         var num = 1;
         document.getElementById('button1').addEventListener("click", function () {
-            var data = [
-                {
-                    value: Math.ceil(Math.random() * 1000),
-                    name: '第' + num + '次点击'
-                }
-            ]
-            main1.putData(data);
+            main1.putData('第' + num + '次点击', Math.ceil(Math.random() * 1000));
             num++;
         })
 
@@ -111,30 +95,54 @@
 
         var main2 = new HxChartPie('main2');
         main2.init();
-        main2.putData(data);
+        main2.putData('直接访问', 335);
+        main2.putData('邮件营销', 310);
+        main2.putData('联盟广告', 234);
+        main2.putData('视频广告', 135);
+        main2.putData('搜索引擎', 1548);
         main2.setCircular();
 
         var main3 = new HxChartPie('main3', '修改标题位置:setTitleLocation');
         main3.init();
-        main3.putData(data);
+        main3.putData('直接访问', 335);
+        main3.putData('邮件营销', 310);
+        main3.putData('联盟广告', 234);
+        main3.putData('视频广告', 135);
+        main3.putData('搜索引擎', 1548);
         main3.setTitleLocation('l');
 
         var main4 = new HxChartPie('main4');
         main4.init();
-        main4.putData(data);
+        main4.putData('直接访问', 335);
+        main4.putData('邮件营销', 310);
+        main4.putData('联盟广告', 234);
+        main4.putData('视频广告', 135);
+        main4.putData('搜索引擎', 1548);
         main4.setTitle('修改标题:setTitle');
 
         var main5 = new HxChartPie('main5', '修改字体:setSize');
         main5.init();
-        main5.putData(data);
+        main5.putData('直接访问', 335);
+        main5.putData('邮件营销', 310);
+        main5.putData('联盟广告', 234);
+        main5.putData('视频广告', 135);
+        main5.putData('搜索引擎', 1548);
         main5.setSize('l');
         var main6 = new HxChartPie('main6', '修改字体:setSize');
         main6.init();
-        main6.putData(data);
+        main6.putData('直接访问', 335);
+        main6.putData('邮件营销', 310);
+        main6.putData('联盟广告', 234);
+        main6.putData('视频广告', 135);
+        main6.putData('搜索引擎', 1548);
         main6.setSize('m');
         var main7 = new HxChartPie('main7', '修改字体:setSize');
         main7.init();
-        main7.putData(data);
+        main7.putData('直接访问', 335);
+        main7.putData('邮件营销', 310);
+        main7.putData('联盟广告', 234);
+        main7.putData('视频广告', 135);
+        main7.putData('搜索引擎', 1548);
         main7.setCircular();
         main7.setSize('s');
     </script>

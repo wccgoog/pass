@@ -281,12 +281,10 @@ HxChartCalendar.prototype = {
         this.option.calendar.yearLabel.show = false;
         this.option.title.show = false;
         this.option.calendar.monthLabel.show = false;
-        this.option.calendar.top = '5%';
+        this.option.calendar.top = 40;
         this.option.calendar.bottom = 1;
         this.option.calendar.left = 1;
         this.option.calendar.right = 1;
-
-
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 显示日期上的图
@@ -464,11 +462,11 @@ HxChartLine.prototype = {
         var chart = echarts.init(document.getElementById(this.id), 'macarons');
         if (!chart._$handlers.click) {
             chart.on('click', function (param) {
-                callback(param);
+                callback([param.name, param.value]);
             });
         } else {
             chart._$handlers.click[0].h = function (param) {
-                callback(param);
+                callback([param.name, param.value]);
             };
         }
     },
@@ -486,30 +484,28 @@ HxChartLine.prototype = {
         }
     },
     // 新增修改数据
-    putData: function (data) {
-        for (var i = 0; i < data.length; i++) {
-            // 判断是否已经有这个类目
-            var flag = 0;
-            for (var j = 0; j < this.option.series.length; j++) {
-                if (data[i][0] == this.option.series[j].name) {
-                    this.option.series[j].data = this.option.series[j].data.concat(data[i].slice(1));
-                    flag = 1;
-                }
+    putData: function (name, value) {
+        // 判断是否已经有这个类目
+        var flag = 0;
+        for (var j = 0; j < this.option.series.length; j++) {
+            if (name == this.option.series[j].name) {
+                this.option.series[j].data = this.option.series[j].data.concat([value]);
+                flag = 1;
             }
-            // 若没有这个类目,则新增类目
-            if (flag == 0) {
-                this.option.series.push({
-                    name: data[i][0],
-                    type: 'line',
-                    data: data[i].slice(1)
-                })
-            }
+        }
+        // 若没有这个类目,则新增类目
+        if (flag == 0) {
+            this.option.series.push({
+                name: name,
+                type: 'line',
+                data: [value]
+            });
         }
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 新增x轴数据
     putCategory: function (data) {
-        this.option.xAxis.data = this.option.xAxis.data.concat(data);
+        this.option.xAxis.data = this.option.xAxis.data.concat([data]);
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 清空数据
@@ -527,7 +523,7 @@ HxChartLine.prototype = {
                     { type: 'max', name: '最大值' },
                     { type: 'min', name: '最小值' }
                 ]
-            }
+            };
         }
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
@@ -574,6 +570,16 @@ HxChartLine.prototype = {
         this.option.backgroundColor = color;
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
+    // 去除标题等文字
+    trim: function () {
+        this.option.title.show = false;
+        this.option.legend.show = false;
+        this.option.grid.top = 10;
+        this.option.grid.bottom = 1;
+        this.option.grid.left = 1;
+        this.option.grid.right = 20;
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    }
 };
 
 // 柱状图封装
@@ -649,11 +655,11 @@ HxChartBar.prototype = {
         var chart = echarts.init(document.getElementById(this.id), 'macarons');
         if (!chart._$handlers.click) {
             chart.on('click', function (param) {
-                callback(param);
+                callback([param.name, param.value]);
             });
         } else {
             chart._$handlers.click[0].h = function (param) {
-                callback(param);
+                callback([param.name, param.value]);
             };
         }
     },
@@ -671,30 +677,28 @@ HxChartBar.prototype = {
         }
     },
     // 新增修改数据
-    putData: function (data) {
-        for (var i = 0; i < data.length; i++) {
-            // 判断是否已经有这个类目
-            var flag = 0;
-            for (var j = 0; j < this.option.series.length; j++) {
-                if (data[i][0] == this.option.series[j].name) {
-                    this.option.series[j].data = this.option.series[j].data.concat(data[i].slice(1));
-                    flag = 1;
-                }
+    putData: function (name, value) {
+        // 判断是否已经有这个类目
+        var flag = 0;
+        for (var j = 0; j < this.option.series.length; j++) {
+            if (name == this.option.series[j].name) {
+                this.option.series[j].data = this.option.series[j].data.concat([value]);
+                flag = 1;
             }
-            // 若没有这个类目,则新增类目
-            if (flag == 0) {
-                this.option.series.push({
-                    name: data[i][0],
-                    type: 'bar',
-                    data: data[i].slice(1)
-                })
-            }
+        }
+        // 若没有这个类目,则新增类目
+        if (flag == 0) {
+            this.option.series.push({
+                name: name,
+                type: 'bar',
+                data: [value]
+            });
         }
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 新增x轴数据
     putCategory: function (data) {
-        this.option.xAxis.data = this.option.xAxis.data.concat(data);
+        this.option.xAxis.data = this.option.xAxis.data.concat([data]);
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 清空数据
@@ -723,7 +727,7 @@ HxChartBar.prototype = {
                 data: [
                     { type: 'average', name: '平均值' }
                 ]
-            }
+            };
         }
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
@@ -759,7 +763,17 @@ HxChartBar.prototype = {
         this.option.backgroundColor = color;
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
-}
+    // 去除标题等文字
+    trim: function () {
+        this.option.title.show = false;
+        this.option.legend.show = false;
+        this.option.grid.top = 10;
+        this.option.grid.bottom = 1;
+        this.option.grid.left = 1;
+        this.option.grid.right = 20;
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    }
+};
 
 // 饼状图封装
 function HxChartPie(id, title) {
@@ -812,11 +826,11 @@ HxChartPie.prototype = {
         var chart = echarts.init(document.getElementById(this.id), 'macarons');
         if (!chart._$handlers.click) {
             chart.on('click', function (param) {
-                callback(param);
+                callback([param.data.name, param.data.value]);
             });
         } else {
             chart._$handlers.click[0].h = function (param) {
-                callback(param);
+                callback([param.data.name, param.data.value]);
             };
         }
     },
@@ -854,18 +868,16 @@ HxChartPie.prototype = {
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 新增修改数据
-    putData: function (data) {
-        for (var i = 0; i < data.length; i++) {
-            var flag = 0;
-            for (var j = 0; j < this.option.series.data.length; j++) {
-                if (data[i].name == this.option.series.data[j].name) {
-                    this.option.series.data[j].value = data[i].value;
-                    flag = 1;
-                }
+    putData: function (name, value) {
+        var flag = 0;
+        for (var j = 0; j < this.option.series.data.length; j++) {
+            if (name == this.option.series.data[j].name) {
+                this.option.series.data[j].value = value;
+                flag = 1;
             }
-            if (flag == 0) {
-                this.option.series.data = this.option.series.data.concat(data[i])
-            }
+        }
+        if (flag == 0) {
+            this.option.series.data = this.option.series.data.concat({ name: name, value: value });
         }
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
@@ -887,7 +899,7 @@ HxChartPie.prototype = {
                     fontWeight: 'bold'
                 }
             }
-        }
+        };
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 修改图表字体大小
@@ -925,7 +937,13 @@ HxChartPie.prototype = {
         this.option.backgroundColor = color;
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
-}
+    // 去除标题等文字
+    trim: function () {
+        this.option.title.show = false;
+        this.option.series.radius = [0, '95%'];
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    }
+};
 
 // 气泡图封装
 function HxChartScatter(id, title) {
@@ -942,6 +960,7 @@ function HxChartScatter(id, title) {
             left: 'center',
             textStyle: {}
         },
+        grid: {},
         textStyle: {},
         tooltip: {
             textStyle: {},
@@ -1003,11 +1022,11 @@ HxChartScatter.prototype = {
         var chart = echarts.init(document.getElementById(this.id), 'macarons');
         if (!chart._$handlers.click) {
             chart.on('click', function (param) {
-                callback(param);
+                callback(param.value.concat([param.seriesName]));
             });
         } else {
             chart._$handlers.click[0].h = function (param) {
-                callback(param);
+                callback(param.value.concat([param.seriesName]));
             };
         }
     },
@@ -1025,40 +1044,38 @@ HxChartScatter.prototype = {
         }
     },
     // 新增修改数据
-    putData: function (data) {
-        for (var i = 0; i < data.length; i++) {
-            var flag = 0;
-            for (var j = 0; j < this.option.series.length; j++) {
-                if (data[i][0] == this.option.series[j].name) {
-                    this.option.series[j].data = this.option.series[j].data.concat(data[i].slice(1));
-                    flag = 1;
-                }
+    putData: function (name, x, y, value, label) {
+        var flag = 0;
+        for (var j = 0; j < this.option.series.length; j++) {
+            if (name == this.option.series[j].name) {
+                this.option.series[j].data = this.option.series[j].data.concat([[x, y, value, label]]);
+                flag = 1;
             }
-            if (flag == 0) {
-                this.option.series.push({
-                    name: data[i][0],
-                    data: data[i].slice(1),
-                    type: 'scatter',
-                    symbolSize: 50,
-                    label: {
-                        emphasis: {
-                            show: true,
-                            formatter: function (param) {
-                                return param.value[3];
-                            },
-                            position: 'top'
-                        }
-                    },
-                    itemStyle: {
-                        normal: {
-                            shadowBlur: 10,
-                            shadowColor: 'rgba(120, 36, 50, 0.5)',
-                            shadowOffsetY: 5,
-                            // color: createRandomRGB()
-                        }
+        }
+        if (flag == 0) {
+            this.option.series.push({
+                name: name,
+                data: [[x, y, value, label]],
+                type: 'scatter',
+                symbolSize: 50,
+                label: {
+                    emphasis: {
+                        show: true,
+                        formatter: function (param) {
+                            return param.value[3];
+                        },
+                        position: 'top'
                     }
-                })
-            }
+                },
+                itemStyle: {
+                    normal: {
+                        shadowBlur: 10,
+                        shadowColor: 'rgba(120, 36, 50, 0.5)',
+                        shadowOffsetY: 5,
+                        // color: createRandomRGB()
+                    }
+                }
+            });
         }
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
@@ -1122,6 +1139,16 @@ HxChartScatter.prototype = {
         this.option.backgroundColor = color;
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
+    // 去除标题等文字
+    trim: function () {
+        this.option.title.show = false;
+        this.option.legend.show = false;
+        this.option.grid.top = 10;
+        this.option.grid.bottom = 40;
+        this.option.grid.left = 40;
+        this.option.grid.right = 20;
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    }
 };
 
 // 随机生成rgb颜色字符串
@@ -1152,7 +1179,7 @@ function HxChartRadar(id, indicator, title) {
             textStyle: {}
         },
         legend: {
-            bottom: 0
+            right: 10
         },
         radar: {
             name: {
@@ -1199,11 +1226,11 @@ HxChartRadar.prototype = {
         var chart = echarts.init(document.getElementById(this.id), 'macarons');
         if (!chart._$handlers.click) {
             chart.on('click', function (param) {
-                callback(param);
+                callback(param.value.concat([param.name]));
             });
         } else {
             chart._$handlers.click[0].h = function (param) {
-                callback(param);
+                callback(param.value.concat([param.name]));
             };
         }
     },
@@ -1247,18 +1274,16 @@ HxChartRadar.prototype = {
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 新增修改数据
-    putData: function (data) {
-        for (var i = 0; i < data.length; i++) {
-            var flag = 0;
-            for (var j = 0; j < this.option.series.data.length; j++) {
-                if (data[i].name == this.option.series.data[j].name) {
-                    this.option.series.data[j].value = data[i].value;
-                    flag = 1;
-                }
+    putData: function (name, value1, value2, value3, value4, value5, value6) {
+        var flag = 0;
+        for (var j = 0; j < this.option.series.data.length; j++) {
+            if (name == this.option.series.data[j].name) {
+                this.option.series.data[j].value = [value1, value2, value3, value4, value5, value6];
+                flag = 1;
             }
-            if (flag == 0) {
-                this.option.series.data = this.option.series.data.concat(data[i])
-            }
+        }
+        if (flag == 0) {
+            this.option.series.data = this.option.series.data.concat({ name: name, value: [value1, value2, value3, value4, value5, value6] });
         }
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
@@ -1266,8 +1291,15 @@ HxChartRadar.prototype = {
     clearData: function () {
         this.option.series.data = [];
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    },
+    // 去除标题等文字
+    trim: function () {
+        this.option.title.show = false;
+        // this.option.legend.show = false;
+        this.option.radar.radius = '90%';
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     }
-}
+};
 
 // 仪表盘封装
 function HxChartGauge(id, title) {
@@ -1354,11 +1386,11 @@ HxChartGauge.prototype = {
         var chart = echarts.init(document.getElementById(this.id), 'macarons');
         if (!chart._$handlers.click) {
             chart.on('click', function (param) {
-                callback(param);
+                callback([param.name, param.value]);
             });
         } else {
             chart._$handlers.click[0].h = function (param) {
-                callback(param);
+                callback([param.name, param.value]);
             };
         }
     },
@@ -1385,15 +1417,21 @@ HxChartGauge.prototype = {
             min: data[0].min,
             max: data[0].max,
             data: data
-        }
+        };
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 清空数据
     clearData: function () {
         this.option.series.data = [];
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    },
+    // 去除标题等文字
+    trim: function () {
+        this.option.title.show = false;
+        this.option.series.radius = '100%';
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     }
-}
+};
 
 
 function HxChartMultiGauge(id, title) {
@@ -1486,11 +1524,11 @@ HxChartMultiGauge.prototype = {
         var chart = echarts.init(document.getElementById(this.id), 'macarons');
         if (!chart._$handlers.click) {
             chart.on('click', function (param) {
-                callback(param);
+                callback([param.name, param.value]);
             });
         } else {
             chart._$handlers.click[0].h = function (param) {
-                callback(param);
+                callback([param.name, param.value]);
             };
         }
     },
@@ -1714,7 +1752,7 @@ HxChartMultiGauge.prototype = {
                         show: false
                     },
                     data: data[i]
-                }
+                };
             }
             echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
         }
@@ -1726,7 +1764,19 @@ HxChartMultiGauge.prototype = {
         }
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
-}
+    // 去除标题等文字
+    trim: function () {
+        this.option.title.show = false;
+        this.option.series[0].radius = '100%';
+        this.option.series[1].center = ['15%', '55%'];
+        this.option.series[1].radius = '60%';
+        this.option.series[2].center = ['85%', '50%'];
+        this.option.series[3].center = ['85%', '50%'];
+        this.option.series[2].radius = '50%';
+        this.option.series[3].radius = '50%';
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    }
+};
 
 // 交错正负轴封装
 function HxChartCrossBar(id, category, title) {
@@ -1797,11 +1847,11 @@ HxChartCrossBar.prototype = {
         var chart = echarts.init(document.getElementById(this.id), 'macarons');
         if (!chart._$handlers.click) {
             chart.on('click', function (param) {
-                callback(param);
+                callback([param.name, param.value]);
             });
         } else {
             chart._$handlers.click[0].h = function (param) {
-                callback(param);
+                callback([param.name, param.value]);
             };
         }
     },
@@ -1874,12 +1924,10 @@ HxChartCrossBar.prototype = {
                 position: 'right'
             }
         };
-        for (var i = 0; i < data.length; i++) {
-            if (data[i] < 0) {
-                data[i] = { value: data[i], label: labelRight }
-            }
+        if (data < 0) {
+            data = { value: data, label: labelRight };
         }
-        var newData = this.option.series.data.concat(data);
+        var newData = this.option.series.data.concat([data]);
         if (newData.length <= this.option.yAxis.data.length) {
             this.option.series.data = newData;
             echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
@@ -1887,7 +1935,7 @@ HxChartCrossBar.prototype = {
     },
     // 新增x轴数据
     putCategory: function (data) {
-        this.option.yAxis.data = this.option.yAxis.data.concat(data);
+        this.option.yAxis.data = this.option.yAxis.data.concat([data]);
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 清空数据
@@ -1895,6 +1943,15 @@ HxChartCrossBar.prototype = {
         this.option.series.data = [];
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
+    // 去除标题等文字
+    trim: function () {
+        this.option.title.show = false;
+        this.option.grid.top = 30;
+        this.option.grid.bottom = 1;
+        this.option.grid.left = 20;
+        this.option.grid.right = 20;
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    }
 };
 
 var iconWork = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAFiUlEQVRoQ+1aW2xUVRRd65w7fQi1RYoFRcNDDLaUgiURImAfGMYHKpSSKFHhpwkhBoFOIP6UJn6UhzF+mAgJ+mGCwYISEpu2KS2gkWDSRGir8tFaoAG00hQV6XTmnm3ulKll+phHmw4m3b9nn7XXOnvffR4zxBhbT+FLcyzjzxYym0A2AFsojQBaLNE/s77q8liG5FiBeVe9mK2N7AbkjZExecRWrEisq2oai9hjIsAucO8WYDeA1AhJ3SJQoeurKyL0H9Zt1AL8Be4vARSHRLgtwE8UXATgBZAJIAvEtBC/Squ+esNoRIxKQCh5AtcAHFIuOcSamuuhxOx8dwmIEgFyB4yNSkTMAoZY+Urtkm1DER8kpMBdJsCesRARkwB/gdspGad0ghb1KtqhIkQ2Wg01R6Itp9gEFLpPQPBqIJjgV+0yS1lb+3u0wf35q4+BLArMI76xTlW/HC1G1AKk8IVMW6QlGIiUd/Wpmo+iDez4+wpXr6DwbHCuz2B28unq9miwohbQW+DepIDP7gaJunRCyfnz3Q0g8vqSgD26vro8ZgFSvOtxv9hzwgHQezsNNEoSUrrC+UYyLrdvPEWYBzHpkfPh/C3qNlbuvdJfAYEyLipdaISfgve0t3BY8RtXvKCMeYvHD1ykrC192Cj+xkSxkePXyDDxIxYuspfATUIaXQFPZSSDpshzTIAita4HSJdwEPfFuLRpSF0CmCR1tItLr3CWeYyreiMiJ9dVX9dLN0DfQozKgngBkCSAUyKrAEeAdOhO2kUeYa4PzPWPSERaNXBJ/y0denK/43z7jlrZmxyzgisapjrh3ukPmTt81pfMGSMLkUYrUEqRC6hKsHFDt9H4l7Lywy7f+tI8RZ5kQW8K59gxaZCaRMhVdovN7aKkXUFlQuRjPmnfYl7viCfbqAWYQ8kwlHz80QwSZSIo11Ozy5BuFnGdNy0WBQ4mRPaYruYzDiYUDjJ14aNIMOVqc8+kkTD7BZgNnq/FxmuREHAEsKt5B4A1AD5n2oJWkAMPZZHAhPhwi3RfXAxBCYFWk5q1RSlVGwkQU+Uc5fX3Mvw+X44ysmz4SbyujK7liYp2f4G7r1UJTsvUBeUUzKRgbiQBQ32EaBWigzeby4K7sZ4xL9X2Jq2mEecOMawpxUYYV2PUR4mBAqyG6vxYiIfOGXicsOqro+JEe11pGclc6SuLIY0KnaJ4VB/d985AATo9a6tovi8+ro1FiCTghPbhsH2zaWcwA44AU+Q5CSAlHKaInKbZ4GnEIt/Tck07h6lhzenXd7+BtwFsAvgJ0xak4AEpZqY/pBeGC313/LLulk6Wo7tllkC2AahkWnYdiINc49xER7B2fVWarN6I22iwY+ivDpQ7lxHn1GiKS1uQIZlhgw3DQ6oS/pEO/aU+vn9zENMuKt3HZGznmz1WRF0ouJGhcBZMTgn0WedlZPAmYn6wgB9dgbbnAJPMEyCPy31g5sib4HBE5JKGnHGSJ4chuApwJpOxBFm+RWE31tCNDM8/AbN4K3TDDsD4Bsf0EXLOgrRpH3rpQqLYnG1rrhzCN8IKCjSzRgvo0HdgwwsFCxlmMpeFxxy0kYUVEAWp8XCdEDAeqxzdRxzuG4g345D4EyUU74RMZOC+y4Cz88m0HLDzQry5RRR/cAk9Nx2StRHq/N6IAOLtNPhK+YwLMmUe2On8JnH/W9R34vtN0oSAeGdkIgMTGRjlCvz3sFXs6cJ8/xTnavh/MvnOBfxiddGs93wvaWaJKvaOwVvz+C2B+SLpT/7FJsraXcuNMt8yyw/MtcHpkT1vjx/VeyPJDQW0akiLBWXUisBTkL3eUwrB/niRiiku4dHH9h/of8uS4p25xqiVBF6JCXCcJglwUilzlpUfOH/hwb8Y+PWlyh19igAAAABJRU5ErkJggg==';

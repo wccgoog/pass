@@ -61,83 +61,95 @@
     <hr>
     <div id="main8" class="demo"></div>
     <script>
-
         var main = new HxChartBar('main', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '单数据展示');
         main.init();
-        main.putData([['类目一', ['第三天', 50], 100, ['第一天', 70], 90, 120, 110]])
-
-
+        for (var i = 0; i < 6; i++) {
+            main.putData('类目一', Math.ceil(Math.random() * 10));
+        }
 
         var category = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
         var main1 = new HxChartBar('main1', category, '点击上方按钮新增数据:putData');
         main1.init();
-        data = [
-            ['邮件营销', 1, 2, 3],
-            ['联盟广告', 2, 3, 2],
-            ['视频广告', 3, 4, 4],
-            ['直接访问', 4, 7, 5],
-            ['搜索引擎', 5, 9, 6]
-        ];
-        main1.putData(data);
+        for (var i = 0; i < 3; i++) {
+            main1.putData('邮件营销', Math.ceil(Math.random() * 10));
+            main1.putData('联盟广告', Math.ceil(Math.random() * 10));
+            main1.putData('视频广告', Math.ceil(Math.random() * 10));
+            main1.putData('直接访问', Math.ceil(Math.random() * 10));
+            main1.putData('搜索引擎', Math.ceil(Math.random() * 10));
+        }
+
         document.getElementById('button').addEventListener("click", function () {
-            var data = [
-                ['邮件营销', Math.ceil(Math.random() * 10)],
-                ['联盟广告', Math.ceil(Math.random() * 10)],
-                ['视频广告', Math.ceil(Math.random() * 10)],
-                ['直接访问', Math.ceil(Math.random() * 10)],
-                ['搜索引擎', Math.ceil(Math.random() * 10)]
-            ];
-            main1.putData(data);
+            main1.putData('邮件营销', Math.ceil(Math.random() * 10));
+            main1.putData('联盟广告', Math.ceil(Math.random() * 10));
+            main1.putData('视频广告', Math.ceil(Math.random() * 10));
+            main1.putData('直接访问', Math.ceil(Math.random() * 10));
+            main1.putData('搜索引擎', Math.ceil(Math.random() * 10));
         })
         document.getElementById('button1').addEventListener("click", function () {
-            main1.putData([['新类目', Math.ceil(Math.random() * 10)]]);
+            main1.putData('新类目', Math.ceil(Math.random() * 10));
         })
         document.getElementById('button2').addEventListener("click", function () {
             main1.clearData();
         })
         document.getElementById('button3').addEventListener("click", function () {
-            main1.putCategory(['新增']);
+            main1.putCategory('新增');
         })
+
         var main2 = new HxChartBar('main2', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '显示极值:showExtreme');
         main2.init();
-        main2.putData([
-            ['类目一', 3, 2, 4, 6, 3, 2],
-            ['类目二', 6, 8, 7, 9, 7, 6]
-        ]);
+        for (var i = 0; i < 6; i++) {
+            main2.putData('类目一', Math.ceil(Math.random() * 10));
+            main2.putData('类目二', Math.ceil(Math.random() * 10));
+        }
         main2.showExtreme();
 
         var main3 = new HxChartBar('main3', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '显示极值:showAvarage');
         main3.init();
-        main3.putData([['类目一', 3, 2, 4, 6, 3, 2], ['类目二', 6, 8, 7, 9, 7, 6]]);
+        for (var i = 0; i < 6; i++) {
+            main3.putData('类目一', Math.ceil(Math.random() * 10));
+            main3.putData('类目二', Math.ceil(Math.random() * 10));
+        }
         main3.showAvarage();
 
         var main4 = new HxChartBar('main4', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改字体:setSize');
         main4.init();
-        main4.putData([['类目一', 50, 100, 70, 90, 120, 110]])
+        for (var i = 0; i < 6; i++) {
+            main4.putData('类目一', Math.ceil(Math.random() * 10));
+        }
         main4.setSize('l');
         main4.showAvarage();
         main4.showExtreme();
+
         var main5 = new HxChartBar('main5', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改字体:setSize');
         main5.init();
-        main5.putData([['类目一', 50, 100, 70, 90, 120, 110]])
+        for (var i = 0; i < 6; i++) {
+            main5.putData('类目一', Math.ceil(Math.random() * 10));
+        }
         main5.setSize('m');
         main5.showAvarage();
         main5.showExtreme();
+
         var main6 = new HxChartBar('main6', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改字体:setSize');
         main6.init();
-        main6.putData([['类目一', 50, 100, 70, 90, 120, 110]])
+        for (var i = 0; i < 6; i++) {
+            main6.putData('类目一', Math.ceil(Math.random() * 10));
+        }
         main6.setSize('s');
         main6.showAvarage();
         main6.showExtreme();
 
         var main7 = new HxChartBar('main7', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']);
         main7.init();
-        main7.putData([['类目一', 50, 100, 70, 90, 120, 110]])
+        for (var i = 0; i < 6; i++) {
+            main7.putData('类目一', Math.ceil(Math.random() * 10));
+        }
         main7.setTitle('修改标题:setTitle')
 
         var main8 = new HxChartBar('main8', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改标题位置:setTitleLocation');
         main8.init();
-        main8.putData([['类目一', 50, 100, 70, 90, 120, 110]])
+        for (var i = 0; i < 6; i++) {
+            main8.putData('类目一', Math.ceil(Math.random() * 10));
+        }
         main8.setTitleLocation('l')
     </script>
 </body>

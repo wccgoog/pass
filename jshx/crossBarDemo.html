@@ -66,47 +66,65 @@
         var data = [-0.07, -0.09, 0.01, 0.44, -0.23, 0.08, -0.17, 0.47, -0.36, 0.18];
         var main = new HxChartCrossBar('main', category, '交错正负轴HxChartCrossBar');
         main.init();
-        main.putData(data);
+        data.forEach(function (value) {
+            main.putData(value);
+        })
+
 
 
         var main1 = new HxChartCrossBar('main1', category, '点击上方按钮更新数据:putData');
         main1.init();
-        main1.putData(data.slice(0, 5));
+        var data1 = [-0.07, -0.09, 0.01, 0.44, -0.23];
+        data1.forEach(function (value) {
+            main1.putData(value);
+        })
         document.getElementById('button').addEventListener("click", function () {
-            var data = [Math.random() > 0.5 ? Math.random().toFixed(2) : -Math.random().toFixed(2)];
+            var data = Math.random() > 0.5 ? Math.random().toFixed(2) : -Math.random().toFixed(2);
             main1.putData(data);
         })
         document.getElementById('button2').addEventListener("click", function () {
             main1.clearData();
         })
         document.getElementById('button3').addEventListener("click", function () {
-            main1.putCategory(['新增']);
+            main1.putCategory('新增');
         })
         var main3 = new HxChartCrossBar('main3', category, '修改标题位置:setTitleLocation');
         main3.init();
-        main3.putData(data);
+        data.forEach(function (value) {
+            main3.putData(value);
+        })
         main3.setTitleLocation('l');
 
         var main4 = new HxChartCrossBar('main4', category);
         main4.init();
-        main4.putData(data);
+        data.forEach(function (value) {
+            main4.putData(value);
+        })
         main4.setTitle('修改标题:setTitle');
 
         var main5 = new HxChartCrossBar('main5', category, '修改字体:setSize');
         main5.init();
-        main5.putData(data);
+        data.forEach(function (value) {
+            main5.putData(value);
+        })
         main5.setSize('l');
         var main6 = new HxChartCrossBar('main6', category, '修改字体:setSize');
         main6.init();
-        main6.putData(data);
+        data.forEach(function (value) {
+            main6.putData(value);
+        })
         main6.setSize('m');
         var main7 = new HxChartCrossBar('main7', category, '修改字体:setSize');
         main7.init();
-        main7.putData(data);
+        data.forEach(function (value) {
+            main7.putData(value);
+        })
         main7.setSize('s');
         var main8 = new HxChartCrossBar('main8', category, '修改背景:setBackground');
         main8.init();
-        main8.putData(data);
+        data.forEach(function (value) {
+            main8.putData(value);
+        })
         main8.setBackground('#eee');
     </script>
 </body>

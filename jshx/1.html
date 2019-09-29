@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,16 +12,16 @@
 </head>
 
 <body>
-    <div id="instance" style="height: 900px; width: 1000px;"></div>
+    <div id="instance" style="height: 800px; width: 1700px;"></div>
     <script>
         var instance = new HxChartCalendar('instance', '2019-09');
         instance.init();
-        instance.trim();
         instance.setBackground('#f9f1f1');
         instance.putData([['2019-09-01', 100], ['2019-09-03', 200]]);
         instance.setSize('l');
         instance.setTitle('示例');
         instance.putImg('2019-09-18', iconTick);
+        instance.trim();
     </script>
 </body>
 
