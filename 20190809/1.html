@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +11,14 @@
 </head>
 
 <body>
-    <div id="instance" style="height: 700px; width: 1300px;"></div>
+    <div id="instance" style="height: 830px; width: 1700px;"></div>
     <script>
-        var instance = new HxChartScatter('instance');
+        var instance = new HxChartBar('instance', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '示例');
         instance.init();
+        instance.trim();
         instance.setBackground('#f9f1f1');
-        instance.putData([
-            ['类目一', [4, 66, 888, '数据1'], [7, 33, 553, '数据2']],
-            ['类目二', [8, 34, 645, '数据1'], [2, 48, 393, '数据2']],
-        ]);
-        instance.setSize('m');
-        instance.setTitle('示例');
-        instance.putData([['类目二', [5, 24, 145, '数据3']]]);
+        instance.putData('类目一', '第二天', 10);
+        instance.putData('类目一', '第四天', 15);
     </script>
 </body>
 

@@ -683,12 +683,12 @@ HxChartBar.prototype = {
         }
     },
     // 新增修改数据
-    putData: function (name, value) {
+    putData: function (name, x, y) {
         // 判断是否已经有这个类目
         var flag = 0;
         for (var j = 0; j < this.option.series.length; j++) {
             if (name == this.option.series[j].name) {
-                this.option.series[j].data = this.option.series[j].data.concat([value]);
+                this.option.series[j].data = this.option.series[j].data.concat([[x, y]]);
                 flag = 1;
             }
         }
@@ -697,7 +697,7 @@ HxChartBar.prototype = {
             this.option.series.push({
                 name: name,
                 type: 'bar',
-                data: [value]
+                data: [[x, y]]
             });
         }
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
