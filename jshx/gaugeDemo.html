@@ -62,49 +62,48 @@
     <div id="main8" class="demo"></div>
     <script>
         var data = [{ value: 50, name: '完成率', min: 0, max: 100 }];
-        var main = new HxChartGauge('main', '仪表盘HxChartGauge');
+        var main = new HxChartGauge('main', 0, 100, '仪表盘HxChartGauge');
         main.init();
-        main.putData(data);
+        main.putData('完成率', 50);
 
 
-        var main1 = new HxChartGauge('main1', '点击上方按钮更新数据:putData');
+        var main1 = new HxChartGauge('main1', 0, 100, '点击上方按钮更新数据:putData');
         main1.init();
-        main1.putData(data);
+        main1.putData('完成率', 50);
 
         document.getElementById('button').addEventListener("click", function () {
-            var data = [{ value: Math.ceil(Math.random() * 100), name: '完成率', min: 0, max: 100 }];
-            main1.putData(data);
+            main1.putData('完成率', Math.ceil(Math.random() * 100));
         })
 
         document.getElementById('button2').addEventListener("click", function () {
             main1.clearData();
         })
 
-        var main3 = new HxChartGauge('main3', '修改标题位置:setTitleLocation');
+        var main3 = new HxChartGauge('main3', 0, 100, '修改标题位置:setTitleLocation');
         main3.init();
-        main3.putData(data);
+        main3.putData('完成率', 50);
         main3.setTitleLocation('l');
 
-        var main4 = new HxChartGauge('main4');
+        var main4 = new HxChartGauge('main4', 0, 100);
         main4.init();
-        main4.putData(data);
+        main4.putData('完成率', 50);
         main4.setTitle('修改标题:setTitle');
 
-        var main5 = new HxChartGauge('main5', '修改字体:setSize');
+        var main5 = new HxChartGauge('main5', 0, 100, '修改字体:setSize');
         main5.init();
-        main5.putData(data);
+        main5.putData('完成率', 50);
         main5.setSize('l');
-        var main6 = new HxChartGauge('main6', '修改字体:setSize');
+        var main6 = new HxChartGauge('main6', 0, 100, '修改字体:setSize');
         main6.init();
-        main6.putData(data);
+        main6.putData('完成率', 50);
         main6.setSize('m');
-        var main7 = new HxChartGauge('main7', '修改字体:setSize');
+        var main7 = new HxChartGauge('main7', 0, 100, '修改字体:setSize');
         main7.init();
-        main7.putData(data);
+        main7.putData('完成率', 50);
         main7.setSize('s');
-        var main8 = new HxChartGauge('main8', '修改背景:setBackground');
+        var main8 = new HxChartGauge('main8', 0, 100, '修改背景:setBackground');
         main8.init();
-        main8.putData(data);
+        main8.putData('完成率', 50);
         main8.setBackground('#eee');
     </script>
 </body>

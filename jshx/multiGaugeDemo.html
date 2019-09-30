@@ -46,7 +46,7 @@
 </head>
 
 <body>
-    <div id="main-2" class="demo"></div>
+    <div id="main" class="demo"></div>
     <hr>
     <button id="button">点此更新已有数据putData</button>
     <button id="button2">点此清除数据clearData</button>
@@ -63,18 +63,28 @@
     <div id="main7" class="demo"></div>
     <div id="main8" class="demo"></div>
     <script>
-        var data = [[{ value: 50, name: '完成率', min: 0, max: 100 }], [{ value: 1.5, name: '数据2', max: 7, min: 0 }], [{ value: 1.5, name: '数据3', max: 7, min: 1 }], [{ value: 0.5, name: '数据4', max: 2, min: 0 }]];
-        var main_2 = new HxChartMultiGauge('main-2', '多仪表盘HxChartMultiGauge');
-        main_2.init();
-        main_2.putData(data);
+        var main = new HxChartMultiGauge('main', '多仪表盘HxChartMultiGauge');
+        main.init();
+        main.putData('完成率', 50, 0, 100);
+        main.putData('数据2', 1.5, 0, 7);
+        main.putData('数据3', 1.5, 1, 7);
+        main.putData('数据4', 0.5, 0, 2);
+
+
 
         var main1 = new HxChartMultiGauge('main1', '点击上方按钮更新数据:putData');
         main1.init();
-        main1.putData(data);
+        main1.putData('完成率', 50, 0, 100);
+        main1.putData('数据2', 1.5, 0, 7);
+        main1.putData('数据3', 1.5, 1, 7);
+        main1.putData('数据4', 0.5, 0, 2);
 
         document.getElementById('button').addEventListener("click", function () {
             var data = [[{ value: Math.ceil(Math.random() * 100), name: '完成率', min: 0, max: 100 }], [{ value: Math.ceil(Math.random() * 7), name: '数据2', max: 7, min: 0 }], [{ value: Math.ceil(Math.random() * 7), name: '数据3', max: 7, min: 0 }], [{ value: Math.ceil(Math.random() * 2), name: '数据4', max: 2, min: 0 }]];
-            main1.putData(data);
+            main1.putData('完成率', Math.ceil(Math.random() * 100), 0, 100);
+            main1.putData('数据2', Math.ceil(Math.random() * 7), 0, 7);
+            main1.putData('数据3', Math.ceil(Math.random() * 7), 0, 7);
+            main1.putData('数据4', Math.ceil(Math.random() * 2), 0, 2);
         })
 
         document.getElementById('button2').addEventListener("click", function () {
@@ -83,29 +93,47 @@
 
         var main3 = new HxChartMultiGauge('main3', '修改标题位置:setTitleLocation');
         main3.init();
-        main3.putData(data);
+        main3.putData('完成率', 50, 0, 100);
+        main3.putData('数据2', 1.5, 0, 7);
+        main3.putData('数据3', 1.5, 1, 7);
+        main3.putData('数据4', 0.5, 0, 2);
         main3.setTitleLocation('l');
 
         var main4 = new HxChartMultiGauge('main4');
         main4.init();
-        main4.putData(data);
+        main4.putData('完成率', 50, 0, 100);
+        main4.putData('数据2', 1.5, 0, 7);
+        main4.putData('数据3', 1.5, 1, 7);
+        main4.putData('数据4', 0.5, 0, 2);
         main4.setTitle('修改标题:setTitle');
 
         var main5 = new HxChartMultiGauge('main5', '修改字体:setSize');
         main5.init();
-        main5.putData(data);
+        main5.putData('完成率', 50, 0, 100);
+        main5.putData('数据2', 1.5, 0, 7);
+        main5.putData('数据3', 1.5, 1, 7);
+        main5.putData('数据4', 0.5, 0, 2);
         main5.setSize('l');
         var main6 = new HxChartMultiGauge('main6', '修改字体:setSize');
         main6.init();
-        main6.putData(data);
+        main6.putData('完成率', 50, 0, 100);
+        main6.putData('数据2', 1.5, 0, 7);
+        main6.putData('数据3', 1.5, 1, 7);
+        main6.putData('数据4', 0.5, 0, 2);
         main6.setSize('m');
         var main7 = new HxChartMultiGauge('main7', '修改字体:setSize');
         main7.init();
-        main7.putData(data);
+        main7.putData('完成率', 50, 0, 100);
+        main7.putData('数据2', 1.5, 0, 7);
+        main7.putData('数据3', 1.5, 1, 7);
+        main7.putData('数据4', 0.5, 0, 2);
         main7.setSize('s');
         var main8 = new HxChartMultiGauge('main8', '修改背景:setBackground');
         main8.init();
-        main8.putData(data);
+        main8.putData('完成率', 50, 0, 100);
+        main8.putData('数据2', 1.5, 0, 7);
+        main8.putData('数据3', 1.5, 1, 7);
+        main8.putData('数据4', 0.5, 0, 2);
         main8.setBackground('#eee');
     </script>
 </body>

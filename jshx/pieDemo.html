@@ -71,10 +71,6 @@
 
         var main1 = new HxChartPie('main1', '点击上方按钮新增数据:putData');
         main1.init();
-        main1.putData([
-            { value: 335, name: '初始数据1' },
-            { value: 310, name: '初始数据2' }
-        ]);
         main1.putData('初始数据1', 335);
         main1.putData('初始数据2', 310);
         document.getElementById('button').addEventListener("click", function () {
