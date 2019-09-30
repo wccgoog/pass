@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./js/echarts.min.js"></script>
     <script src="./js/jshx.echarts.1.0.js"></script>
-    <title>折线图demo</title>
+    <title>柱状图demo</title>
     <style>
         .demo {
             margin: 50px auto;
@@ -61,15 +61,14 @@
     <hr>
     <div id="main8" class="demo"></div>
     <script>
-
-        var main = new HxChartLine('main', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '单数据展示');
+        var main = new HxChartBar('main', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '单数据展示');
         main.init();
         for (var i = 0; i < 6; i++) {
             main.putData('类目一', Math.ceil(Math.random() * 10));
         }
 
         var category = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-        var main1 = new HxChartLine('main1', category, '点击上方按钮新增数据:putData');
+        var main1 = new HxChartBar('main1', category, '点击上方按钮新增数据:putData');
         main1.init();
         for (var i = 0; i < 3; i++) {
             main1.putData('邮件营销', Math.ceil(Math.random() * 10));
@@ -96,7 +95,7 @@
             main1.putCategory('新增');
         })
 
-        var main2 = new HxChartLine('main2', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '显示极值:showExtreme');
+        var main2 = new HxChartBar('main2', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '显示极值:showExtreme');
         main2.init();
         for (var i = 0; i < 6; i++) {
             main2.putData('类目一', Math.ceil(Math.random() * 10));
@@ -104,7 +103,7 @@
         }
         main2.showExtreme();
 
-        var main3 = new HxChartLine('main3', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '显示极值:showAvarage');
+        var main3 = new HxChartBar('main3', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '显示极值:showAvarage');
         main3.init();
         for (var i = 0; i < 6; i++) {
             main3.putData('类目一', Math.ceil(Math.random() * 10));
@@ -112,7 +111,7 @@
         }
         main3.showAvarage();
 
-        var main4 = new HxChartLine('main4', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改字体:setSize');
+        var main4 = new HxChartBar('main4', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改字体:setSize');
         main4.init();
         for (var i = 0; i < 6; i++) {
             main4.putData('类目一', Math.ceil(Math.random() * 10));
@@ -121,7 +120,7 @@
         main4.showAvarage();
         main4.showExtreme();
 
-        var main5 = new HxChartLine('main5', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改字体:setSize');
+        var main5 = new HxChartBar('main5', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改字体:setSize');
         main5.init();
         for (var i = 0; i < 6; i++) {
             main5.putData('类目一', Math.ceil(Math.random() * 10));
@@ -130,7 +129,7 @@
         main5.showAvarage();
         main5.showExtreme();
 
-        var main6 = new HxChartLine('main6', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改字体:setSize');
+        var main6 = new HxChartBar('main6', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改字体:setSize');
         main6.init();
         for (var i = 0; i < 6; i++) {
             main6.putData('类目一', Math.ceil(Math.random() * 10));
@@ -139,14 +138,14 @@
         main6.showAvarage();
         main6.showExtreme();
 
-        var main7 = new HxChartLine('main7', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']);
+        var main7 = new HxChartBar('main7', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天']);
         main7.init();
         for (var i = 0; i < 6; i++) {
             main7.putData('类目一', Math.ceil(Math.random() * 10));
         }
         main7.setTitle('修改标题:setTitle')
 
-        var main8 = new HxChartLine('main8', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改标题位置:setTitleLocation');
+        var main8 = new HxChartBar('main8', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '修改标题位置:setTitleLocation');
         main8.init();
         for (var i = 0; i < 6; i++) {
             main8.putData('类目一', Math.ceil(Math.random() * 10));

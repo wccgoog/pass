@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./js/echarts.min.js"></script>
-    <script src="./js/macarons.js"></script>
     <script src="./js/jshx.echarts.1.0.js"></script>
     <title>气泡图demo</title>
     <style>
@@ -60,41 +59,46 @@
     <div id="main6" class="demo"></div>
     <div id="main7" class="demo"></div>
     <script>
-        var data = [
-            ['类目一', ['a', 66, 888, '数据1'], ['b', 33, 553, '数据2']]
-        ];
+
+        var data1 = [[28604, 77, 17096869, 'Australia'], [31163, 77.4, 27662440, 'Canada'], [1516, 68, 1154605773, 'China'], [13670, 74.7, 10582082, 'Cuba'], [28599, 75, 4986705, 'Finland'], [29476, 77.1, 56943299, 'France'], [31476, 75.4, 78958237, 'Germany'], [28666, 78.1, 254830, 'Iceland'], [1777, 57.7, 870601776, 'India'], [29550, 79.1, 122249285, 'Japan'], [2076, 67.9, 20194354, 'North Korea'], [12087, 72, 42972254, 'South Korea'], [24021, 75.4, 3397534, 'New Zealand'], [43296, 76.8, 4240375, 'Norway'], [10088, 70.8, 38195258, 'Poland'], [19349, 69.6, 147568552, 'Russia'], [10670, 67.3, 53994605, 'Turkey'], [26424, 75.7, 57110117, 'United Kingdom'], [37062, 75.4, 252847810, 'United States']];
+
+        var data2 = [[44056, 81.8, 23968973, 'Australia'], [43294, 81.7, 35939927, 'Canada'], [13334, 76.9, 1376048943, 'China'], [21291, 78.5, 11389562, 'Cuba'], [38923, 80.8, 5503457, 'Finland'], [37599, 81.9, 64395345, 'France'], [44053, 81.1, 80688545, 'Germany'], [42182, 82.8, 329425, 'Iceland'], [5903, 66.8, 1311050527, 'India'], [36162, 83.5, 126573481, 'Japan'], [1390, 71.4, 25155317, 'North Korea'], [34644, 80.7, 50293439, 'South Korea'], [34186, 80.6, 4528526, 'New Zealand'], [64304, 81.6, 5210967, 'Norway'], [24787, 77.3, 38611794, 'Poland'], [23038, 73.13, 143456918, 'Russia'], [19360, 76.5, 78665830, 'Turkey'], [38225, 81.4, 64715810, 'United Kingdom'], [53354, 79.1, 321773631, 'United States']];
+
         var main = new HxChartScatter('main', '气泡图');
         main.init();
-        main.option.xAxis = {
-            type: 'category',
-            data: ['a', 'b', 'c']
-        }
-        main.option.animationDuration = '10000';
-        main.putData(data);
-        main.setCompareNum(1000);
+        data1.forEach(function (value) {
+            main.putData('1990', value[0], value[1], value[2], value[3])
+        })
+        data2.forEach(function (value) {
+            main.putData('2019', value[0], value[1], value[2], value[3])
+        })
 
         var main_1 = new HxChartScatter('main-1', '修改影响图形大小的最大值:setCompareNum');
         main_1.init();
-        main_1.putData(data);
-        main_1.setCompareNum(1000);
+        data1.forEach(function (value) {
+            main_1.putData('1990', value[0], value[1], value[2], value[3])
+        })
+        data2.forEach(function (value) {
+            main_1.putData('2019', value[0], value[1], value[2], value[3])
+        })
+        main_1.setCompareNum(100000000);
 
-        var data1 = [
-            ['类目一', [4, 66, 888, '数据1'], [7, 33, 553, '数据2']]
+        var data3 = [
+            [4, 66, 888, '数据1'], [7, 33, 553, '数据2']
         ];
         var main1 = new HxChartScatter('main1', '点击上方按钮新增数据:putData');
         main1.init();
-        main1.putData(data1);
+        data3.forEach(function (value) {
+            main1.putData('类目一', value[0], value[1], value[2], value[3])
+        })
         main1.setCompareNum(1000);
 
         document.getElementById('button').addEventListener("click", function () {
-            var data = [
-                ['类目一', [Math.ceil(Math.random() * 10), Math.ceil(Math.random() * 100), Math.ceil(Math.random() * 1000), '新增的数据']]
-            ];
-            main1.putData(data);
+            main1.putData('类目一', Math.ceil(Math.random() * 10), Math.ceil(Math.random() * 100), Math.ceil(Math.random() * 1000), '新增的数据');
         })
 
         document.getElementById('button1').addEventListener("click", function () {
-            main1.putData([['新类目', [Math.ceil(Math.random() * 10), Math.ceil(Math.random() * 100), Math.ceil(Math.random() * 1000), '新增的数据']]]);
+            main1.putData('新类目', Math.ceil(Math.random() * 10), Math.ceil(Math.random() * 100), Math.ceil(Math.random() * 1000), '新增的数据');
             main1.setCompareNum(1000);
         })
 
@@ -106,25 +110,35 @@
 
         var main3 = new HxChartScatter('main3', '修改标题位置:setTitleLocation');
         main3.init();
-        main3.putData(data);
+        data1.forEach(function (value) {
+            main3.putData('1990', value[0], value[1], value[2], value[3])
+        })
         main3.setTitleLocation('l');
 
         var main4 = new HxChartScatter('main4');
         main4.init();
-        main4.putData(data);
+        data1.forEach(function (value) {
+            main4.putData('1990', value[0], value[1], value[2], value[3])
+        })
         main4.setTitle('修改标题:setTitle');
 
         var main5 = new HxChartScatter('main5', '修改字体:setSize');
         main5.init();
-        main5.putData(data);
+        data1.forEach(function (value) {
+            main5.putData('1990', value[0], value[1], value[2], value[3])
+        })
         main5.setSize('l');
         var main6 = new HxChartScatter('main6', '修改字体:setSize');
         main6.init();
-        main6.putData(data);
+        data1.forEach(function (value) {
+            main6.putData('1990', value[0], value[1], value[2], value[3])
+        })
         main6.setSize('m');
         var main7 = new HxChartScatter('main7', '修改字体:setSize');
         main7.init();
-        main7.putData(data);
+        data1.forEach(function (value) {
+            main7.putData('1990', value[0], value[1], value[2], value[3])
+        })
         main7.setSize('s');
     </script>
 </body>

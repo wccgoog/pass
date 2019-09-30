@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="#" />
-    <title>echarts</title>
-    <script src="./js/jquery-3.3.1.min.js"></script>
+    <title>日历Demo</title>
     <script src="./js/echarts.min.js"></script>
     <script src="./js/jshx.echarts.1.0.js"></script>
     <style>
@@ -39,17 +38,6 @@
 </head>
 
 <body>
-    <input type="text" list="month" id="monthInput">
-    <datalist id="month">
-        <option>&nbsp;</option>
-        <option>1</option>
-    </datalist>
-    <div id="main9-1"></div>
-    <hr>
-    <div id="main9-2"></div>
-    <hr>
-    <div id="main9-3"></div>
-    <hr>
     <div id="main" class="demo"></div>
     <hr>
     <div id="main2" class="demo"></div>
@@ -65,44 +53,18 @@
     <div id="main7" class="demo"></div>
     <hr>
     <div id="main8" class="demo"></div>
+    <hr>
+    <div id="main9-1"></div>
+    <div id="main9-2"></div>
+    <div id="main9-3"></div>
     <script>
-        $('#monthInput').change(function (data) {
-            console.log(data.currentTarget.value);
-        })
 
-        function clickFunction(param) {
-            console.log(param);
-        }
-        function callback(param) {
-            console.log(param);
-            alert('第一个回调函数callback1:' + formatDate(new Date(param.data[0])));
-            // $.ajax({
-            //     url: '/'
-            // })
-        }
         function callback2(param) {
+            alert('第二个回调函数callback2:' + param);
             console.log(param);
-            alert('第二个回调函数callback2:' + formatDate(new Date(param.data[0])));
         }
-        var graphData = [
-            [
-                '2017-02-02',
-                560
-            ],
-            [
-                1486137600000,
-                200
-            ],
-            [
-                1487779200000,
-                411
-            ],
-            [
-                1488124800000,
-                985
-            ]
-        ];
-        var main = new HxChartCalendar('main', ['2019-8', '2019-10-30'], '', [['2019-9-1', 100]]);
+
+        var main = new HxChartCalendar('main', '2019-8');
         var main2 = new HxChartCalendar('main2', '2019-8', '修改数值:setData');
         var main3 = new HxChartCalendar('main3', '2017-2', '修改背景:setBackground,修改回调函数:setCallback');
         var main4 = new HxChartCalendar('main4', '2019-8', '修改年月:setRange');
@@ -110,9 +72,9 @@
         var main6 = new HxChartCalendar('main6', '2019-8', '修改标题左边距:setTitleLeft');
         var main7 = new HxChartCalendar('main7', '2019-8', '修改图表宽度:setWidth');
         var main8 = new HxChartCalendar('main8', '2019-8', '修改图表高度:setHeight');
-        var main9_1 = new HxChartCalendar('main9-1', '2019-8', "setSize('large')");
-        var main9_2 = new HxChartCalendar('main9-2', '2019-8', "setSize('normal')");
-        var main9_3 = new HxChartCalendar('main9-3', '2019-8', "setSize('small')");
+        var main9_1 = new HxChartCalendar('main9-1', '2019-8', "setSize('l')");
+        var main9_2 = new HxChartCalendar('main9-2', '2019-8', "setSize('m')");
+        var main9_3 = new HxChartCalendar('main9-3', '2019-8', "setSize('s')");
 
         main.init();
         main2.init();
@@ -126,17 +88,52 @@
         main9_2.init();
         main9_3.init();
 
-        // 修改标题并重载图表
-        main.setTitle('main修改标题:setTitle');
+
+
+        // 2019-09-26更新
+        // 移除年份,月份和标题
+        main.trim();
+
+        // 添加自带图片，目前有四种:putImg
+        main.putImg('2019-08-12', iconWork);
+        main.putImg('2019-08-13', iconWork);
+        main.putImg('2019-08-14', iconTick);
+        main.putImg('2019-08-15', iconCross);
+        main.putImg('2019-08-16', iconFlag);
+
+        // 也可添加base64格式的图片
+        main.putImg('2019-08-17', 'data:image/png;base64,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');
+        main.putImg('2019-08-18', 'https://www.baidu.com/img/baidu_jgylogo3.gif');
+        // 添加点击事件
+        function callback(param) {
+            console.log(param);
+            main.putImg(param, iconTick);
+        }
         main.setCbClick(callback);
+
+        // 移除指定日期图标:removeImg
+        // 取消默认右键事件
+        document.getElementById('main').oncontextmenu = function () { return false; };
+        // 添加右键事件
+        function contextmenuCallback(param) {
+            console.log(param);
+            main.removeImg(param);
+        }
+        main.setContextmenu(contextmenuCallback);
+
+
+
+
+
+
         // 修改数值并重载图表,数值以时间戳毫秒格式显示在日历中
-        main2.putData([[1566983752000, 400]]);
+        main2.putData('2019-08-12', 400);
         main2.setCbClick(callback2);
         // 修改背景并重载图表
         main3.setBackground('#f9f1f1');
-        //修改回调函数
+        // 修改回调函数
         main3.setCbClick(function (param) {
-            alert('第三个回调函数callback3:' + formatDate(new Date(param.data[0])));
+            alert('第三个回调函数callback3:' + param);
         })
         // 修改年月并重载图表
         main4.setRange('2019-10');
@@ -150,11 +147,9 @@
         main8.setHeight(800);
 
         main9_1.setSize('l');
-        $('#main9-1').resize(function () {
-            main9_1.resize();
-        });
         main9_2.setSize('m');
         main9_3.setSize('s');
+
     </script>
 </body>
 

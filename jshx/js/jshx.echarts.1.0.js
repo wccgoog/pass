@@ -1097,7 +1097,7 @@ HxChartScatter.prototype = {
         for (var i = 0; i < this.option.series.length; i++) {
             this.option.series[i].symbolSize = function (data) {
                 return data[2] / compareNum * 50 > 50 ? 50 : data[2] / compareNum * 50;
-            }
+            };
         }
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },

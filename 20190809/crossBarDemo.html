@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/jshx.echarts.1.0.js"></script>
+    <title>交错正负轴demo</title>
+    <style>
+        .demo {
+            margin: 50px auto;
+            width: 80%;
+            height: 800px;
+        }
+
+        #main5 {
+            width: 100%;
+            height: 1000px;
+        }
+
+        #main6 {
+            width: 60%;
+            height: 600px;
+        }
+
+        #main7 {
+            width: 40%;
+            height: 500px;
+        }
+
+        #button {
+            margin-left: 30%;
+            margin-top: 50px;
+        }
+
+        #button1 {
+            margin-top: 50px;
+        }
+
+        #button2 {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" class="demo"></div>
+    <hr>
+    <button id="button">点此新增数据putData</button>
+    <button id="button2">点此清除数据clearData</button>
+    <button id="button3">点此增加x轴范围putCategory</button>
+    <div id="main1" class="demo"></div>
+    <hr>
+    <div id="main3" class="demo"></div>
+    <hr>
+    <div id="main4" class="demo"></div>
+    <hr>
+    <div id="main5" class="demo"></div>
+    <div id="main6" class="demo"></div>
+    <div id="main7" class="demo"></div>
+    <div id="main8" class="demo"></div>
+    <script>
+        var category = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+        var data = [-0.07, -0.09, 0.01, 0.44, -0.23, 0.08, -0.17, 0.47, -0.36, 0.18];
+        var main = new HxChartCrossBar('main', category, '交错正负轴HxChartCrossBar');
+        main.init();
+        data.forEach(function (value) {
+            main.putData(value);
+        })
+
+
+
+        var main1 = new HxChartCrossBar('main1', category, '点击上方按钮更新数据:putData');
+        main1.init();
+        var data1 = [-0.07, -0.09, 0.01, 0.44, -0.23];
+        data1.forEach(function (value) {
+            main1.putData(value);
+        })
+        document.getElementById('button').addEventListener("click", function () {
+            var data = Math.random() > 0.5 ? Math.random().toFixed(2) : -Math.random().toFixed(2);
+            main1.putData(data);
+        })
+        document.getElementById('button2').addEventListener("click", function () {
+            main1.clearData();
+        })
+        document.getElementById('button3').addEventListener("click", function () {
+            main1.putCategory('新增');
+        })
+        var main3 = new HxChartCrossBar('main3', category, '修改标题位置:setTitleLocation');
+        main3.init();
+        data.forEach(function (value) {
+            main3.putData(value);
+        })
+        main3.setTitleLocation('l');
+
+        var main4 = new HxChartCrossBar('main4', category);
+        main4.init();
+        data.forEach(function (value) {
+            main4.putData(value);
+        })
+        main4.setTitle('修改标题:setTitle');
+
+        var main5 = new HxChartCrossBar('main5', category, '修改字体:setSize');
+        main5.init();
+        data.forEach(function (value) {
+            main5.putData(value);
+        })
+        main5.setSize('l');
+        var main6 = new HxChartCrossBar('main6', category, '修改字体:setSize');
+        main6.init();
+        data.forEach(function (value) {
+            main6.putData(value);
+        })
+        main6.setSize('m');
+        var main7 = new HxChartCrossBar('main7', category, '修改字体:setSize');
+        main7.init();
+        data.forEach(function (value) {
+            main7.putData(value);
+        })
+        main7.setSize('s');
+        var main8 = new HxChartCrossBar('main8', category, '修改背景:setBackground');
+        main8.init();
+        data.forEach(function (value) {
+            main8.putData(value);
+        })
+        main8.setBackground('#eee');
+    </script>
+</body>
+
+</html>
