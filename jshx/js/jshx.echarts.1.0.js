@@ -510,7 +510,7 @@ HxChartLine.prototype = {
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 新增x轴数据
-    putCategory: function (data) {
+    addX: function (data) {
         this.option.xAxis.data = this.option.xAxis.data.concat([data]);
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
@@ -703,7 +703,7 @@ HxChartBar.prototype = {
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 新增x轴数据
-    putCategory: function (data) {
+    addX: function (data) {
         this.option.xAxis.data = this.option.xAxis.data.concat([data]);
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
@@ -1321,7 +1321,12 @@ function HxChartGauge(id, min, max, title) {
         detail: {},
         min: min,
         max: max,
-        data: []
+        data: [],
+        axisLine: {
+            lineStyle: {
+                color: [[0.2, '#91c7ae'], [0.8, '#63869e'], [1, '#c23531']]
+            }
+        }
     };
     this.option = {
         title: {
@@ -1436,6 +1441,14 @@ HxChartGauge.prototype = {
     trim: function () {
         this.option.title.show = false;
         this.option.series.radius = '100%';
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    },
+    // 修改仪表盘颜色
+    changeColor: function (color1, color2, color3) {
+        console.log(this.option.series.axisLine.lineStyle.color)
+        this.option.series.axisLine.lineStyle.color[0][1] = color1;
+        this.option.series.axisLine.lineStyle.color[1][1] = color2;
+        this.option.series.axisLine.lineStyle.color[2][1] = color3;
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     }
 };
@@ -1575,7 +1588,8 @@ HxChartMultiGauge.prototype = {
                 radius: '70%',
                 axisLine: {            // 坐标轴线
                     lineStyle: {       // 属性lineStyle控制线条样式
-                        width: 10
+                        width: 10,
+                        color: [[0.2, '#91c7ae'], [0.8, '#63869e'], [1, '#c23531']]
                     }
                 },
                 axisTick: {            // 坐标轴小标记
@@ -1638,7 +1652,8 @@ HxChartMultiGauge.prototype = {
                 splitNumber: 5,
                 axisLine: {            // 坐标轴线
                     lineStyle: {       // 属性lineStyle控制线条样式
-                        width: 8
+                        width: 8,
+                        color: [[0.2, '#91c7ae'], [0.8, '#63869e'], [1, '#c23531']]
                     }
                 },
                 axisTick: {            // 坐标轴小标记
@@ -1679,7 +1694,8 @@ HxChartMultiGauge.prototype = {
                 splitNumber: 2,
                 axisLine: {            // 坐标轴线
                     lineStyle: {       // 属性lineStyle控制线条样式
-                        width: 8
+                        width: 8,
+                        color: [[0.2, '#91c7ae'], [0.8, '#63869e'], [1, '#c23531']]
                     }
                 },
                 axisTick: {            // 坐标轴小标记
@@ -1729,7 +1745,8 @@ HxChartMultiGauge.prototype = {
                 splitNumber: 2,
                 axisLine: {            // 坐标轴线
                     lineStyle: {       // 属性lineStyle控制线条样式
-                        width: 8
+                        width: 8,
+                        color: [[0.2, '#91c7ae'], [0.8, '#63869e'], [1, '#c23531']]
                     }
                 },
                 axisTick: {            // 坐标轴小标记
@@ -1781,6 +1798,15 @@ HxChartMultiGauge.prototype = {
         this.option.series[3].center = ['85%', '50%'];
         this.option.series[2].radius = '50%';
         this.option.series[3].radius = '50%';
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    },
+    // 修改仪表盘颜色
+    changeColor: function (color1, color2, color3) {
+        this.option.series.forEach(function (value) {
+            value.axisLine.lineStyle.color[0][1] = color1;
+            value.axisLine.lineStyle.color[1][1] = color2;
+            value.axisLine.lineStyle.color[2][1] = color3;
+        });
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     }
 };
@@ -1941,7 +1967,7 @@ HxChartCrossBar.prototype = {
         }
     },
     // 新增x轴数据
-    putCategory: function (data) {
+    addY: function (data) {
         this.option.yAxis.data = this.option.yAxis.data.concat([data]);
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },

@@ -46,7 +46,7 @@
     <button id="button">点此新增随机数据putData</button>
     <button id="button1">点此新增一条新类目putData</button>
     <button id="button2">点此清除数据clearData</button>
-    <button id="button3">点此增加x轴范围putCategory</button>
+    <button id="button3">点此增加x轴范围addX</button>
     <div id="main1" class="demo"></div>
     <hr>
     <div id="main2" class="demo"></div>
@@ -67,6 +67,9 @@
         for (var i = 0; i < 6; i++) {
             main.putData('类目一', Math.ceil(Math.random() * 10));
         }
+        main.showAvarage();
+        main.showExtreme();
+        main.addX('第七天')
 
         var category = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
         var main1 = new HxChartLine('main1', category, '点击上方按钮新增数据:putData');
@@ -93,7 +96,7 @@
             main1.clearData();
         })
         document.getElementById('button3').addEventListener("click", function () {
-            main1.putCategory('新增');
+            main1.addX('新增');
         })
 
         var main2 = new HxChartLine('main2', ['第一天', '第二天', '第三天', '第四天', '第五天', '第六天'], '显示极值:showExtreme');
