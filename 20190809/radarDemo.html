@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./js/echarts.min.js"></script>
-    <script src="./js/macarons.js"></script>
     <script src="./js/jshx.echarts.1.0.js"></script>
     <title>雷达图demo</title>
     <style>
@@ -74,20 +73,10 @@
             { name: '市场', max: 25000 }
         ];
         var main = new HxChartRadar('main', indicator, '雷达图');
-
+        main.init();
         main.putData('预算分配', 4300, 10000, 28000, 35000, 50000, 19000);
         main.putData('实际开销', 5000, 14000, 28000, 31000, 42000, 21000);
-        main.option.series.areaStyle = {
-            normal: {
-                shadowBlur: 13,
-                shadowColor: 'rgba(0,0,0,.2)',
-                shadowOffsetX: 0,
-                shadowOffsetY: 10,
-                opacity: 1
-            }
-        };
-        main.option.series.symbolSize = 0;
-        main.init();
+
         var main1 = new HxChartRadar('main1', indicator, '点击上方按钮新增数据:putData');
         main1.init();
         main1.putData('初始数据', 5000, 14000, 28000, 31000, 42000, 21000);

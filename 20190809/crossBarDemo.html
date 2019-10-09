@@ -50,7 +50,7 @@
     <hr>
     <button id="button">点此新增数据putData</button>
     <button id="button2">点此清除数据clearData</button>
-    <button id="button3">点此增加x轴范围putCategory</button>
+    <button id="button3">点此增加y轴范围addY</button>
     <div id="main1" class="demo"></div>
     <hr>
     <div id="main3" class="demo"></div>
@@ -69,7 +69,8 @@
         data.forEach(function (value) {
             main.putData(value);
         })
-
+        main.setCbClick((param) => { alert(param); })
+        // main.clearData();
 
 
         var main1 = new HxChartCrossBar('main1', category, '点击上方按钮更新数据:putData');
@@ -86,7 +87,7 @@
             main1.clearData();
         })
         document.getElementById('button3').addEventListener("click", function () {
-            main1.putCategory('新增');
+            main1.addY('新增');
         })
         var main3 = new HxChartCrossBar('main3', category, '修改标题位置:setTitleLocation');
         main3.init();

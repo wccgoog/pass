@@ -73,6 +73,12 @@
             main.putData('2019', value[0], value[1], value[2], value[3])
         })
 
+        main.option.tooltip.trigger = 'item';
+        main.option.yAxis.name = '分钟(min)';
+        main.option.xAxis.name = '工单数';
+        main.option.xAxis.nameGap = 5;
+        main.init();
+
         var main_1 = new HxChartScatter('main-1', '修改影响图形大小的最大值:setCompareNum');
         main_1.init();
         data1.forEach(function (value) {
