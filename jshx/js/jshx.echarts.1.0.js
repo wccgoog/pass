@@ -1185,7 +1185,7 @@ function HxChartRadar(id, indicator, title) {
             textStyle: {}
         },
         legend: {
-            right: 10
+            bottom: 0
         },
         radar: {
             name: {
