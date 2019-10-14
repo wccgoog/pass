@@ -60,7 +60,7 @@
     <script>
 
         function callback2(param) {
-            alert('第二个回调函数callback2:' + param);
+            // alert('第二个回调函数callback2:' + param);
             console.log(param);
         }
 
@@ -93,7 +93,13 @@
         // 2019-09-26更新
         // 移除年份,月份和标题
         // main.trim();
-        main.putData('2019-08-02', 400);
+        main.putData('2019-08-01', 400);
+        main.putData('2019-08-02', '字符串');
+        main.putData('2019/08/03', '2019/08/03');
+        main.putData('2019 08 04', '2019 08 04');
+        main.putData('2019,08,05', '2019,08,05');
+        main.putData('2019/8/6', '2019/8/6');
+        main.putData('2019.8.7', '2019.8.7');
         // 添加自带图片，目前有四种:putImg
         main.putImg('2019-08-12', iconWork);
         main.putImg('2019-08-13', iconWork);

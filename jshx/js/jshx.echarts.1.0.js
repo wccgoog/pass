@@ -20,15 +20,16 @@ function HxChartCalendar(id, range, title) {
         },
         // 如果开启动画,则showImg效果会有问题
         animation: false,
-        tooltip: {
-            formatter: function (params) {
-                if (params.data[1] > 0) {
-                    return params.data[1];
-                } else {
-                    return;
-                }
-            }
-        },
+        // tooltip: {
+        //     formatter: function (params) {
+        //         console.log(params);
+        //         if (params.data[1] > 0) {
+        //             return params.data[1];
+        //         } else {
+        //             return;
+        //         }
+        //     }
+        // },
         title: {
             text: this.title,
             left: 'center',
@@ -59,57 +60,63 @@ function HxChartCalendar(id, range, title) {
             left: '10%',
             right: '10%'
         },
-        visualMap: [
-            {
-                show: false,
-                min: 0,
-                max: 300,
-                calculable: true,
-                seriesIndex: [0],
-                dimension: 1,
-                orient: 'horizontal',
-                left: 'center',
-                bottom: 20,
-                inRange: {
-                    color: ['#fff', '#006edd'],
-                    opacity: 1
-                },
-                controller: {
-                    inRange: {
-                        opacity: 0.5
-                    }
-                }
-            },
-            // 如果有数据,则覆盖上方的heatmap
-            {
-                show: false,
-                min: 0,
-                max: 300,
-                calculable: true,
-                seriesIndex: [2],
-                dimension: 1,
-                orient: 'horizontal',
-                left: 'center',
-                bottom: 20,
-                inRange: {
-                    color: ['#e0ffff', '#006edd'],
-                    opacity: 0.3
-                },
-                controller: {
-                    inRange: {
-                        opacity: 0.5
-                    }
-                }
-            }
-        ],
+        // visualMap: [
+        //     {
+        //         show: false,
+        //         min: 0,
+        //         max: 300,
+        //         calculable: true,
+        //         seriesIndex: [0],
+        //         dimension: 1,
+        //         orient: 'horizontal',
+        //         left: 'center',
+        //         bottom: 20,
+        //         inRange: {
+        //             color: ['#fff', '#006edd'],
+        //             opacity: 1
+        //         },
+        //         controller: {
+        //             inRange: {
+        //                 opacity: 0.5
+        //             }
+        //         }
+        //     },
+        //     // 如果有数据,则覆盖上方的heatmap
+        //     {
+        //         show: false,
+        //         min: 0,
+        //         max: 300,
+        //         calculable: true,
+        //         seriesIndex: [2],
+        //         dimension: 1,
+        //         orient: 'horizontal',
+        //         left: 'center',
+        //         bottom: 20,
+        //         inRange: {
+        //             color: ['#e0ffff', '#006edd'],
+        //             opacity: 0.3
+        //         },
+        //         controller: {
+        //             inRange: {
+        //                 opacity: 0.5
+        //             }
+        //         }
+        //     }
+        // ],
         series: [
-            // 使用heatmap是为了方便点击
+            // 使用heatmap是为了方便点击,seires[0]用来显示日历中的日期
             {
                 type: 'heatmap',
                 coordinateSystem: 'calendar',
-                symbolSize: 60,
+                zlevel: 1,
                 itemStyle: {
                     color: 'rgba(128, 128, 128, 0)'
+                },
+                emphasis: {
+                    itemStyle: {
+                        borderColor: '#8FC6FF',
+                        borderWidth: 5
+                    }
                 },
                 label: {
                     show: true,
@@ -121,7 +128,8 @@ function HxChartCalendar(id, range, title) {
                 },
                 data: this.list
             },
-            // 当日数据显示为红字
+
+            // 当日数据显示为红字,series[1]用来显示日期中的数据
             {
                 type: 'scatter',
                 coordinateSystem: 'calendar',
@@ -132,19 +140,21 @@ function HxChartCalendar(id, range, title) {
                 label: {
                     show: true,
                     formatter: function (params) {
-                        return '\n\n\n' + (params.value[1] || '');
+                        return '\n\n\n' + (params.value[2] || '');
                     },
                     fontWeight: 700,
                     color: '#a00'
                 },
-                data: this.graphData
+                data: []
             },
-            // 背景色根据当日数据改变
-            {
-                type: 'heatmap',
-                coordinateSystem: 'calendar',
-                data: this.graphData,
-            },
+            // // 背景色根据当日数据改变
+            // {
+            //     type: 'heatmap',
+            //     coordinateSystem: 'calendar',
+            //     data: this.graphData,
+            // },
+
+            // series[2]用来显示img
             {
                 type: 'scatter',
                 coordinateSystem: 'calendar',
@@ -172,20 +182,29 @@ HxChartCalendar.prototype = {
     putData: function (dateStr, value) {
         var time;
         if (typeof (dateStr) == 'string') {
-            time = getDateFromStr(dateStr).getTime();
+            time = new Date(dateStr).getTime();
         } else {
             time = dateStr;
         }
-        var lastData = this.option.series[1].data;
-        lastData = lastData.concat([[time, value]]);
-        this.option.series[1].data = lastData;
-        this.option.series[2].data = lastData;
+
+        var _this = this;
+        var flag = 0;
+        // 如果该日期有数据,则更新该日期的数据
+        this.option.series[1].data.forEach(function (v, index) {
+            if (v.includes(time)) {
+                _this.option.series[1].data[index] = [time, 0, value];
+                flag = 1;
+            }
+        });
+        // 如果该日期没有数据,则新增数据
+        if (flag == 0) {
+            this.option.series[1].data = this.option.series[1].data.concat([[time, 0, value]]);
+        }
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 清楚图表中的数据
     clearData: function () {
         this.option.series[1].data = [[]];
-        this.option.series[2].data = [[]];
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // set背景并重载图表
@@ -229,20 +248,23 @@ HxChartCalendar.prototype = {
     },
     // 点击事件
     setCbClick: function (callback) {
+        var _this = this;
         var chart = echarts.init(document.getElementById(this.id), 'macarons');
+        // 做if判断,如果已存在点击事件的话,就替换
         if (!chart._$handlers.click) {
             chart.on('click', function (params) {
-                var date = new Date(params.value[0]);
-                date = formatDate(date);
-                callback(date);
+                calendarClickFunc(params, callback, _this);
+                // 每次点击都要重新载入图表
+                chart.setOption(_this.option);
             });
         } else {
             chart._$handlers.click[0].h = function (params) {
-                var date = new Date(params.value[0]);
-                date = formatDate(date);
-                callback(date);
+                calendarClickFunc(params, callback, _this);
+                // 每次点击都要重新载入图表
+                chart.setOption(_this.option);
             };
         }
+
     },
     // 右键点击事件
     setContextmenu: function (callback) {
@@ -298,12 +320,12 @@ HxChartCalendar.prototype = {
         var _this = this;
         var time;
         if (typeof (dateStr) == 'string') {
-            time = getDateFromStr(dateStr).getTime();
+            time = new Date(dateStr).getTime();
         } else {
             time = dateStr;
         }
         var symbol = 'image://' + image;
-        var data = this.option.series[3].data;
+        var data = this.option.series[2].data;
         var flag = 0;
         data.forEach(function (value, index) {
             if (time == value.value[0]) {
@@ -321,11 +343,11 @@ HxChartCalendar.prototype = {
         var _this = this;
         var time;
         if (typeof (dateStr) == 'string') {
-            time = getDateFromStr(dateStr).getTime();
+            time = new Date(dateStr).getTime();
         } else {
             time = dateStr;
         }
-        var data = this.option.series[3].data;
+        var data = this.option.series[2].data;
         data.forEach(function (value, index) {
             if (time == value.value[0]) {
                 data.splice(index, 1);
@@ -350,6 +372,7 @@ function createDateList(startTime, endTime) {
 function getDateListFromRange(range) {
     if (typeof (range) == 'string') {
         var year = range.split('-')[0];
+        // 浏览器注意date的时区
         var startTime = Date.parse(year + ' GMT +8');
         var endTime = startTime + 3600 * 24 * 366 * 1000
         return createDateList(startTime, endTime);
@@ -383,7 +406,7 @@ function getDateFromStr(dateStr, separator) {
     var dateArr = dateStr.split(separator);
     var year = parseInt(dateArr[0]);
     var month;
-    //处理月份为04这样的情况                         
+    //处理月份为04这样的情况
     if (dateArr[1].indexOf("0") == 0) {
         month = parseInt(dateArr[1].substring(1));
     } else {
@@ -392,6 +415,35 @@ function getDateFromStr(dateStr, separator) {
     var day = parseInt(dateArr[2]);
     var date = new Date(year, month - 1, day);
     return date;
+}
+
+// 日历的点击事件
+function calendarClickFunc(params, callback, _this) {
+    // 先初始化所有数据,把以前点击过的数据清除掉
+    _this.option.series[0].data = getDateListFromRange(_this.range);
+    _this.option.series[0].data.forEach(function (value, index) {
+        if (value.includes(params.value[0])) {
+            // 点击日期变为红色,修改这天的data中的label和itemStyle
+            var listValue = _this.option.series[0].data[index];
+            _this.option.series[0].data[index] = {
+                value: listValue,
+                label: {
+                    color: 'red',
+                    fontWeight: 900,
+                    fontSize: 18
+                },
+                itemStyle: {
+                    borderColor: '#409EFF',
+                    borderWidth: 5,
+                }
+            };
+        }
+    });
+    // 点击后加边框,实际是在series[3]中加一条点击当天的数据
+    var date = new Date(params.value[0]);
+    date = formatDate(date);
+    // 把日期传给回调函数
+    callback(date);
 }
 
 // 折线图封装
