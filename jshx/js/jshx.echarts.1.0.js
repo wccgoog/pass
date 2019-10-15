@@ -112,17 +112,23 @@ function HxChartCalendar(id, range, title) {
                 itemStyle: {
                     color: 'rgba(128, 128, 128, 0)'
                 },
-                emphasis: {
-                    itemStyle: {
-                        borderColor: '#8FC6FF',
-                        borderWidth: 5
-                    }
-                },
                 label: {
                     show: true,
                     formatter: function (params) {
                         var d = echarts.number.parseDate(params.value[0]);
-                        return d.getDate();
+                        if (params.value[1] == 0) {
+                            return d.getDate();
+                        } else if (params.value[1] == 1) {
+                            return d.getDate() + '\n{hr|}';
+                        }
+                    },
+                    rich: {
+                        hr: { //下划线
+                            borderColor: 'black',
+                            width: '100%',
+                            borderWidth: 1,
+                            height: 0,
+                        }
                     },
                     color: '#000',
                 },
@@ -248,23 +254,92 @@ HxChartCalendar.prototype = {
     },
     // 点击事件
     setCbClick: function (callback) {
+        var chart = echarts.init(document.getElementById(this.id), 'macarons');
+        chart.on('click', function (params) {
+            var date = new Date(params.value[0]);
+            date = formatDate(date);
+            // 把日期传给回调函数
+            callback(date);
+        });
+    },
+    // 鼠标悬停边框颜色改变
+    setHoverBorder: function (color) {
+        this.option.series[0].emphasis = {
+            itemStyle: {
+                borderColor: color,
+                borderWidth: 5
+            }
+        };
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    },
+    // 点击后边框变色
+    setClickBorder: function (color) {
         var _this = this;
         var chart = echarts.init(document.getElementById(this.id), 'macarons');
-        // 做if判断,如果已存在点击事件的话,就替换
-        if (!chart._$handlers.click) {
-            chart.on('click', function (params) {
-                calendarClickFunc(params, callback, _this);
-                // 每次点击都要重新载入图表
-                chart.setOption(_this.option);
+        chart.on('click', function (params) {
+            // 先初始化所有数据,把以前点击过的数据清除掉
+            _this.option.series[0].data.forEach(function (v, index) {
+                if (v.value.includes(params.value[0])) {
+                    // 修改这天的data中的itemStyle
+                    _this.option.series[0].data[index].itemStyle = { borderColor: color, borderWidth: 5 };
+                } else {
+                    _this.option.series[0].data[index].itemStyle = {};
+                }
             });
-        } else {
-            chart._$handlers.click[0].h = function (params) {
-                calendarClickFunc(params, callback, _this);
-                // 每次点击都要重新载入图表
-                chart.setOption(_this.option);
-            };
-        }
-
+            chart.setOption(_this.option);
+        });
+    },
+    // 点击后日期字体变色
+    setClickColor: function (color) {
+        var _this = this;
+        var chart = echarts.init(document.getElementById(this.id), 'macarons');
+        chart.on('click', function (params) {
+            // 先初始化所有数据,把以前点击过的数据清除掉
+            _this.option.series[0].data.forEach(function (v, index) {
+                if (v.value.includes(params.value[0])) {
+                    // 修改这天的data中的itemStyle
+                    _this.option.series[0].data[index].label.color = color;
+                } else {
+                    _this.option.series[0].data[index].label = {};
+                }
+            });
+            chart.setOption(_this.option);
+        });
+    },
+    // 点击后日期字体粗细
+    setClickFontWeight: function (fontWeight) {
+        var _this = this;
+        var chart = echarts.init(document.getElementById(this.id), 'macarons');
+        chart.on('click', function (params) {
+            // 先初始化所有数据,把以前点击过的数据清除掉
+            _this.option.series[0].data.forEach(function (v, index) {
+                if (v.value.includes(params.value[0])) {
+                    // 修改这天的data中的itemStyle
+                    _this.option.series[0].data[index].label.fontWeight = fontWeight;
+                } else {
+                    _this.option.series[0].data[index].label = {};
+                }
+            });
+            chart.setOption(_this.option);
+        });
+    },
+    // 点击加下划线
+    setClickUnderline: function (color) {
+        var _this = this;
+        var chart = echarts.init(document.getElementById(this.id), 'macarons');
+        this.option.series[0].label.rich.hr.borderColor = color;
+        chart.on('click', function (params) {
+            // 先初始化所有数据,把以前点击过的数据清除掉
+            _this.option.series[0].data.forEach(function (v, index) {
+                if (v.value.includes(params.value[0])) {
+                    // 修改这天的data中的itemStyle
+                    _this.option.series[0].data[index].value[1] = 1;
+                } else {
+                    _this.option.series[0].data[index].value[1] = 0;
+                }
+            });
+            chart.setOption(_this.option);
+        });
     },
     // 右键点击事件
     setContextmenu: function (callback) {
@@ -327,9 +402,8 @@ HxChartCalendar.prototype = {
         var symbol = 'image://' + image;
         var data = this.option.series[2].data;
         var flag = 0;
-        data.forEach(function (value, index) {
+        data.forEach(function (value) {
             if (time == value.value[0]) {
-                // data.splice(index, 1);
                 flag = 1;
             }
         });
@@ -362,7 +436,7 @@ HxChartCalendar.prototype = {
 function createDateList(startTime, endTime) {
     var list = [];
     while (startTime < endTime) {
-        list.push([startTime, 0]);
+        list.push({ value: [startTime, 0], label: {}, itemStyle: {} });
         startTime += 3600 * 24 * 1000;
     }
     return list;
@@ -421,8 +495,8 @@ function getDateFromStr(dateStr, separator) {
 function calendarClickFunc(params, callback, _this) {
     // 先初始化所有数据,把以前点击过的数据清除掉
     _this.option.series[0].data = getDateListFromRange(_this.range);
-    _this.option.series[0].data.forEach(function (value, index) {
-        if (value.includes(params.value[0])) {
+    _this.option.series[0].data.forEach(function (v, index) {
+        if (v.value.includes(params.value[0])) {
             // 点击日期变为红色,修改这天的data中的label和itemStyle
             var listValue = _this.option.series[0].data[index];
             _this.option.series[0].data[index] = {
@@ -439,7 +513,6 @@ function calendarClickFunc(params, callback, _this) {
             };
         }
     });
-    // 点击后加边框,实际是在series[3]中加一条点击当天的数据
     var date = new Date(params.value[0]);
     date = formatDate(date);
     // 把日期传给回调函数
@@ -1497,7 +1570,6 @@ HxChartGauge.prototype = {
     },
     // 修改仪表盘颜色
     changeColor: function (color1, color2, color3) {
-        console.log(this.option.series.axisLine.lineStyle.color)
         this.option.series.axisLine.lineStyle.color[0][1] = color1;
         this.option.series.axisLine.lineStyle.color[1][1] = color2;
         this.option.series.axisLine.lineStyle.color[2][1] = color3;
@@ -1623,10 +1695,7 @@ HxChartMultiGauge.prototype = {
         for (var j = 0; j < this.option.series.length; j++) {
             if (name == this.option.series[j].name) {
                 flag = 1;
-                console.log('-----', [value])
-                console.log(this.option.series[j].data)
                 this.option.series[j].data = [value];
-                console.log(this.option.series[j].data)
 
             }
         }

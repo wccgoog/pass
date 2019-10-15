@@ -10,10 +10,9 @@ module.exports = {
         filename: 'build.js' // 打包后的文件名
     },
     devServer: {
-        compress: true,
-        historyApiFallback: true,
-        overlay: true,
-        hotOnly: true
+        contentBase: './dist',
+        port: 9000,
+        hot: true
     },
     resolve: {
         alias: {

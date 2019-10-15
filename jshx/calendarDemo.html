@@ -38,6 +38,16 @@
 </head>
 
 <body>
+    <div id="main14" class="demo"></div>
+    <hr>
+    <div id="main13" class="demo"></div>
+    <hr>
+    <div id="main12" class="demo"></div>
+    <hr>
+    <div id="main11" class="demo"></div>
+    <hr>
+    <div id="main10" class="demo"></div>
+    <hr>
     <div id="main" class="demo"></div>
     <hr>
     <div id="main2" class="demo"></div>
@@ -75,6 +85,11 @@
         var main9_1 = new HxChartCalendar('main9-1', '2019-8', "setSize('l')");
         var main9_2 = new HxChartCalendar('main9-2', '2019-8', "setSize('m')");
         var main9_3 = new HxChartCalendar('main9-3', '2019-8', "setSize('s')");
+        var main10 = new HxChartCalendar('main10', '2019-8', '鼠标悬停边框颜色setHoverBorder');
+        var main11 = new HxChartCalendar('main11', '2019-8', '鼠标点击边框颜色setClickBorder');
+        var main12 = new HxChartCalendar('main12', '2019-8', '鼠标点击日期字体颜色setClickColor');
+        var main13 = new HxChartCalendar('main13', '2019-8', '鼠标点击日期字体下划线setClickUnderline');
+        var main14 = new HxChartCalendar('main14', '2019-8', '鼠标点击改变日期字体粗细setClickFontWeight');
 
         main.init();
         main2.init();
@@ -87,6 +102,11 @@
         main9_1.init();
         main9_2.init();
         main9_3.init();
+        main10.init();
+        main11.init();
+        main12.init();
+        main13.init();
+        main14.init();
 
 
 
@@ -116,6 +136,8 @@
             main.putImg(param, iconTick);
         }
         main.setCbClick(callback);
+        main11.setClickBorder('#409EFF');
+
 
         // 移除指定日期图标:removeImg
         // 取消默认右键事件
@@ -155,6 +177,15 @@
         main9_1.setSize('l');
         main9_2.setSize('m');
         main9_3.setSize('s');
+
+
+        main10.setHoverBorder('#8FC6FF');
+        main11.setClickBorder('#409EFF');
+
+        main12.setClickColor('red');
+        main13.setClickUnderline('blue');
+        main14.setClickFontWeight(900);
+
 
     </script>
 </body>
