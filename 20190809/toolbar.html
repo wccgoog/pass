@@ -30,9 +30,15 @@
     </script>
 
     <script type="text/html" id="switchTpl">
+        {{#  
+            var fn = function(d){
+                console.log(d);
+              return '2017-08-18';
+            }; 
+          }}
   <!-- 这里的 checked 的状态只是演示 -->
     <input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch" lay-text="女|男" lay-filter="sexDemo"
-        {{ d.id == 10003 ? 'checked' : '' }} switch_id={{ d.id}}>
+        {{ d.id == 10003 ? 'checked' : '' }} switch_id={{ d.id}} username={{ fn(d)}}>
     </script>
 
 
@@ -46,6 +52,7 @@
 
             //监听性别操作
             form.on('switch(sexDemo)', function (obj) {
+                console.log(obj)
                 layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
             });
 
@@ -64,18 +71,15 @@
                     , { field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true }
                     , { field: 'username', title: '用户名', width: 120, edit: 'text' }
                     , {
-                        field: 'email', title: '邮箱', width: 150, edit: 'text', templet: function (res) {
-                            return '<em>' + res.email + '</em>'
+                        field: 'city', title: '邮箱', width: 150, edit: 'text', templet: function (res) {
+                            return '<em>' + res.city + '</em>';
                         }
                     }
                     , { field: 'sex', title: '性别', width: 80, edit: 'text', sort: true }
                     , { field: 'city', title: '城市', width: 100 }
-                    , { field: 'sex', title: '性别', width: 85, templet: '#switchTpl', unresize: true }
+                    , { field: 'sex', title: '性别', width: 85, templet: '#switchTpl', unresize: true, event: 'click' }
                     , { field: 'sign', title: '签名' }
                     , { field: 'experience', title: '积分', width: 80, sort: true }
-                    , { field: 'ip', title: 'IP', width: 120 }
-                    , { field: 'logins', title: '登入次数', width: 100, sort: true }
-                    , { field: 'joinTime', title: '加入时间', width: 120 }
                     , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
                 ]]
                 , page: true
@@ -130,6 +134,8 @@
                         });
                         layer.close(index);
                     });
+                } else if (obj.event === 'click') {
+                    console.log('click')
                 }
             });
         });
