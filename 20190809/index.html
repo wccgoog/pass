@@ -66,11 +66,36 @@
         <a href="">亚太地区</a>
         <a><cite>正文</cite></a>
     </span>
+    <div style="margin-top: 10px;">
+        <div id="search" class="layui-row layui-col-space10 jshx-position-relative">
+            <div class="layui-form layui-col-xs6 layui-col-sm6 layui-col-md3">
+                <div class="layui-form-item layui-row layui-col-space10">
+                    <div class="layui-col-xs5 layui-col-sm5 layui-col-md5 layui-elip">单行选择框</div>
+                    <div class="layui-col-xs7 layui-col-sm7 layui-col-md7">
+                        <select name="interest" lay-filter="aihao">
+                            <option value=""></option>
+                            <option value="0">写作</option>
+                            <option value="1" selected="">阅读</option>
+                            <option value="2">游戏</option>
+                            <option value="3">音乐</option>
+                            <option value="4">旅行</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="jshx-search-div">
+                <button type="button" id="searchDiv" class="layui-btn layui-btn-normal">查询</button>
+                <button type="button" id="clearSearch" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </div>
+
     <div class="layui-form callTime">
         <div class="layui-form-item">
             <label class="layui-form-label">中文版</label>
             <div class="layui-inline">
                 <input type="text" class="layui-input" id="callTime">
+                <i class="layui-icon layui-icon-search" style="position: absolute;top:8px;right: 8px;"></i>
             </div>
         </div>
     </div>

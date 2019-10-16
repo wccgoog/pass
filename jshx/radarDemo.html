@@ -74,24 +74,12 @@
         ];
         var main = new HxChartRadar('main', indicator, '雷达图');
         main.init();
-        var data = [
-            {
-                value: [4300, 10000, 28000, 35000, 50000, 19000],
-                name: '预算分配'
-            },
-            {
-                value: [5000, 14000, 28000, 31000, 42000, 21000],
-                name: '实际开销'
-            }
-        ];
-        main.putData(data);
+        main.putData('预算分配', 4300, 10000, 28000, 35000, 50000, 19000);
+        main.putData('实际开销', 5000, 14000, 28000, 31000, 42000, 21000);
 
         var main1 = new HxChartRadar('main1', indicator, '点击上方按钮新增数据:putData');
         main1.init();
-        main1.putData([{
-            value: [5000, 14000, 28000, 31000, 42000, 21000],
-            name: '初始数据'
-        }])
+        main1.putData('初始数据', 5000, 14000, 28000, 31000, 42000, 21000);
 
         document.getElementById('button').addEventListener("click", function () {
             var data = [
@@ -100,18 +88,12 @@
                     name: '初始数据'
                 }
             ]
-            main1.putData(data);
+            main1.putData('初始数据', Math.ceil(Math.random() * 6500), Math.ceil(Math.random() * 16000), Math.ceil(Math.random() * 30000), Math.ceil(Math.random() * 38000), Math.ceil(Math.random() * 52000), Math.ceil(Math.random() * 25000));
         })
 
         var num = 1;
         document.getElementById('button1').addEventListener("click", function () {
-            var data = [
-                {
-                    value: [Math.ceil(Math.random() * 6500), Math.ceil(Math.random() * 16000), Math.ceil(Math.random() * 30000), Math.ceil(Math.random() * 38000), Math.ceil(Math.random() * 52000), Math.ceil(Math.random() * 25000),],
-                    name: '第' + num + '次点击'
-                }
-            ]
-            main1.putData(data);
+            main1.putData('第' + num + '次点击', Math.ceil(Math.random() * 6500), Math.ceil(Math.random() * 16000), Math.ceil(Math.random() * 30000), Math.ceil(Math.random() * 38000), Math.ceil(Math.random() * 52000), Math.ceil(Math.random() * 25000));
             num++;
         })
 
@@ -122,29 +104,35 @@
 
         var main3 = new HxChartRadar('main3', indicator, '修改标题位置:setTitleLocation');
         main3.init();
-        main3.putData(data);
+        main3.putData('预算分配', 4300, 10000, 28000, 35000, 50000, 19000);
+        main3.putData('实际开销', 5000, 14000, 28000, 31000, 42000, 21000);
         main3.setTitleLocation('l');
 
         var main4 = new HxChartRadar('main4', indicator);
         main4.init();
-        main4.putData(data);
+        main4.putData('预算分配', 4300, 10000, 28000, 35000, 50000, 19000);
+        main4.putData('实际开销', 5000, 14000, 28000, 31000, 42000, 21000);
         main4.setTitle('修改标题:setTitle');
 
         var main5 = new HxChartRadar('main5', indicator, '修改字体:setSize');
         main5.init();
-        main5.putData(data);
+        main5.putData('预算分配', 4300, 10000, 28000, 35000, 50000, 19000);
+        main5.putData('实际开销', 5000, 14000, 28000, 31000, 42000, 21000);
         main5.setSize('l');
         var main6 = new HxChartRadar('main6', indicator, '修改字体:setSize');
         main6.init();
-        main6.putData(data);
+        main6.putData('预算分配', 4300, 10000, 28000, 35000, 50000, 19000);
+        main6.putData('实际开销', 5000, 14000, 28000, 31000, 42000, 21000);
         main6.setSize('m');
         var main7 = new HxChartRadar('main7', indicator, '修改字体:setSize');
         main7.init();
-        main7.putData(data);
+        main7.putData('预算分配', 4300, 10000, 28000, 35000, 50000, 19000);
+        main7.putData('实际开销', 5000, 14000, 28000, 31000, 42000, 21000);
         main7.setSize('s');
         var main8 = new HxChartRadar('main8', indicator, '修改背景:setBackground');
         main8.init();
-        main8.putData(data);
+        main8.putData('预算分配', 4300, 10000, 28000, 35000, 50000, 19000);
+        main8.putData('实际开销', 5000, 14000, 28000, 31000, 42000, 21000);
         main8.setBackground('#eee');
     </script>
 </body>
