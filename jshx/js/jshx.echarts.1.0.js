@@ -1972,7 +1972,10 @@ function HxChartCrossBar(id, category, title) {
         },
         yAxis: {
             type: 'category',
-            axisLabel: {},
+            axisLine: { show: false },
+            axisLabel: { show: false },
+            axisTick: { show: false },
+            splitLine: { show: false },
             data: this.category
         },
         series: {
