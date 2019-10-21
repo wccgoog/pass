@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/jshx.echarts.1.0.js"></script>
+    <title>双饼状图demo</title>
+    <style>
+        .demo {
+            margin: 50px auto;
+            width: 1200px;
+            height: 600px;
+        }
+
+        #main6 {
+            width: 60%;
+            height: 450px;
+        }
+
+        #main7 {
+            width: 40%;
+            height: 300px;
+        }
+
+        #button {
+            margin-left: 30%;
+            margin-top: 50px;
+        }
+
+        #button1 {
+            margin-top: 50px;
+        }
+
+        #button2 {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" class="demo"></div>
+    <hr>
+    <button id="button">点此更新已有数据putData</button>
+    <button id="button1">点此新增随机数据putData</button>
+    <button id="button2">点此清除数据clearData</button>
+    <div id="main1" class="demo"></div>
+    <hr>
+    <div id="main2" class="demo"></div>
+    <hr>
+    <div id="main3" class="demo"></div>
+    <hr>
+    <div id="main4" class="demo"></div>
+    <hr>
+    <div id="main5" class="demo"></div>
+    <div id="main6" class="demo"></div>
+    <div id="main7" class="demo"></div>
+    <script>
+        var main = new HxChartDoublePie('main', '双饼状图');
+        main.init();
+        main.putDataLeft('直接访问', 335);
+        main.putDataLeft('邮件营销', 310);
+        main.putDataLeft('联盟广告', 234);
+        main.putDataLeft('视频广告', 135);
+        main.putDataLeft('搜索引擎', 1548);
+
+        main.putDataRight('直接访问', 111);
+        main.putDataRight('邮件营销', 221);
+        main.putDataRight('联盟广告', 234);
+        main.putDataRight('视频广告', 332);
+        main.putDataRight('搜索引擎', 456);
+        main.setCbClick(function (param) {
+            console.log(param);
+        })
+
+        var main1 = new HxChartDoublePie('main1', '点击上方按钮新增数据:putData');
+        main1.init();
+
+        main1.putDataLeft('初始数据1', 335);
+        main1.putDataLeft('初始数据2', 310);
+
+        main1.putDataRight('初始数据1', 335);
+        main1.putDataRight('初始数据2', 310);
+
+        document.getElementById('button').addEventListener("click", function () {
+            main1.putDataLeft('初始数据1', Math.ceil(Math.random() * 1000));
+            main1.putDataLeft('初始数据2', Math.ceil(Math.random() * 1000));
+            main1.putDataRight('初始数据1', Math.ceil(Math.random() * 1000));
+            main1.putDataRight('初始数据2', Math.ceil(Math.random() * 1000));
+        })
+
+        var num = 1;
+        document.getElementById('button1').addEventListener("click", function () {
+            main1.putDataLeft('第' + num + '次点击', Math.ceil(Math.random() * 1000));
+            main1.putDataRight('第' + num + '次点击', Math.ceil(Math.random() * 1000));
+            num++;
+        })
+
+        document.getElementById('button2').addEventListener("click", function () {
+            main1.clearData();
+            num = 1;
+        })
+
+        var main2 = new HxChartDoublePie('main2');
+        main2.init();
+        main2.putDataLeft('直接访问', 335);
+        main2.putDataLeft('邮件营销', 310);
+        main2.putDataLeft('联盟广告', 234);
+        main2.putDataLeft('视频广告', 135);
+        main2.putDataLeft('搜索引擎', 1548);
+
+        main2.putDataRight('直接访问', 335);
+        main2.putDataRight('邮件营销', 310);
+        main2.putDataRight('联盟广告', 234);
+        main2.putDataRight('视频广告', 135);
+        main2.putDataRight('搜索引擎', 1548);
+
+        main2.setCircular();
+
+        var main3 = new HxChartDoublePie('main3', '修改标题位置:setTitleLocation');
+        main3.init();
+        main3.putDataLeft('直接访问', 335);
+        main3.putDataLeft('邮件营销', 310);
+        main3.putDataLeft('联盟广告', 234);
+        main3.putDataLeft('视频广告', 135);
+        main3.putDataLeft('搜索引擎', 1548);
+
+        main3.putDataRight('直接访问', 335);
+        main3.putDataRight('邮件营销', 310);
+        main3.putDataRight('联盟广告', 234);
+        main3.putDataRight('视频广告', 135);
+        main3.putDataRight('搜索引擎', 1548);
+        main3.setTitleLocation('l');
+
+        var main4 = new HxChartDoublePie('main4');
+        main4.init();
+        main4.putDataLeft('直接访问', 335);
+        main4.putDataLeft('邮件营销', 310);
+        main4.putDataLeft('联盟广告', 234);
+        main4.putDataLeft('视频广告', 135);
+        main4.putDataLeft('搜索引擎', 1548);
+
+        main4.putDataRight('直接访问', 335);
+        main4.putDataRight('邮件营销', 310);
+        main4.putDataRight('联盟广告', 234);
+        main4.putDataRight('视频广告', 135);
+        main4.putDataRight('搜索引擎', 1548);
+        main4.setTitle('修改标题:setTitle');
+
+        var main5 = new HxChartDoublePie('main5', '修改字体:setSize');
+        main5.init();
+        main5.putDataLeft('直接访问', 335);
+        main5.putDataLeft('邮件营销', 310);
+        main5.putDataLeft('联盟广告', 234);
+        main5.putDataLeft('视频广告', 135);
+        main5.putDataLeft('搜索引擎', 1548);
+
+        main5.putDataRight('直接访问', 335);
+        main5.putDataRight('邮件营销', 310);
+        main5.putDataRight('联盟广告', 234);
+        main5.putDataRight('视频广告', 135);
+        main5.putDataRight('搜索引擎', 1548);
+        main5.setSize('l');
+        var main6 = new HxChartDoublePie('main6', '修改字体:setSize');
+        main6.init();
+        main6.putDataLeft('直接访问', 335);
+        main6.putDataLeft('邮件营销', 310);
+        main6.putDataLeft('联盟广告', 234);
+        main6.putDataLeft('视频广告', 135);
+        main6.putDataLeft('搜索引擎', 1548);
+
+        main6.putDataRight('直接访问', 335);
+        main6.putDataRight('邮件营销', 310);
+        main6.putDataRight('联盟广告', 234);
+        main6.putDataRight('视频广告', 135);
+        main6.putDataRight('搜索引擎', 1548);
+        main6.setSize('m');
+        var main7 = new HxChartDoublePie('main7', '修改字体:setSize');
+        main7.init();
+        main7.putDataLeft('直接访问', 335);
+        main7.putDataLeft('邮件营销', 310);
+        main7.putDataLeft('联盟广告', 234);
+        main7.putDataLeft('视频广告', 135);
+        main7.putDataLeft('搜索引擎', 1548);
+
+        main7.putDataRight('直接访问', 335);
+        main7.putDataRight('邮件营销', 310);
+        main7.putDataRight('联盟广告', 234);
+        main7.putDataRight('视频广告', 135);
+        main7.putDataRight('搜索引擎', 1548);
+        main7.setCircular();
+        main7.setSize('s');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/jshx.echarts.1.0.js"></script>
+    <title>demo</title>
+    <style>
+        .demo {
+            margin: 50px auto;
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" class="demo"></div>
+    <script>
+        var category = ['生活垃圾', '野蛮搬运', '33333']
+        var main = new HxChartCrossBar('main', category, '右向柱状图');
+        main.option.yAxis.axisLabel.show = true;
+        main.option.yAxis.axisLine.show = true;
+        main.option.xAxis.axisLine = {
+            show: false
+        };
+        main.option.xAxis.axisLabel = {
+            show: false
+        };
+        main.option.xAxis.axisTick = {
+            show: false
+        };
+        main.option.xAxis.splitLine = {
+            show: false
+        };
+        main.option.grid.left = 80;
+        main.option.series[0].label = {};
+        main.option.series[0].itemStyle = {
+            color: '#ff9600'
+        };
+        main.option.series[0].zlevel = 1;
+        main.option.series[0].barWidth = 30;
+        main.option.series[1] = {
+            data: [100, 100, 100],
+            barWidth: 30,
+            type: 'bar',
+            barGap: '-100%',
+            itemStyle: {
+                color: 'rgba(0,0,0,0.1)'
+            }
+        }
+
+        main.putData(10);
+        main.putData(20);
+        main.putData(30);
+
+
+
+    </script>
+</body>
+
+</html>

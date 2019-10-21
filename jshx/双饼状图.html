@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/jshx.echarts.1.0.js"></script>
+    <title>demo</title>
+    <style>
+        .demo {
+            margin: 50px auto;
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" class="demo"></div>
+    <script>
+        var main = new HxChartDoublePie('main');
+        main.init();
+        main.option.title = [
+            {
+                text: '在线构建',
+                x: '25%',
+                bottom: 20,
+                textAlign: 'center',
+                textStyle: {
+                    fontSize: 14
+                }
+            },
+            {
+                text: '在线构建',
+                x: '75%',
+                bottom: 20,
+                textAlign: 'center',
+                textStyle: {
+                    fontSize: 14
+                }
+            }
+        ];
+        main.option.series[0].label = {
+            formatter: "{d}%"
+        }
+        main.option.series[0].labelLine = {
+            show: false,
+            length: 5,
+            length2: 0
+        };
+        main.option.series[1].label = {
+            formatter: "{d}%"
+        }
+
+        main.option.series[1].labelLine = {
+            show: false,
+            length: 5,
+            length2: 0
+        };
+
+
+
+        main.putDataLeft('直接访问', 35);
+        main.putDataLeft('邮件营销', 10);
+        main.putDataLeft('联盟广告', 34);
+        main.putDataLeft('视频广告', 35);
+        main.putDataLeft('搜索引擎', 48);
+
+        main.putDataRight('直接访问', 111);
+        main.putDataRight('邮件营销', 221);
+        main.putDataRight('联盟广告', 234);
+        main.putDataRight('视频广告', 332);
+        main.putDataRight('搜索引擎', 456);
+
+        // main.trim();
+
+
+
+    </script>
+</body>
+
+</html>

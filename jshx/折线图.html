@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/jshx.echarts.1.0.js"></script>
+    <title>demo</title>
+    <style>
+        .demo {
+            margin: 50px auto;
+            width: 600px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" class="demo"></div>
+    <script>
+        var category = ['0-2', '2-4', '4-6', '6-8', '8-10', '10-12', '12-14', '14-16', '16-18', '18-20', '20-22', '22-24'];
+        var main = new HxChartLine('main', category);
+        main.init();
+        main.option.xAxis.axisTick = {
+            interval: 0,
+            alignWithLabel: true
+        };
+        main.option.xAxis.axisLabel.interval = 0;
+        main.option.yAxis.splitLine = {
+            lineStyle: {
+                type: 'dashed'
+            }
+        };
+        main.option.xAxis.boundaryGap = true;
+        main.option.xAxis.axisLabel.rotate = 30;
+        main.putData('困人时间段统计', 9)
+        main.putData('困人时间段统计', 8)
+        main.putData('困人时间段统计', 15)
+        main.putData('困人时间段统计', 5)
+        main.putData('困人时间段统计', 1)
+        main.putData('困人时间段统计', 6)
+        main.putData('困人时间段统计', 8)
+        main.trim();
+        main.option.series[0].areaStyle = {
+            color: {
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 0,
+                y2: 1,
+                colorStops: [{
+                    offset: 0, color: '#ff9600' // 0% 处的颜色
+                }, {
+                    offset: 1, color: '#ff960000' // 100% 处的颜色
+                }],
+                global: false // 缺省为 false
+            }
+        };
+        main.option.series[0].itemStyle = {
+            color: '#df8300'
+        }
+        main.option.grid.top = 30;
+        main.option.grid.left = 10;
+        main.option.yAxis.name = '单位:百分比'
+        main.init();
+    </script>
+</body>
+
+</html>

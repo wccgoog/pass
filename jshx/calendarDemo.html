@@ -81,7 +81,7 @@
             console.log(param);
         }
 
-        var main = new HxChartCalendar('main', '2019-8');
+        var main = new HxChartCalendar('main', '2019-08');
         var main2 = new HxChartCalendar('main2', '2019-8', '修改数值:setData');
         var main3 = new HxChartCalendar('main3', '2017-2', '修改背景:setBackground,修改回调函数:setCallback');
         var main4 = new HxChartCalendar('main4', '2019-8', '修改年月:setRange');
@@ -91,10 +91,10 @@
         var main9_2 = new HxChartCalendar('main9-2', '2019-8', "setSize('m')");
         var main9_3 = new HxChartCalendar('main9-3', '2019-8', "setSize('s')");
         var main10 = new HxChartCalendar('main10', '2019-8', '鼠标悬停边框颜色setHoverBorder');
-        var main11 = new HxChartCalendar('main11', '2019-8', '鼠标点击边框颜色setClickBorder');
-        var main12 = new HxChartCalendar('main12', '2019-8', '鼠标点击日期字体颜色setClickColor');
-        var main13 = new HxChartCalendar('main13', '2019-8', '鼠标点击日期字体下划线setClickUnderline');
-        var main14 = new HxChartCalendar('main14', '2019-08', '鼠标点击改变日期字体粗细setClickFontWeight');
+        var main11 = new HxChartCalendar('main11', '201908', '鼠标点击边框颜色setClickBorder');
+        var main12 = new HxChartCalendar('main12', '2019,8', '鼠标点击日期字体颜色setClickColor');
+        var main13 = new HxChartCalendar('main13', '2019/8', '鼠标点击日期字体下划线setClickUnderline');
+        var main14 = new HxChartCalendar('main14', '201908', '鼠标点击改变日期字体粗细setClickFontWeight');
 
         main.init();
         main2.init();
@@ -125,10 +125,10 @@
         main.putData('2019.8.7', '2019.8.7');
         main.putData('20190808', '20190808');
         // 添加自带图片，目前有四种:putImg
-        main.putImg('2019-08-12', iconWork);
-        main.putImg('2019-08-13', iconWork);
+        main.putImg('20190812', iconWork);
+        main.putImg('2019/08/13', iconWork);
         main.putImg('2019-08-14', iconTick);
-        main.putImg('2019-08-15', iconCross);
+        main.putImg('2019.08.15', iconCross);
         main.putImg('2019-08-16', iconFlag);
 
         // 也可添加base64格式的图片
@@ -140,8 +140,6 @@
             main.putImg(param, iconTick);
         }
         main.setCbClick(callback);
-        main11.setClickBorder('#409EFF');
-
 
         // 移除指定日期图标:removeImg
         // 取消默认右键事件

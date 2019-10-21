@@ -4,7 +4,11 @@ function HxChartCalendar(id, range, title) {
     if (typeof (range) == 'object') {
         this.range = range[0];
     } else {
-        this.range = range;
+        if (range.length == 6 && !range.match(/[/ ,.-]/g)) {
+            this.range = range.substr(0, 4) + '-' + range.substr(4, 2);
+        } else {
+            this.range = range.replace(/[/ ,.]/g, '-');
+        }
     }
     this.title = title || '';
     this.graphData = [[]];
@@ -60,49 +64,6 @@ function HxChartCalendar(id, range, title) {
             left: '10%',
             right: '10%'
         },
-        // visualMap: [
-        //     {
-        //         show: false,
-        //         min: 0,
-        //         max: 300,
-        //         calculable: true,
-        //         seriesIndex: [0],
-        //         dimension: 1,
-        //         orient: 'horizontal',
-        //         left: 'center',
-        //         bottom: 20,
-        //         inRange: {
-        //             color: ['#fff', '#006edd'],
-        //             opacity: 1
-        //         },
-        //         controller: {
-        //             inRange: {
-        //                 opacity: 0.5
-        //             }
-        //         }
-        //     },
-        //     // 如果有数据,则覆盖上方的heatmap
-        //     {
-        //         show: false,
-        //         min: 0,
-        //         max: 300,
-        //         calculable: true,
-        //         seriesIndex: [2],
-        //         dimension: 1,
-        //         orient: 'horizontal',
-        //         left: 'center',
-        //         bottom: 20,
-        //         inRange: {
-        //             color: ['#e0ffff', '#006edd'],
-        //             opacity: 0.3
-        //         },
-        //         controller: {
-        //             inRange: {
-        //                 opacity: 0.5
-        //             }
-        //         }
-        //     }
-        // ],
         series: [
             // 使用heatmap是为了方便点击,seires[0]用来显示日历中的日期
             {
@@ -386,10 +347,13 @@ HxChartCalendar.prototype = {
     },
     // 显示日期上的图
     putImg: function (dateStr, image) {
-        var _this = this;
         var time;
         if (typeof (dateStr) == 'string') {
-            time = new Date(dateStr).getTime();
+            if (dateStr.length == 8 && !dateStr.match(/[,./-]/g)) {
+                time = new Date(dateStr.slice(0, 4), parseInt(dateStr.slice(4, 6)) - 1, dateStr.slice(6, 8)).getTime();
+            } else {
+                time = new Date(dateStr.replace(/[, .-]/g, "/")).getTime();
+            }
         } else {
             time = dateStr;
         }
@@ -408,10 +372,13 @@ HxChartCalendar.prototype = {
     },
     // 隐藏日期上的图
     removeImg: function (dateStr) {
-        var _this = this;
         var time;
         if (typeof (dateStr) == 'string') {
-            time = new Date(dateStr).getTime();
+            if (dateStr.length == 8 && !dateStr.match(/[,./-]/g)) {
+                time = new Date(dateStr.slice(0, 4), parseInt(dateStr.slice(4, 6)) - 1, dateStr.slice(6, 8)).getTime();
+            } else {
+                time = new Date(dateStr.replace(/[, .-]/g, "/")).getTime();
+            }
         } else {
             time = dateStr;
         }
@@ -1068,6 +1035,222 @@ HxChartPie.prototype = {
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     }
 };
+
+// 双饼状图封装
+function HxChartDoublePie(id, title) {
+    // 大中小字体,对应size为l,m,s
+    this.fontSize = [24, 16, 12];
+    this.titleFontSize = [30, 24, 18];
+    this.id = id;
+    this.data = [];
+    this.radius = [0, '50%'];
+    this.circular = ['55%', '70%'];
+    this.title = title || '';
+    this.option = {
+        title: {
+            text: this.title,
+            left: 'center',
+            textStyle: {}
+        },
+        textStyle: {},
+        tooltip: {
+            trigger: 'item',
+            formatter: "{b} : {c} ({d}%)",
+            textStyle: {}
+        },
+        legend: {
+            bottom: 0,
+        },
+        series: [
+            {
+                type: 'pie',
+                radius: this.radius,
+                center: ['25%', '50%'],
+                data: this.data,
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            },
+            {
+                type: 'pie',
+                radius: this.radius,
+                center: ['75%', '50%'],
+                data: this.data,
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+}
+HxChartDoublePie.prototype = {
+    constructor: HxChartPie,
+    init: function () {
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    },
+    // 点击回调
+    setCbClick: function (callback) {
+        var chart = echarts.init(document.getElementById(this.id), 'macarons');
+        if (!chart._$handlers.click) {
+            chart.on('click', function (param) {
+                callback([param.data.name, param.data.value]);
+            });
+        } else {
+            chart._$handlers.click[0].h = function (param) {
+                callback([param.data.name, param.data.value]);
+            };
+        }
+    },
+    // 右键点击事件
+    setContextmenu: function (callback) {
+        var chart = echarts.init(document.getElementById(this.id), 'macarons');
+        if (!chart._$handlers.contextmenu) {
+            chart.on('contextmenu', function (param) {
+                callback(param);
+            });
+        } else {
+            chart._$handlers.contextmenu[0].h = function (param) {
+                callback(param);
+            };
+        }
+    },
+    // set标题并重载图表
+    setTitle: function (text) {
+        this.option.title.text = text;
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    },
+    // set标题位置并重载图表
+    setTitleLocation: function (x) {
+        switch (x) {
+            case 'l':
+                this.option.title.left = 'left';
+                break;
+            case 'c':
+                this.option.title.left = 'center';
+                break;
+            case 'r':
+                this.option.title.left = 'right';
+                break;
+        }
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    },
+    // 新增修改左侧数据
+    putDataLeft: function (name, value) {
+        var flag = 0;
+        for (var j = 0; j < this.option.series[0].data.length; j++) {
+            if (name == this.option.series[0].data[j].name) {
+                this.option.series[0].data[j].value = value;
+                flag = 1;
+            }
+        }
+        if (flag == 0) {
+            this.option.series[0].data = this.option.series[0].data.concat({ name: name, value: value });
+        }
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    },
+    // 新增修改左侧数据
+    putDataRight: function (name, value) {
+        var flag = 0;
+        for (var j = 0; j < this.option.series[1].data.length; j++) {
+            if (name == this.option.series[1].data[j].name) {
+                this.option.series[1].data[j].value = value;
+                flag = 1;
+            }
+        }
+        if (flag == 0) {
+            this.option.series[1].data = this.option.series[1].data.concat({ name: name, value: value });
+        }
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    },
+    // 清空数据
+    clearData: function () {
+        this.option.series[0].data = [];
+        this.option.series[1].data = [];
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    },
+    // 变成圆环
+    setCircular: function () {
+        this.option.series[0].radius = this.circular;
+        this.option.series[0].label = {
+            show: false,
+            position: 'center',
+            emphasis: {
+                show: true,
+                textStyle: {
+                    fontSize: '30',
+                    fontWeight: 'bold'
+                }
+            }
+        };
+
+        this.option.series[1].radius = this.circular;
+        this.option.series[1].label = {
+            show: false,
+            position: 'center',
+            emphasis: {
+                show: true,
+                textStyle: {
+                    fontSize: '30',
+                    fontWeight: 'bold'
+                }
+            }
+        };
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    },
+    // 修改图表字体大小
+    setSize: function (size) {
+        switch (size) {
+            case 'l':
+                this.option.textStyle.fontSize = this.fontSize[0];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[0];
+                this.option.title.textStyle.fontSize = this.titleFontSize[0];
+                if (this.option.series[0].label) {
+                    this.option.series[0].label.emphasis.textStyle.fontSize = this.titleFontSize[0];
+                    this.option.series[1].label.emphasis.textStyle.fontSize = this.titleFontSize[0];
+                }
+                break;
+            case 'm':
+                this.option.textStyle.fontSize = this.fontSize[1];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[1];
+                this.option.title.textStyle.fontSize = this.titleFontSize[1];
+                if (this.option.series[0].label) {
+                    this.option.series[0].label.emphasis.textStyle.fontSize = this.titleFontSize[1];
+                    this.option.series[1].label.emphasis.textStyle.fontSize = this.titleFontSize[1];
+                }
+                break;
+            case 's':
+                this.option.textStyle.fontSize = this.fontSize[2];
+                this.option.tooltip.textStyle.fontSize = this.fontSize[2];
+                this.option.title.textStyle.fontSize = this.titleFontSize[2];
+                if (this.option.series[0].label) {
+                    this.option.series[0].label.emphasis.textStyle.fontSize = this.titleFontSize[2];
+                    this.option.series[1].label.emphasis.textStyle.fontSize = this.titleFontSize[2];
+                }
+                break;
+        }
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    },
+    // set背景并重载图表
+    setBackground: function (color) {
+        this.option.backgroundColor = color;
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    },
+    // 去除标题等文字
+    trim: function () {
+        this.option.title.show = false;
+        this.option.series.radius = [0, '95%'];
+        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
+    }
+};
+
 
 // 气泡图封装
 function HxChartScatter(id, title) {
@@ -1971,7 +2154,7 @@ function HxChartCrossBar(id, category, title) {
             splitLine: { show: false },
             data: this.category
         },
-        series: {
+        series: [{
             type: 'bar',
             label: {
                 normal: {
@@ -1980,7 +2163,7 @@ function HxChartCrossBar(id, category, title) {
                 }
             },
             data: this.data
-        }
+        }]
     };
 }
 
@@ -2077,9 +2260,9 @@ HxChartCrossBar.prototype = {
         if (data < 0) {
             data = { value: data, label: labelRight };
         }
-        var newData = this.option.series.data.concat([data]);
+        var newData = this.option.series[0].data.concat([data]);
         if (newData.length <= this.option.yAxis.data.length) {
-            this.option.series.data = newData;
+            this.option.series[0].data = newData;
             echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
         }
     },
@@ -2090,7 +2273,7 @@ HxChartCrossBar.prototype = {
     },
     // 清空数据
     clearData: function () {
-        this.option.series.data = [];
+        this.option.series[0].data = [];
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 去除标题等文字
