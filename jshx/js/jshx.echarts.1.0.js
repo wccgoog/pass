@@ -2049,18 +2049,21 @@ HxChartCrossBar.prototype = {
                 this.option.textStyle.fontSize = this.fontSize[0];
                 this.option.tooltip.textStyle.fontSize = this.fontSize[0];
                 this.option.xAxis.axisLabel.fontSize = this.fontSize[0];
+                this.option.yAxis.axisLabel.fontSize = this.fontSize[0];
                 this.option.title.textStyle.fontSize = this.titleFontSize[0];
                 break;
             case 'm':
                 this.option.textStyle.fontSize = this.fontSize[1];
                 this.option.tooltip.textStyle.fontSize = this.fontSize[1];
                 this.option.xAxis.axisLabel.fontSize = this.fontSize[1];
+                this.option.yAxis.axisLabel.fontSize = this.fontSize[1];
                 this.option.title.textStyle.fontSize = this.titleFontSize[1];
                 break;
             case 's':
                 this.option.textStyle.fontSize = this.fontSize[2];
                 this.option.tooltip.textStyle.fontSize = this.fontSize[2];
                 this.option.xAxis.axisLabel.fontSize = this.fontSize[2];
+                this.option.yAxis.axisLabel.fontSize = this.fontSize[2];
                 this.option.title.textStyle.fontSize = this.titleFontSize[2];
                 break;
         }
