@@ -188,7 +188,11 @@ HxChartCalendar.prototype = {
     putData: function (dateStr, value) {
         var time;
         if (typeof (dateStr) == 'string') {
-            time = new Date(dateStr).getTime();
+            if (dateStr.length == 8 && !dateStr.match(/[,./-]/g)) {
+                time = new Date(dateStr.slice(0, 4), parseInt(dateStr.slice(4, 6)) - 1, dateStr.slice(6, 8)).getTime();
+            } else {
+                time = new Date(dateStr.replace(/[, .-]/g, "/")).getTime();
+            }
         } else {
             time = dateStr;
         }
@@ -240,16 +244,6 @@ HxChartCalendar.prototype = {
                 this.option.title.left = 'right';
                 break;
         }
-        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
-    },
-    // 修改图表宽度
-    setWidth: function (width) {
-        this.option.calendar.width = width;
-        echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
-    },
-    // 修改图表高度
-    setHeight: function (height) {
-        this.option.calendar.height = height;
         echarts.init(document.getElementById(this.id), 'macarons').setOption(this.option);
     },
     // 点击事件
@@ -446,14 +440,13 @@ function createDateList(startTime, endTime) {
 function getDateListFromRange(range) {
     if (typeof (range) == 'string') {
         var year = range.split('-')[0];
-        // 浏览器注意date的时区
-        var startTime = Date.parse(year + ' GMT +8');
+        var startTime = new Date(year + '/01/01').getTime();
         var endTime = startTime + 3600 * 24 * 366 * 1000
         return createDateList(startTime, endTime);
     } else if (typeof (range) == 'object') {
         var startYear = range[0].split('-')[0];
         var endYear = range[1].split('-')[0];
-        var startTime = Date.parse(startYear + ' GMT +8');
+        var startTime = new Date(startYear + '/01/01').getTime();
         var endTime = Date.parse(parseInt(endYear) + 1 + ' GMT +8');
         return createDateList(startTime, endTime);
     }

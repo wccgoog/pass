@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5,user-scalable=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="#" />
     <title>日历Demo</title>
@@ -34,23 +34,31 @@
             height: 400px;
             width: 40%;
         }
+
+        .new-demo {
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+        }
+
+        hr {
+            width: 600px;
+            margin: 20px auto;
+        }
     </style>
 </head>
 
 <body>
-<<<<<<< HEAD
-=======
-    <div id="main14" class="demo"></div>
+    <div id="main14" class="new-demo"></div>
     <hr>
-    <div id="main13" class="demo"></div>
+    <div id="main13" class="new-demo"></div>
     <hr>
-    <div id="main12" class="demo"></div>
+    <div id="main12" class="new-demo"></div>
     <hr>
-    <div id="main11" class="demo"></div>
+    <div id="main11" class="new-demo"></div>
     <hr>
-    <div id="main10" class="demo"></div>
+    <div id="main10" class="new-demo"></div>
     <hr>
->>>>>>> 70fe7a36ff05b36981fd4fbbb8ba60220585f157
     <div id="main" class="demo"></div>
     <hr>
     <div id="main2" class="demo"></div>
@@ -62,10 +70,6 @@
     <div id="main5" class="demo"></div>
     <hr>
     <div id="main6" class="demo"></div>
-    <hr>
-    <div id="main7" class="demo"></div>
-    <hr>
-    <div id="main8" class="demo"></div>
     <hr>
     <div id="main9-1"></div>
     <div id="main9-2"></div>
@@ -83,8 +87,6 @@
         var main4 = new HxChartCalendar('main4', '2019-8', '修改年月:setRange');
         var main5 = new HxChartCalendar('main5', '2019-8', '修改标题位置:setTitleX');
         var main6 = new HxChartCalendar('main6', '2019-8', '修改标题左边距:setTitleLeft');
-        var main7 = new HxChartCalendar('main7', '2019-8', '修改图表宽度:setWidth');
-        var main8 = new HxChartCalendar('main8', '2019-8', '修改图表高度:setHeight');
         var main9_1 = new HxChartCalendar('main9-1', '2019-8', "setSize('l')");
         var main9_2 = new HxChartCalendar('main9-2', '2019-8', "setSize('m')");
         var main9_3 = new HxChartCalendar('main9-3', '2019-8', "setSize('s')");
@@ -92,7 +94,7 @@
         var main11 = new HxChartCalendar('main11', '2019-8', '鼠标点击边框颜色setClickBorder');
         var main12 = new HxChartCalendar('main12', '2019-8', '鼠标点击日期字体颜色setClickColor');
         var main13 = new HxChartCalendar('main13', '2019-8', '鼠标点击日期字体下划线setClickUnderline');
-        var main14 = new HxChartCalendar('main14', '2019-8', '鼠标点击改变日期字体粗细setClickFontWeight');
+        var main14 = new HxChartCalendar('main14', '2019-08', '鼠标点击改变日期字体粗细setClickFontWeight');
 
         main.init();
         main2.init();
@@ -100,8 +102,6 @@
         main4.init();
         main5.init();
         main6.init();
-        main7.init();
-        main8.init();
         main9_1.init();
         main9_2.init();
         main9_3.init();
@@ -123,6 +123,7 @@
         main.putData('2019,08,05', '2019,08,05');
         main.putData('2019/8/6', '2019/8/6');
         main.putData('2019.8.7', '2019.8.7');
+        main.putData('20190808', '20190808');
         // 添加自带图片，目前有四种:putImg
         main.putImg('2019-08-12', iconWork);
         main.putImg('2019-08-13', iconWork);
@@ -155,8 +156,6 @@
 
 
 
-
-
         // 修改数值并重载图表,数值以时间戳毫秒格式显示在日历中
         main2.putData('2019-08-12', 400);
         main2.setCbClick(callback2);
@@ -172,10 +171,7 @@
         main5.setTitleLocation('l')
         // 修改标题左边距并重载图表
         main6.setTitleLocation('c');
-        // 修改图表宽度
-        main7.setWidth(800);
-        // 修改图表高度
-        main8.setHeight(800);
+
 
         main9_1.setSize('l');
         main9_2.setSize('m');
@@ -188,6 +184,7 @@
         main12.setClickColor('red');
         main13.setClickUnderline('blue');
         main14.setClickFontWeight(900);
+        main14.trim();
 
 
     </script>
