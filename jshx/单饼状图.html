@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/jshx.echarts.1.0.js"></script>
+    <title>单饼状图</title>
+    <style>
+        .demo {
+            margin: 50px auto;
+            width: 500px;
+            height: 300px;
+        }
+
+        body {
+            background: #82b9fd;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main4" class="demo"></div>
+    <script>
+        var main4 = new HxChartPie('main4');
+        main4.option.color = ['#e6e6e6', '#2ba1f9', '#5f7aff', '#0154ba', '#ff9600', '#1e7e00', '#7b0099', '#bc0000', '#ea4800', '#007774', '#703d12', '#b27c54', '#999999'];
+
+        main4.putData('人为原因', 30);
+        main4.putData('导向系统', 22);
+        main4.putData('轿厢', 20);
+        main4.putData('控制系统', 15);
+        main4.putData('曳引系统', 19);
+        main4.putData('电气系统', 12);
+        main4.putData('安全保护装置', 12);
+        main4.putData('门系统', 12);
+        main4.putData('外部原因', 12);
+        main4.trim();
+        main4.option.legend.show = false;
+        main4.option.series.labelLine = {
+            show: false,
+            length: 5,
+            length2: 0
+        };
+        main4.option.series.itemStyle.borderColor = '#82b9fd';
+        main4.option.series.itemStyle.borderWidth = 3;
+        main4.option.series.label = {
+            color: 'black'
+        }
+        main4.init();
+
+
+
+
+    </script>
+</body>
+
+</html>

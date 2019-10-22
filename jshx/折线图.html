@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./js/echarts.min.js"></script>
     <script src="./js/jshx.echarts.1.0.js"></script>
-    <title>demo</title>
+    <title>折线图</title>
     <style>
         .demo {
             margin: 50px auto;
@@ -18,32 +18,32 @@
 </head>
 
 <body>
-    <div id="main" class="demo"></div>
+    <div id="main3" class="demo"></div>
     <script>
         var category = ['0-2', '2-4', '4-6', '6-8', '8-10', '10-12', '12-14', '14-16', '16-18', '18-20', '20-22', '22-24'];
-        var main = new HxChartLine('main', category);
-        main.init();
-        main.option.xAxis.axisTick = {
+        var main3 = new HxChartLine('main3', category);
+        main3.init();
+        main3.option.xAxis.axisTick = {
             interval: 0,
             alignWithLabel: true
         };
-        main.option.xAxis.axisLabel.interval = 0;
-        main.option.yAxis.splitLine = {
+        main3.option.xAxis.axisLabel.interval = 0;
+        main3.option.yAxis.splitLine = {
             lineStyle: {
                 type: 'dashed'
             }
         };
-        main.option.xAxis.boundaryGap = true;
-        main.option.xAxis.axisLabel.rotate = 30;
-        main.putData('困人时间段统计', 9)
-        main.putData('困人时间段统计', 8)
-        main.putData('困人时间段统计', 15)
-        main.putData('困人时间段统计', 5)
-        main.putData('困人时间段统计', 1)
-        main.putData('困人时间段统计', 6)
-        main.putData('困人时间段统计', 8)
-        main.trim();
-        main.option.series[0].areaStyle = {
+        main3.option.xAxis.boundaryGap = true;
+        main3.option.xAxis.axisLabel.rotate = 30;
+        main3.putData('困人时间段统计', 9)
+        main3.putData('困人时间段统计', 8)
+        main3.putData('困人时间段统计', 15)
+        main3.putData('困人时间段统计', 5)
+        main3.putData('困人时间段统计', 1)
+        main3.putData('困人时间段统计', 6)
+        main3.putData('困人时间段统计', 8)
+        main3.trim();
+        main3.option.series[0].areaStyle = {
             color: {
                 type: 'linear',
                 x: 0,
@@ -58,13 +58,13 @@
                 global: false // 缺省为 false
             }
         };
-        main.option.series[0].itemStyle = {
+        main3.option.series[0].itemStyle = {
             color: '#df8300'
         }
-        main.option.grid.top = 30;
-        main.option.grid.left = 10;
-        main.option.yAxis.name = '单位:百分比'
-        main.init();
+        main3.option.grid.top = 30;
+        main3.option.grid.left = 10;
+        main3.option.yAxis.name = '单位:百分比'
+        main3.init();
     </script>
 </body>
 

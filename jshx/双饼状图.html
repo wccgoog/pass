@@ -7,26 +7,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./js/echarts.min.js"></script>
     <script src="./js/jshx.echarts.1.0.js"></script>
-    <title>demo</title>
+    <title>双饼状图</title>
     <style>
         .demo {
             margin: 50px auto;
             width: 500px;
             height: 300px;
         }
+
+        body {
+            background: #82b9fd;
+        }
     </style>
 </head>
 
 <body>
-    <div id="main" class="demo"></div>
+    <div id="main1" class="demo"></div>
     <script>
-        var main = new HxChartDoublePie('main');
-        main.init();
-        main.option.title = [
+        var main1 = new HxChartDoublePie('main1');
+        main1.option.color = ['#e6e6e6', '#2ba1f9', '#5f7aff', '#0154ba', '#ff9600', '#1e7e00', '#7b0099', '#bc0000', '#ea4800', '#007774', '#703d12', '#b27c54', '#999999'];
+        main1.option.title = [
             {
                 text: '在线构建',
                 x: '25%',
-                bottom: 20,
+                bottom: 40,
                 textAlign: 'center',
                 textStyle: {
                     fontSize: 14
@@ -35,46 +39,53 @@
             {
                 text: '在线构建',
                 x: '75%',
-                bottom: 20,
+                bottom: 40,
                 textAlign: 'center',
                 textStyle: {
                     fontSize: 14
                 }
             }
         ];
-        main.option.series[0].label = {
-            formatter: "{d}%"
+        main1.option.series[0].radius = [0, '50%'];
+        main1.option.series[0].center = ["25%", "40%"];
+        main1.option.series[0].label = {
+            formatter: "{d}%",
+            color: 'black'
         }
-        main.option.series[0].labelLine = {
-            show: false,
-            length: 5,
-            length2: 0
-        };
-        main.option.series[1].label = {
-            formatter: "{d}%"
-        }
-
-        main.option.series[1].labelLine = {
+        main1.option.series[0].labelLine = {
             show: false,
             length: 5,
             length2: 0
         };
 
+        main1.option.series[1].radius = [0, '50%'];
+        main1.option.series[1].center = ["75%", "40%"];
+        main1.option.series[1].label = {
+            formatter: "{d}%",
+            color: 'black'
+        }
+
+        main1.option.series[1].labelLine = {
+            show: false,
+            length: 5,
+            length2: 0
+        };
 
 
-        main.putDataLeft('直接访问', 35);
-        main.putDataLeft('邮件营销', 10);
-        main.putDataLeft('联盟广告', 34);
-        main.putDataLeft('视频广告', 35);
-        main.putDataLeft('搜索引擎', 48);
+        var category = ['亭湖', '盐都', '大丰', '东台', '建湖', '射阳', '阜宁', '滨海', '响水'];
+        category.forEach(function (value) {
+            main1.putDataLeft(value, Math.ceil(Math.random() * 100));
+            main1.putDataRight(value, Math.ceil(Math.random() * 100));
+        });
 
-        main.putDataRight('直接访问', 111);
-        main.putDataRight('邮件营销', 221);
-        main.putDataRight('联盟广告', 234);
-        main.putDataRight('视频广告', 332);
-        main.putDataRight('搜索引擎', 456);
 
-        // main.trim();
+
+        main1.option.series[0].itemStyle.borderColor = '#82b9fd';
+        main1.option.series[0].itemStyle.borderWidth = 3;
+        main1.option.series[1].itemStyle.borderColor = '#82b9fd';
+        main1.option.series[1].itemStyle.borderWidth = 3;
+        main1.init();
+        // main1.trim();
 
 
 

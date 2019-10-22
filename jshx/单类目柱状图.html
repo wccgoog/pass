@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/jshx.echarts.1.0.js"></script>
+    <title>单类目柱状图</title>
+    <style>
+        .demo {
+            margin: 50px auto;
+            width: 800px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main5" class="demo"></div>
+    <script>
+        var category = ['亭湖', '盐都', '大丰', '东台', '建湖', '射阳', '阜宁', '滨海', '响水'];
+        var main5 = new HxChartBar('main5', category);
+        category.forEach(function (value) {
+            main5.putData('工单', value, Math.ceil(Math.random() * 10));
+        });
+        main5.option.yAxis.splitLine = {
+            lineStyle: {
+                type: 'dashed'
+            }
+        };
+        main5.option.grid.top = 10;
+        main5.option.color = ['#1e7e00'];
+        main5.option.series[0].barWidth = 20;
+        main5.option.yAxis.axisLine = { show: false };
+        main5.option.yAxis.axisTick = { show: false };
+        main5.option.xAxis.axisTick = { show: false };
+        main5.init();
+
+
+    </script>
+</body>
+
+</html>
