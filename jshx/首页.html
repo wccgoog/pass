@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./js/echarts.min.js"></script>
     <script src="./js/jshx.echarts.1.0.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
     <title>首页</title>
     <style>
         html {
-            background: url('./image/bg.png') no-repeat;
+            background: url('./image/background.png') no-repeat;
             background-size: cover;
             background-attachment: fixed;
             height: 100%;
@@ -21,6 +22,20 @@
             display: flex;
             justify-content: center;
             padding-top: 50px;
+        }
+
+        .title {
+            position: absolute;
+            left: 50%;
+            top: 10px;
+            height: 50px;
+            margin-left: -200px;
+        }
+
+        .title-text {
+            color: white;
+            font-size: 22px;
+            font-weight: 600;
         }
 
         body>div {
@@ -41,7 +56,8 @@
             margin-top: 20px;
         }
 
-        .main-head>* {
+        .main-head>*,
+        .title>* {
             display: inline;
             vertical-align: middle;
         }
@@ -73,10 +89,63 @@
             height: 250px;
             border: 1px solid black;
         }
+
+        .middle-head {
+            width: 100%;
+            /* height: 100px; */
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+        }
+
+        .title-arrow {
+            vertical-align: middle;
+            margin-bottom: 2px;
+        }
+
+        .today-num {
+            height: 50px;
+            width: 25px;
+            background-image: linear-gradient(to bottom, #75bb5f 0, #75bb5f 50%, #2b9709 50%, #2b9709 100%);
+            border-radius: 5px;
+            font-size: 25px;
+            vertical-align: middle;
+            line-height: 50px;
+            text-align: center;
+            margin-left: 5px;
+        }
+
+        .yesterday-num {
+            height: 50px;
+            width: 25px;
+            background-image: linear-gradient(to bottom, #ffbb59 0, #ffbb59 50%, #ff9600 50%, #ff9600 100%);
+            border-radius: 5px;
+            font-size: 25px;
+            vertical-align: middle;
+            line-height: 50px;
+            text-align: center;
+            margin-left: 5px;
+        }
+
+
+        #today,
+        #yesterday {
+            display: flex;
+            margin: 20px 20px 10px 20px;
+        }
+
+        .middle-head-title1 {
+            padding-right: 23px;
+        }
+
+        .middle-head-title2 {
+            padding-left: 25px;
+        }
     </style>
 </head>
 
 <body>
+
     <div class="left">
         <div class="main-head">
             <img src="./image/btfh1.png">
@@ -92,7 +161,20 @@
             <div id="main2"></div>
         </div>
     </div>
-    <div class="middle"></div>
+    <div class="middle">
+        <div class="middle-head">
+            <div id="today"></div>
+            <div id="yesterday"></div>
+        </div>
+        <div class="middle-head">
+            <div class="middle-head-title1"><img src="./image/btfh1.png" class="title-arrow">今日工单<img
+                    src="./image/btfh2.png" class="title-arrow">
+            </div>
+            <div class="middle-head-title2"><img src="./image/btfh1.png" class="title-arrow">昨日工单<img
+                    src="./image/btfh2.png" class="title-arrow">
+            </div>
+        </div>
+    </div>
     <div class="right">
         <div id="main5"></div>
         <div class="main-head">
@@ -338,6 +420,25 @@
         main3.option.grid.left = 10;
         main3.option.yAxis.name = '单位:百分比';
         main3.init();
+
+
+
+        function createTodayNum(id, num) {
+            var str = num.toString();
+            for (var i = 0; i < str.length; i++) {
+                $("#" + id).append('<div class="today-num">' + str[i] + '</div>');
+            }
+        }
+
+        function createYesterdayNum(id, num) {
+            var str = num.toString();
+            for (var i = 0; i < str.length; i++) {
+                $("#" + id).append('<div class="yesterday-num">' + str[i] + '</div>');
+            }
+        }
+
+        createTodayNum("today", "0123");
+        createYesterdayNum("yesterday", "0123");
     </script>
 </body>
 

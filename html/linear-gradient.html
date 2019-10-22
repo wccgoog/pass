@@ -12,10 +12,10 @@
             display: flex;
         }
 
-        .test1 {
+        .today-num {
             height: 50px;
             width: 25px;
-            background-image: linear-gradient(to bottom, rgb(94, 255, 108) 0, rgb(94, 255, 108) 50%, rgb(0, 145, 60) 50%, rgb(0, 145, 60) 100%);
+            background-image: linear-gradient(to bottom, #75bb5f 0, #75bb5f 50%, #2b9709 50%, #2b9709 100%);
             border-radius: 5px;
             font-size: 25px;
             vertical-align: middle;
@@ -33,7 +33,7 @@
         function createNumDiv(id, num) {
             var str = num.toString();
             for (var i = 0; i < str.length; i++) {
-                $("#" + id).append('<div class="test1">' + str[i] + '</div>');
+                $("#" + id).append('<div class="today-num">' + str[i] + '</div>');
             }
         }
 
