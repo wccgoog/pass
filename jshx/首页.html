@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/jshx.echarts.1.0.js"></script>
+    <title>首页</title>
+    <style>
+        html {
+            background: url('./image/bg.png') no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+
+        body>div {
+            height: 1000px;
+            width: 33%;
+            border: 1px solid black;
+        }
+
+        #main1 {
+            width: 100%;
+            height: 300px;
+            border: 1px solid black;
+        }
+
+        .main-head {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        .main-head>* {
+            display: inline;
+            vertical-align: middle;
+        }
+
+        .main-head>img {
+            /* padding-top: 5px; */
+        }
+
+        .flex-div {
+            display: flex;
+        }
+
+        #main4 {
+            width: 55%;
+            height: 300px;
+            border: 1px solid black;
+        }
+
+        #main2 {
+            width: 45%;
+            height: 300px;
+            border: 1px solid black;
+        }
+
+        #main5,
+        #main6,
+        #main3 {
+            width: 100%;
+            height: 250px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left">
+        <div class="main-head">
+            <img src="./image/btfh1.png">
+            <div>盐城市电梯与工单数量占比情况</div>
+        </div>
+        <div id="main1"></div>
+        <div class="main-head">
+            <img src="./image/btfh1.png">
+            <div>故障原因分析</div>
+        </div>
+        <div class="flex-div">
+            <div id="main4"></div>
+            <div id="main2"></div>
+        </div>
+    </div>
+    <div class="middle"></div>
+    <div class="right">
+        <div id="main5"></div>
+        <div class="main-head">
+            <img src="./image/btfh1.png">
+            <div>盐城市各区县工单数量情况</div>
+        </div>
+        <div id="main6"></div>
+        <div class="main-head">
+            <img src="./image/btfh1.png">
+            <div>困人时间段统计</div>
+        </div>
+        <div id="main3"></div>
+    </div>
+
+
+    <script>
+
+        var main1 = new HxChartDoublePie('main1');
+        main1.option.color = ['#e6e6e6', '#2ba1f9', '#5f7aff', '#0154ba', '#ff9600', '#1e7e00', '#7b0099', '#bc0000', '#ea4800', '#007774', '#703d12', '#b27c54', '#999999'];
+        main1.option.title = [
+            {
+                text: '电梯数量占比',
+                x: '25%',
+                bottom: 40,
+                textAlign: 'center',
+                textStyle: {
+                    fontSize: 14
+                }
+            },
+            {
+                text: '工单数量占比',
+                x: '75%',
+                bottom: 40,
+                textAlign: 'center',
+                textStyle: {
+                    fontSize: 14
+                }
+            }
+        ];
+        main1.option.series[0].radius = [0, '50%'];
+        main1.option.series[0].center = ["25%", "40%"];
+        main1.option.series[0].label = {
+            formatter: "{d}%",
+            color: 'black'
+        }
+        main1.option.series[0].labelLine = {
+            show: false,
+            length: 5,
+            length2: 0
+        };
+
+        main1.option.series[1].radius = [0, '50%'];
+        main1.option.series[1].center = ["75%", "40%"];
+        main1.option.series[1].label = {
+            formatter: "{d}%",
+            color: 'black'
+        }
+
+        main1.option.series[1].labelLine = {
+            show: false,
+            length: 5,
+            length2: 0
+        };
+
+        var category = ['亭湖', '盐都', '大丰', '东台', '建湖', '射阳', '阜宁', '滨海', '响水'];
+        category.forEach(function (value) {
+            main1.putDataLeft(value, Math.ceil(Math.random() * 100));
+            main1.putDataRight(value, Math.ceil(Math.random() * 100));
+        });
+
+        main1.option.series[0].itemStyle.borderColor = '#82b9fd';
+        main1.option.series[0].itemStyle.borderWidth = 3;
+        main1.option.series[1].itemStyle.borderColor = '#82b9fd';
+        main1.option.series[1].itemStyle.borderWidth = 3;
+        main1.init();
+
+        var main4 = new HxChartPie('main4');
+        main4.option.color = ['#e6e6e6', '#2ba1f9', '#5f7aff', '#0154ba', '#ff9600', '#1e7e00', '#7b0099', '#bc0000', '#ea4800', '#007774', '#703d12', '#b27c54', '#999999'];
+        main4.option.series.label = {
+            color: 'black',
+            formatter: function (params) {
+                var params = params.name;
+                var str = '';
+                var num = 4;
+                if (params.length > num) {
+                    str += params.substr(0, num) + '\n' + params.substr(num);
+                    return str;
+                } else {
+                    return params;
+                }
+            },
+            align: 'left'
+        }
+        main4.putData('人为原因', 30);
+        main4.putData('导向系统', 22);
+        main4.putData('轿厢', 20);
+        main4.putData('控制系统', 15);
+        main4.putData('曳引系统', 19);
+        main4.putData('电气系统', 12);
+        main4.putData('安全保护装置', 12);
+        main4.putData('门系统', 12);
+        main4.putData('外部原因', 12);
+        main4.option.legend.show = false;
+        main4.option.series.labelLine = {
+            show: false,
+            length: 5,
+            length2: 0
+        };
+        main4.option.series.itemStyle.borderColor = '#82b9fd';
+        main4.option.series.itemStyle.borderWidth = 3;
+        main4.init();
+
+        var category2 = ['其他', '阻挡关门', '超载', '装修垃圾', '野蛮搬运', '生活垃圾']
+        var main2 = new HxChartCrossBar('main2', category2);
+        main2.option.legend = {
+            show: true,
+            bottom: 0
+        };
+        main2.option.grid.top = 20;
+        main2.option.series[0].name = '人为原因故障分析';
+        main2.option.yAxis.axisLabel.show = true;
+        main2.option.yAxis.axisLine.show = true;
+        main2.option.xAxis.axisLine = {
+            show: false
+        };
+        main2.option.xAxis.axisLabel = {
+            show: false
+        };
+        main2.option.xAxis.axisTick = {
+            show: false
+        };
+        main2.option.xAxis.splitLine = {
+            show: false
+        };
+        main2.option.grid.left = 80;
+        main2.option.series[0].label = {};
+        main2.option.series[0].itemStyle = {
+            color: '#ff9600'
+        };
+        main2.option.series[0].zlevel = 1;
+        main2.option.series[0].barWidth = 20;
+        main2.option.series[1] = {
+            data: [100, 100, 100, 100, 100, 100],
+            barWidth: 20,
+            type: 'bar',
+            barGap: '-100%',
+            itemStyle: {
+                color: 'rgba(0,0,0,0.2)'
+            }
+        }
+
+        main2.putData(10);
+        main2.putData(20);
+        main2.putData(30);
+        main2.putData(25);
+        main2.putData(15);
+        main2.putData(20);
+
+        var category5 = ['亭湖', '盐都', '大丰', '东台', '建湖', '射阳', '阜宁', '滨海', '响水'];
+        var main5 = new HxChartBar('main5', category5);
+        category5.forEach(function (value) {
+            main5.putData('昨日工单', value, Math.ceil(Math.random() * 10));
+            main5.putData('今日工单', value, Math.ceil(Math.random() * 10));
+        });
+        main5.option.series[0].barWidth = 20;
+        main5.option.series[1].barWidth = 20;
+        main5.option.series[1].barGap = 0;
+        main5.option.yAxis.splitLine = {
+            lineStyle: {
+                type: 'dashed'
+            }
+        };
+        main5.option.grid.top = 10;
+        main5.option.color = ['#ff9600', '#1e7e00']
+        main5.option.yAxis.axisLine = { show: false };
+        main5.option.yAxis.axisTick = { show: false };
+        main5.option.xAxis.axisTick = { show: false };
+        main5.init();
+
+        var category6 = ['亭湖', '盐都', '大丰', '东台', '建湖', '射阳', '阜宁', '滨海', '响水'];
+        var main6 = new HxChartBar('main6', category6);
+        category6.forEach(function (value) {
+            main6.putData('工单', value, Math.ceil(Math.random() * 10));
+        });
+        main6.option.yAxis.splitLine = {
+            lineStyle: {
+                type: 'dashed'
+            }
+        };
+        main6.option.grid.top = 10;
+        main6.option.grid.bottom = 10;
+        main6.option.legend.show = false;
+        main6.option.color = ['#1e7e00'];
+        main6.option.series[0].barWidth = 20;
+        main6.option.yAxis.axisLine = { show: false };
+        main6.option.yAxis.axisTick = { show: false };
+        main6.option.xAxis.axisTick = { show: false };
+        main6.init();
+
+        var category3 = ['0-2', '2-4', '4-6', '6-8', '8-10', '10-12', '12-14', '14-16', '16-18', '18-20', '20-22', '22-24'];
+        var main3 = new HxChartLine('main3', category3);
+        main3.init();
+        main3.option.xAxis.axisTick = {
+            interval: 0,
+            alignWithLabel: true
+        };
+        main3.option.xAxis.axisLabel.interval = 0;
+        main3.option.yAxis.splitLine = {
+            lineStyle: {
+                type: 'dashed'
+            }
+        };
+        main3.option.xAxis.boundaryGap = true;
+        main3.option.xAxis.axisLabel.rotate = 30;
+        main3.putData('困人时间段统计', 9)
+        main3.putData('困人时间段统计', 8)
+        main3.putData('困人时间段统计', 15)
+        main3.putData('困人时间段统计', 5)
+        main3.putData('困人时间段统计', 1)
+        main3.putData('困人时间段统计', 6)
+        main3.putData('困人时间段统计', 8)
+        main3.trim();
+        main3.option.series[0].symbol = 'none';
+        main3.option.series[0].areaStyle = {
+            color: {
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 0,
+                y2: 1,
+                colorStops: [{
+                    offset: 0, color: '#ff9600' // 0% 处的颜色
+                }, {
+                    offset: 1, color: '#ff960000' // 100% 处的颜色
+                }],
+                global: false // 缺省为 false
+            }
+        };
+        main3.option.series[0].itemStyle = {
+            color: '#df8300'
+        }
+        main3.option.grid.top = 30;
+        main3.option.grid.left = 10;
+        main3.option.yAxis.name = '单位:百分比';
+        main3.init();
+    </script>
+</body>
+
+</html>

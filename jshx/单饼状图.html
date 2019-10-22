@@ -26,7 +26,9 @@
     <script>
         var main4 = new HxChartPie('main4');
         main4.option.color = ['#e6e6e6', '#2ba1f9', '#5f7aff', '#0154ba', '#ff9600', '#1e7e00', '#7b0099', '#bc0000', '#ea4800', '#007774', '#703d12', '#b27c54', '#999999'];
-
+        main4.option.series.label = {
+            color: 'black'
+        }
         main4.putData('人为原因', 30);
         main4.putData('导向系统', 22);
         main4.putData('轿厢', 20);
@@ -43,11 +45,14 @@
             length: 5,
             length2: 0
         };
+        // main4.option.series.emphasis = {
+        //     label: {
+        //         color: 'black'
+        //     }
+        // }
         main4.option.series.itemStyle.borderColor = '#82b9fd';
         main4.option.series.itemStyle.borderWidth = 3;
-        main4.option.series.label = {
-            color: 'black'
-        }
+
         main4.init();
 
 

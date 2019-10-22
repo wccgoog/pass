@@ -18,25 +18,25 @@
 </head>
 
 <body>
-    <div id="main5" class="demo"></div>
+    <div id="main6" class="demo"></div>
     <script>
-        var category = ['亭湖', '盐都', '大丰', '东台', '建湖', '射阳', '阜宁', '滨海', '响水'];
-        var main5 = new HxChartBar('main5', category);
-        category.forEach(function (value) {
-            main5.putData('工单', value, Math.ceil(Math.random() * 10));
+        var category6 = ['亭湖', '盐都', '大丰', '东台', '建湖', '射阳', '阜宁', '滨海', '响水'];
+        var main6 = new HxChartBar('main6', category6);
+        category6.forEach(function (value) {
+            main6.putData('工单', value, Math.ceil(Math.random() * 10));
         });
-        main5.option.yAxis.splitLine = {
+        main6.option.yAxis.splitLine = {
             lineStyle: {
                 type: 'dashed'
             }
         };
-        main5.option.grid.top = 10;
-        main5.option.color = ['#1e7e00'];
-        main5.option.series[0].barWidth = 20;
-        main5.option.yAxis.axisLine = { show: false };
-        main5.option.yAxis.axisTick = { show: false };
-        main5.option.xAxis.axisTick = { show: false };
-        main5.init();
+        main6.option.grid.top = 10;
+        main6.option.color = ['#1e7e00'];
+        main6.option.series[0].barWidth = 20;
+        main6.option.yAxis.axisLine = { show: false };
+        main6.option.yAxis.axisTick = { show: false };
+        main6.option.xAxis.axisTick = { show: false };
+        main6.init();
 
 
     </script>
