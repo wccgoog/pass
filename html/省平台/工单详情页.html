@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/jshx.echarts.1.0.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript"
+        src="http://api.map.baidu.com/api?v=3.0&ak=HQZVXDiOe5I0fVjfIcaaZsNkvMt4u8pH"></script>
+    <title>工单详情页</title>
+    <style>
+        html {
+            background: url('./image/background.png') no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            margin: 0 8px;
+            height: 100%;
+        }
+
+        .head-img {
+            width: 96%;
+            height: 68px;
+            margin: 0 auto;
+            background: url('./image/head.png') no-repeat;
+            background-size: 100%;
+        }
+
+        nav {
+            margin: 40px 0;
+        }
+
+        .nav-line {
+            margin: 0 auto;
+            height: 3px;
+            width: 977px;
+            background: url('./image/navLine.png') no-repeat;
+            background-size: 100%;
+        }
+
+        .nav-img-div {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-img-div p {
+            margin: 0;
+        }
+
+        .nav-img-div>div {
+            margin: 0 20px;
+            width: 100px;
+            text-align: center;
+            height: 57px;
+            vertical-align: bottom;
+            padding: 10px 0;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7));
+            position: relative;
+        }
+
+        .nav-img-div>div:hover {
+            background: linear-gradient(to bottom, #0154ba00, #0154baff);
+            color: white;
+        }
+
+        nav img {
+            height: 32px;
+        }
+
+        .main-body {
+            width: 100%;
+            height: 700px;
+            border: 1px solid black;
+            display: flex;
+        }
+
+        .main-left {
+            width: 70%;
+            border: 1px solid black;
+            height: 100%;
+            padding: 0 10px;
+        }
+
+        .main-right {
+            width: 30%;
+            border: 1px solid black;
+            height: 100%;
+        }
+
+        .title {
+            background: #2467bb;
+            border-radius: 5px;
+            padding: 10px 0;
+            color: white;
+        }
+
+        .title>img {
+            display: inline;
+            margin-left: 20px;
+            vertical-align: middle;
+
+        }
+
+        .title>p {
+            display: inline;
+            vertical-align: middle;
+            margin-left: 10px;
+
+        }
+
+        .detail {
+            width: 100%;
+            height: 300px;
+            border: 1px solid black;
+
+        }
+
+        .left-bottom {
+            width: 100%;
+            height: 350px;
+            border: 1px solid black;
+            display: flex;
+
+        }
+
+        #map {
+            height: 100%;
+            width: 45%;
+            border: 1px solid black;
+
+        }
+
+        #list {
+            height: 100%;
+            width: 55%;
+            border: 1px solid black;
+        }
+
+        .nav-list {
+            width: 200px;
+            height: 300px;
+            border: 1px solid black;
+            display: none;
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+        }
+
+        .arrow {
+            border-left: 20px solid #ffffff00;
+            border-right: 20px solid #ffffff00;
+            border-top: 20px solid #ff4500;
+            line-height: 0px;
+            position: absolute;
+            left: -4px;
+            bottom: -20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-head">
+        <div class="head-img"></div>
+    </div>
+    <div class="main-body">
+        <div class="main-left">
+            <div class="title">
+                <img src="./image/icon.png">
+                <p>201909180005工单信息</p>
+            </div>
+            <div class="detail"></div>
+            <div class="left-bottom">
+                <div id="map"></div>
+                <div id="list"></div>
+            </div>
+        </div>
+        <div class="main-right"></div>
+    </div>
+    <nav>
+        <div class="nav-img-div">
+            <div id="to-index">
+                <img src="./image/sy1.png">
+                <p>首页</p>
+            </div>
+            <div>
+                <img src="./image/jcxx1.png">
+                <p>基础信息</p>
+            </div>
+            <div>
+                <img src="./image/gd1.png">
+                <p>工单信息</p>
+            </div>
+            <div>
+                <img src="./image/tj1.png">
+                <p>统计分析</p>
+                <div class="nav-list">
+                    <span>13221</span>
+                    <span>1333323</span>
+                    <span>123</span>
+                    <span>123</span>
+                    <span>123</span>
+                    <div class="arrow"></div>
+
+                </div>
+            </div>
+            <div>
+                <img src="./image/xt1.png">
+                <p>系统管理</p>
+                <div class="nav-list">
+                    <span>123</span>
+                    <span>123</span>
+                    <span>123</span>
+                    <span>123</span>
+                    <span>123</span>
+                    <div class="arrow"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-line"></div>
+
+    </nav>
+
+    <script>
+        // 导航栏悬停改变图标src
+        $('.nav-img-div div').mouseenter(function () {
+            var src = $(this).find('img')[0].src.split('.png')[0];
+            src = src.substr(0, src.length - 1);
+            $(this).find('img')[0].src = src + '.png';
+            $(this).find('.nav-list').stop(true, true).slideDown(0);
+
+        });
+
+        $('.nav-img-div div').mouseleave(function () {
+            var src = $(this).find('img')[0].src.split('.png')[0];
+            $(this).find('img')[0].src = src + '1.png';
+            $(this).find('.nav-list').stop(true, true).slideUp(0);
+        })
+
+        var map = new BMap.Map("map");
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 11);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker);               // 将标注添加到地图中
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+    </script>
+</body>
+
+</html>

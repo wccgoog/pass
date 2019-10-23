@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/select.css">
+</head>
+
+<body>
+    <nav id="topNav">
+        <ul>
+            <li><a href="#" title="Nav Link 1">Nav Link 1</a></li>
+            <li><a href="#" title="Nav Link 1">Nav Link 2</a>
+                <ul>
+                    <li><a href="#" title="Sub Nav Link 1">Sub Nav Link 1</a></li>
+                    <li><a href="#" title="Sub Nav Link 2">Sub Nav Link 2</a></li>
+                    <li><a href="#" title="Sub Nav Link 3">Sub Nav Link 3</a></li>
+                    <li><a href="#" title="Sub Nav Link 4">Sub Nav Link 4</a></li>
+                    <li class="last"><a href="#" title="Sub Nav Link 5">Sub Nav Link 5</a></li>
+                </ul>
+            </li>
+            <li><a href="#" title="Nav Link 1">Nav Link 3</a></li>
+            <li><a href="#" title="Nav Link 1">Nav Link 4</a>
+                <ul>
+                    <li><a href="#" title="Sub Nav Link 1">Sub Nav Link 1</a></li>
+                    <li><a href="#" title="Sub Nav Link 2">Sub Nav Link 2</a></li>
+                    <li><a href="#" title="Sub Nav Link 3">Sub Nav Link 3</a></li>
+                    <li><a href="#" title="Sub Nav Link 4">Sub Nav Link 4</a></li>
+                    <li class="last"><a href="#" title="Sub Nav Link 5">Sub Nav Link 5</a></li>
+                </ul>
+            </li>
+            <li class="last"><a href="#" title="Nav Link 1">Nav Link 5</a></li>
+        </ul>
+    </nav>
+    <div id="date">
+        <ul>
+            <li><a href="#" title="Nav Link 1">2019</a>
+                <ul>
+                    <li><a href="#" title="Sub Nav Link 1">2018</a></li>
+                    <li><a href="#" title="Sub Nav Link 2">2017</a></li>
+                    <li><a href="#" title="Sub Nav Link 3">2016</a></li>
+                    <li><a href="#" title="Sub Nav Link 4">2015</a></li>
+                    <li class="last"><a href="#" title="Sub Nav Link 5">Sub Nav Link 5</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
+    <select name="date">
+        <option value="all" selected style="display: none;">年度</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+    </select>
+
+    <div style="background:linear-gradient(to left,#76AFF5,#0254BA,#76AFF5);height: 2px;"></div>
+    <script>
+        (function ($) {
+
+            //cache nav
+            var nav = $("#topNav");
+
+            //add indicator and hovers to submenu parents
+            nav.find("li").each(function () {
+                if ($(this).find("ul").length > 0) {
+                    $("<span>").text("^").appendTo($(this).children(":first"));
+
+                    //show subnav on hover
+                    $(this).mouseenter(function () {
+                        $(this).find("ul").stop(true, true).slideDown();
+                    });
+
+                    //hide submenus on exit
+                    $(this).mouseleave(function () {
+                        $(this).find("ul").stop(true, true).slideUp();
+                    });
+                }
+            });
+
+            var date = $("#date");
+            date.find("li").each(function () {
+                if ($(this).find("ul").length > 0) {
+
+                    //show subnav on hover
+                    $(this).mouseenter(function () {
+                        $(this).find("ul").stop(true, true).slideDown();
+                    });
+
+                    //hide submenus on exit
+                    $(this).mouseleave(function () {
+                        $(this).find("ul").stop(true, true).slideUp();
+                    });
+                }
+            })
+        })(jQuery);
+    </script>
+</body>
+
+</html>
